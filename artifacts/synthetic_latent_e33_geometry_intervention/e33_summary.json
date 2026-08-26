@@ -1,0 +1,220 @@
+{
+  "experiment": "E33 \u2014 decoder geometry intervention",
+  "source": "V1 checkpoint + V5 probe geometry + E32 decoder metric",
+  "delta": 0.01,
+  "probe_count": 500,
+  "step_multipliers": [
+    0.01,
+    0.025,
+    0.05,
+    0.1,
+    0.25,
+    0.5
+  ],
+  "factor_summary": {
+    "A": {
+      "0.01": {
+        "predicted_median": 0.7776233056908063,
+        "actual_median": 0.7778061032295227,
+        "prediction_ratio_median": 0.9999479282266253,
+        "prediction_ratio_p10": 0.9981525265265386,
+        "prediction_ratio_p90": 1.0005184107056955,
+        "direction_alignment_median": 0.9998996052627058
+      },
+      "0.025": {
+        "predicted_median": 1.9440582642270159,
+        "actual_median": 1.942725121974945,
+        "prediction_ratio_median": 0.9993184750723887,
+        "prediction_ratio_p10": 0.9883391704142367,
+        "prediction_ratio_p90": 1.0014749589696645,
+        "direction_alignment_median": 0.9993351058308014
+      },
+      "0.05": {
+        "predicted_median": 3.8881165284540318,
+        "actual_median": 3.857741355895996,
+        "prediction_ratio_median": 0.9969012969583524,
+        "prediction_ratio_p10": 0.9565017953081099,
+        "prediction_ratio_p90": 1.0055988278602688,
+        "direction_alignment_median": 0.9974437735767678
+      },
+      "0.1": {
+        "predicted_median": 7.7762330569080635,
+        "actual_median": 7.609221696853638,
+        "prediction_ratio_median": 0.9882320167484424,
+        "prediction_ratio_p10": 0.8579311000848229,
+        "prediction_ratio_p90": 1.0248291158422485,
+        "direction_alignment_median": 0.9913644860725004
+      },
+      "0.25": {
+        "predicted_median": 19.440582642270158,
+        "actual_median": 18.131465911865234,
+        "prediction_ratio_median": 0.945709828799886,
+        "prediction_ratio_p10": 0.6630217302801154,
+        "prediction_ratio_p90": 1.0919133459705794,
+        "direction_alignment_median": 0.9504809809137662
+      },
+      "0.5": {
+        "predicted_median": 38.881165284540316,
+        "actual_median": 31.655821800231934,
+        "prediction_ratio_median": 0.873952250261713,
+        "prediction_ratio_p10": 0.4777515904791939,
+        "prediction_ratio_p90": 1.1548158938664301,
+        "direction_alignment_median": 0.882976137193721
+      }
+    },
+    "B": {
+      "0.01": {
+        "predicted_median": 0.5934463170905748,
+        "actual_median": 0.5934300422668457,
+        "prediction_ratio_median": 0.9999593997640868,
+        "prediction_ratio_p10": 0.9966029034415932,
+        "prediction_ratio_p90": 1.0005511208815783,
+        "direction_alignment_median": 0.9999271685765324
+      },
+      "0.025": {
+        "predicted_median": 1.483615792726437,
+        "actual_median": 1.485526442527771,
+        "prediction_ratio_median": 0.9996446161260928,
+        "prediction_ratio_p10": 0.9788376462635114,
+        "prediction_ratio_p90": 1.0008180385474208,
+        "direction_alignment_median": 0.9995553946850644
+      },
+      "0.05": {
+        "predicted_median": 2.967231585452874,
+        "actual_median": 2.9625227451324463,
+        "prediction_ratio_median": 0.9983795991646496,
+        "prediction_ratio_p10": 0.9190383713739019,
+        "prediction_ratio_p90": 1.0019014902835042,
+        "direction_alignment_median": 0.9982437864160565
+      },
+      "0.1": {
+        "predicted_median": 5.934463170905748,
+        "actual_median": 5.910555362701416,
+        "prediction_ratio_median": 0.9928243087860195,
+        "prediction_ratio_p10": 0.7504775343571268,
+        "prediction_ratio_p90": 1.0060102998656548,
+        "direction_alignment_median": 0.9932674616026762
+      },
+      "0.25": {
+        "predicted_median": 14.83615792726437,
+        "actual_median": 14.05708932876587,
+        "prediction_ratio_median": 0.9696335835949004,
+        "prediction_ratio_p10": 0.537601485329319,
+        "prediction_ratio_p90": 1.0804684730671075,
+        "direction_alignment_median": 0.9628073346862156
+      },
+      "0.5": {
+        "predicted_median": 29.67231585452874,
+        "actual_median": 25.03657341003418,
+        "prediction_ratio_median": 0.9034782986068515,
+        "prediction_ratio_p10": 0.45407851330505844,
+        "prediction_ratio_p90": 1.1276428651773558,
+        "direction_alignment_median": 0.8986275053748389
+      }
+    },
+    "C": {
+      "0.01": {
+        "predicted_median": 0.5571286961710096,
+        "actual_median": 0.5569997429847717,
+        "prediction_ratio_median": 0.999996611048467,
+        "prediction_ratio_p10": 0.9978458529412871,
+        "prediction_ratio_p90": 1.0007415578129928,
+        "direction_alignment_median": 0.9999334590495166
+      },
+      "0.025": {
+        "predicted_median": 1.3928217404275238,
+        "actual_median": 1.390768826007843,
+        "prediction_ratio_median": 0.9996990679189206,
+        "prediction_ratio_p10": 0.986412053535613,
+        "prediction_ratio_p90": 1.0009107511763824,
+        "direction_alignment_median": 0.9996198263799316
+      },
+      "0.05": {
+        "predicted_median": 2.7856434808550476,
+        "actual_median": 2.768409013748169,
+        "prediction_ratio_median": 0.9981816772448804,
+        "prediction_ratio_p10": 0.9538695582844214,
+        "prediction_ratio_p90": 1.0020367117334668,
+        "direction_alignment_median": 0.9985092017057933
+      },
+      "0.1": {
+        "predicted_median": 5.571286961710095,
+        "actual_median": 5.573018550872803,
+        "prediction_ratio_median": 0.9924988752594741,
+        "prediction_ratio_p10": 0.8405529216239935,
+        "prediction_ratio_p90": 1.0111507181093071,
+        "direction_alignment_median": 0.9937595482374046
+      },
+      "0.25": {
+        "predicted_median": 13.928217404275237,
+        "actual_median": 12.962006092071533,
+        "prediction_ratio_median": 0.9571313268938872,
+        "prediction_ratio_p10": 0.5650578070177347,
+        "prediction_ratio_p90": 1.057110455406908,
+        "direction_alignment_median": 0.9627704279029381
+      },
+      "0.5": {
+        "predicted_median": 27.856434808550475,
+        "actual_median": 21.928911209106445,
+        "prediction_ratio_median": 0.8659744175879773,
+        "prediction_ratio_p10": 0.3563611796354243,
+        "prediction_ratio_p90": 1.1138341632038644,
+        "direction_alignment_median": 0.8835324360676373
+      }
+    },
+    "interaction": {
+      "0.01": {
+        "predicted_median": 0.12340430197336733,
+        "actual_median": 0.12338870763778687,
+        "prediction_ratio_median": 1.000031536160473,
+        "prediction_ratio_p10": 0.999688702653264,
+        "prediction_ratio_p90": 1.0005607078417993,
+        "direction_alignment_median": 0.9999976028823239
+      },
+      "0.025": {
+        "predicted_median": 0.3085107549334183,
+        "actual_median": 0.30847272276878357,
+        "prediction_ratio_median": 0.9999955221114687,
+        "prediction_ratio_p10": 0.999357241043594,
+        "prediction_ratio_p90": 1.0005403233111858,
+        "direction_alignment_median": 0.9999900516922084
+      },
+      "0.05": {
+        "predicted_median": 0.6170215098668366,
+        "actual_median": 0.6169232428073883,
+        "prediction_ratio_median": 0.9999580892880855,
+        "prediction_ratio_p10": 0.9977818845683575,
+        "prediction_ratio_p90": 1.0005855054237007,
+        "direction_alignment_median": 0.9999598417739657
+      },
+      "0.1": {
+        "predicted_median": 1.2340430197336731,
+        "actual_median": 1.2254908680915833,
+        "prediction_ratio_median": 0.999851273401376,
+        "prediction_ratio_p10": 0.9908751533892757,
+        "prediction_ratio_p90": 1.0007920273521014,
+        "direction_alignment_median": 0.999841507523944
+      },
+      "0.25": {
+        "predicted_median": 3.085107549334183,
+        "actual_median": 3.0463006496429443,
+        "prediction_ratio_median": 0.9992169193617606,
+        "prediction_ratio_p10": 0.9456463075691837,
+        "prediction_ratio_p90": 1.003271352070956,
+        "direction_alignment_median": 0.9990311117607564
+      },
+      "0.5": {
+        "predicted_median": 6.170215098668366,
+        "actual_median": 6.138040065765381,
+        "prediction_ratio_median": 0.9962220154579654,
+        "prediction_ratio_p10": 0.8436313106730059,
+        "prediction_ratio_p90": 1.0103877398811503,
+        "direction_alignment_median": 0.9962100206256567
+      }
+    }
+  },
+  "metric_sanity": {
+    "median": 1.0000000026535194,
+    "max_abs_error": 5.219697124414502e-05
+  }
+}

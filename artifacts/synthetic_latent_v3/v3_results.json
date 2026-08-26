@@ -1,0 +1,814 @@
+{
+  "experiment": "known_factor_synthetic_latent_v3_controlled",
+  "source_experiment": "known_factor_synthetic_latent_v1",
+  "seed": 42,
+  "n_probes": 500,
+  "deltas": [
+    0.01,
+    0.05,
+    0.1,
+    0.25,
+    0.5
+  ],
+  "noise_std": 0.03,
+  "normalization": {
+    "mean": 0.002236798405647278,
+    "std": 1.1200441122055054
+  },
+  "exact_regeneration": {
+    "max_tensor_error": 0.0,
+    "max_factor_error": 0.0
+  },
+  "best_epoch": 1395,
+  "best_test_mse": 0.04175309091806412,
+  "results_by_delta": {
+    "0.01": {
+      "displacement": {
+        "direct_A": {
+          "mean_vector": [
+            0.024922262877225876,
+            -0.013423746451735497
+          ],
+          "mean_magnitude": 0.056272003799676895,
+          "median_magnitude": 0.024273928254842758,
+          "max_magnitude": 1.3868094682693481,
+          "mean_abs_cosine_to_mean": 0.8631769696399569,
+          "derivative_mean_vector": [
+            2.4922263622283936,
+            -1.3423751592636108
+          ],
+          "derivative_median_magnitude": 2.4273929595947266
+        },
+        "total_A": {
+          "mean_vector": [
+            0.025151336565613747,
+            -0.014875388704240322
+          ],
+          "mean_magnitude": 0.05541355907917023,
+          "median_magnitude": 0.025054294615983963,
+          "max_magnitude": 1.7085504531860352,
+          "mean_abs_cosine_to_mean": 0.8638919195095077,
+          "derivative_mean_vector": [
+            2.515134334564209,
+            -1.4875388145446777
+          ],
+          "derivative_median_magnitude": 2.505429267883301
+        },
+        "direct_B": {
+          "mean_vector": [
+            -0.02135484106838703,
+            -0.0013668728061020374
+          ],
+          "mean_magnitude": 0.0737074762582779,
+          "median_magnitude": 0.016963504254817963,
+          "max_magnitude": 4.87635612487793,
+          "mean_abs_cosine_to_mean": 0.6863882904089987,
+          "derivative_mean_vector": [
+            -2.135484457015991,
+            -0.13668698072433472
+          ],
+          "derivative_median_magnitude": 1.6963504552841187
+        },
+        "total_B": {
+          "mean_vector": [
+            -0.022474143654108047,
+            -0.0020188000053167343
+          ],
+          "mean_magnitude": 0.075503870844841,
+          "median_magnitude": 0.017881210893392563,
+          "max_magnitude": 4.745001316070557,
+          "mean_abs_cosine_to_mean": 0.6804894572579069,
+          "derivative_mean_vector": [
+            -2.2474143505096436,
+            -0.20187963545322418
+          ],
+          "derivative_median_magnitude": 1.788120985031128
+        },
+        "C": {
+          "mean_vector": [
+            0.010632822290062904,
+            0.025993378832936287
+          ],
+          "mean_magnitude": 0.08372566848993301,
+          "median_magnitude": 0.0139097198843956,
+          "max_magnitude": 5.922354221343994,
+          "mean_abs_cosine_to_mean": 0.7030925770951435,
+          "derivative_mean_vector": [
+            1.0632820129394531,
+            2.5993385314941406
+          ],
+          "derivative_median_magnitude": 1.3909718990325928
+        },
+        "interaction": {
+          "mean_vector": [
+            0.001855753711424768,
+            -0.0013373811962082982
+          ],
+          "mean_magnitude": 0.011482109315693378,
+          "median_magnitude": 0.0037004700861871243,
+          "max_magnitude": 0.31121641397476196,
+          "mean_abs_cosine_to_mean": 0.8784736169800162,
+          "derivative_mean_vector": [
+            0.18557541072368622,
+            -0.13373810052871704
+          ],
+          "derivative_median_magnitude": 0.37004703283309937
+        },
+        "A_interaction_mediated": {
+          "mean_vector": [
+            0.0002290725678903982,
+            -0.001451639225706458
+          ],
+          "mean_magnitude": 0.013231280259788036,
+          "median_magnitude": 0.00395800918340683,
+          "max_magnitude": 0.3585827946662903,
+          "mean_abs_cosine_to_mean": 0.6194475626796484,
+          "derivative_mean_vector": [
+            0.022907257080078125,
+            -0.14516393840312958
+          ],
+          "derivative_median_magnitude": 0.3958008885383606
+        },
+        "B_interaction_mediated": {
+          "mean_vector": [
+            -0.0011192953679710627,
+            -0.0006519279559142888
+          ],
+          "mean_magnitude": 0.010146211832761765,
+          "median_magnitude": 0.004006684757769108,
+          "max_magnitude": 0.3378739356994629,
+          "mean_abs_cosine_to_mean": 0.5425973261781036,
+          "derivative_mean_vector": [
+            -0.11192957311868668,
+            -0.06519277393817902
+          ],
+          "derivative_median_magnitude": 0.40066850185394287
+        }
+      },
+      "reconstruction": {
+        "direct_A": {
+          "mean_mse_to_counterfactual": 0.0441838838160038,
+          "median_mse_to_counterfactual": 0.021216165274381638,
+          "mean_reconstruction_shift": 1.0693743228912354
+        },
+        "total_A": {
+          "mean_mse_to_counterfactual": 0.04353584721684456,
+          "median_mse_to_counterfactual": 0.021186918020248413,
+          "mean_reconstruction_shift": 1.0533548593521118
+        },
+        "direct_B": {
+          "mean_mse_to_counterfactual": 0.04011322557926178,
+          "median_mse_to_counterfactual": 0.020082280039787292,
+          "mean_reconstruction_shift": 1.0106379985809326
+        },
+        "total_B": {
+          "mean_mse_to_counterfactual": 0.040240731090307236,
+          "median_mse_to_counterfactual": 0.020357877016067505,
+          "mean_reconstruction_shift": 1.0112571716308594
+        },
+        "C": {
+          "mean_mse_to_counterfactual": 0.04047185182571411,
+          "median_mse_to_counterfactual": 0.020950809121131897,
+          "mean_reconstruction_shift": 1.008074164390564
+        },
+        "interaction": {
+          "mean_mse_to_counterfactual": 0.04129069298505783,
+          "median_mse_to_counterfactual": 0.020840611308813095,
+          "mean_reconstruction_shift": 0.19296316802501678
+        }
+      }
+    },
+    "0.05": {
+      "displacement": {
+        "direct_A": {
+          "mean_vector": [
+            0.10634909570217133,
+            -0.08456355333328247
+          ],
+          "mean_magnitude": 0.3105155825614929,
+          "median_magnitude": 0.12191303074359894,
+          "max_magnitude": 11.045343399047852,
+          "mean_abs_cosine_to_mean": 0.8442294098902494,
+          "derivative_mean_vector": [
+            2.1269826889038086,
+            -1.6912708282470703
+          ],
+          "derivative_median_magnitude": 2.438260555267334
+        },
+        "total_A": {
+          "mean_vector": [
+            0.10385962575674057,
+            -0.09494385123252869
+          ],
+          "mean_magnitude": 0.30656182765960693,
+          "median_magnitude": 0.12567967176437378,
+          "max_magnitude": 12.139403343200684,
+          "mean_abs_cosine_to_mean": 0.8350630099102855,
+          "derivative_mean_vector": [
+            2.0771913528442383,
+            -1.8988761901855469
+          ],
+          "derivative_median_magnitude": 2.5135934352874756
+        },
+        "direct_B": {
+          "mean_vector": [
+            -0.1075228601694107,
+            -0.0072353617288172245
+          ],
+          "mean_magnitude": 0.3562140166759491,
+          "median_magnitude": 0.08499553799629211,
+          "max_magnitude": 20.134212493896484,
+          "mean_abs_cosine_to_mean": 0.6945518041644245,
+          "derivative_mean_vector": [
+            -2.150455951690674,
+            -0.14470729231834412
+          ],
+          "derivative_median_magnitude": 1.6999106407165527
+        },
+        "total_B": {
+          "mean_vector": [
+            -0.11451458185911179,
+            -0.013105832040309906
+          ],
+          "mean_magnitude": 0.36978375911712646,
+          "median_magnitude": 0.09294621646404266,
+          "max_magnitude": 19.72666358947754,
+          "mean_abs_cosine_to_mean": 0.6813275043470784,
+          "derivative_mean_vector": [
+            -2.290292978286743,
+            -0.2621168792247772
+          ],
+          "derivative_median_magnitude": 1.858924388885498
+        },
+        "C": {
+          "mean_vector": [
+            0.059685543179512024,
+            0.13535265624523163
+          ],
+          "mean_magnitude": 0.4044806957244873,
+          "median_magnitude": 0.0678381398320198,
+          "max_magnitude": 24.393400192260742,
+          "mean_abs_cosine_to_mean": 0.697554894786328,
+          "derivative_mean_vector": [
+            1.1937110424041748,
+            2.7070531845092773
+          ],
+          "derivative_median_magnitude": 1.3567628860473633
+        },
+        "interaction": {
+          "mean_vector": [
+            0.009365669451653957,
+            -0.006756746210157871
+          ],
+          "mean_magnitude": 0.057019855827093124,
+          "median_magnitude": 0.018467947840690613,
+          "max_magnitude": 1.546252727508545,
+          "mean_abs_cosine_to_mean": 0.8786595521643757,
+          "derivative_mean_vector": [
+            0.18731334805488586,
+            -0.13513489067554474
+          ],
+          "derivative_median_magnitude": 0.36935895681381226
+        },
+        "A_interaction_mediated": {
+          "mean_vector": [
+            -0.002489541657269001,
+            -0.010380319319665432
+          ],
+          "mean_magnitude": 0.07057537883520126,
+          "median_magnitude": 0.02051674574613571,
+          "max_magnitude": 2.0726442337036133,
+          "mean_abs_cosine_to_mean": 0.384264319990878,
+          "derivative_mean_vector": [
+            -0.04979080334305763,
+            -0.2076062709093094
+          ],
+          "derivative_median_magnitude": 0.41033491492271423
+        },
+        "B_interaction_mediated": {
+          "mean_vector": [
+            -0.006991813890635967,
+            -0.005870478227734566
+          ],
+          "mean_magnitude": 0.052299853414297104,
+          "median_magnitude": 0.01969405636191368,
+          "max_magnitude": 1.5937716960906982,
+          "mean_abs_cosine_to_mean": 0.45232475684955714,
+          "derivative_mean_vector": [
+            -0.13983629643917084,
+            -0.11740949749946594
+          ],
+          "derivative_median_magnitude": 0.3938811421394348
+        }
+      },
+      "reconstruction": {
+        "direct_A": {
+          "mean_mse_to_counterfactual": 0.0491141602396965,
+          "median_mse_to_counterfactual": 0.022374261170625687,
+          "mean_reconstruction_shift": 5.1729326248168945
+        },
+        "total_A": {
+          "mean_mse_to_counterfactual": 0.04805157706141472,
+          "median_mse_to_counterfactual": 0.022280534729361534,
+          "mean_reconstruction_shift": 5.23883581161499
+        },
+        "direct_B": {
+          "mean_mse_to_counterfactual": 0.046514347195625305,
+          "median_mse_to_counterfactual": 0.02126641944050789,
+          "mean_reconstruction_shift": 4.778375148773193
+        },
+        "total_B": {
+          "mean_mse_to_counterfactual": 0.0471322201192379,
+          "median_mse_to_counterfactual": 0.02080753818154335,
+          "mean_reconstruction_shift": 4.830287933349609
+        },
+        "C": {
+          "mean_mse_to_counterfactual": 0.04483511671423912,
+          "median_mse_to_counterfactual": 0.02232479490339756,
+          "mean_reconstruction_shift": 4.301177501678467
+        },
+        "interaction": {
+          "mean_mse_to_counterfactual": 0.040826551616191864,
+          "median_mse_to_counterfactual": 0.02084844373166561,
+          "mean_reconstruction_shift": 0.9477693438529968
+        }
+      }
+    },
+    "0.10": {
+      "displacement": {
+        "direct_A": {
+          "mean_vector": [
+            0.22332921624183655,
+            -0.16272592544555664
+          ],
+          "mean_magnitude": 0.6106993556022644,
+          "median_magnitude": 0.2486254870891571,
+          "max_magnitude": 17.094104766845703,
+          "mean_abs_cosine_to_mean": 0.8420219095386565,
+          "derivative_mean_vector": [
+            2.233292579650879,
+            -1.6272600889205933
+          ],
+          "derivative_median_magnitude": 2.486254930496216
+        },
+        "total_A": {
+          "mean_vector": [
+            0.2182527780532837,
+            -0.1892891824245453
+          ],
+          "mean_magnitude": 0.5906031727790833,
+          "median_magnitude": 0.25679686665534973,
+          "max_magnitude": 17.335613250732422,
+          "mean_abs_cosine_to_mean": 0.8335503674740903,
+          "derivative_mean_vector": [
+            2.182528495788574,
+            -1.8928916454315186
+          ],
+          "derivative_median_magnitude": 2.5679683685302734
+        },
+        "direct_B": {
+          "mean_vector": [
+            -0.235238179564476,
+            -0.04601926729083061
+          ],
+          "mean_magnitude": 0.7360058426856995,
+          "median_magnitude": 0.1783110797405243,
+          "max_magnitude": 30.642986297607422,
+          "mean_abs_cosine_to_mean": 0.6795636600089365,
+          "derivative_mean_vector": [
+            -2.3523824214935303,
+            -0.4601922929286957
+          ],
+          "derivative_median_magnitude": 1.7831108570098877
+        },
+        "total_B": {
+          "mean_vector": [
+            -0.24309003353118896,
+            -0.04558929428458214
+          ],
+          "mean_magnitude": 0.7530893087387085,
+          "median_magnitude": 0.1944175660610199,
+          "max_magnitude": 30.279356002807617,
+          "mean_abs_cosine_to_mean": 0.6633481988050044,
+          "derivative_mean_vector": [
+            -2.430899143218994,
+            -0.4558934271335602
+          ],
+          "derivative_median_magnitude": 1.9441757202148438
+        },
+        "C": {
+          "mean_vector": [
+            0.1481848955154419,
+            0.32110685110092163
+          ],
+          "mean_magnitude": 0.8287835717201233,
+          "median_magnitude": 0.13515526056289673,
+          "max_magnitude": 37.53180694580078,
+          "mean_abs_cosine_to_mean": 0.7021417463282124,
+          "derivative_mean_vector": [
+            1.4818497896194458,
+            3.2110695838928223
+          ],
+          "derivative_median_magnitude": 1.3515524864196777
+        },
+        "interaction": {
+          "mean_vector": [
+            0.01850053109228611,
+            -0.014413027092814445
+          ],
+          "mean_magnitude": 0.11358547955751419,
+          "median_magnitude": 0.03706025332212448,
+          "max_magnitude": 3.064605236053467,
+          "mean_abs_cosine_to_mean": 0.8758710533678532,
+          "derivative_mean_vector": [
+            0.18500547111034393,
+            -0.14413025975227356
+          ],
+          "derivative_median_magnitude": 0.37060248851776123
+        },
+        "A_interaction_mediated": {
+          "mean_vector": [
+            -0.005076406057924032,
+            -0.026563210412859917
+          ],
+          "mean_magnitude": 0.14143213629722595,
+          "median_magnitude": 0.040351204574108124,
+          "max_magnitude": 4.813043594360352,
+          "mean_abs_cosine_to_mean": 0.4124604092373047,
+          "derivative_mean_vector": [
+            -0.0507640540599823,
+            -0.26563215255737305
+          ],
+          "derivative_median_magnitude": 0.40351206064224243
+        },
+        "B_interaction_mediated": {
+          "mean_vector": [
+            -0.0078517384827137,
+            0.0004299265565350652
+          ],
+          "mean_magnitude": 0.102156862616539,
+          "median_magnitude": 0.04289790615439415,
+          "max_magnitude": 2.558941602706909,
+          "mean_abs_cosine_to_mean": 0.7873589329430833,
+          "derivative_mean_vector": [
+            -0.0785173773765564,
+            0.004299260210245848
+          ],
+          "derivative_median_magnitude": 0.4289790391921997
+        }
+      },
+      "reconstruction": {
+        "direct_A": {
+          "mean_mse_to_counterfactual": 0.04627750813961029,
+          "median_mse_to_counterfactual": 0.023390542715787888,
+          "mean_reconstruction_shift": 9.280272483825684
+        },
+        "total_A": {
+          "mean_mse_to_counterfactual": 0.0463932640850544,
+          "median_mse_to_counterfactual": 0.023183617740869522,
+          "mean_reconstruction_shift": 9.351858139038086
+        },
+        "direct_B": {
+          "mean_mse_to_counterfactual": 0.05020885542035103,
+          "median_mse_to_counterfactual": 0.021375250071287155,
+          "mean_reconstruction_shift": 8.510099411010742
+        },
+        "total_B": {
+          "mean_mse_to_counterfactual": 0.04759117215871811,
+          "median_mse_to_counterfactual": 0.02119607850909233,
+          "mean_reconstruction_shift": 8.388242721557617
+        },
+        "C": {
+          "mean_mse_to_counterfactual": 0.05536859482526779,
+          "median_mse_to_counterfactual": 0.02356847934424877,
+          "mean_reconstruction_shift": 8.264427185058594
+        },
+        "interaction": {
+          "mean_mse_to_counterfactual": 0.040565695613622665,
+          "median_mse_to_counterfactual": 0.020922403782606125,
+          "mean_reconstruction_shift": 1.8775076866149902
+        }
+      }
+    },
+    "0.25": {
+      "displacement": {
+        "direct_A": {
+          "mean_vector": [
+            0.5921183824539185,
+            -0.3385206162929535
+          ],
+          "mean_magnitude": 1.4259270429611206,
+          "median_magnitude": 0.6260310411453247,
+          "max_magnitude": 26.506671905517578,
+          "mean_abs_cosine_to_mean": 0.8394633999038488,
+          "derivative_mean_vector": [
+            2.368473529815674,
+            -1.354082465171814
+          ],
+          "derivative_median_magnitude": 2.504124164581299
+        },
+        "total_A": {
+          "mean_vector": [
+            0.600257396697998,
+            -0.3598567247390747
+          ],
+          "mean_magnitude": 1.329480767250061,
+          "median_magnitude": 0.6451371908187866,
+          "max_magnitude": 27.444795608520508,
+          "mean_abs_cosine_to_mean": 0.8391537415869534,
+          "derivative_mean_vector": [
+            2.401029586791992,
+            -1.4394268989562988
+          ],
+          "derivative_median_magnitude": 2.5805487632751465
+        },
+        "direct_B": {
+          "mean_vector": [
+            -0.6418949365615845,
+            -0.20183002948760986
+          ],
+          "mean_magnitude": 1.8373329639434814,
+          "median_magnitude": 0.546623706817627,
+          "max_magnitude": 43.86333084106445,
+          "mean_abs_cosine_to_mean": 0.6722157041728497,
+          "derivative_mean_vector": [
+            -2.567579746246338,
+            -0.8073201179504395
+          ],
+          "derivative_median_magnitude": 2.186494827270508
+        },
+        "total_B": {
+          "mean_vector": [
+            -0.6576079726219177,
+            -0.1824175864458084
+          ],
+          "mean_magnitude": 1.8358756303787231,
+          "median_magnitude": 0.5140542387962341,
+          "max_magnitude": 45.83549880981445,
+          "mean_abs_cosine_to_mean": 0.672269094588235,
+          "derivative_mean_vector": [
+            -2.630431890487671,
+            -0.7296703457832336
+          ],
+          "derivative_median_magnitude": 2.0562169551849365
+        },
+        "C": {
+          "mean_vector": [
+            0.24771201610565186,
+            0.5925483107566833
+          ],
+          "mean_magnitude": 1.8286222219467163,
+          "median_magnitude": 0.36245089769363403,
+          "max_magnitude": 49.00007629394531,
+          "mean_abs_cosine_to_mean": 0.7595139347026343,
+          "derivative_mean_vector": [
+            0.9908480644226074,
+            2.3701932430267334
+          ],
+          "derivative_median_magnitude": 1.4498035907745361
+        },
+        "interaction": {
+          "mean_vector": [
+            0.03864853456616402,
+            -0.052622973918914795
+          ],
+          "mean_magnitude": 0.3014468252658844,
+          "median_magnitude": 0.09763110429048538,
+          "max_magnitude": 9.229909896850586,
+          "mean_abs_cosine_to_mean": 0.8289627500772476,
+          "derivative_mean_vector": [
+            0.15459413826465607,
+            -0.21049189567565918
+          ],
+          "derivative_median_magnitude": 0.39052441716194153
+        },
+        "A_interaction_mediated": {
+          "mean_vector": [
+            0.008138902485370636,
+            -0.0213362667709589
+          ],
+          "mean_magnitude": 0.3733840882778168,
+          "median_magnitude": 0.11161956191062927,
+          "max_magnitude": 12.716758728027344,
+          "mean_abs_cosine_to_mean": 0.7130901077203453,
+          "derivative_mean_vector": [
+            0.032555609941482544,
+            -0.0853450670838356
+          ],
+          "derivative_median_magnitude": 0.4464782476425171
+        },
+        "B_interaction_mediated": {
+          "mean_vector": [
+            -0.015712833032011986,
+            0.019412290304899216
+          ],
+          "mean_magnitude": 0.3072640895843506,
+          "median_magnitude": 0.11714262515306473,
+          "max_magnitude": 8.642843246459961,
+          "mean_abs_cosine_to_mean": 0.8207032503262163,
+          "derivative_mean_vector": [
+            -0.06285133212804794,
+            0.07764916121959686
+          ],
+          "derivative_median_magnitude": 0.4685705006122589
+        }
+      },
+      "reconstruction": {
+        "direct_A": {
+          "mean_mse_to_counterfactual": 0.06556761264801025,
+          "median_mse_to_counterfactual": 0.02666136436164379,
+          "mean_reconstruction_shift": 20.284500122070312
+        },
+        "total_A": {
+          "mean_mse_to_counterfactual": 0.061467088758945465,
+          "median_mse_to_counterfactual": 0.024442192167043686,
+          "mean_reconstruction_shift": 20.258983612060547
+        },
+        "direct_B": {
+          "mean_mse_to_counterfactual": 0.05475858226418495,
+          "median_mse_to_counterfactual": 0.026370452716946602,
+          "mean_reconstruction_shift": 16.59076499938965
+        },
+        "total_B": {
+          "mean_mse_to_counterfactual": 0.06360489875078201,
+          "median_mse_to_counterfactual": 0.025728780776262283,
+          "mean_reconstruction_shift": 16.997173309326172
+        },
+        "C": {
+          "mean_mse_to_counterfactual": 0.0630180761218071,
+          "median_mse_to_counterfactual": 0.0301916915923357,
+          "mean_reconstruction_shift": 16.37089729309082
+        },
+        "interaction": {
+          "mean_mse_to_counterfactual": 0.04492363706231117,
+          "median_mse_to_counterfactual": 0.021596774458885193,
+          "mean_reconstruction_shift": 4.680590629577637
+        }
+      }
+    },
+    "0.50": {
+      "displacement": {
+        "direct_A": {
+          "mean_vector": [
+            1.1385397911071777,
+            -0.7634419202804565
+          ],
+          "mean_magnitude": 2.7964155673980713,
+          "median_magnitude": 1.3883066177368164,
+          "max_magnitude": 35.830562591552734,
+          "mean_abs_cosine_to_mean": 0.83173906362243,
+          "derivative_mean_vector": [
+            2.2770795822143555,
+            -1.526883840560913
+          ],
+          "derivative_median_magnitude": 2.776613235473633
+        },
+        "total_A": {
+          "mean_vector": [
+            1.2010399103164673,
+            -0.687683641910553
+          ],
+          "mean_magnitude": 2.774850368499756,
+          "median_magnitude": 1.4225914478302002,
+          "max_magnitude": 36.49744415283203,
+          "mean_abs_cosine_to_mean": 0.8261443116031587,
+          "derivative_mean_vector": [
+            2.4020798206329346,
+            -1.375367283821106
+          ],
+          "derivative_median_magnitude": 2.8451828956604004
+        },
+        "direct_B": {
+          "mean_vector": [
+            -1.4039506912231445,
+            -0.5819668173789978
+          ],
+          "mean_magnitude": 3.68152117729187,
+          "median_magnitude": 1.1229759454727173,
+          "max_magnitude": 48.47095489501953,
+          "mean_abs_cosine_to_mean": 0.6757277107089757,
+          "derivative_mean_vector": [
+            -2.807901382446289,
+            -1.1639336347579956
+          ],
+          "derivative_median_magnitude": 2.2459518909454346
+        },
+        "total_B": {
+          "mean_vector": [
+            -1.382569432258606,
+            -0.46670228242874146
+          ],
+          "mean_magnitude": 3.6194262504577637,
+          "median_magnitude": 1.1551061868667603,
+          "max_magnitude": 46.539894104003906,
+          "mean_abs_cosine_to_mean": 0.6747116636286955,
+          "derivative_mean_vector": [
+            -2.765138864517212,
+            -0.9334045648574829
+          ],
+          "derivative_median_magnitude": 2.3102123737335205
+        },
+        "C": {
+          "mean_vector": [
+            0.2841029167175293,
+            0.8032740950584412
+          ],
+          "mean_magnitude": 2.6812973022460938,
+          "median_magnitude": 0.7605401277542114,
+          "max_magnitude": 48.94051742553711,
+          "mean_abs_cosine_to_mean": 0.7906011208770797,
+          "derivative_mean_vector": [
+            0.5682058334350586,
+            1.6065481901168823
+          ],
+          "derivative_median_magnitude": 1.5210802555084229
+        },
+        "interaction": {
+          "mean_vector": [
+            0.08181016892194748,
+            -0.10235808789730072
+          ],
+          "mean_magnitude": 0.60789555311203,
+          "median_magnitude": 0.1883803904056549,
+          "max_magnitude": 24.416305541992188,
+          "mean_abs_cosine_to_mean": 0.8377445828197524,
+          "derivative_mean_vector": [
+            0.16362033784389496,
+            -0.20471617579460144
+          ],
+          "derivative_median_magnitude": 0.3767607808113098
+        },
+        "A_interaction_mediated": {
+          "mean_vector": [
+            0.0625009536743164,
+            0.07575781643390656
+          ],
+          "mean_magnitude": 0.7709334492683411,
+          "median_magnitude": 0.22504009306430817,
+          "max_magnitude": 26.38551139831543,
+          "mean_abs_cosine_to_mean": 0.4351442643995397,
+          "derivative_mean_vector": [
+            0.1250019073486328,
+            0.1515156328678131
+          ],
+          "derivative_median_magnitude": 0.45008018612861633
+        },
+        "B_interaction_mediated": {
+          "mean_vector": [
+            0.0213798638433218,
+            0.11526443064212799
+          ],
+          "mean_magnitude": 0.6847150325775146,
+          "median_magnitude": 0.25026923418045044,
+          "max_magnitude": 18.01445198059082,
+          "mean_abs_cosine_to_mean": 0.4667663275843952,
+          "derivative_mean_vector": [
+            0.0427597276866436,
+            0.23052886128425598
+          ],
+          "derivative_median_magnitude": 0.5005384683609009
+        }
+      },
+      "reconstruction": {
+        "direct_A": {
+          "mean_mse_to_counterfactual": 0.10501156002283096,
+          "median_mse_to_counterfactual": 0.043702591210603714,
+          "mean_reconstruction_shift": 34.47724533081055
+        },
+        "total_A": {
+          "mean_mse_to_counterfactual": 0.11738400906324387,
+          "median_mse_to_counterfactual": 0.036801375448703766,
+          "mean_reconstruction_shift": 35.21913146972656
+        },
+        "direct_B": {
+          "mean_mse_to_counterfactual": 0.08883515000343323,
+          "median_mse_to_counterfactual": 0.041643835604190826,
+          "mean_reconstruction_shift": 27.619701385498047
+        },
+        "total_B": {
+          "mean_mse_to_counterfactual": 0.0919746533036232,
+          "median_mse_to_counterfactual": 0.036546796560287476,
+          "mean_reconstruction_shift": 28.617692947387695
+        },
+        "C": {
+          "mean_mse_to_counterfactual": 0.11189384013414383,
+          "median_mse_to_counterfactual": 0.046052753925323486,
+          "mean_reconstruction_shift": 26.968591690063477
+        },
+        "interaction": {
+          "mean_mse_to_counterfactual": 0.05720606446266174,
+          "median_mse_to_counterfactual": 0.02430061809718609,
+          "mean_reconstruction_shift": 9.040421485900879
+        }
+      }
+    }
+  },
+  "interpretation": {
+    "direct_A": "changes A coefficient while freezing the A*B interaction contribution",
+    "total_A": "changes A everywhere, including its effect on the interaction term",
+    "direct_B": "changes B coefficient while freezing the A*B interaction contribution",
+    "total_B": "changes B everywhere, including its effect on the interaction term",
+    "A_interaction_mediated": "total_A latent displacement minus direct_A displacement",
+    "B_interaction_mediated": "total_B latent displacement minus direct_B displacement"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "n_probes": 500,
+  "delta": 0.01,
+  "factors": {
+    "A": {
+      "euclidean_magnitude": {
+        "median": 2.507158052864531,
+        "mean": 5.560914384603163,
+        "p95": 15.327948818791477,
+        "max": 169.09473105612366
+      },
+      "decoder_metric_magnitude": {
+        "median": 77.76233337234879,
+        "mean": 101.45721149930395,
+        "p95": 224.0353056753027,
+        "max": 2436.0122234744867
+      },
+      "decoder_gain": {
+        "median": 31.728733215227393,
+        "mean": 37.51738475689229,
+        "p95": 87.80002543732458,
+        "max": 183.96977252580473
+      },
+      "euclidean_vs_decoder_rank_correlation": 0.5768689077359076,
+      "top10_overlap_fraction": 0.34
+    },
+    "B": {
+      "euclidean_magnitude": {
+        "median": 1.7964508856438552,
+        "mean": 7.740306585478069,
+        "p95": 23.007458707423027,
+        "max": 482.0309830684991
+      },
+      "decoder_metric_magnitude": {
+        "median": 59.34462815593561,
+        "mean": 111.56714880316262,
+        "p95": 275.39157929369395,
+        "max": 7702.659945827794
+      },
+      "decoder_gain": {
+        "median": 35.846036418758075,
+        "mean": 44.96972550766173,
+        "p95": 117.89790986432642,
+        "max": 224.67610754144565
+      },
+      "euclidean_vs_decoder_rank_correlation": 0.6558215759216017,
+      "top10_overlap_fraction": 0.22
+    },
+    "C": {
+      "euclidean_magnitude": {
+        "median": 1.373696150736163,
+        "mean": 8.116346779272126,
+        "p95": 19.001597640104677,
+        "max": 591.5261339505362
+      },
+      "decoder_metric_magnitude": {
+        "median": 55.71286933788505,
+        "mean": 109.73808645119728,
+        "p95": 248.87012564783123,
+        "max": 9572.785304403587
+      },
+      "decoder_gain": {
+        "median": 45.86183372391916,
+        "mean": 58.3138210129865,
+        "p95": 159.3217017904354,
+        "max": 230.56152570668144
+      },
+      "euclidean_vs_decoder_rank_correlation": 0.6666291467744794,
+      "top10_overlap_fraction": 0.38
+    },
+    "interaction": {
+      "euclidean_magnitude": {
+        "median": 0.3694607559392083,
+        "mean": 1.1501574279983124,
+        "p95": 3.7878632689288185,
+        "max": 31.163028095422924
+      },
+      "decoder_metric_magnitude": {
+        "median": 12.34042995832866,
+        "mean": 19.461506088067356,
+        "p95": 53.65894817836018,
+        "max": 470.402957109499
+      },
+      "decoder_gain": {
+        "median": 30.801335719589325,
+        "mean": 37.15148157447323,
+        "p95": 88.40168151570559,
+        "max": 155.44025373582656
+      },
+      "euclidean_vs_decoder_rank_correlation": 0.5774943731199192,
+      "top10_overlap_fraction": 0.46
+    }
+  },
+  "global": {
+    "decoder_anisotropy": {
+      "median": 9.452993869781494,
+      "mean": 143.76248113656044,
+      "p95": 119.35618209838825,
+      "max": 41711.09765625
+    },
+    "anisotropy_vs_A_gain_corr": -0.09056977143897009,
+    "anisotropy_vs_B_gain_corr": -0.07989076743068353,
+    "anisotropy_vs_C_gain_corr": -0.08127058181591491,
+    "anisotropy_vs_interaction_gain_corr": -0.0892803727314194
+  }
+}

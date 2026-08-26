@@ -1,0 +1,127 @@
+{
+  "experiment": "known_factor_latent_intervention_geometry_v2",
+  "source_experiment": "known_factor_synthetic_latent_v1",
+  "n_probes": 500,
+  "intervention_delta": 0.5,
+  "device": "cuda",
+  "displacement_statistics": {
+    "A": {
+      "mean_vector": [
+        1.2959500551223755,
+        -0.7262908816337585
+      ],
+      "mean_magnitude": 2.8840057849884033,
+      "median_magnitude": 1.5089417695999146,
+      "std_magnitude": 4.87994384765625,
+      "min_magnitude": 0.12358739972114563,
+      "max_magnitude": 37.05590057373047,
+      "covariance": [
+        [
+          7.934713704972993,
+          11.869967400913781
+        ],
+        [
+          11.869967400913781,
+          22.049610120099654
+        ]
+      ]
+    },
+    "B": {
+      "mean_vector": [
+        -1.4262429475784302,
+        -0.44005391001701355
+      ],
+      "mean_magnitude": 3.7123329639434814,
+      "median_magnitude": 1.1833114624023438,
+      "std_magnitude": 7.537195682525635,
+      "min_magnitude": 0.046204015612602234,
+      "max_magnitude": 46.68065643310547,
+      "covariance": [
+        [
+          16.70114274253734,
+          28.13791942274539
+        ],
+        [
+          28.13791942274539,
+          51.79878463144641
+        ]
+      ]
+    },
+    "C": {
+      "mean_vector": [
+        0.2908291518688202,
+        0.8173608779907227
+      ],
+      "mean_magnitude": 2.7521772384643555,
+      "median_magnitude": 0.8131332397460938,
+      "std_magnitude": 6.870765209197998,
+      "min_magnitude": 0.02216571941971779,
+      "max_magnitude": 49.30598449707031,
+      "covariance": [
+        [
+          12.624695535790197,
+          22.341199830383513
+        ],
+        [
+          22.341199830383513,
+          41.51281609241539
+        ]
+      ]
+    },
+    "interaction": {
+      "mean_vector": [
+        0.09367405623197556,
+        -0.10070597380399704
+      ],
+      "mean_magnitude": 0.6279206275939941,
+      "median_magnitude": 0.20719566941261292,
+      "std_magnitude": 1.6243960857391357,
+      "min_magnitude": 9.241126826964319e-05,
+      "max_magnitude": 24.36006736755371,
+      "covariance": [
+        [
+          1.0196290047941137,
+          1.0489237709936607
+        ],
+        [
+          1.0489237709936607,
+          2.000441791545508
+        ]
+      ]
+    }
+  },
+  "direction_consistency": {
+    "A": {
+      "mean_angle_deg": 24.334591858297586,
+      "median_angle_deg": 9.878105640411377,
+      "std_angle_deg": 27.955683704707702,
+      "mean_absolute_cosine": 0.828616400053259
+    },
+    "B": {
+      "mean_angle_deg": 56.83672238953412,
+      "median_angle_deg": 42.47994422912598,
+      "std_angle_deg": 38.853259252895626,
+      "mean_absolute_cosine": 0.6749020774010569
+    },
+    "C": {
+      "mean_angle_deg": 60.706291345879436,
+      "median_angle_deg": 43.14791488647461,
+      "std_angle_deg": 56.034280282789275,
+      "mean_absolute_cosine": 0.7651034612734802
+    },
+    "interaction": {
+      "mean_angle_deg": 90.995473913908,
+      "median_angle_deg": 95.48772048950195,
+      "std_angle_deg": 66.66042342704456,
+      "mean_absolute_cosine": 0.8643789088949562
+    }
+  },
+  "interaction_dependence": {
+    "magnitude_vs_A": 0.22481117117902125,
+    "magnitude_vs_B": 0.167122974660425,
+    "z1_vs_A": -0.01377707442972758,
+    "z1_vs_B": -0.21725779165092488,
+    "z2_vs_A": -0.06085962116568404,
+    "z2_vs_B": -0.022383433009810043
+  }
+}

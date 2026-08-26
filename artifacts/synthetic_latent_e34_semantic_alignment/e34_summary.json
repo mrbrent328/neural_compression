@@ -1,0 +1,48 @@
+{
+  "experiment": "E34 \u2014 known-factor semantic alignment",
+  "probe_count": 500,
+  "delta": 0.01,
+  "generator": "V5 exact generator",
+  "factors": {
+    "A": {
+      "semantic_cosine_median": 0.8477700352668762,
+      "semantic_cosine_p10": 0.2233904719352723,
+      "semantic_cosine_p90": 0.9695217192173005,
+      "magnitude_ratio_median": 1.0510491977907233,
+      "relative_error_median": 0.6826559779088863,
+      "latent_magnitude_median": 2.5072356462478638,
+      "fraction_cosine_above_0.99": 0.02,
+      "fraction_cosine_above_0.95": 0.182
+    },
+    "B": {
+      "semantic_cosine_median": 0.6622506678104401,
+      "semantic_cosine_p10": -0.08660134673118587,
+      "semantic_cosine_p90": 0.9242266356945038,
+      "magnitude_ratio_median": 1.038330865811173,
+      "relative_error_median": 0.9328037986710234,
+      "latent_magnitude_median": 1.7962919473648071,
+      "fraction_cosine_above_0.99": 0.012,
+      "fraction_cosine_above_0.95": 0.058
+    },
+    "C": {
+      "semantic_cosine_median": 0.6540902256965637,
+      "semantic_cosine_p10": -0.4177373081445694,
+      "semantic_cosine_p90": 0.9526551961898804,
+      "magnitude_ratio_median": 0.9746805803125663,
+      "relative_error_median": 0.9788126503155888,
+      "latent_magnitude_median": 1.3734110593795776,
+      "fraction_cosine_above_0.99": 0.016,
+      "fraction_cosine_above_0.95": 0.106
+    },
+    "interaction": {
+      "semantic_cosine_median": 0.7719274461269379,
+      "semantic_cosine_p10": 0.06059915013611321,
+      "semantic_cosine_p90": 0.9492479979991912,
+      "magnitude_ratio_median": 1.057365127526198,
+      "relative_error_median": 0.7735301425673795,
+      "latent_magnitude_median": 0.36956407129764557,
+      "fraction_cosine_above_0.99": 0.004,
+      "fraction_cosine_above_0.95": 0.098
+    }
+  }
+}
