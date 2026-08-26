@@ -2,157 +2,178 @@
 
 ## Project North Star
 
-**Current research question:**
-
 > What is the smallest persistent relational structure capable of explaining multiple observations of the same underlying system?
 
-This is the current compressed statement of the research direction. It is allowed to change as evidence changes.
+This is the current compressed research question. It may change as evidence changes.
 
 ## How to Read This Log
 
-This file is the living research memory for the project. Git history preserves earlier versions of the file, so changes in our understanding are themselves part of the record.
+This file is the living research memory. Git history preserves changes in our understanding. Experiment numbers are not the research trajectory; experiments are observations attached to smaller conceptual questions.
 
-The experiment number is not the research trajectory. Experiments are observations and tests attached to a smaller set of conceptual questions.
-
-The project should distinguish between:
+Keep separate:
 
 - **Observations:** what an experiment actually showed.
-- **Invariants:** patterns that appear to survive changes in observation, traversal, viewpoint, seed, or implementation.
-- **Hypotheses:** explanations we currently think might account for those observations.
-- **Rejected explanations:** ideas that experiments have weakened or ruled out.
-- **Open questions:** things we do not yet understand.
-- **Current model:** the smallest coherent structural explanation we currently have.
-- **Next decision:** the experiment or architectural change that most efficiently distinguishes competing explanations.
+- **Invariants:** patterns that survive changes in observation, traversal, viewpoint, seed, or implementation.
+- **Hypotheses:** explanations currently being tested.
+- **Rejected explanations:** explanations weakened or ruled out.
+- **Open questions:** unresolved uncertainty.
+- **Current model:** smallest coherent structural explanation presently supported.
+- **Next decision:** experiment that most efficiently separates competing explanations.
 
-When an observation is unusual, surprising, or potentially useful later, record it even when its importance is not yet known.
+When something is surprising or potentially useful later, record it even before its importance is understood.
 
 ## Reconstructed Trajectory
 
-The early work can be understood as a sequence of increasingly constrained questions rather than as a sequence of unrelated architectures.
+The project is best understood as increasingly constrained questions rather than unrelated architectures.
 
 ### 1. Can a tiny representation retain useful information?
 
-The initial direction was not simply “compress a model.” The deeper question was whether a system could retain something recognizably about a much larger underlying system while storing dramatically less explicit information.
+The initial instinct was broader than simply compressing a model: can a system retain recognizable information about a much larger underlying system while storing dramatically less explicit information?
 
-The recurring instinct was: if the same underlying thing is observed repeatedly, why should every observation require its own complete representation?
+A recurring idea was that repeated observations of the same underlying thing should not necessarily require independent complete representations.
 
 ### 2. What information survives?
 
-Very small latent representations produced organized behavior and geometry. A two-dimensional latent was especially interesting because it appeared capable of retaining structure associated with a much larger system.
+Very small latent representations produced organized behavior and geometry. A two-dimensional latent was particularly interesting because it retained structure associated with a much larger system.
 
-The important interpretation is that the geometry was initially evidence to investigate, not necessarily the object of the research itself.
+The geometry was evidence to investigate, not automatically the object of the research.
 
 ### 3. Is the surviving structure persistent?
 
-Experiments across seeds and configurations suggested that organized latent structure could appear repeatedly, although its exact geometry varied.
-
-This did not establish that latent geometry was itself “meaning.” It established that something structured appeared to survive severe compression and therefore deserved explanation.
+Across seeds and configurations, organized latent structure appeared repeatedly, although its exact geometry varied. This established that structured information could survive severe compression; it did not establish that latent geometry itself was semantic meaning.
 
 ### 4. Is that structure behaviorally meaningful?
 
-Behavioral probes showed that the relationship between latent geometry and behavior was not simple or universal. Different seeds could produce different relationships, including apparent inversions.
-
-This weakened the easy explanation that latent geometry directly equals semantic meaning.
-
-That failure is valuable evidence.
+Behavioral probes showed that latent geometry and behavior were not related by one universal mapping. Different seeds could produce different relationships, including apparent inversions. This weakened the simple explanation that latent coordinates directly equal semantic meaning.
 
 ### 5. Is the apparent structure an artifact of coordinates or observation?
 
-Rotation and viewpoint experiments became important because a representation can appear structured while merely encoding one particular coordinate system or observation path.
+Rotation, viewpoint, and intervention experiments increasingly asked whether a representation describes the underlying system or merely one coordinate system or observation path.
 
-The deeper question was not simply whether a geometric statistic survives rotation. It was:
+#### Observation basis versus physical rotation
 
-> Does the representation describe the underlying system, or merely one way of looking at the system?
+The newer rotation/angle idea should not be interpreted primarily as literal mechanical rotation. The intended variable is a change in **observation basis or observation state**: the same underlying system can produce different observed manifestations under different observation conditions.
 
-This distinction should remain explicit in future experiments.
+Current hypothesis:
 
-#### 5a. Observation basis versus physical rotation
+> Changing the observation basis can change observed form without changing the underlying system, and combining observations may expose relational information not explicit in an individual observation.
 
-A recent clarification separates two ideas that had been getting conflated in conversation.
-
-The newer “angle” or “rotation” concept is not primarily about physically rotating the observed object. A physical rotating spherical/disc-like light source can be a useful analogy, but its mechanical rotation is not itself the research variable.
-
-The intended analogy is instead a change in the **observation basis or observation state**. Different observation conditions can produce different apparent shapes or distributions from the same underlying generative system. In the physical color example, individual color conditions act as distinct observation states, while mixed colors represent combined observations. The source remains the same even though the observed manifestation changes.
-
-This suggests a sharper hypothesis:
-
-> **Changing the observation basis can change the observed form without changing the underlying system, and combining observations may expose relational information that is not explicit in any individual observation.**
-
-This should currently be treated as a hypothesis, not an established property of the system.
-
-The important distinction is therefore:
-
-`underlying system → observation condition / basis → observed representation`
-
-rather than assuming:
-
-`observed representation = underlying system`
-
-A useful future experiment should vary observation basis while holding the underlying system fixed, compare the resulting representations, and test whether a compact shared structure can explain both the individual observations and their mixtures.
-
-The recent physical light analogy is useful because each color condition produces a visibly different manifestation while the same source remains responsible for all of them. It is an intuition pump for observation-dependent representation, not evidence by itself for any particular neural mechanism.
+This remains a hypothesis, not an established neural mechanism.
 
 ### 6. What persists across observations?
 
-Traversal changes, viewpoint changes, local representations, shared interaction layers, and information-leak tests increasingly point toward relationships between observations as a central object of study.
-
-The research is therefore moving from asking what an individual latent contains toward asking what structure must persist across multiple observations of the same system.
+Traversal changes, viewpoint changes, local representations, shared interaction layers, and information-boundary tests increasingly moved the question from what one latent contains to what structure must persist across multiple observations of the same system.
 
 ### 7. Current direction: persistent relational structure
 
-The current hypothesis is that the useful compressed object may not be an isolated representation of each observation at all. It may instead be a small persistent relational structure from which multiple observations can be explained or reconstructed.
+The current hypothesis is that the useful compressed object may not be an isolated representation of each observation. It may instead be a small persistent relational structure from which multiple observations can be explained, reconstructed, or predicted.
 
-The target is not merely a compact encoding. The target is the **minimum reusable structure** that accounts for the observed family without being tied to any particular presentation.
+The target is **minimum reusable structure**, not merely minimum representation size.
 
-## Recent Evidence: E36–E37
+## Historical Archaeology: ROCM-test Recovery
 
-The latest work makes the persistent-structure question concrete rather than purely latent.
+On August twenty-six, twenty twenty-six, the repository received commit `7a29f7f` titled **“ROCM-test folder dump.”** This is the historical layer that was missing from the earlier GitHub snapshot. The prior repository state exposed the later experiment sequence beginning around E18; this dump restores the older working material and should now be treated as primary evidence for reconstructing the original trajectory.
 
-### E36 — local observer / adaptive information memory
+The recovered material confirms that the original project had at least two distinct meanings of “compression.”
 
-E36 tests whether a moving observer can build useful persistent knowledge from only locally visible information, rather than being given the whole world. The memory can update existing chunks, create new chunks, and merge compatible chunks. The experiment explicitly compares persistent knowledge cost with raw observation cost and asks whether information topology can emerge from traversal rather than being imposed. fileciteturn11file13
+### Coding compression
 
-The later E36 relational version strengthens the information boundary: memory receives relative positions, local features, observer motion, and rotation changes, but not absolute world coordinates, world identifiers, or hidden geometry. It retains sparse relations between persistent local anchors and tests reuse across repeated traversal. fileciteturn11file16
+The early work included direct neural byte-stream compression. One recovered implementation is a batch-aware online neural compressor using a byte vocabulary, finite context windows, learned next-byte probabilities, explicit conversion of negative log probabilities into estimated bit cost, GPU-oriented minibatching, and online gradient updates. The same historical code compares the neural estimate against conventional compressors including gzip and zstandard. This is a genuine information-theoretic compression branch, not merely a latent-size experiment.
 
-This is important because it moves the question from “what shape does a latent space have?” toward “can persistent structure emerge from observations without being handed the underlying coordinate system?”
+The important conceptual ingredients are:
 
-### E37 — Minimal Persistent Relational Structure
+`observed stream → context → probability model → predicted symbol cost → adaptive update`
 
-E37 makes the current research question explicit and turns it into an interpretable, non-neural baseline. It separates simulator knowledge from observer input and asks whether structure learned on one traversal can explain a second traversal with a different starting phase or direction. It measures reconstruction, next-observation prediction, structure cost, reuse, ablations, and a relation-budget Pareto curve. fileciteturn11file2
+That branch forces explicit questions about predictability, bit cost, online adaptation, and what information is actually reusable.
 
-The experiment therefore gives us a concrete way to test the phrase **minimum persistent relational structure** rather than treating it as an architectural metaphor.
+### Representation / model compression
 
-### Current interpretation of E36 → E37
+The other branch attempted to retain useful behavior or structure of a larger system using a much smaller latent or parameter representation. This branch eventually led through functional recovery, relational attention, latent geometry, viewpoint/rotation tests, persistent memory, and finally explicit relational structure.
 
-E36 asks whether persistent structure can emerge from local observation.
+The historical relationship is therefore better represented as:
 
-E37 asks whether that persistent structure is sufficient to explain changed observations, and how much relational structure is actually necessary.
+`raw-data coding → learned predictability → representation/latent compression → functional recovery → relational attention → latent geometry → observation invariance → persistent structure → relational structure`
 
-That progression is currently more important than the individual implementation details.
+The coding branch should not be discarded as obsolete history. It is a concrete precursor to the current question because both branches ask what information is predictable, reusable, and worth preserving.
+
+### Important archaeology rule
+
+Do not retroactively force the current E37 interpretation onto early experiments. First record what the historical experiment actually tested. Then identify which later question it may have informed. An apparently dead-end result may contain a precursor to an idea rediscovered later under different terminology.
+
+### Archaeology targets
+
+As the ROCM-test dump is reviewed, specifically look for:
+
+- forgotten hypotheses that later reappeared;
+- early distinctions between storage/coding cost and representation cost;
+- places where decoder/model cost was ignored or explicitly counted;
+- online or adaptive learning mechanisms;
+- observations about reusable information;
+- early information-leak or boundary concerns;
+- evidence that multiple observations were being treated as views of one underlying system;
+- any “holy shit, come back to this later” result that was never incorporated into the main trajectory.
+
+The goal is not to reproduce every historical file. The goal is to recover durable relationships between experiments, observations, and changed hypotheses.
+
+## E18–E22: Functional and Relational Turn
+
+E18 explicitly compared optimizing a held-out latent for factor/weight MSE against optimizing it for the function of the recovered Q projection. The constructor remained fixed, so the experiment isolated the effect of the latent objective.
+
+E19 then pushed the objective into **relational attention**, comparing candidate Q behavior against Q/K/V attention context rather than treating the target weight only as an isolated tensor. E20 continued this as a confirmation experiment, while E21 and E22 explored extreme latent capacity and relational capacity.
+
+This is an important historical precursor to the present relational view: the project began asking whether preserving a component's **functional relationships** could matter more than minimizing raw parameter error before the later E36/E37 persistent-memory experiments made relations explicit.
+
+## E23–E30: Latent Geometry Investigation
+
+E23–E30 moved into L2 latent landscapes, coordinate geometry, eigenvector sweeps, cross-seed replication, geometry/behavior sensitivity, rotated geometry, principal directions, rotation invariance, and seed-regime clustering.
+
+The durable conclusion is not that a particular latent coordinate system was discovered. Rather, these experiments established that structured geometry could be real and reproducible enough to investigate, while its exact orientation and behavioral interpretation could vary across seeds. That uncertainty motivated the later shift toward invariants and observation dependence.
+
+## E36 — Local Observer / Adaptive Information Memory
+
+E36 tests whether a moving observer can build useful persistent knowledge from only locally visible information instead of receiving the whole world. Memory can update existing chunks, create new chunks, and merge compatible chunks. The experiment compares persistent knowledge cost with raw observation cost and asks whether information topology can emerge from traversal rather than being imposed.
+
+The later relational E36 version strengthens the boundary: memory receives relative positions, local features, observer motion, and rotation changes, but not absolute world coordinates, world identifiers, or hidden geometry. It retains sparse relations between persistent local anchors and tests reuse across repeated traversal.
+
+The conceptual transition is:
+
+`latent geometry question → can persistent structure emerge from local observation?`
+
+## E37 — Minimal Persistent Relational Structure
+
+E37 makes the current question explicit in an interpretable, non-neural baseline. It separates simulator knowledge from observer input and asks whether structure learned on one traversal can explain a second traversal with a different starting phase or direction.
+
+It measures reconstruction, next-observation prediction, structure cost, reuse, ablations, and a relation-budget frontier.
+
+The important progression is:
+
+`E36: can persistent structure emerge?`
+
+`E37: is persistent structure sufficient, and how much relational structure is necessary?`
+
+The E37 result currently suggests that persistent units can preserve reconstructive information while relations provide the missing predictive structure. This should remain framed as evidence within the tested representation and cost model, not as proof of a universal minimum.
 
 ## Important Methodological Insight
 
-A recurring failure mode in the project has been mistaking experimental machinery for the research question.
+A recurring failure mode is mistaking experimental machinery for the research question.
 
-For example, a chain such as:
+For example:
 
 `geometry → rotation → transformed direction → latent intervention → model output → behavior metric`
 
-can be useful for validating an implementation. But making that chain increasingly airtight does not necessarily answer the larger scientific question.
+may validate plumbing without resolving the scientific question.
 
-The project should therefore distinguish:
+Always distinguish:
 
-**“Is the experimental plumbing correct?”**
+**Is the experimental plumbing correct?**
 
-from
+from:
 
-**“What new uncertainty does this experiment remove?”**
+**What new uncertainty does this experiment remove?**
 
-A technically clean experiment that does not discriminate between meaningful hypotheses may be lower value than a simpler experiment that directly tests an invariant or destroys a competing explanation.
+A technically clean experiment that does not discriminate between hypotheses may be less valuable than a simpler experiment that destroys a competing explanation.
 
 ## Current Conceptual Trajectory
-
-The most useful compressed view of the project so far is:
 
 ```text
 Can a tiny representation work?
@@ -176,35 +197,35 @@ What information appears only through combinations of observations?
 What is the minimum structure required?
 ```
 
-This trajectory should be treated as a working interpretation, not a claim that every historical experiment was consciously designed around these exact questions.
+This is a working reconstruction, not a claim that every historical experiment was consciously designed around these exact questions.
 
 ## Architectural Context
 
-The broader architecture is increasingly being evaluated through the same structural principle that has appeared repeatedly in earlier engineering work:
+A recurring engineering instinct in the project is:
 
 > Build the smallest general mechanism once, then allow many different things to pass through it rather than encoding each case separately.
 
-This is an architectural instinct toward dynamic, reusable, implementation-agnostic structure. In the current research context, that instinct becomes a scientific question: what reusable relational mechanism can explain a family of observations without separately encoding each observation?
+In the research context this becomes a scientific question: what reusable relational mechanism can explain a family of observations without separately encoding each observation?
 
-The implementation language is secondary to the structure being tested. C#, C++, Python, or another language is an implementation accent, not the conceptual architecture.
+Implementation language is secondary. Python, C#, C++, or another language is an implementation detail, not the conceptual architecture.
 
 ## Research Hygiene
 
-Do not silently turn a metaphor into a technical definition. Terminology used in conversation may be an approximate handle for a structural idea. When terminology is ambiguous, reconstruct the operation or relationship being described before correcting the vocabulary.
+Do not silently turn a metaphor into a technical definition. Reconstruct the operation or relationship being described before correcting vocabulary.
 
-Do not treat repeated experiments as automatically redundant. A superficially repeated experiment may be testing a different projection, viewpoint, traversal, representation, observation basis, or invariant.
+Do not treat repeated experiments as automatically redundant. A repeated-looking experiment may test a different projection, viewpoint, traversal, representation, observation basis, or invariant.
 
-At the same time, do not repeat an experiment merely because it is familiar. Before rerunning something, identify what uncertainty the new version is intended to remove.
+Do not rerun an experiment merely because it is familiar. State what uncertainty the new version removes.
 
-Do not confuse a good reconstruction score with discovery of the underlying structure. Explicitly audit information pathways and ask whether the system could succeed without discovering the intended reusable structure.
+Do not confuse a good reconstruction score with discovery of the underlying structure. Audit information pathways and ask whether the system could succeed without discovering the intended reusable structure.
 
-When using physical analogies, preserve the operational mapping. A physical object's mechanical rotation should not be substituted for the research concept if the intended variable is a change in observation basis, channel, or state. The analogy is useful only insofar as it preserves the relevant information relationship.
+When using physical analogies, preserve the operational mapping. Mechanical rotation should not be substituted for a change in observation basis if the latter is the actual research variable.
 
 ## Historical Reconstruction Status
 
-This document begins with a compressed reconstruction rather than a complete catalog of the project's roughly hundred experiments. Earlier conversations, experiment artifacts, and notes should be incorporated gradually when they add durable information.
+The log is a compressed research memory, not a catalog of every file. The goal is to preserve the smallest useful relational structure of the research history: what we observed, what changed because of it, what explanations were rejected, and why the next experiment was chosen.
 
-The goal is not to reproduce every conversation. The goal is to preserve the smallest useful relational structure of the research history: what we observed, what those observations changed, what explanations were rejected, and why the next experiment was chosen.
+The ROCM-test dump is now explicitly part of the reconstruction process. Historical interpretation should proceed from recovered evidence rather than memory of the later project state.
 
 ## Current State
 
@@ -212,14 +233,16 @@ The goal is not to reproduce every conversation. The goal is to preserve the sma
 
 **Primary concern:** Distinguish structure belonging to the underlying system from structure belonging only to a particular observation, coordinate system, traversal, seed, or implementation.
 
-**Recent conceptual refinement:** Treat changes in observation basis/state as distinct from literal physical rotation. Test whether different observation states can yield different forms while sharing a compact underlying relational structure, and whether mixed observations reveal relational information unavailable to individual observations.
+**Recent conceptual refinement:** Treat changes in observation basis/state as distinct from literal physical rotation. Test whether different observation states can yield different forms while sharing compact underlying relational structure, and whether mixed observations reveal relational information unavailable to individual observations.
+
+**Historical refinement:** The original compression objective had both a coding-compression branch and a representation-compression branch. The coding branch is an important precursor because it makes predictability, bit cost, online adaptation, and reusable information explicit.
 
 **Current architectural direction:** Test whether local representations connected through a shared relational / interaction mechanism provide a better abstraction than treating observations as independent latent objects.
 
-**Recent concrete baseline:** E37 MPRS explicitly tests persistent units plus sparse relations across changed traversals and measures the cost/error tradeoff. fileciteturn11file2
+**Recent concrete baseline:** E37 MPRS explicitly tests persistent units plus sparse relations across changed traversals and measures cost/error tradeoffs.
 
-**Highest-value next step:** Interpret the E37 result and its ablations before adding architectural complexity. In particular, determine whether relations provide explanatory power beyond persistent units alone, and identify the smallest tested structure that remains sufficient under changed observation.
+**Highest-value next step:** Continue historical archaeology through the ROCM-test dump before adding unnecessary architectural complexity. Identify early observations that later reappeared as latent geometry, functional recovery, relational attention, persistent memory, observation-basis changes, or information-boundary concerns.
 
-**Known danger:** Getting absorbed in the machinery of measurement and losing the original question.
+**Known danger:** Getting absorbed in measurement machinery and losing the original question.
 
-**Living rule:** Every new experiment should state what assumption it is testing, what observation would change our mind, and what part of the persistent structure it is intended to isolate.
+**Living rule:** Every new experiment should state what assumption it tests, what observation would change our mind, and what part of the persistent structure it is intended to isolate.
