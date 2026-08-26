@@ -1,0 +1,61 @@
+==============================================================================
+ NEURAL COMPRESSOR SPEED AUTOPSY
+==============================================================================
+Input: [synthetic mixed corpus]
+Profile bytes: 4096
+Python: 3.13.5
+Platform: Linux-6.12.100+deb13-amd64-x86_64-with-glibc2.41
+PyTorch: 2.13.0+rocm7.1
+Device: cpu
+CPU: unknown
+Threads: 6
+Deterministic algorithms: False
+Model parameters: 57,696
+Architecture: Embedding(257,32) -> Linear(512,64) -> ReLU -> Linear(64,256)
+
+--- HOT-PATH TIMINGS ---
+tensor_context      :      0.0103 ms / symbol
+forward             :      0.0776 ms / symbol
+freqs               :      0.0415 ms / symbol
+cum                 :      0.0115 ms / symbol
+range               :      0.0022 ms / symbol
+target_tensor       :      0.0074 ms / symbol
+backward_step       :      0.3087 ms / symbol
+context_slide       :      0.0013 ms / symbol
+whole_loop_wall     :      0.4676 ms / symbol
+Estimated baseline throughput: 34219.11 B/s
+Estimated baseline throughput: 33.42 KiB/s
+
+--- COST SHARE (measured components only) ---
+backward_step       :  67.04%   0.3087 ms
+forward             :  16.85%   0.0776 ms
+freqs               :   9.00%   0.0415 ms
+cum                 :   2.50%   0.0115 ms
+tensor_context      :   2.24%   0.0103 ms
+target_tensor       :   1.61%   0.0074 ms
+range               :   0.48%   0.0022 ms
+context_slide       :   0.27%   0.0013 ms
+
+--- END-TO-END BASELINE ---
+Note: this is a profiler, not a bit-exact compressor replacement.
+Sample range-coded payload size: 111 B for 256 input symbols
+
+--- DELAYED UPDATE EXPERIMENT ---
+WARNING: update interval > 1 changes the learning trajectory; use this only
+to discover the speed/ratio tradeoff before modifying the real compressor.
+Interval         Time        KiB/s    Payload B
+       1       1.6680         2.40          541
+       2       1.2967         3.08          540
+       4       1.1290         3.54          542
+       8       1.0213         3.92          543
+      16       0.9965         4.01          552
+      32       0.9545         4.19          571
+
+--- AUTOMATIC BOTTLENECK FLAGS ---
+HIGH: backward_step is 67.0% of measured hot-path component time.
+MED : forward is 16.8% of measured hot-path component time.
+
+--- WHAT TO SEND BACK ---
+Send this entire file: neural_compress_profile.log
+Also tell me the command you used and whether the profile ran on CPU or GPU.
+==============================================================================
