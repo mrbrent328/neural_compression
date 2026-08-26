@@ -1,0 +1,522 @@
+{
+  "experiment": "layernorm_by_type_v1",
+  "model_dir": "Qwen2-0.5B",
+  "device": "cuda",
+  "config": {
+    "latent_dim": 2,
+    "rank": 48,
+    "chunk_size": 1024,
+    "hidden": 512,
+    "epochs": 500,
+    "lr": 0.0002,
+    "seed": 9
+  },
+  "families": {
+    "input_layernorm": {
+      "tensor_count": 24,
+      "mean_normalized_rmse": 0.3407275716397557,
+      "min_normalized_rmse": 0.14342587069614,
+      "max_normalized_rmse": 1.0881536908779539,
+      "best_epoch": 174,
+      "best_normalized_mse": 0.5964859127998352,
+      "latent": [
+        -0.00844163540750742,
+        0.007457051891833544
+      ]
+    },
+    "post_attention_layernorm": {
+      "tensor_count": 24,
+      "mean_normalized_rmse": 0.1337514785964687,
+      "min_normalized_rmse": 0.0876752280279234,
+      "max_normalized_rmse": 0.22906754347646952,
+      "best_epoch": 212,
+      "best_normalized_mse": 0.3834080398082733,
+      "latent": [
+        0.0056537757627666,
+        0.007068965118378401
+      ]
+    }
+  },
+  "per_tensor": [
+    {
+      "name": "model.layers.0.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 1.0881536908779539,
+      "original_mean": 0.033039093017578125,
+      "original_std": 0.12558689713478088
+    },
+    {
+      "name": "model.layers.1.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.4248985099224987,
+      "original_mean": 0.79725581407547,
+      "original_std": 0.44457221031188965
+    },
+    {
+      "name": "model.layers.2.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.3272157628259388,
+      "original_mean": 0.9212027788162231,
+      "original_std": 0.41533127427101135
+    },
+    {
+      "name": "model.layers.3.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1810963279303654,
+      "original_mean": 1.0915521383285522,
+      "original_std": 0.2870445251464844
+    },
+    {
+      "name": "model.layers.4.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.2264058294878122,
+      "original_mean": 0.9598336815834045,
+      "original_std": 0.33969107270240784
+    },
+    {
+      "name": "model.layers.5.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.2448192548762158,
+      "original_mean": 1.123698115348816,
+      "original_std": 0.401922345161438
+    },
+    {
+      "name": "model.layers.6.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.18704273175886443,
+      "original_mean": 1.1480096578598022,
+      "original_std": 0.4311005771160126
+    },
+    {
+      "name": "model.layers.7.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17967296624492946,
+      "original_mean": 1.3194972276687622,
+      "original_std": 0.5046117901802063
+    },
+    {
+      "name": "model.layers.8.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.24487156358842027,
+      "original_mean": 1.0690580606460571,
+      "original_std": 0.55738765001297
+    },
+    {
+      "name": "model.layers.9.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.35749199184705066,
+      "original_mean": 1.568166971206665,
+      "original_std": 0.971832275390625
+    },
+    {
+      "name": "model.layers.10.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.3994895285498034,
+      "original_mean": 1.3372023105621338,
+      "original_std": 0.9569502472877502
+    },
+    {
+      "name": "model.layers.11.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.348294989347819,
+      "original_mean": 1.7962782382965088,
+      "original_std": 1.0994558334350586
+    },
+    {
+      "name": "model.layers.12.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21634506710301213,
+      "original_mean": 1.513123631477356,
+      "original_std": 0.6139587163925171
+    },
+    {
+      "name": "model.layers.13.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.24460063321707304,
+      "original_mean": 1.4861564636230469,
+      "original_std": 0.6677258610725403
+    },
+    {
+      "name": "model.layers.14.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.2396340117896645,
+      "original_mean": 1.626853346824646,
+      "original_std": 0.7029430270195007
+    },
+    {
+      "name": "model.layers.15.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21007703188565324,
+      "original_mean": 1.4253485202789307,
+      "original_std": 0.5981518030166626
+    },
+    {
+      "name": "model.layers.16.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.22000452050528177,
+      "original_mean": 1.6605644226074219,
+      "original_std": 0.5650264024734497
+    },
+    {
+      "name": "model.layers.17.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.20883281952233315,
+      "original_mean": 1.5719250440597534,
+      "original_std": 0.48521867394447327
+    },
+    {
+      "name": "model.layers.18.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.14342587069614,
+      "original_mean": 1.5899832248687744,
+      "original_std": 0.3805648684501648
+    },
+    {
+      "name": "model.layers.19.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1455696409831632,
+      "original_mean": 1.4577680826187134,
+      "original_std": 0.33264613151550293
+    },
+    {
+      "name": "model.layers.20.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.3932521783861767,
+      "original_mean": 1.516143798828125,
+      "original_std": 0.6705245971679688
+    },
+    {
+      "name": "model.layers.21.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.756433510386626,
+      "original_mean": 1.6172186136245728,
+      "original_std": 1.3656057119369507
+    },
+    {
+      "name": "model.layers.22.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.66848208684895,
+      "original_mean": 1.654050588607788,
+      "original_std": 1.1731206178665161
+    },
+    {
+      "name": "model.layers.23.input_layernorm.weight",
+      "family": "input_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.521351200772391,
+      "original_mean": 1.9022566080093384,
+      "original_std": 1.0364837646484375
+    },
+    {
+      "name": "model.layers.0.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.22906754347646952,
+      "original_mean": 0.7229570746421814,
+      "original_std": 0.14008662104606628
+    },
+    {
+      "name": "model.layers.1.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.14320151683489188,
+      "original_mean": 1.1258658170700073,
+      "original_std": 0.29168349504470825
+    },
+    {
+      "name": "model.layers.2.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.12092213621800166,
+      "original_mean": 1.238739013671875,
+      "original_std": 0.2991850972175598
+    },
+    {
+      "name": "model.layers.3.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.12134729652099731,
+      "original_mean": 1.3451234102249146,
+      "original_std": 0.31350022554397583
+    },
+    {
+      "name": "model.layers.4.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.15072181696483244,
+      "original_mean": 1.2667063474655151,
+      "original_std": 0.34304705262184143
+    },
+    {
+      "name": "model.layers.5.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.11891804290143644,
+      "original_mean": 1.2973130941390991,
+      "original_std": 0.362248033285141
+    },
+    {
+      "name": "model.layers.6.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.11577422365240496,
+      "original_mean": 1.3237107992172241,
+      "original_std": 0.4089047610759735
+    },
+    {
+      "name": "model.layers.7.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.12083260387647164,
+      "original_mean": 1.4210597276687622,
+      "original_std": 0.4759823977947235
+    },
+    {
+      "name": "model.layers.8.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.14943098458597556,
+      "original_mean": 1.269380807876587,
+      "original_std": 0.4856381118297577
+    },
+    {
+      "name": "model.layers.9.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17300132685907707,
+      "original_mean": 1.3629957437515259,
+      "original_std": 0.5773448944091797
+    },
+    {
+      "name": "model.layers.10.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.22616165974793567,
+      "original_mean": 1.315183401107788,
+      "original_std": 0.6597026586532593
+    },
+    {
+      "name": "model.layers.11.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.12934375702433304,
+      "original_mean": 1.3198089599609375,
+      "original_std": 0.4919978976249695
+    },
+    {
+      "name": "model.layers.12.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.10466560786069465,
+      "original_mean": 1.3895152807235718,
+      "original_std": 0.4933757185935974
+    },
+    {
+      "name": "model.layers.13.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.10728691900344428,
+      "original_mean": 1.372922658920288,
+      "original_std": 0.46915149688720703
+    },
+    {
+      "name": "model.layers.14.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.09684274871095591,
+      "original_mean": 1.4005805253982544,
+      "original_std": 0.43431225419044495
+    },
+    {
+      "name": "model.layers.15.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.0876752280279234,
+      "original_mean": 1.4770573377609253,
+      "original_std": 0.3906837999820709
+    },
+    {
+      "name": "model.layers.16.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.11307973861175566,
+      "original_mean": 1.5783255100250244,
+      "original_std": 0.34120526909828186
+    },
+    {
+      "name": "model.layers.17.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.11318999347252039,
+      "original_mean": 1.7308241128921509,
+      "original_std": 0.37160396575927734
+    },
+    {
+      "name": "model.layers.18.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.11318979600134292,
+      "original_mean": 1.7195674180984497,
+      "original_std": 0.3957963287830353
+    },
+    {
+      "name": "model.layers.19.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.10436133632196187,
+      "original_mean": 1.9089268445968628,
+      "original_std": 0.38524311780929565
+    },
+    {
+      "name": "model.layers.20.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.09805301175916852,
+      "original_mean": 2.016448974609375,
+      "original_std": 0.306963711977005
+    },
+    {
+      "name": "model.layers.21.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.12977667465797593,
+      "original_mean": 2.0100748538970947,
+      "original_std": 0.2808196246623993
+    },
+    {
+      "name": "model.layers.22.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1653678710991133,
+      "original_mean": 2.1342904567718506,
+      "original_std": 0.3469369113445282
+    },
+    {
+      "name": "model.layers.23.post_attention_layernorm.weight",
+      "family": "post_attention_layernorm",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1778236521255646,
+      "original_mean": 2.3309237957000732,
+      "original_std": 0.3574988842010498
+    }
+  ]
+}

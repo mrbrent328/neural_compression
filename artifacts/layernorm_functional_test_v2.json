@@ -1,0 +1,556 @@
+{
+  "experiment": "layernorm_functional_test_v1",
+  "model_dir": "Qwen2-0.5B",
+  "checkpoint": "layernorm_only_v1.pt",
+  "device": "cuda",
+  "reconstructed_tensor_count": 48,
+  "parameter_summary": {
+    "count": 48,
+    "mean_normalized_rmse": 0.2713450159256657,
+    "min_normalized_rmse": 0.12531770765781403,
+    "max_normalized_rmse": 1.115248680114746
+  },
+  "loss": {
+    "original": {
+      "loss": 2.9151877541931306,
+      "perplexity": 18.45227656982959
+    },
+    "reconstructed": {
+      "loss": 8.270722924446574,
+      "perplexity": 3907.772995890735
+    }
+  },
+  "logits": {
+    "summary": {
+      "mean_cosine": 0.7914057523012161,
+      "min_cosine": 0.714206337928772,
+      "top_token_agreement": 0.0
+    },
+    "per_text": [
+      {
+        "text": "The quick brown fox jumps over the lazy dog.",
+        "logit_mse": 4.648684978485107,
+        "logit_cosine": 0.8303727507591248,
+        "original_top_token_id": 576,
+        "reconstructed_top_token_id": 220,
+        "same_top_token": false
+      },
+      {
+        "text": "Artificial intelligence is a field concerned with learning patterns from data.",
+        "logit_mse": 6.297506332397461,
+        "logit_cosine": 0.8096200227737427,
+        "original_top_token_id": 1084,
+        "reconstructed_top_token_id": 220,
+        "same_top_token": false
+      },
+      {
+        "text": "A transformer model processes information through repeated attention and feed-forward layers.",
+        "logit_mse": 9.716748237609863,
+        "logit_cosine": 0.8044017553329468,
+        "original_top_token_id": 576,
+        "reconstructed_top_token_id": 220,
+        "same_top_token": false
+      },
+      {
+        "text": "The ocean contains many different ecosystems, from shallow coastal waters to the deep sea.",
+        "logit_mse": 8.370975494384766,
+        "logit_cosine": 0.7705596089363098,
+        "original_top_token_id": 576,
+        "reconstructed_top_token_id": 220,
+        "same_top_token": false
+      },
+      {
+        "text": "Plants convert light energy into chemical energy through photosynthesis.",
+        "logit_mse": 6.588254451751709,
+        "logit_cosine": 0.8125509023666382,
+        "original_top_token_id": 1096,
+        "reconstructed_top_token_id": 320,
+        "same_top_token": false
+      },
+      {
+        "text": "A computer program is a sequence of instructions executed by a machine.",
+        "logit_mse": 13.452286720275879,
+        "logit_cosine": 0.751816987991333,
+        "original_top_token_id": 576,
+        "reconstructed_top_token_id": 220,
+        "same_top_token": false
+      },
+      {
+        "text": "Mathematics provides a language for describing patterns, quantities, and relationships.",
+        "logit_mse": 13.69727897644043,
+        "logit_cosine": 0.714206337928772,
+        "original_top_token_id": 1084,
+        "reconstructed_top_token_id": 151643,
+        "same_top_token": false
+      },
+      {
+        "text": "The history of science is full of experiments that changed our understanding of nature.",
+        "logit_mse": 5.969264507293701,
+        "logit_cosine": 0.8377176523208618,
+        "original_top_token_id": 3776,
+        "reconstructed_top_token_id": 220,
+        "same_top_token": false
+      }
+    ]
+  },
+  "generation": [
+    {
+      "prompt": "The purpose of a neural network is",
+      "original": "The purpose of a neural network is to learn a function that maps inputs to outputs. The output of the network is the output of the network. The output of the network is the output of the network. The output of the network is",
+      "reconstructed": "The purpose of a neural network is not the same as the\n. 20092099999999999999999999999999",
+      "exact_match": false
+    },
+    {
+      "prompt": "A transformer model works by",
+      "original": "A transformer model works by assuming that the voltage and current are related by a linear function. The voltage is given by the equation: V = V0 * e^(i * theta) where V0 is the initial voltage,",
+      "reconstructed": "A transformer model works by the - 19 (20. 199999999999999999999999999999",
+      "exact_match": false
+    },
+    {
+      "prompt": "The most interesting thing about learning is",
+      "original": "The most interesting thing about learning is that it is not about the knowledge itself, but about the process of learning. It is about the process of learning, not the knowledge itself. The process of learning is the most important thing in learning",
+      "reconstructed": "The most interesting thing about learning is to a 2033999999.)\n\n\n\n# 19-19 201971196-19- 1997",
+      "exact_match": false
+    },
+    {
+      "prompt": "If we reconstruct a model from a compact representation,",
+      "original": "If we reconstruct a model from a compact representation, is it possible to reconstruct the original model from the reconstructed one? Suppose we have a compact representation of a group $G$ and we want to reconstruct the group from it. Is it possible to reconstruct",
+      "reconstructed": "If we reconstruct a model from a compact representation, 2019 2009999999 20209999999999999999999",
+      "exact_match": false
+    }
+  ],
+  "per_tensor": [
+    {
+      "name": "model.layers.0.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 1.115248680114746,
+      "original_mean": 0.033039093017578125,
+      "original_std": 0.12558689713478088
+    },
+    {
+      "name": "model.layers.0.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21168051660060883,
+      "original_mean": 0.7229570746421814,
+      "original_std": 0.14008662104606628
+    },
+    {
+      "name": "model.layers.1.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.47683650255203247,
+      "original_mean": 0.79725581407547,
+      "original_std": 0.44457221031188965
+    },
+    {
+      "name": "model.layers.1.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.14072605967521667,
+      "original_mean": 1.1258658170700073,
+      "original_std": 0.29168349504470825
+    },
+    {
+      "name": "model.layers.2.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.3933274745941162,
+      "original_mean": 0.9212027788162231,
+      "original_std": 0.41533127427101135
+    },
+    {
+      "name": "model.layers.2.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1370648592710495,
+      "original_mean": 1.238739013671875,
+      "original_std": 0.2991850972175598
+    },
+    {
+      "name": "model.layers.3.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.2267305552959442,
+      "original_mean": 1.0915521383285522,
+      "original_std": 0.2870445251464844
+    },
+    {
+      "name": "model.layers.3.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.13130109012126923,
+      "original_mean": 1.3451234102249146,
+      "original_std": 0.31350022554397583
+    },
+    {
+      "name": "model.layers.4.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.3065187335014343,
+      "original_mean": 0.9598336815834045,
+      "original_std": 0.33969107270240784
+    },
+    {
+      "name": "model.layers.4.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.16774338483810425,
+      "original_mean": 1.2667063474655151,
+      "original_std": 0.34304705262184143
+    },
+    {
+      "name": "model.layers.5.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.30577796697616577,
+      "original_mean": 1.123698115348816,
+      "original_std": 0.401922345161438
+    },
+    {
+      "name": "model.layers.5.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.14922566711902618,
+      "original_mean": 1.2973130941390991,
+      "original_std": 0.362248033285141
+    },
+    {
+      "name": "model.layers.6.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21511229872703552,
+      "original_mean": 1.1480096578598022,
+      "original_std": 0.4311005771160126
+    },
+    {
+      "name": "model.layers.6.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.15665487945079803,
+      "original_mean": 1.3237107992172241,
+      "original_std": 0.4089047610759735
+    },
+    {
+      "name": "model.layers.7.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21391203999519348,
+      "original_mean": 1.3194972276687622,
+      "original_std": 0.5046117901802063
+    },
+    {
+      "name": "model.layers.7.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.16464121639728546,
+      "original_mean": 1.4210597276687622,
+      "original_std": 0.4759823977947235
+    },
+    {
+      "name": "model.layers.8.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.2952519357204437,
+      "original_mean": 1.0690580606460571,
+      "original_std": 0.55738765001297
+    },
+    {
+      "name": "model.layers.8.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17862382531166077,
+      "original_mean": 1.269380807876587,
+      "original_std": 0.4856381118297577
+    },
+    {
+      "name": "model.layers.9.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.4124615490436554,
+      "original_mean": 1.568166971206665,
+      "original_std": 0.971832275390625
+    },
+    {
+      "name": "model.layers.9.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21491260826587677,
+      "original_mean": 1.3629957437515259,
+      "original_std": 0.5773448944091797
+    },
+    {
+      "name": "model.layers.10.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.3434421122074127,
+      "original_mean": 1.3372023105621338,
+      "original_std": 0.9569502472877502
+    },
+    {
+      "name": "model.layers.10.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.2535075843334198,
+      "original_mean": 1.315183401107788,
+      "original_std": 0.6597026586532593
+    },
+    {
+      "name": "model.layers.11.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.33332499861717224,
+      "original_mean": 1.7962782382965088,
+      "original_std": 1.0994558334350586
+    },
+    {
+      "name": "model.layers.11.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.19808083772659302,
+      "original_mean": 1.3198089599609375,
+      "original_std": 0.4919978976249695
+    },
+    {
+      "name": "model.layers.12.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.225433811545372,
+      "original_mean": 1.513123631477356,
+      "original_std": 0.6139587163925171
+    },
+    {
+      "name": "model.layers.12.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.18290676176548004,
+      "original_mean": 1.3895152807235718,
+      "original_std": 0.4933757185935974
+    },
+    {
+      "name": "model.layers.13.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.19811353087425232,
+      "original_mean": 1.4861564636230469,
+      "original_std": 0.6677258610725403
+    },
+    {
+      "name": "model.layers.13.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17905208468437195,
+      "original_mean": 1.372922658920288,
+      "original_std": 0.46915149688720703
+    },
+    {
+      "name": "model.layers.14.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.19357231259346008,
+      "original_mean": 1.626853346824646,
+      "original_std": 0.7029430270195007
+    },
+    {
+      "name": "model.layers.14.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17106828093528748,
+      "original_mean": 1.4005805253982544,
+      "original_std": 0.43431225419044495
+    },
+    {
+      "name": "model.layers.15.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.18998238444328308,
+      "original_mean": 1.4253485202789307,
+      "original_std": 0.5981518030166626
+    },
+    {
+      "name": "model.layers.15.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1503441035747528,
+      "original_mean": 1.4770573377609253,
+      "original_std": 0.3906837999820709
+    },
+    {
+      "name": "model.layers.16.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.21295078098773956,
+      "original_mean": 1.6605644226074219,
+      "original_std": 0.5650264024734497
+    },
+    {
+      "name": "model.layers.16.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.16650287806987762,
+      "original_mean": 1.5783255100250244,
+      "original_std": 0.34120526909828186
+    },
+    {
+      "name": "model.layers.17.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1858164221048355,
+      "original_mean": 1.5719250440597534,
+      "original_std": 0.48521867394447327
+    },
+    {
+      "name": "model.layers.17.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17206504940986633,
+      "original_mean": 1.7308241128921509,
+      "original_std": 0.37160396575927734
+    },
+    {
+      "name": "model.layers.18.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.16462285816669464,
+      "original_mean": 1.5899832248687744,
+      "original_std": 0.3805648684501648
+    },
+    {
+      "name": "model.layers.18.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.17557166516780853,
+      "original_mean": 1.7195674180984497,
+      "original_std": 0.3957963287830353
+    },
+    {
+      "name": "model.layers.19.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.15337210893630981,
+      "original_mean": 1.4577680826187134,
+      "original_std": 0.33264613151550293
+    },
+    {
+      "name": "model.layers.19.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.15609948337078094,
+      "original_mean": 1.9089268445968628,
+      "original_std": 0.38524311780929565
+    },
+    {
+      "name": "model.layers.20.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.491609662771225,
+      "original_mean": 1.516143798828125,
+      "original_std": 0.6705245971679688
+    },
+    {
+      "name": "model.layers.20.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.12531770765781403,
+      "original_mean": 2.016448974609375,
+      "original_std": 0.306963711977005
+    },
+    {
+      "name": "model.layers.21.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.8750365376472473,
+      "original_mean": 1.6172186136245728,
+      "original_std": 1.3656057119369507
+    },
+    {
+      "name": "model.layers.21.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1508748084306717,
+      "original_mean": 2.0100748538970947,
+      "original_std": 0.2808196246623993
+    },
+    {
+      "name": "model.layers.22.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.7867681384086609,
+      "original_mean": 1.654050588607788,
+      "original_std": 1.1731206178665161
+    },
+    {
+      "name": "model.layers.22.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.1775704324245453,
+      "original_mean": 2.1342904567718506,
+      "original_std": 0.3469369113445282
+    },
+    {
+      "name": "model.layers.23.input_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.6296777129173279,
+      "original_mean": 1.9022566080093384,
+      "original_std": 1.0364837646484375
+    },
+    {
+      "name": "model.layers.23.post_attention_layernorm.weight",
+      "shape": [
+        896
+      ],
+      "normalized_rmse": 0.16812387108802795,
+      "original_mean": 2.3309237957000732,
+      "original_std": 0.3574988842010498
+    }
+  ]
+}

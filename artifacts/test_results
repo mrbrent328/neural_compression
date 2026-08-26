@@ -1,0 +1,359 @@
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 22,
+  "center": [
+    0.5309335589408875,
+    -1.34913969039917
+  ],
+  "gradient": [
+    0.0023500174283981323,
+    0.009016221389174461
+  ],
+  "hessian": [
+    [
+      0.22458282113075256,
+      -0.20807760953903198
+    ],
+    [
+      -0.20807760953903198,
+      0.2112203985452652
+    ]
+  ],
+  "eigenvalues": [
+    0.009716764092445374,
+    0.4260864555835724
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.6956678032875061,
+      -0.7183636426925659
+    ],
+    [
+      -0.7183636426925659,
+      0.6956678032875061
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_22/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_22/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_22/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 23,
+  "center": [
+    -1.5017799139022827,
+    -0.32455822825431824
+  ],
+  "gradient": [
+    1.1838496902782936e-05,
+    7.690679194638506e-05
+  ],
+  "hessian": [
+    [
+      0.016970641911029816,
+      -0.007047352381050587
+    ],
+    [
+      -0.007047352381050587,
+      0.10821705311536789
+    ]
+  ],
+  "eigenvalues": [
+    0.01642955280840397,
+    0.10875814408063889
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.9970654845237732,
+      -0.07655369490385056
+    ],
+    [
+      -0.07655369490385056,
+      0.9970654845237732
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_23/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_23/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_23/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 24,
+  "center": [
+    1.149538278579712,
+    1.3290594816207886
+  ],
+  "gradient": [
+    4.16821421822533e-09,
+    8.733150025364012e-08
+  ],
+  "hessian": [
+    [
+      0.09306785464286804,
+      -0.02044770121574402
+    ],
+    [
+      -0.02044770121574402,
+      0.3160755932331085
+    ]
+  ],
+  "eigenvalues": [
+    0.09120850265026093,
+    0.31793493032455444
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.9958910942077637,
+      -0.09055875241756439
+    ],
+    [
+      -0.09055875241756439,
+      0.9958910942077637
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_24/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_24/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_24/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 25,
+  "center": [
+    1.3899855613708496,
+    -0.294310986995697
+  ],
+  "gradient": [
+    -9.38598532229662e-09,
+    -6.017216946929693e-09
+  ],
+  "hessian": [
+    [
+      0.7146430611610413,
+      0.2849966287612915
+    ],
+    [
+      0.2849966287612915,
+      0.18797452747821808
+    ]
+  ],
+  "eigenvalues": [
+    0.06327784806489944,
+    0.8393397331237793
+  ],
+  "eigenvectors_columns": [
+    [
+      0.40084755420684814,
+      -0.9161447286605835
+    ],
+    [
+      -0.9161447286605835,
+      -0.40084755420684814
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_25/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_25/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_25/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 26,
+  "center": [
+    -0.9078078866004944,
+    -0.48819124698638916
+  ],
+  "gradient": [
+    -0.02286367677152157,
+    -0.04807448759675026
+  ],
+  "hessian": [
+    [
+      0.03765226528048515,
+      -0.070238396525383
+    ],
+    [
+      -0.070238396525383,
+      0.10896719247102737
+    ]
+  ],
+  "eigenvalues": [
+    -0.005461378023028374,
+    0.15208083391189575
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.8522534370422363,
+      -0.5231291055679321
+    ],
+    [
+      -0.5231291055679321,
+      0.8522534370422363
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_26/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_26/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_26/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 27,
+  "center": [
+    -0.4688200056552887,
+    0.372836709022522
+  ],
+  "gradient": [
+    -0.00010762350575532764,
+    -0.0036822091788053513
+  ],
+  "hessian": [
+    [
+      0.01153326965868473,
+      -0.006844192743301392
+    ],
+    [
+      -0.006844192743301392,
+      0.011082992888987064
+    ]
+  ],
+  "eigenvalues": [
+    0.004460236988961697,
+    0.0181560255587101
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.6953858733177185,
+      -0.7186365723609924
+    ],
+    [
+      -0.7186365723609924,
+      0.6953858733177185
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_27/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_27/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_27/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 28,
+  "center": [
+    0.39284461736679077,
+    0.5818167924880981
+  ],
+  "gradient": [
+    0.010016273707151413,
+    -0.000849866250064224
+  ],
+  "hessian": [
+    [
+      0.033854901790618896,
+      0.0043133823201060295
+    ],
+    [
+      0.0043133823201060295,
+      0.04208610579371452
+    ]
+  ],
+  "eigenvalues": [
+    0.03200867027044296,
+    0.04393233731389046
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.9193271994590759,
+      0.3934939503669739
+    ],
+    [
+      0.3934939503669739,
+      0.9193271994590759
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_28/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_28/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_28/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 29,
+  "center": [
+    1.1739662885665894,
+    0.35741057991981506
+  ],
+  "gradient": [
+    -0.0015141136245802045,
+    -0.008445258252322674
+  ],
+  "hessian": [
+    [
+      0.18639594316482544,
+      -0.056487128138542175
+    ],
+    [
+      -0.056487128138542175,
+      0.03616295009851456
+    ]
+  ],
+  "eigenvalues": [
+    0.0172938983887434,
+    0.20526498556137085
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.31683236360549927,
+      -0.948481559753418
+    ],
+    [
+      -0.948481559753418,
+      0.31683236360549927
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_29/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_29/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_29/behavior_probes.txt"
+}\n
+
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 30,
+  "center": [
+    0.0085922721773386,
+    0.38702431321144104
+  ],
+  "gradient": [
+    0.011426185257732868,
+    0.028202595189213753
+  ],
+  "hessian": [
+    [
+      0.508381724357605,
+      -0.28505775332450867
+    ],
+    [
+      -0.28505775332450867,
+      0.2967800796031952
+    ]
+  ],
+  "eigenvalues": [
+    0.0985221341252327,
+    0.7066396474838257
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.5709808468818665,
+      -0.8209633827209473
+    ],
+    [
+      -0.8209633827209473,
+      0.5709808468818665
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_30/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_30/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_30/behavior_probes.txt"
+}\n
