@@ -1,0 +1,45 @@
+{
+  "experiment": "known_factor_synthetic_latent_v1",
+  "seed": 42,
+  "samples": 2500,
+  "tensor_shape": [
+    64,
+    64
+  ],
+  "latent_dim": 2,
+  "noise_std": 0.03,
+  "epochs": 2000,
+  "best_epoch": 1395,
+  "best_test_normalized_mse": 0.04175309091806412,
+  "final_train_normalized_mse": 0.024981584399938583,
+  "final_test_normalized_mse": 0.04175309091806412,
+  "train_latent_factor_correlations": {
+    "z1": {
+      "factor_A": 0.42308297753334045,
+      "factor_B": -0.4518759250640869,
+      "factor_C": 0.0658804327249527,
+      "interaction_strength": 0.014480382204055786
+    },
+    "z2": {
+      "factor_A": -0.2523762881755829,
+      "factor_B": -0.007241341285407543,
+      "factor_C": 0.20272305607795715,
+      "interaction_strength": -0.018731029704213142
+    }
+  },
+  "test_latent_factor_correlations": {
+    "z1": {
+      "factor_A": 0.44693058729171753,
+      "factor_B": -0.4355103671550751,
+      "factor_C": 0.04288468882441521,
+      "interaction_strength": 0.0016284363809973001
+    },
+    "z2": {
+      "factor_A": -0.22362826764583588,
+      "factor_B": 0.06312178075313568,
+      "factor_C": 0.24495112895965576,
+      "interaction_strength": -0.025209177285432816
+    }
+  },
+  "interpretation_note": "Latent coordinates can rotate, reflect, scale, or nonlinearly mix factors; direct one-to-one alignment is not required."
+}

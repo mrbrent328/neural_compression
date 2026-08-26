@@ -1,0 +1,58 @@
+{
+  "experiment": "E30_fixed_cross_seed_regime_analysis",
+  "question": "Do the seed-to-seed geometry/behavior differences form recurring regimes?",
+  "source_files": [],
+  "records": [
+    {
+      "seed": 22,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 23,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 24,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 25,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 26,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 27,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 28,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 29,
+      "source_files": [],
+      "found_fields": {}
+    },
+    {
+      "seed": 30,
+      "source_files": [],
+      "found_fields": {}
+    }
+  ],
+  "classification": {
+    "status": "insufficient_data",
+    "usable_seeds": [],
+    "reason": "Fewer than three seeds have both curvature_ratio and behavior_separation. The parser did not invent missing values."
+  },
+  "guardrail": "This is analysis of existing E27/E28 outputs. No model was retrained and missing values were not fabricated."
+}
