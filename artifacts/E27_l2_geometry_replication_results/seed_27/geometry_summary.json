@@ -1,0 +1,39 @@
+{
+  "experiment": "E26 \u2014 L2 geometry replication",
+  "seed": 27,
+  "center": [
+    -0.4688200056552887,
+    0.372836709022522
+  ],
+  "gradient": [
+    -0.00010762350575532764,
+    -0.0036822091788053513
+  ],
+  "hessian": [
+    [
+      0.01153326965868473,
+      -0.006844192743301392
+    ],
+    [
+      -0.006844192743301392,
+      0.011082992888987064
+    ]
+  ],
+  "eigenvalues": [
+    0.004460236988961697,
+    0.0181560255587101
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.6953858733177185,
+      -0.7186365723609924
+    ],
+    [
+      -0.7186365723609924,
+      0.6953858733177185
+    ]
+  ],
+  "axis_profile_csv": "E27_l2_geometry_replication_results/seed_27/axis_profiles.csv",
+  "principal_direction_csv": "E27_l2_geometry_replication_results/seed_27/principal_direction_profiles.csv",
+  "behavior_probe_file": "E27_l2_geometry_replication_results/seed_27/behavior_probes.txt"
+}\n

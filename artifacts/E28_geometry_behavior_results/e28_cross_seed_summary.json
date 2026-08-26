@@ -1,0 +1,87 @@
+{
+  "seeds_analyzed": 9,
+  "correlation_curvature_vs_behavior_separation": -0.3738693030760285,
+  "rows": [
+    {
+      "seed": 22,
+      "low_curvature": 0.009716764092445374,
+      "high_curvature": 0.4260864555835724,
+      "curvature_ratio_low_high": 0.022804677231847686,
+      "low_sensitivity": 0.010511786944444485,
+      "high_sensitivity": 0.13717680277777777,
+      "behavior_separation_high_over_low": 13.049808134693615
+    },
+    {
+      "seed": 23,
+      "low_curvature": 0.01642955280840397,
+      "high_curvature": 0.10875814408063889,
+      "curvature_ratio_low_high": 0.15106503469038837,
+      "low_sensitivity": 0.025105714444444458,
+      "high_sensitivity": 0.09538435416666664,
+      "behavior_separation_high_over_low": 3.7993084951929683
+    },
+    {
+      "seed": 24,
+      "low_curvature": 0.09120850265026093,
+      "high_curvature": 0.31793493032455444,
+      "curvature_ratio_low_high": 0.2868778921433811,
+      "low_sensitivity": 0.08685506111111113,
+      "high_sensitivity": 0.15389789722222222,
+      "behavior_separation_high_over_low": 1.7718932581872824
+    },
+    {
+      "seed": 25,
+      "low_curvature": 0.06327784806489944,
+      "high_curvature": 0.8393397331237793,
+      "curvature_ratio_low_high": 0.07539003048193325,
+      "low_sensitivity": 0.049268125000000024,
+      "high_sensitivity": 0.20358628638888895,
+      "behavior_separation_high_over_low": 4.132210965789521
+    },
+    {
+      "seed": 26,
+      "low_curvature": -0.005461378023028374,
+      "high_curvature": 0.15208083391189575,
+      "curvature_ratio_low_high": -0.03591102101789031,
+      "low_sensitivity": 0.14014966416666666,
+      "high_sensitivity": 0.13783181111111112,
+      "behavior_separation_high_over_low": 0.9834615868019553
+    },
+    {
+      "seed": 27,
+      "low_curvature": 0.004460236988961697,
+      "high_curvature": 0.0181560255587101,
+      "curvature_ratio_low_high": 0.2456615284297152,
+      "low_sensitivity": 0.01423366611111111,
+      "high_sensitivity": 0.009526442222222226,
+      "behavior_separation_high_over_low": 0.6692894260590866
+    },
+    {
+      "seed": 28,
+      "low_curvature": 0.03200867027044296,
+      "high_curvature": 0.04393233731389046,
+      "curvature_ratio_low_high": 0.7285901963682345,
+      "low_sensitivity": 0.057280464999999975,
+      "high_sensitivity": 0.03400018666666662,
+      "behavior_separation_high_over_low": 0.5935738591973133
+    },
+    {
+      "seed": 29,
+      "low_curvature": 0.0172938983887434,
+      "high_curvature": 0.20526498556137085,
+      "curvature_ratio_low_high": 0.08425157530616838,
+      "low_sensitivity": 0.062092073333333324,
+      "high_sensitivity": 0.07678613333333333,
+      "behavior_separation_high_over_low": 1.2366495304661003
+    },
+    {
+      "seed": 30,
+      "low_curvature": 0.0985221341252327,
+      "high_curvature": 0.7066396474838257,
+      "curvature_ratio_low_high": 0.13942344514073954,
+      "low_sensitivity": 0.11260198722222224,
+      "high_sensitivity": 0.18174143972222223,
+      "behavior_separation_high_over_low": 1.614016272763925
+    }
+  ]
+}

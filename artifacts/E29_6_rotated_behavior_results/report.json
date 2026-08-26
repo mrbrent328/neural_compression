@@ -1,0 +1,14 @@
+{
+  "experiment": "E29.6 rotated principal direction behavior test",
+  "seeds": 9,
+  "angles": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90
+  ],
+  "status": "rotation mapping prepared; behavior comparison pending refinement"
+}

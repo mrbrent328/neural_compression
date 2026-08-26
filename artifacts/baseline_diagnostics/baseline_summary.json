@@ -1,0 +1,2254 @@
+{
+  "model_dir": "Qwen2-0.5B",
+  "target": "model.layers.4.self_attn.q_proj.weight",
+  "rank_a": 48,
+  "rank_b": 96,
+  "new_tokens": 6,
+  "prompt_count": 24,
+  "results": {
+    "zero": {
+      "relative_weight_error": 1.0,
+      "greedy_match": 0.7222222222222222,
+      "exact": 12,
+      "total_prompts": 24,
+      "logit_rmse": 0.2872220344348189,
+      "per_prompt": [
+        {
+          "prompt_index": 1,
+          "prompt": "Explain photosynthesis in simple terms.",
+          "reference_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "candidate_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 2,
+          "prompt": "A binary search works efficiently because",
+          "reference_tokens": [
+            432,
+            702,
+            264,
+            882,
+            23094,
+            315
+          ],
+          "candidate_tokens": [
+            432,
+            702,
+            264,
+            8356,
+            1372,
+            315
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 3,
+          "prompt": "Water freezes at approximately",
+          "reference_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 4,
+          "prompt": "A good scientific hypothesis should be",
+          "reference_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            553,
+            264
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 5,
+          "prompt": "In Python, a list is different from a tuple because",
+          "reference_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            13,
+            1096
+          ],
+          "candidate_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            323,
+            646
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 6,
+          "prompt": "The capital of France is",
+          "reference_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "candidate_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 7,
+          "prompt": "An operating system is responsible for",
+          "reference_tokens": [
+            18150,
+            279,
+            6366,
+            594,
+            11773,
+            323
+          ],
+          "candidate_tokens": [
+            18150,
+            279,
+            4963,
+            315,
+            264,
+            6366
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 8,
+          "prompt": "A triangle with three equal sides is",
+          "reference_tokens": [
+            2598,
+            264,
+            32671,
+            62,
+            21495,
+            624
+          ],
+          "candidate_tokens": [
+            2598,
+            264,
+            1290,
+            21495,
+            13,
+            3555
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 9,
+          "prompt": "A database index is useful because",
+          "reference_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "candidate_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 10,
+          "prompt": "The first law of thermodynamics states that",
+          "reference_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "candidate_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 11,
+          "prompt": "An electric circuit needs",
+          "reference_tokens": [
+            311,
+            387,
+            6188,
+            311,
+            5508,
+            220
+          ],
+          "candidate_tokens": [
+            311,
+            387,
+            8433,
+            311,
+            264,
+            11602
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 12,
+          "prompt": "A variable is useful in a program because",
+          "reference_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "candidate_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 13,
+          "prompt": "The Earth completes one orbit around the Sun in",
+          "reference_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 14,
+          "prompt": "A function takes inputs and",
+          "reference_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "candidate_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 15,
+          "prompt": "Version control lets developers",
+          "reference_tokens": [
+            323,
+            3847,
+            3754,
+            4344,
+            311,
+            2038
+          ],
+          "candidate_tokens": [
+            323,
+            3847,
+            50596,
+            389,
+            2038,
+            323
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 16,
+          "prompt": "A compiler translates source code into",
+          "reference_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "candidate_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 17,
+          "prompt": "A prime number is divisible by",
+          "reference_tokens": [
+            400,
+            18,
+            3,
+            421,
+            323,
+            1172
+          ],
+          "candidate_tokens": [
+            400,
+            18,
+            3,
+            323,
+            400,
+            20
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 18,
+          "prompt": "A balanced ecosystem contains",
+          "reference_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "candidate_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 19,
+          "prompt": "A probability between zero and one represents",
+          "reference_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "candidate_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 20,
+          "prompt": "A stack follows the",
+          "reference_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            5601,
+            315,
+            264,
+            3654,
+            1809,
+            13
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 21,
+          "prompt": "A map scale tells us",
+          "reference_tokens": [
+            1246,
+            1657,
+            8153,
+            525,
+            6144,
+            311
+          ],
+          "candidate_tokens": [
+            429,
+            220,
+            16,
+            17122,
+            10868,
+            220
+          ],
+          "matching_tokens": 0,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 22,
+          "prompt": "An API allows software to",
+          "reference_tokens": [
+            19032,
+            448,
+            1008,
+            3162,
+            13,
+            1084
+          ],
+          "candidate_tokens": [
+            19032,
+            448,
+            264,
+            3538,
+            13,
+            576
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 23,
+          "prompt": "The opposite of compression is",
+          "reference_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "candidate_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 24,
+          "prompt": "A good test should be",
+          "reference_tokens": [
+            2952,
+            311,
+            3291,
+            498,
+            421,
+            279
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            11140,
+            264,
+            3491,
+            304
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        }
+      ]
+    },
+    "random": {
+      "relative_weight_error": 1.4144619703292847,
+      "greedy_match": 0.6666666666666666,
+      "exact": 10,
+      "total_prompts": 24,
+      "logit_rmse": 0.33415677305661606,
+      "per_prompt": [
+        {
+          "prompt_index": 1,
+          "prompt": "Explain photosynthesis in simple terms.",
+          "reference_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "candidate_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 2,
+          "prompt": "A binary search works efficiently because",
+          "reference_tokens": [
+            432,
+            702,
+            264,
+            882,
+            23094,
+            315
+          ],
+          "candidate_tokens": [
+            432,
+            374,
+            264,
+            13482,
+            2711,
+            13
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 3,
+          "prompt": "Water freezes at approximately",
+          "reference_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            17,
+            15,
+            12348,
+            68723
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 4,
+          "prompt": "A good scientific hypothesis should be",
+          "reference_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            553,
+            264
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 5,
+          "prompt": "In Python, a list is different from a tuple because",
+          "reference_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            13,
+            1096
+          ],
+          "candidate_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            323,
+            646
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 6,
+          "prompt": "The capital of France is",
+          "reference_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "candidate_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            6722
+          ],
+          "matching_tokens": 5,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 7,
+          "prompt": "An operating system is responsible for",
+          "reference_tokens": [
+            18150,
+            279,
+            6366,
+            594,
+            11773,
+            323
+          ],
+          "candidate_tokens": [
+            18150,
+            279,
+            4963,
+            315,
+            264,
+            6366
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 8,
+          "prompt": "A triangle with three equal sides is",
+          "reference_tokens": [
+            2598,
+            264,
+            32671,
+            62,
+            21495,
+            624
+          ],
+          "candidate_tokens": [
+            2598,
+            264,
+            1290,
+            21495,
+            13,
+            2585
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 9,
+          "prompt": "A database index is useful because",
+          "reference_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "candidate_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 10,
+          "prompt": "The first law of thermodynamics states that",
+          "reference_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "candidate_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 11,
+          "prompt": "An electric circuit needs",
+          "reference_tokens": [
+            311,
+            387,
+            6188,
+            311,
+            5508,
+            220
+          ],
+          "candidate_tokens": [
+            311,
+            387,
+            8433,
+            311,
+            264,
+            11602
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 12,
+          "prompt": "A variable is useful in a program because",
+          "reference_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "candidate_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2297,
+            279
+          ],
+          "matching_tokens": 1,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 13,
+          "prompt": "The Earth completes one orbit around the Sun in",
+          "reference_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 14,
+          "prompt": "A function takes inputs and",
+          "reference_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "candidate_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 15,
+          "prompt": "Version control lets developers",
+          "reference_tokens": [
+            323,
+            3847,
+            3754,
+            4344,
+            311,
+            2038
+          ],
+          "candidate_tokens": [
+            323,
+            3847,
+            50596,
+            389,
+            2038,
+            323
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 16,
+          "prompt": "A compiler translates source code into",
+          "reference_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "candidate_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 17,
+          "prompt": "A prime number is divisible by",
+          "reference_tokens": [
+            400,
+            18,
+            3,
+            421,
+            323,
+            1172
+          ],
+          "candidate_tokens": [
+            400,
+            18,
+            3,
+            323,
+            400,
+            20
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 18,
+          "prompt": "A balanced ecosystem contains",
+          "reference_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "candidate_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 19,
+          "prompt": "A probability between zero and one represents",
+          "reference_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "candidate_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 20,
+          "prompt": "A stack follows the",
+          "reference_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 21,
+          "prompt": "A map scale tells us",
+          "reference_tokens": [
+            1246,
+            1657,
+            8153,
+            525,
+            6144,
+            311
+          ],
+          "candidate_tokens": [
+            429,
+            220,
+            16,
+            17122,
+            10868,
+            220
+          ],
+          "matching_tokens": 0,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 22,
+          "prompt": "An API allows software to",
+          "reference_tokens": [
+            19032,
+            448,
+            1008,
+            3162,
+            13,
+            1084
+          ],
+          "candidate_tokens": [
+            19032,
+            448,
+            264,
+            3538,
+            13,
+            576
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 23,
+          "prompt": "The opposite of compression is",
+          "reference_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "candidate_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 24,
+          "prompt": "A good test should be",
+          "reference_tokens": [
+            2952,
+            311,
+            3291,
+            498,
+            421,
+            279
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            11140,
+            264,
+            3491,
+            304
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        }
+      ]
+    },
+    "low_rank_48": {
+      "relative_weight_error": 0.7860252857208252,
+      "greedy_match": 0.8263888888888888,
+      "exact": 16,
+      "total_prompts": 24,
+      "logit_rmse": 0.1748048039363241,
+      "per_prompt": [
+        {
+          "prompt_index": 1,
+          "prompt": "Explain photosynthesis in simple terms.",
+          "reference_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "candidate_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 2,
+          "prompt": "A binary search works efficiently because",
+          "reference_tokens": [
+            432,
+            702,
+            264,
+            882,
+            23094,
+            315
+          ],
+          "candidate_tokens": [
+            432,
+            702,
+            264,
+            8356,
+            1372,
+            315
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 3,
+          "prompt": "Water freezes at approximately",
+          "reference_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 4,
+          "prompt": "A good scientific hypothesis should be",
+          "reference_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            553,
+            264
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 5,
+          "prompt": "In Python, a list is different from a tuple because",
+          "reference_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            13,
+            1096
+          ],
+          "candidate_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            13,
+            1096
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 6,
+          "prompt": "The capital of France is",
+          "reference_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "candidate_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 7,
+          "prompt": "An operating system is responsible for",
+          "reference_tokens": [
+            18150,
+            279,
+            6366,
+            594,
+            11773,
+            323
+          ],
+          "candidate_tokens": [
+            18150,
+            279,
+            4963,
+            315,
+            264,
+            6366
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 8,
+          "prompt": "A triangle with three equal sides is",
+          "reference_tokens": [
+            2598,
+            264,
+            32671,
+            62,
+            21495,
+            624
+          ],
+          "candidate_tokens": [
+            2598,
+            264,
+            32671,
+            62,
+            21495,
+            624
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 9,
+          "prompt": "A database index is useful because",
+          "reference_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "candidate_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 10,
+          "prompt": "The first law of thermodynamics states that",
+          "reference_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "candidate_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 11,
+          "prompt": "An electric circuit needs",
+          "reference_tokens": [
+            311,
+            387,
+            6188,
+            311,
+            5508,
+            220
+          ],
+          "candidate_tokens": [
+            311,
+            387,
+            8433,
+            311,
+            264,
+            11602
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 12,
+          "prompt": "A variable is useful in a program because",
+          "reference_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "candidate_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 13,
+          "prompt": "The Earth completes one orbit around the Sun in",
+          "reference_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 14,
+          "prompt": "A function takes inputs and",
+          "reference_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "candidate_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 15,
+          "prompt": "Version control lets developers",
+          "reference_tokens": [
+            323,
+            3847,
+            3754,
+            4344,
+            311,
+            2038
+          ],
+          "candidate_tokens": [
+            323,
+            3847,
+            50596,
+            389,
+            2038,
+            4344
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 16,
+          "prompt": "A compiler translates source code into",
+          "reference_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "candidate_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 17,
+          "prompt": "A prime number is divisible by",
+          "reference_tokens": [
+            400,
+            18,
+            3,
+            421,
+            323,
+            1172
+          ],
+          "candidate_tokens": [
+            400,
+            18,
+            3,
+            421,
+            323,
+            1172
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 18,
+          "prompt": "A balanced ecosystem contains",
+          "reference_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "candidate_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 19,
+          "prompt": "A probability between zero and one represents",
+          "reference_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "candidate_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 20,
+          "prompt": "A stack follows the",
+          "reference_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 21,
+          "prompt": "A map scale tells us",
+          "reference_tokens": [
+            1246,
+            1657,
+            8153,
+            525,
+            6144,
+            311
+          ],
+          "candidate_tokens": [
+            1246,
+            1657,
+            8153,
+            315,
+            3084,
+            525
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 22,
+          "prompt": "An API allows software to",
+          "reference_tokens": [
+            19032,
+            448,
+            1008,
+            3162,
+            13,
+            1084
+          ],
+          "candidate_tokens": [
+            19032,
+            448,
+            264,
+            3538,
+            13,
+            576
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 23,
+          "prompt": "The opposite of compression is",
+          "reference_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "candidate_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 24,
+          "prompt": "A good test should be",
+          "reference_tokens": [
+            2952,
+            311,
+            3291,
+            498,
+            421,
+            279
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            11140,
+            279,
+            9362,
+            315
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        }
+      ]
+    },
+    "low_rank_96": {
+      "relative_weight_error": 0.6411431431770325,
+      "greedy_match": 0.8472222222222222,
+      "exact": 17,
+      "total_prompts": 24,
+      "logit_rmse": 0.1357064203615499,
+      "per_prompt": [
+        {
+          "prompt_index": 1,
+          "prompt": "Explain photosynthesis in simple terms.",
+          "reference_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "candidate_tokens": [
+            16505,
+            73667,
+            374,
+            279,
+            1882,
+            553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 2,
+          "prompt": "A binary search works efficiently because",
+          "reference_tokens": [
+            432,
+            702,
+            264,
+            882,
+            23094,
+            315
+          ],
+          "candidate_tokens": [
+            432,
+            702,
+            264,
+            8356,
+            1372,
+            315
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 3,
+          "prompt": "Water freezes at approximately",
+          "reference_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            17,
+            12348,
+            68723,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 4,
+          "prompt": "A good scientific hypothesis should be",
+          "reference_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            387,
+            12510,
+            553,
+            264
+          ],
+          "matching_tokens": 4,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 5,
+          "prompt": "In Python, a list is different from a tuple because",
+          "reference_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            13,
+            1096
+          ],
+          "candidate_tokens": [
+            264,
+            1140,
+            374,
+            25804,
+            13,
+            1096
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 6,
+          "prompt": "The capital of France is",
+          "reference_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "candidate_tokens": [
+            12095,
+            13,
+            1084,
+            374,
+            279,
+            7772
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 7,
+          "prompt": "An operating system is responsible for",
+          "reference_tokens": [
+            18150,
+            279,
+            6366,
+            594,
+            11773,
+            323
+          ],
+          "candidate_tokens": [
+            18150,
+            279,
+            4963,
+            315,
+            264,
+            6366
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 8,
+          "prompt": "A triangle with three equal sides is",
+          "reference_tokens": [
+            2598,
+            264,
+            32671,
+            62,
+            21495,
+            624
+          ],
+          "candidate_tokens": [
+            2598,
+            264,
+            32671,
+            62,
+            21495,
+            624
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 9,
+          "prompt": "A database index is useful because",
+          "reference_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "candidate_tokens": [
+            432,
+            6147,
+            498,
+            311,
+            2711,
+            369
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 10,
+          "prompt": "The first law of thermodynamics states that",
+          "reference_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "candidate_tokens": [
+            279,
+            47502,
+            315,
+            264,
+            1849,
+            374
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 11,
+          "prompt": "An electric circuit needs",
+          "reference_tokens": [
+            311,
+            387,
+            6188,
+            311,
+            5508,
+            220
+          ],
+          "candidate_tokens": [
+            311,
+            387,
+            8433,
+            311,
+            264,
+            11602
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 12,
+          "prompt": "A variable is useful in a program because",
+          "reference_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "candidate_tokens": [
+            432,
+            646,
+            387,
+            1483,
+            311,
+            3553
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 13,
+          "prompt": "The Earth completes one orbit around the Sun in",
+          "reference_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "candidate_tokens": [
+            220,
+            18,
+            21,
+            20,
+            2849,
+            13
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 14,
+          "prompt": "A function takes inputs and",
+          "reference_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "candidate_tokens": [
+            4675,
+            264,
+            897,
+            13,
+            576,
+            729
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 15,
+          "prompt": "Version control lets developers",
+          "reference_tokens": [
+            323,
+            3847,
+            3754,
+            4344,
+            311,
+            2038
+          ],
+          "candidate_tokens": [
+            323,
+            3847,
+            50596,
+            389,
+            2038,
+            11
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 16,
+          "prompt": "A compiler translates source code into",
+          "reference_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "candidate_tokens": [
+            5662,
+            2038,
+            13,
+            576,
+            5662,
+            2038
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 17,
+          "prompt": "A prime number is divisible by",
+          "reference_tokens": [
+            400,
+            18,
+            3,
+            421,
+            323,
+            1172
+          ],
+          "candidate_tokens": [
+            400,
+            18,
+            3,
+            421,
+            323,
+            1172
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 18,
+          "prompt": "A balanced ecosystem contains",
+          "reference_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "candidate_tokens": [
+            678,
+            315,
+            279,
+            2701,
+            4063,
+            21073
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 19,
+          "prompt": "A probability between zero and one represents",
+          "reference_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "candidate_tokens": [
+            279,
+            18927,
+            315,
+            458,
+            1538,
+            30865
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 20,
+          "prompt": "A stack follows the",
+          "reference_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "candidate_tokens": [
+            5601,
+            315,
+            264,
+            1809,
+            13,
+            576
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 21,
+          "prompt": "A map scale tells us",
+          "reference_tokens": [
+            1246,
+            1657,
+            8153,
+            525,
+            6144,
+            311
+          ],
+          "candidate_tokens": [
+            1246,
+            1657,
+            8153,
+            525,
+            6144,
+            311
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 22,
+          "prompt": "An API allows software to",
+          "reference_tokens": [
+            19032,
+            448,
+            1008,
+            3162,
+            13,
+            1084
+          ],
+          "candidate_tokens": [
+            19032,
+            448,
+            264,
+            3538,
+            13,
+            576
+          ],
+          "matching_tokens": 3,
+          "compared_tokens": 6,
+          "exact": 0
+        },
+        {
+          "prompt_index": 23,
+          "prompt": "The opposite of compression is",
+          "reference_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "candidate_tokens": [
+            32671,
+            624,
+            32,
+            13,
+            25111,
+            198
+          ],
+          "matching_tokens": 6,
+          "compared_tokens": 6,
+          "exact": 1
+        },
+        {
+          "prompt_index": 24,
+          "prompt": "A good test should be",
+          "reference_tokens": [
+            2952,
+            311,
+            3291,
+            498,
+            421,
+            279
+          ],
+          "candidate_tokens": [
+            2952,
+            311,
+            11140,
+            279,
+            9362,
+            315
+          ],
+          "matching_tokens": 2,
+          "compared_tokens": 6,
+          "exact": 0
+        }
+      ]
+    }
+  }
+}

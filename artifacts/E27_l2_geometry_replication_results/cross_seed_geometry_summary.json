@@ -1,0 +1,15 @@
+{
+  "experiment": "E27 \u2014 L2 geometry replication",
+  "seeds_requested": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "completed": []
+}

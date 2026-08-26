@@ -1,0 +1,14 @@
+{
+  "experiment": "E29.5 rotated geometry behavior consistency",
+  "seeds": 9,
+  "angles": [
+    0,
+    15,
+    30,
+    45,
+    60,
+    75,
+    90
+  ],
+  "note": "Initial geometry rotation preparation. Behavioral probe alignment follows."
+}

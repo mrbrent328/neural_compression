@@ -1,0 +1,889 @@
+{
+  "experiment": "Experiment 11 \u2014 decoder capacity at fixed latent",
+  "target_weight": "model.layers.0.self_attn.q_proj.weight",
+  "model_directory": "/home/xetal/Desktop/latent_model_test/Qwen2-0.5B",
+  "weight": {
+    "shape": [
+      896,
+      896
+    ],
+    "dtype": "torch.bfloat16",
+    "values": 802816,
+    "sha256": "9041b6bc4fd8fb547bdf05fe60dbda1e424008019e4ef258c7ce16651aa97454"
+  },
+  "calibration_prompts": [
+    "Explain gravity to a curious child.",
+    "Write a short haiku about rain.",
+    "The purpose of a compiler is to",
+    "Describe the difference between a stack and a queue.",
+    "A reliable experiment should include",
+    "The Pythagorean theorem states that",
+    "A REST API commonly uses HTTP methods such as",
+    "The moon affects ocean tides because",
+    "An algorithm is efficient when it",
+    "The main purpose of version control is to",
+    "A dictionary in Python maps keys to",
+    "The human heart pumps blood through",
+    "A good error message should tell the user",
+    "The area of a circle is",
+    "A test set should not be used to"
+  ],
+  "evaluation_prompts": [
+    "Explain photosynthesis in simple terms.",
+    "A binary search works efficiently because",
+    "Water freezes at approximately",
+    "A good scientific hypothesis should be",
+    "In Python, a list is different from a tuple because",
+    "The capital of France is",
+    "An operating system is responsible for",
+    "A triangle with three equal sides is",
+    "A database index is useful because",
+    "The first law of thermodynamics states that",
+    "An electric circuit needs",
+    "A variable is useful in a program because",
+    "The Earth completes one orbit around the Sun in",
+    "A function takes inputs and",
+    "Version control lets developers",
+    "A compiler translates source code into",
+    "A prime number is divisible by",
+    "A balanced ecosystem contains",
+    "A probability between zero and one represents",
+    "A stack follows the",
+    "A map scale tells us",
+    "An API allows software to",
+    "The opposite of compression is",
+    "A good test should be"
+  ],
+  "configuration": {
+    "ranks": [
+      16,
+      32,
+      48,
+      64,
+      96,
+      128
+    ],
+    "latent_sizes": [
+      16
+    ],
+    "seeds": [
+      9,
+      10,
+      11
+    ],
+    "steps": 1000,
+    "learning_rate": 0.002
+  },
+  "results": [
+    {
+      "rank": 16,
+      "latent_dim": 16,
+      "seed": 9,
+      "latent": {
+        "values": [
+          3.9101943969726562,
+          -0.9938440918922424,
+          -2.2320895195007324,
+          0.7441366910934448,
+          -1.7102831602096558,
+          -1.9121384620666504,
+          0.8274112343788147,
+          0.18677356839179993,
+          2.46032452583313,
+          -1.6180627346038818,
+          -0.629012942314148,
+          4.520914554595947,
+          -0.2788824737071991,
+          -2.3171398639678955,
+          6.712141513824463,
+          -0.35150209069252014
+        ],
+        "mean": 0.4574337601661682,
+        "std": 2.657005548477173,
+        "min": -2.3171398639678955,
+        "max": 6.712141513824463,
+        "sha256": "d13e1ec4328f76704a913c71d95769549a593403058875179f50e4e2fe571eaa"
+      },
+      "weight": {
+        "relative_error": 0.7248456478118896
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.8611111111111112,
+        "greedy_exact_continuation_count": 18,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.06366581821708767
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 117624896,
+        "package_bytes_float32": 117624960
+      }
+    },
+    {
+      "rank": 16,
+      "latent_dim": 16,
+      "seed": 10,
+      "latent": {
+        "values": [
+          0.2958793044090271,
+          -2.7431252002716064,
+          -1.9882558584213257,
+          -0.29966452717781067,
+          -2.46842098236084,
+          3.4789726734161377,
+          3.3042380809783936,
+          1.2427469491958618,
+          3.588651180267334,
+          -1.0659271478652954,
+          2.297750234603882,
+          2.6436684131622314,
+          -1.6409207582473755,
+          -0.8881981372833252,
+          -1.4980106353759766,
+          -0.8910917639732361
+        ],
+        "mean": 0.2105182409286499,
+        "std": 2.227221965789795,
+        "min": -2.7431252002716064,
+        "max": 3.588651180267334,
+        "sha256": "efeadc467b641824bffcf78c9e38bf6cdf2f5a8b923ae7c95f0366ae68d6234c"
+      },
+      "weight": {
+        "relative_error": 0.7248455286026001
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.8611111111111112,
+        "greedy_exact_continuation_count": 18,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.06366298470894903
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 117624896,
+        "package_bytes_float32": 117624960
+      }
+    },
+    {
+      "rank": 16,
+      "latent_dim": 16,
+      "seed": 11,
+      "latent": {
+        "values": [
+          1.4803130626678467,
+          2.1653783321380615,
+          -6.621434688568115,
+          0.6796839833259583,
+          -5.475937366485596,
+          0.1436471939086914,
+          1.0792206525802612,
+          0.5890822410583496,
+          0.03962211683392525,
+          2.5577526092529297,
+          -3.1015102863311768,
+          2.8233680725097656,
+          1.0502458810806274,
+          0.34268105030059814,
+          -1.2924563884735107,
+          -0.738548994064331
+        ],
+        "mean": -0.26743078231811523,
+        "std": 2.6972861289978027,
+        "min": -6.621434688568115,
+        "max": 2.8233680725097656,
+        "sha256": "2bcbe8d9b0fefb4f7e34b6c2744304d0ee401ad7ca5fa581ad4b2d5b8a1b3aff"
+      },
+      "weight": {
+        "relative_error": 0.7248454689979553
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.8611111111111112,
+        "greedy_exact_continuation_count": 18,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.06366310982516403
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 117624896,
+        "package_bytes_float32": 117624960
+      }
+    },
+    {
+      "rank": 32,
+      "latent_dim": 16,
+      "seed": 9,
+      "latent": {
+        "values": [
+          0.3952624201774597,
+          -2.1994471549987793,
+          -4.161863327026367,
+          1.0270676612854004,
+          -0.30446040630340576,
+          4.810135841369629,
+          1.175344705581665,
+          -1.6801376342773438,
+          3.630786180496216,
+          0.9584256410598755,
+          -0.44768935441970825,
+          2.060624361038208,
+          1.7650017738342285,
+          0.7606339454650879,
+          1.4390722513198853,
+          -5.7331414222717285
+        ],
+        "mean": 0.21847596764564514,
+        "std": 2.673597812652588,
+        "min": -5.7331414222717285,
+        "max": 4.810135841369629,
+        "sha256": "9faaadfa471c25d2c831a6a531bf28d32e47064f63feba774c4237771dab2e37"
+      },
+      "weight": {
+        "relative_error": 0.6291068196296692
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9027777777777778,
+        "greedy_exact_continuation_count": 19,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.05598602508576281
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 235180096,
+        "package_bytes_float32": 235180160
+      }
+    },
+    {
+      "rank": 32,
+      "latent_dim": 16,
+      "seed": 10,
+      "latent": {
+        "values": [
+          -1.3987202644348145,
+          -0.8656278848648071,
+          -2.8627185821533203,
+          -0.028406593948602676,
+          -3.6018857955932617,
+          2.3510634899139404,
+          3.9949913024902344,
+          2.7656688690185547,
+          -0.7124958634376526,
+          -2.351491689682007,
+          1.947623372077942,
+          -0.7049670815467834,
+          -3.2899091243743896,
+          -1.4639075994491577,
+          2.005002021789551,
+          -6.369629859924316
+        ],
+        "mean": -0.6615882515907288,
+        "std": 2.7555348873138428,
+        "min": -6.369629859924316,
+        "max": 3.9949913024902344,
+        "sha256": "5bc9d78bd62ac6b2ac2041be5be473dc84e1b8b7c9804dbf8a89806fa045fcd7"
+      },
+      "weight": {
+        "relative_error": 0.6290649175643921
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9027777777777778,
+        "greedy_exact_continuation_count": 19,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.05595373755077423
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 235180096,
+        "package_bytes_float32": 235180160
+      }
+    },
+    {
+      "rank": 32,
+      "latent_dim": 16,
+      "seed": 11,
+      "latent": {
+        "values": [
+          3.760427474975586,
+          2.9241604804992676,
+          -7.858383655548096,
+          -1.1277337074279785,
+          1.3655050992965698,
+          0.6857823729515076,
+          5.975508689880371,
+          -1.514562964439392,
+          0.19042429327964783,
+          -0.31151053309440613,
+          -2.7910349369049072,
+          1.3315424919128418,
+          2.2026684284210205,
+          -0.31761664152145386,
+          2.115940570831299,
+          -2.096367835998535
+        ],
+        "mean": 0.2834218442440033,
+        "std": 3.1441855430603027,
+        "min": -7.858383655548096,
+        "max": 5.975508689880371,
+        "sha256": "a052b13f569101bf16f7b8c4b8ddff6c08145de6e2a1eb74bdc6f2fabcf6305c"
+      },
+      "weight": {
+        "relative_error": 0.6290647983551025
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9027777777777778,
+        "greedy_exact_continuation_count": 19,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.055954356468248576
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 235180096,
+        "package_bytes_float32": 235180160
+      }
+    },
+    {
+      "rank": 48,
+      "latent_dim": 16,
+      "seed": 9,
+      "latent": {
+        "values": [
+          0.27900803089141846,
+          5.354384422302246,
+          -5.545567989349365,
+          0.9790077209472656,
+          2.3362255096435547,
+          -2.067822217941284,
+          1.4300260543823242,
+          0.1301279366016388,
+          2.5441722869873047,
+          -0.5487500429153442,
+          0.4778023958206177,
+          -1.3761019706726074,
+          2.922811985015869,
+          -0.12612470984458923,
+          -0.47196531295776367,
+          -2.1571130752563477
+        ],
+        "mean": 0.2600075602531433,
+        "std": 2.496713399887085,
+        "min": -5.545567989349365,
+        "max": 5.354384422302246,
+        "sha256": "862d2f03c19ef72306e4461d1a01fe77213cbacee3bd97d151a859096dca033f"
+      },
+      "weight": {
+        "relative_error": 0.5761062502861023
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9722222222222222,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.04981153362523602
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 352735296,
+        "package_bytes_float32": 352735360
+      }
+    },
+    {
+      "rank": 48,
+      "latent_dim": 16,
+      "seed": 10,
+      "latent": {
+        "values": [
+          -1.4757258892059326,
+          -3.6507585048675537,
+          2.903102397918701,
+          -2.237581491470337,
+          2.583803653717041,
+          1.2303862571716309,
+          1.9111602306365967,
+          0.5875645875930786,
+          1.393735408782959,
+          -4.257997035980225,
+          -2.9615328311920166,
+          0.3537830710411072,
+          0.8552429676055908,
+          0.5429242849349976,
+          -1.3871757984161377,
+          2.0776007175445557
+        ],
+        "mean": -0.09571671485900879,
+        "std": 2.2688825130462646,
+        "min": -4.257997035980225,
+        "max": 2.903102397918701,
+        "sha256": "5e1cd1fbab518d7fb4117fc2e5efc99097a741d0a60082202b782329c060fc17"
+      },
+      "weight": {
+        "relative_error": 0.5761063098907471
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9722222222222222,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.049811284752300886
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 352735296,
+        "package_bytes_float32": 352735360
+      }
+    },
+    {
+      "rank": 48,
+      "latent_dim": 16,
+      "seed": 11,
+      "latent": {
+        "values": [
+          2.0992729663848877,
+          2.8830726146698,
+          -1.3823997974395752,
+          2.222001552581787,
+          -4.667167663574219,
+          2.827641248703003,
+          -0.5194219946861267,
+          2.760071039199829,
+          -0.02131020464003086,
+          1.554377555847168,
+          -5.1715240478515625,
+          0.1362106055021286,
+          -2.060396194458008,
+          -0.27011990547180176,
+          1.788165807723999,
+          1.7282931804656982
+        ],
+        "mean": 0.24417297542095184,
+        "std": 2.529317855834961,
+        "min": -5.1715240478515625,
+        "max": 2.8830726146698,
+        "sha256": "3542a7cea66083219302f16edcb53dd19f8854bfcd5a926b377c77ecfa964f67"
+      },
+      "weight": {
+        "relative_error": 0.5761061310768127
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9722222222222222,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.04981141643459109
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 352735296,
+        "package_bytes_float32": 352735360
+      }
+    },
+    {
+      "rank": 64,
+      "latent_dim": 16,
+      "seed": 9,
+      "latent": {
+        "values": [
+          3.618671178817749,
+          -0.28842025995254517,
+          -0.8632656931877136,
+          2.1227197647094727,
+          0.06895560771226883,
+          -4.481712818145752,
+          3.707205295562744,
+          -1.208541750907898,
+          -4.0621747970581055,
+          1.9061702489852905,
+          1.9577035903930664,
+          3.9754631519317627,
+          2.6531026363372803,
+          -2.267915725708008,
+          -0.1332114189863205,
+          -3.781771659851074
+        ],
+        "mean": 0.18268609046936035,
+        "std": 2.8220937252044678,
+        "min": -4.481712818145752,
+        "max": 3.9754631519317627,
+        "sha256": "e151e58a68c9c349ae2dda6dc0297bf2e479ddd35f39a2799b796ff9e5dab362"
+      },
+      "weight": {
+        "relative_error": 0.5232610106468201
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9722222222222222,
+        "greedy_exact_continuation_count": 21,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.04621814355336974
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 470290496,
+        "package_bytes_float32": 470290560
+      }
+    },
+    {
+      "rank": 64,
+      "latent_dim": 16,
+      "seed": 10,
+      "latent": {
+        "values": [
+          1.2320669889450073,
+          5.136460781097412,
+          3.423755407333374,
+          0.5163883566856384,
+          1.9203754663467407,
+          2.665128231048584,
+          2.2261972427368164,
+          3.510894298553467,
+          0.9506953954696655,
+          1.1991441249847412,
+          -0.930830180644989,
+          -1.1189358234405518,
+          -0.8499802947044373,
+          3.33784556388855,
+          3.8503401279449463,
+          -0.042936261743307114
+        ],
+        "mean": 1.689163088798523,
+        "std": 1.8878839015960693,
+        "min": -1.1189358234405518,
+        "max": 5.136460781097412,
+        "sha256": "0bdff2bdc9c942990e4c04652469bcf052446d21c325fd237d5c7d688b97fdff"
+      },
+      "weight": {
+        "relative_error": 0.5232202410697937
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9722222222222222,
+        "greedy_exact_continuation_count": 21,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.04625767416150938
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 470290496,
+        "package_bytes_float32": 470290560
+      }
+    },
+    {
+      "rank": 64,
+      "latent_dim": 16,
+      "seed": 11,
+      "latent": {
+        "values": [
+          3.200500965118408,
+          -1.8009904623031616,
+          0.09269480407238007,
+          -1.6556856632232666,
+          -2.940187692642212,
+          -2.1331849098205566,
+          0.5355448126792908,
+          -3.1318812370300293,
+          -0.11235598474740982,
+          0.4566921889781952,
+          -1.3273206949234009,
+          -1.5371779203414917,
+          -2.7617876529693604,
+          -3.9548728466033936,
+          -0.5229634642601013,
+          -2.2226531505584717
+        ],
+        "mean": -1.2384767532348633,
+        "std": 1.7853885889053345,
+        "min": -3.9548728466033936,
+        "max": 3.200500965118408,
+        "sha256": "1a5e04c89c9f17a92beec218b5f2e9a58d0105f65654b01bacfdfc25f17c7448"
+      },
+      "weight": {
+        "relative_error": 0.5232201814651489
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9722222222222222,
+        "greedy_exact_continuation_count": 21,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.04625739851660268
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 470290496,
+        "package_bytes_float32": 470290560
+      }
+    },
+    {
+      "rank": 96,
+      "latent_dim": 16,
+      "seed": 9,
+      "latent": {
+        "values": [
+          2.345405101776123,
+          -3.328953504562378,
+          -1.4150694608688354,
+          0.9141007661819458,
+          -3.090970516204834,
+          -8.277877807617188,
+          3.3661611080169678,
+          2.5424532890319824,
+          0.8270807862281799,
+          2.79052472114563,
+          0.6466481685638428,
+          -3.5395350456237793,
+          1.3382368087768555,
+          3.4934439659118652,
+          -4.223699569702148,
+          -2.8651468753814697
+        ],
+        "mean": -0.5298249125480652,
+        "std": 3.38883638381958,
+        "min": -8.277877807617188,
+        "max": 3.4934439659118652,
+        "sha256": "269ce2f3c123c7c00e86646efa983157f8bb7cf6ade40d326019899b4d5f59dd"
+      },
+      "weight": {
+        "relative_error": 0.43531203269958496
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9583333333333334,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.034402282874359036
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 705400896,
+        "package_bytes_float32": 705400960
+      }
+    },
+    {
+      "rank": 96,
+      "latent_dim": 16,
+      "seed": 10,
+      "latent": {
+        "values": [
+          0.1555049568414688,
+          3.370623826980591,
+          -4.504919528961182,
+          4.1824493408203125,
+          0.8512163758277893,
+          2.8456485271453857,
+          -1.0618466138839722,
+          -1.979244589805603,
+          3.4129927158355713,
+          -0.1322786509990692,
+          -4.526059150695801,
+          1.2156845331192017,
+          -4.2945942878723145,
+          -3.4411704540252686,
+          -1.8609304428100586,
+          -0.9466755986213684
+        ],
+        "mean": -0.4196000099182129,
+        "std": 2.9268438816070557,
+        "min": -4.526059150695801,
+        "max": 4.1824493408203125,
+        "sha256": "c830f0d5d27ada9edd113e31a02ca42bd46357b812278b647c29480f4e468b99"
+      },
+      "weight": {
+        "relative_error": 0.4353119134902954
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9583333333333334,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.034401728523024824
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 705400896,
+        "package_bytes_float32": 705400960
+      }
+    },
+    {
+      "rank": 96,
+      "latent_dim": 16,
+      "seed": 11,
+      "latent": {
+        "values": [
+          -5.3697357177734375,
+          2.982818126678467,
+          -0.49911460280418396,
+          6.455948829650879,
+          3.054915189743042,
+          3.3627991676330566,
+          1.2817103862762451,
+          3.963576316833496,
+          -1.5880582332611084,
+          -0.5050918459892273,
+          3.4174468517303467,
+          0.2530038356781006,
+          -2.045748472213745,
+          -0.950390100479126,
+          0.7703575491905212,
+          -0.48896703124046326
+        ],
+        "mean": 0.88096684217453,
+        "std": 2.894552707672119,
+        "min": -5.3697357177734375,
+        "max": 6.455948829650879,
+        "sha256": "7ac53284ccd71f578c6749c15816027e97a094e6303062835ab80b8860aa5cea"
+      },
+      "weight": {
+        "relative_error": 0.4353120028972626
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9583333333333334,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.0344015216548417
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 705400896,
+        "package_bytes_float32": 705400960
+      }
+    },
+    {
+      "rank": 128,
+      "latent_dim": 16,
+      "seed": 9,
+      "latent": {
+        "values": [
+          -4.018946647644043,
+          6.374189376831055,
+          1.6182183027267456,
+          1.03189218044281,
+          -2.3241755962371826,
+          -4.789836406707764,
+          1.339878797531128,
+          -4.1555376052856445,
+          2.1717212200164795,
+          1.6826586723327637,
+          0.9093155860900879,
+          2.7162203788757324,
+          -2.117096185684204,
+          0.08783657848834991,
+          2.0479743480682373,
+          -0.1988184005022049
+        ],
+        "mean": 0.1484685242176056,
+        "std": 2.9664459228515625,
+        "min": -4.789836406707764,
+        "max": 6.374189376831055,
+        "sha256": "74da2cd5d3da03c8fa5d8d51867ea94bbee7594fa9846d6121f22f5b690fba76"
+      },
+      "weight": {
+        "relative_error": 0.33625632524490356
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9583333333333334,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.027528134691921613
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 940511296,
+        "package_bytes_float32": 940511360
+      }
+    },
+    {
+      "rank": 128,
+      "latent_dim": 16,
+      "seed": 10,
+      "latent": {
+        "values": [
+          -0.8108287453651428,
+          -2.932602643966675,
+          -3.113260269165039,
+          -4.880362033843994,
+          0.5026018619537354,
+          -0.9687455296516418,
+          4.135992527008057,
+          -0.04982271045446396,
+          -2.3880064487457275,
+          3.284919023513794,
+          2.807912588119507,
+          -2.7635562419891357,
+          -3.01062273979187,
+          2.380388021469116,
+          -2.5492637157440186,
+          -2.116447687149048
+        ],
+        "mean": -0.7794814705848694,
+        "std": 2.696535110473633,
+        "min": -4.880362033843994,
+        "max": 4.135992527008057,
+        "sha256": "e9e59dd4e2f0498ca398e02fbd194d1da2bc86edff06591fb496d803ab3e9803"
+      },
+      "weight": {
+        "relative_error": 0.33625635504722595
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9583333333333334,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.027528775193253145
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 940511296,
+        "package_bytes_float32": 940511360
+      }
+    },
+    {
+      "rank": 128,
+      "latent_dim": 16,
+      "seed": 11,
+      "latent": {
+        "values": [
+          -6.8296098709106445,
+          2.5092592239379883,
+          14.624709129333496,
+          -0.04823824018239975,
+          -2.640216827392578,
+          10.43276309967041,
+          -12.494613647460938,
+          0.09067485481500626,
+          9.096542358398438,
+          3.8601021766662598,
+          -10.620136260986328,
+          -5.781557559967041,
+          7.275618076324463,
+          -5.872734069824219,
+          3.4016454219818115,
+          -1.030354380607605
+        ],
+        "mean": 0.3733657896518707,
+        "std": 7.661368370056152,
+        "min": -12.494613647460938,
+        "max": 14.624709129333496,
+        "sha256": "5b23df281dcc489c355b56b12c4638ebc75adf6d095a8e718e52bfb65f51cff0"
+      },
+      "weight": {
+        "relative_error": 0.33625632524490356
+      },
+      "behavior": {
+        "greedy_token_match_rate": 0.9583333333333334,
+        "greedy_exact_continuation_count": 22,
+        "greedy_total_continuations": 24,
+        "logit_rmse": 0.027529060228702468
+      },
+      "storage": {
+        "original_weight_bytes_bfloat16": 1605632,
+        "latent_bytes_float32": 64,
+        "decoder_bytes_float32": 940511296,
+        "package_bytes_float32": 940511360
+      }
+    }
+  ]
+}

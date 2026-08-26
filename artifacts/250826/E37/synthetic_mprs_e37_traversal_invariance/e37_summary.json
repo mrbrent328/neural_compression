@@ -1,0 +1,171 @@
+{
+  "experiment": "E37 \u2014 MPRS: Traversal Invariance",
+  "branch": "MPRS",
+  "objective": "What is the smallest persistent relational structure capable of explaining multiple observations of the same underlying system?",
+  "world_points": 300,
+  "steps_per_pass": 96,
+  "pass_a": "phase=0, forward",
+  "pass_b": "phase=pi/3, reverse",
+  "information_boundary": {
+    "absolute_world_coordinates_given_to_memory": false,
+    "world_index_given_to_memory": false,
+    "hidden_geometry_given_to_memory": false,
+    "position_derived_features": false,
+    "future_observations_given_to_memory": false
+  },
+  "cost_model": {
+    "unit_cost": 5,
+    "relation_cost": 7,
+    "transition_cost": 4,
+    "raw_observation_cost": 7
+  },
+  "tolerances": {
+    "reconstruction": 0.2,
+    "prediction_position": 0.45,
+    "prediction_f1": 0.5
+  },
+  "conditions": {
+    "full": {
+      "pass1_unique_world_points_evaluator_only": 126,
+      "pass2_unique_world_points_evaluator_only": 124,
+      "final_units": 160,
+      "final_relations": 128,
+      "final_cost_slots": 2464,
+      "total_raw_observation_cost_slots": 14056,
+      "mean_pass2_reconstruction_error": 0.17174496247493634,
+      "mean_pass2_prediction_f1": 0.5534259623702186,
+      "mean_pass2_prediction_position_error": 0.381781133486709,
+      "pass2_new_units": 48,
+      "pass2_reused_units": 64
+    },
+    "no_relations": {
+      "pass1_unique_world_points_evaluator_only": 126,
+      "pass2_unique_world_points_evaluator_only": 124,
+      "final_units": 160,
+      "final_relations": 0,
+      "final_cost_slots": 1568,
+      "total_raw_observation_cost_slots": 14056,
+      "mean_pass2_reconstruction_error": 0.17174496247493634,
+      "mean_pass2_prediction_f1": 0.0,
+      "mean_pass2_prediction_position_error": 1.0,
+      "pass2_new_units": 48,
+      "pass2_reused_units": 64
+    },
+    "observation_only": {
+      "pass1_unique_world_points_evaluator_only": 126,
+      "pass2_unique_world_points_evaluator_only": 124,
+      "final_units": 2,
+      "final_relations": 0,
+      "final_cost_slots": 14,
+      "total_raw_observation_cost_slots": 14056,
+      "mean_pass2_reconstruction_error": 0.0,
+      "mean_pass2_prediction_f1": 0.0,
+      "mean_pass2_prediction_position_error": 1.0,
+      "pass2_new_units": 910,
+      "pass2_reused_units": 0
+    }
+  },
+  "minimum_structure_search": {
+    "curve": [
+      {
+        "relations_retained": 0,
+        "units": 160,
+        "relations": 0,
+        "cost_slots": 800,
+        "mean_prediction_f1": 0.0,
+        "mean_prediction_position_error": 1.0,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 1,
+        "units": 160,
+        "relations": 1,
+        "cost_slots": 807,
+        "mean_prediction_f1": 0.031386800334168755,
+        "mean_prediction_position_error": 0.9344293641520919,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 2,
+        "units": 160,
+        "relations": 2,
+        "cost_slots": 814,
+        "mean_prediction_f1": 0.07187366526978717,
+        "mean_prediction_position_error": 0.8199819410674997,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 4,
+        "units": 160,
+        "relations": 4,
+        "cost_slots": 828,
+        "mean_prediction_f1": 0.09969448228238188,
+        "mean_prediction_position_error": 0.6310379234468825,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 8,
+        "units": 160,
+        "relations": 8,
+        "cost_slots": 856,
+        "mean_prediction_f1": 0.1969921038632613,
+        "mean_prediction_position_error": 0.4864711686215468,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 16,
+        "units": 160,
+        "relations": 16,
+        "cost_slots": 912,
+        "mean_prediction_f1": 0.2824426214501641,
+        "mean_prediction_position_error": 0.3959048900961593,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 32,
+        "units": 160,
+        "relations": 32,
+        "cost_slots": 1024,
+        "mean_prediction_f1": 0.41849131462618666,
+        "mean_prediction_position_error": 0.3709226742802029,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 64,
+        "units": 160,
+        "relations": 64,
+        "cost_slots": 1248,
+        "mean_prediction_f1": 0.5156393349227466,
+        "mean_prediction_position_error": 0.33648044003196614,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 96,
+        "units": 160,
+        "relations": 96,
+        "cost_slots": 1472,
+        "mean_prediction_f1": 0.5803862543827066,
+        "mean_prediction_position_error": 0.31658634026080346,
+        "mean_reconstruction_error": 0.17206870244788722
+      },
+      {
+        "relations_retained": 128,
+        "units": 160,
+        "relations": 128,
+        "cost_slots": 1696,
+        "mean_prediction_f1": 0.6053040792604724,
+        "mean_prediction_position_error": 0.29959462268722176,
+        "mean_reconstruction_error": 0.17206870244788722
+      }
+    ],
+    "minimum_sufficient_candidate": {
+      "relations_retained": 64,
+      "units": 160,
+      "relations": 64,
+      "cost_slots": 1248,
+      "mean_prediction_f1": 0.5156393349227466,
+      "mean_prediction_position_error": 0.33648044003196614,
+      "mean_reconstruction_error": 0.17206870244788722
+    }
+  }
+}

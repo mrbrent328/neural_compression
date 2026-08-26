@@ -1,0 +1,116 @@
+{
+  "experiment": "E18 \u2014 functional held-out latent vs weight-MSE latent",
+  "question": "Does optimizing a frozen held-out latent for Q-projection function improve behavioral recovery compared with optimizing it for factor MSE?",
+  "rank": 48,
+  "latent_dim": 2,
+  "train_targets": [
+    "model.layers.0.self_attn.q_proj.weight",
+    "model.layers.1.self_attn.q_proj.weight",
+    "model.layers.2.self_attn.q_proj.weight",
+    "model.layers.3.self_attn.q_proj.weight"
+  ],
+  "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+  "calibration_prompt_count": 15,
+  "evaluation_prompt_count": 24,
+  "train_steps": 500,
+  "latent_steps": 500,
+  "learning_rate": 0.002,
+  "latent_learning_rate": 0.002,
+  "seeds": [
+    9,
+    10,
+    11
+  ],
+  "results": [
+    {
+      "seed": 9,
+      "latent_dim": 2,
+      "weight_objective": {
+        "latent": [
+          -0.7920903563499451,
+          1.045435905456543
+        ],
+        "weight_error": 1.143413782119751,
+        "behavior": {
+          "greedy_token_match_rate": 0.7569444444444444,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.31647417910448294
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -0.6074048280715942,
+          1.0833314657211304
+        ],
+        "weight_error": 1.197464942932129,
+        "behavior": {
+          "greedy_token_match_rate": 0.7291666666666666,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.3127438472352212
+        }
+      }
+    },
+    {
+      "seed": 10,
+      "latent_dim": 2,
+      "weight_objective": {
+        "latent": [
+          -0.0035154607612639666,
+          -0.36225953698158264
+        ],
+        "weight_error": 1.2375860214233398,
+        "behavior": {
+          "greedy_token_match_rate": 0.75,
+          "exact": 14,
+          "total_prompts": 24,
+          "logit_rmse": 0.31869715389444336
+        }
+      },
+      "function_objective": {
+        "latent": [
+          0.006925879046320915,
+          -0.3146496117115021
+        ],
+        "weight_error": 1.1145700216293335,
+        "behavior": {
+          "greedy_token_match_rate": 0.8055555555555556,
+          "exact": 15,
+          "total_prompts": 24,
+          "logit_rmse": 0.29964015261045257
+        }
+      }
+    },
+    {
+      "seed": 11,
+      "latent_dim": 2,
+      "weight_objective": {
+        "latent": [
+          -0.04230528697371483,
+          1.3749098777770996
+        ],
+        "weight_error": 1.0088229179382324,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.29383637256830847
+        }
+      },
+      "function_objective": {
+        "latent": [
+          0.40968841314315796,
+          2.1537203788757324
+        ],
+        "weight_error": 1.1812950372695923,
+        "behavior": {
+          "greedy_token_match_rate": 0.7847222222222222,
+          "exact": 14,
+          "total_prompts": 24,
+          "logit_rmse": 0.2957814914379949
+        }
+      }
+    }
+  ]
+}

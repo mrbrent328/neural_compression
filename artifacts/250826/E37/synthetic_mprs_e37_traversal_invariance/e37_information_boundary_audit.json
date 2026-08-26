@@ -1,0 +1,7 @@
+{
+  "absolute_world_coordinates_given_to_memory": false,
+  "world_index_given_to_memory": false,
+  "hidden_geometry_given_to_memory": false,
+  "position_derived_features": false,
+  "future_observations_given_to_memory": false
+}

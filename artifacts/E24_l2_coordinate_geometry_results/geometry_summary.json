@@ -1,0 +1,39 @@
+{
+  "experiment": "E24 \u2014 L2 coordinate geometry",
+  "seed": 18,
+  "center": [
+    1.0989340543746948,
+    -0.012093324214220047
+  ],
+  "gradient": [
+    -0.00027294689789414406,
+    -1.4013745385454968e-05
+  ],
+  "hessian": [
+    [
+      0.03875534608960152,
+      -0.06849868595600128
+    ],
+    [
+      -0.06849868595600128,
+      0.2106526494026184
+    ]
+  ],
+  "eigenvalues": [
+    0.014798400923609734,
+    0.23460958898067474
+  ],
+  "eigenvectors_columns": [
+    [
+      -0.9439339637756348,
+      -0.33013448119163513
+    ],
+    [
+      -0.33013448119163513,
+      0.9439339637756348
+    ]
+  ],
+  "axis_profile_csv": "E24_l2_coordinate_geometry_results/axis_profiles.csv",
+  "principal_direction_csv": "E24_l2_coordinate_geometry_results/principal_direction_profiles.csv",
+  "behavior_probe_file": "E24_l2_coordinate_geometry_results/behavior_probes.txt"
+}\n

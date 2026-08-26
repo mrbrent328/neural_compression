@@ -1,0 +1,97 @@
+prompt_index,prompt,condition,exact,matching_tokens,compared_tokens
+1,Explain photosynthesis in simple terms.,zero,1,6,6
+2,A binary search works efficiently because,zero,0,4,6
+3,Water freezes at approximately,zero,1,6,6
+4,A good scientific hypothesis should be,zero,0,4,6
+5,"In Python, a list is different from a tuple because",zero,0,4,6
+6,The capital of France is,zero,1,6,6
+7,An operating system is responsible for,zero,0,2,6
+8,A triangle with three equal sides is,zero,0,2,6
+9,A database index is useful because,zero,1,6,6
+10,The first law of thermodynamics states that,zero,1,6,6
+11,An electric circuit needs,zero,0,3,6
+12,A variable is useful in a program because,zero,1,6,6
+13,The Earth completes one orbit around the Sun in,zero,1,6,6
+14,A function takes inputs and,zero,1,6,6
+15,Version control lets developers,zero,0,2,6
+16,A compiler translates source code into,zero,1,6,6
+17,A prime number is divisible by,zero,0,3,6
+18,A balanced ecosystem contains,zero,1,6,6
+19,A probability between zero and one represents,zero,1,6,6
+20,A stack follows the,zero,0,3,6
+21,A map scale tells us,zero,0,0,6
+22,An API allows software to,zero,0,3,6
+23,The opposite of compression is,zero,1,6,6
+24,A good test should be,zero,0,2,6
+1,Explain photosynthesis in simple terms.,random,1,6,6
+2,A binary search works efficiently because,random,0,2,6
+3,Water freezes at approximately,random,0,3,6
+4,A good scientific hypothesis should be,random,0,4,6
+5,"In Python, a list is different from a tuple because",random,0,4,6
+6,The capital of France is,random,0,5,6
+7,An operating system is responsible for,random,0,2,6
+8,A triangle with three equal sides is,random,0,2,6
+9,A database index is useful because,random,1,6,6
+10,The first law of thermodynamics states that,random,1,6,6
+11,An electric circuit needs,random,0,3,6
+12,A variable is useful in a program because,random,0,1,6
+13,The Earth completes one orbit around the Sun in,random,1,6,6
+14,A function takes inputs and,random,1,6,6
+15,Version control lets developers,random,0,2,6
+16,A compiler translates source code into,random,1,6,6
+17,A prime number is divisible by,random,0,3,6
+18,A balanced ecosystem contains,random,1,6,6
+19,A probability between zero and one represents,random,1,6,6
+20,A stack follows the,random,1,6,6
+21,A map scale tells us,random,0,0,6
+22,An API allows software to,random,0,3,6
+23,The opposite of compression is,random,1,6,6
+24,A good test should be,random,0,2,6
+1,Explain photosynthesis in simple terms.,low_rank_48,1,6,6
+2,A binary search works efficiently because,low_rank_48,0,4,6
+3,Water freezes at approximately,low_rank_48,1,6,6
+4,A good scientific hypothesis should be,low_rank_48,0,4,6
+5,"In Python, a list is different from a tuple because",low_rank_48,1,6,6
+6,The capital of France is,low_rank_48,1,6,6
+7,An operating system is responsible for,low_rank_48,0,2,6
+8,A triangle with three equal sides is,low_rank_48,1,6,6
+9,A database index is useful because,low_rank_48,1,6,6
+10,The first law of thermodynamics states that,low_rank_48,1,6,6
+11,An electric circuit needs,low_rank_48,0,3,6
+12,A variable is useful in a program because,low_rank_48,1,6,6
+13,The Earth completes one orbit around the Sun in,low_rank_48,1,6,6
+14,A function takes inputs and,low_rank_48,1,6,6
+15,Version control lets developers,low_rank_48,0,2,6
+16,A compiler translates source code into,low_rank_48,1,6,6
+17,A prime number is divisible by,low_rank_48,1,6,6
+18,A balanced ecosystem contains,low_rank_48,1,6,6
+19,A probability between zero and one represents,low_rank_48,1,6,6
+20,A stack follows the,low_rank_48,1,6,6
+21,A map scale tells us,low_rank_48,0,3,6
+22,An API allows software to,low_rank_48,0,3,6
+23,The opposite of compression is,low_rank_48,1,6,6
+24,A good test should be,low_rank_48,0,2,6
+1,Explain photosynthesis in simple terms.,low_rank_96,1,6,6
+2,A binary search works efficiently because,low_rank_96,0,4,6
+3,Water freezes at approximately,low_rank_96,1,6,6
+4,A good scientific hypothesis should be,low_rank_96,0,4,6
+5,"In Python, a list is different from a tuple because",low_rank_96,1,6,6
+6,The capital of France is,low_rank_96,1,6,6
+7,An operating system is responsible for,low_rank_96,0,2,6
+8,A triangle with three equal sides is,low_rank_96,1,6,6
+9,A database index is useful because,low_rank_96,1,6,6
+10,The first law of thermodynamics states that,low_rank_96,1,6,6
+11,An electric circuit needs,low_rank_96,0,3,6
+12,A variable is useful in a program because,low_rank_96,1,6,6
+13,The Earth completes one orbit around the Sun in,low_rank_96,1,6,6
+14,A function takes inputs and,low_rank_96,1,6,6
+15,Version control lets developers,low_rank_96,0,2,6
+16,A compiler translates source code into,low_rank_96,1,6,6
+17,A prime number is divisible by,low_rank_96,1,6,6
+18,A balanced ecosystem contains,low_rank_96,1,6,6
+19,A probability between zero and one represents,low_rank_96,1,6,6
+20,A stack follows the,low_rank_96,1,6,6
+21,A map scale tells us,low_rank_96,1,6,6
+22,An API allows software to,low_rank_96,0,3,6
+23,The opposite of compression is,low_rank_96,1,6,6
+24,A good test should be,low_rank_96,0,2,6

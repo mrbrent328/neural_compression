@@ -1,0 +1,52 @@
+{
+  "experiment": "E18 \u2014 functional held-out latent vs weight-MSE latent",
+  "question": "Does optimizing a frozen held-out latent for Q-projection function improve behavioral recovery compared with optimizing it for factor MSE?",
+  "rank": 48,
+  "latent_dim": 1,
+  "train_targets": [
+    "model.layers.0.self_attn.q_proj.weight",
+    "model.layers.1.self_attn.q_proj.weight",
+    "model.layers.2.self_attn.q_proj.weight",
+    "model.layers.3.self_attn.q_proj.weight"
+  ],
+  "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+  "calibration_prompt_count": 15,
+  "evaluation_prompt_count": 24,
+  "train_steps": 500,
+  "latent_steps": 500,
+  "learning_rate": 0.002,
+  "latent_learning_rate": 0.002,
+  "seeds": [
+    17
+  ],
+  "results": [
+    {
+      "seed": 17,
+      "latent_dim": 1,
+      "weight_objective": {
+        "latent": [
+          -1.677184820175171
+        ],
+        "weight_error": 1.0378459692001343,
+        "behavior": {
+          "greedy_token_match_rate": 0.75,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.29023334218778024
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -1.3202404975891113
+        ],
+        "weight_error": 1.0245327949523926,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.2841407629465193
+        }
+      }
+    }
+  ]
+}

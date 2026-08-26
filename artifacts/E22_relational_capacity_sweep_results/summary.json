@@ -1,0 +1,338 @@
+{
+  "experiment": "E22 \u2014 relational capacity sweep vs weight-MSE latent",
+  "question": "How does latent capacity (L1/L2/L4) affect behavioral recovery under the relational-attention objective?",
+  "rank": 48,
+  "latent_dim": 4,
+  "train_targets": [
+    "model.layers.0.self_attn.q_proj.weight",
+    "model.layers.1.self_attn.q_proj.weight",
+    "model.layers.2.self_attn.q_proj.weight",
+    "model.layers.3.self_attn.q_proj.weight"
+  ],
+  "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+  "calibration_prompt_count": 15,
+  "evaluation_prompt_count": 24,
+  "train_steps": 500,
+  "latent_steps": 500,
+  "learning_rate": 0.002,
+  "latent_learning_rate": 0.002,
+  "seeds": [
+    18,
+    19,
+    20
+  ],
+  "results": [
+    {
+      "seed": 18,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          1.0706424713134766
+        ],
+        "weight_error": 1.0883004665374756,
+        "behavior": {
+          "greedy_token_match_rate": 0.7430555555555556,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.3025262309777721
+        }
+      },
+      "function_objective": {
+        "latent": [
+          1.185512661933899
+        ],
+        "weight_error": 1.1150835752487183,
+        "behavior": {
+          "greedy_token_match_rate": 0.7986111111111112,
+          "exact": 15,
+          "total_prompts": 24,
+          "logit_rmse": 0.2974065788130381
+        }
+      }
+    },
+    {
+      "seed": 18,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          1.011999487876892,
+          0.302176833152771
+        ],
+        "weight_error": 1.019119143486023,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.29456380384562264
+        }
+      },
+      "function_objective": {
+        "latent": [
+          1.0989340543746948,
+          -0.012093324214220047
+        ],
+        "weight_error": 1.1188315153121948,
+        "behavior": {
+          "greedy_token_match_rate": 0.7986111111111112,
+          "exact": 15,
+          "total_prompts": 24,
+          "logit_rmse": 0.29712896069613826
+        }
+      }
+    },
+    {
+      "seed": 18,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.11466673761606216,
+          0.4847162365913391,
+          0.03945048898458481,
+          0.05136965587735176
+        ],
+        "weight_error": 1.0046474933624268,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.28506296445673457
+        }
+      },
+      "function_objective": {
+        "latent": [
+          0.9128968715667725,
+          -0.6631515622138977,
+          0.07907795161008835,
+          0.23114219307899475
+        ],
+        "weight_error": 1.1519240140914917,
+        "behavior": {
+          "greedy_token_match_rate": 0.75,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.2779303409302212
+        }
+      }
+    },
+    {
+      "seed": 19,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.18670903146266937
+        ],
+        "weight_error": 1.0434767007827759,
+        "behavior": {
+          "greedy_token_match_rate": 0.7361111111111112,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.2819179610430295
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -0.3265273869037628
+        ],
+        "weight_error": 1.0710949897766113,
+        "behavior": {
+          "greedy_token_match_rate": 0.6944444444444444,
+          "exact": 11,
+          "total_prompts": 24,
+          "logit_rmse": 0.2897513975562858
+        }
+      }
+    },
+    {
+      "seed": 19,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.0811246857047081,
+          -0.9418598413467407
+        ],
+        "weight_error": 1.0191489458084106,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.2921488889067068
+        }
+      },
+      "function_objective": {
+        "latent": [
+          0.6290358304977417,
+          -0.5162565112113953
+        ],
+        "weight_error": 1.1065360307693481,
+        "behavior": {
+          "greedy_token_match_rate": 0.7986111111111112,
+          "exact": 15,
+          "total_prompts": 24,
+          "logit_rmse": 0.2964618187092084
+        }
+      }
+    },
+    {
+      "seed": 19,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.501532256603241,
+          -0.21688701212406158,
+          -0.7966709733009338,
+          -1.273519515991211
+        ],
+        "weight_error": 1.110682725906372,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.30330351363368396
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -0.8915888667106628,
+          -0.18768876791000366,
+          -1.1096525192260742,
+          -1.3304160833358765
+        ],
+        "weight_error": 1.144101619720459,
+        "behavior": {
+          "greedy_token_match_rate": 0.7638888888888888,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.3030886464823149
+        }
+      }
+    },
+    {
+      "seed": 20,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.7103796005249023
+        ],
+        "weight_error": 1.0303748846054077,
+        "behavior": {
+          "greedy_token_match_rate": 0.75,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.2771450486330963
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -0.6542872786521912
+        ],
+        "weight_error": 1.0424965620040894,
+        "behavior": {
+          "greedy_token_match_rate": 0.7777777777777778,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.27498891857995184
+        }
+      }
+    },
+    {
+      "seed": 20,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.2703858017921448,
+          -0.5151894092559814
+        ],
+        "weight_error": 1.0206557512283325,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "exact": 12,
+          "total_prompts": 24,
+          "logit_rmse": 0.2957479286924252
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -0.5215350985527039,
+          -0.0126942228525877
+        ],
+        "weight_error": 1.1256661415100098,
+        "behavior": {
+          "greedy_token_match_rate": 0.7986111111111112,
+          "exact": 15,
+          "total_prompts": 24,
+          "logit_rmse": 0.29408014098343715
+        }
+      }
+    },
+    {
+      "seed": 20,
+      "latent_dims": [
+        1,
+        2,
+        4
+      ],
+      "weight_objective": {
+        "latent": [
+          -0.7084789872169495,
+          0.4409298002719879,
+          0.5131412744522095,
+          -0.7439364790916443
+        ],
+        "weight_error": 1.0194445848464966,
+        "behavior": {
+          "greedy_token_match_rate": 0.75,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.27873564318852373
+        }
+      },
+      "function_objective": {
+        "latent": [
+          -2.0415756702423096,
+          -0.6703250408172607,
+          0.3537012040615082,
+          -1.6686674356460571
+        ],
+        "weight_error": 1.1884655952453613,
+        "behavior": {
+          "greedy_token_match_rate": 0.7916666666666666,
+          "exact": 13,
+          "total_prompts": 24,
+          "logit_rmse": 0.2885157286486335
+        }
+      }
+    }
+  ]
+}

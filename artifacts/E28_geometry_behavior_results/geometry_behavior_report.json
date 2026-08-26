@@ -1,0 +1,2279 @@
+[
+  {
+    "seed": 22,
+    "eigenvalues": [
+      0.009716764092445374,
+      0.4260864555835724
+    ],
+    "low_mean_sensitivity": 0.010511786944444485,
+    "high_mean_sensitivity": 0.13717680277777777,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.31272378,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.02206201000000002
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.30051183,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.013133413333333325
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.2935228,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.005722059999999973
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.29168251,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.0027219733333333864
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.29070277,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.000164000000000053
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.2904072,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.002036560000000076
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.29139164,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.005838960000000171
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.29258861,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.007707360000000163
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.29432059,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.009756853333333352
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.2967294,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.012135259999999981
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.30439908,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.018316413333333337
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.31720835,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.026546579999999986
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 7,
+        "total": 24,
+        "logit_rmse": 0.51183472,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.22117294999999998
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 8,
+        "total": 24,
+        "logit_rmse": 0.4849192,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.2590099066666667
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.43258367,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.2838438
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.4011927,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.29474914666666674
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.36059919,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.2797496800000001
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.31806906,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.21925832000000023
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.28719607,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.027725599999999684
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.2897366,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.0037006799999999007
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29192129,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.0033587200000000372
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29484429,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.008365040000000046
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.30755054,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.022518359999999998
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.3133312,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.02266942999999999
+      }
+    ]
+  },
+  {
+    "seed": 23,
+    "eigenvalues": [
+      0.01642955280840397,
+      0.10875814408063889
+    ],
+    "low_mean_sensitivity": 0.025105714444444458,
+    "high_mean_sensitivity": 0.09538435416666664,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.2998574,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.011852950000000029
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.30203938,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.012894626666666667
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.30440739,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.01460592000000005
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.30582115,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.015704533333333437
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.30745222,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.017032520000000106
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.30937273,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.018700960000000322
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.31466905,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.023669599999999846
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.31851428,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.027215719999999832
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.32348483,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.03139861333333327
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.32963731,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.035853919999999984
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.34444761,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.04364967999999999
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.36039988,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.04868952999999998
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.4451851,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.13347474999999998
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.4195797,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.14382579999999998
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.3885984,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.15377609999999997
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.37011729,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.1557518399999999
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.34892598,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.14886252
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.32801809,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.13046191999999968
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.30107294,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.08509928000000011
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.29543359,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.06510704
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.2939111,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.04746466666666679
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29436593,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.034688840000000054
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29403866,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.023562253333333356
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.28917311,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.022537240000000014
+      }
+    ]
+  },
+  {
+    "seed": 24,
+    "eigenvalues": [
+      0.09120850265026093,
+      0.31793493032455444
+    ],
+    "low_mean_sensitivity": 0.08685506111111113,
+    "high_mean_sensitivity": 0.15389789722222222,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 9,
+        "total": 24,
+        "logit_rmse": 0.46145668,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.16489895999999998
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.41848588,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.16257087999999995
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.36857995,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.14404445999999993
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.34557195,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.1307046133333333
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.32585869,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.11720387999999993
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.309501,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.10354624000000001
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.28711115,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.07557256000000034
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.28164747,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.059641000000000055
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.2800748,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.043954453333333365
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.28157756,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.02996032000000004
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.28905509,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.01000350666666668
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.29671758,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.00015985999999995615
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.35230977,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.05575205
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.33668905,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.053508439999999956
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.31501951,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.036923579999999956
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.30354141,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.0186231733333333
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.29293558,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.014488560000000206
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.2877789,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.07023056000000016
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.31744619,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.16710775999999994
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.34867832,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.20848239999999985
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.40335967,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.2848051999999999
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.45646066,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.31980588
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 7,
+        "total": 24,
+        "logit_rmse": 0.53252693,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.3146256133333332
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 7,
+        "total": 24,
+        "logit_rmse": 0.59897927,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.30242154999999993
+      }
+    ]
+  },
+  {
+    "seed": 25,
+    "eigenvalues": [
+      0.06327784806489944,
+      0.8393397331237793
+    ],
+    "low_mean_sensitivity": 0.049268125000000024,
+    "high_mean_sensitivity": 0.20358628638888895,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.3205466,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.04143756000000004
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.31510421,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.047993560000000025
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30424034,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.050262600000000046
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.29771556,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.04961738666666671
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.29085528,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.046984960000000076
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.28428356,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.041396160000000126
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.27634036,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.022149439999999743
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.27705093,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.008232440000000008
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.28311002,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.010669280000000114
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.29653306,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.03484804000000008
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.35266461,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.09807409333333335
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.41866102,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.13955198000000002
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.57706883,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.29795979
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.54403973,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.3532409200000001
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.47367912,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.38914016000000007
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.42742546,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.39551045333333334
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.37389839,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.3791574000000002
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.30865199,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.2363436000000001
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.28600219,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.055145200000000116
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29030243,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.0447735600000001
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29198218,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.03432837333333335
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.30663182,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.05504556000000005
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.35628782,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.10290504
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.37859442,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.09948538000000001
+      }
+    ]
+  },
+  {
+    "seed": 26,
+    "eigenvalues": [
+      -0.005461378023028374,
+      0.15208083391189575
+    ],
+    "low_mean_sensitivity": 0.14014966416666666,
+    "high_mean_sensitivity": 0.13783181111111112,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.30313478,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.10559658999999999
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.31384937,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.12650933333333328
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.33698157,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.14349959999999995
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.35424898,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.1452863733333333
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.37335768,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.14149475999999983
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.39170651,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.1361988799999998
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.42589556,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.1373135200000002
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.44472086,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.14395796000000005
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.46588625,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.15241301333333337
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.48851349,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.15956424000000002
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.52251885,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.15171663999999999
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 10,
+        "total": 24,
+        "logit_rmse": 0.54697643,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.13824505999999998
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 5,
+        "total": 24,
+        "logit_rmse": 0.69745927,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.2887279
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 5,
+        "total": 24,
+        "logit_rmse": 0.63620018,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.3032917466666667
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.55991962,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.30237649999999994
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.51637305,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.28704448000000005
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.45628641,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.19022015999999997
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.42026027,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.09223120000000007
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.40581919,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.02329743999999989
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.39863792,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.040373800000000015
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.40047761,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.022010026666666665
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.40880484,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.00014694000000003982
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.43654002,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.037078199999999985
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.47591471,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.06718334000000004
+      }
+    ]
+  },
+  {
+    "seed": 27,
+    "eigenvalues": [
+      0.004460236988961697,
+      0.0181560255587101
+    ],
+    "low_mean_sensitivity": 0.01423366611111111,
+    "high_mean_sensitivity": 0.009526442222222226,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.27899866,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.018309059999999988
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.28274221,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.019420680000000006
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.28777775,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.019059939999999997
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29041463,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.018381573333333307
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29294543,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.017449159999999964
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.2952648,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.01634336000000003
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.2990447,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.013895839999999993
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30047057,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.01265139999999998
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30159145,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.011423279999999961
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30241641,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.010217380000000054
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.30322597,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.007891000000000018
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.30306904,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.005761320000000014
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29392893,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.0033787900000000204
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29403364,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.004365440000000016
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29487571,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.004864019999999969
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29542006,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.0050337600000000355
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29599704,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.005242720000000034
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.2966099,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.005582560000000125
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.29818899,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.0070501599999999165
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.29940235,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.008378519999999945
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30113885,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.010216346666666709
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30361643,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.01261741999999999
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.3117211,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.01921783999999997
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.32567745,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.028369729999999982
+      }
+    ]
+  },
+  {
+    "seed": 28,
+    "eigenvalues": [
+      0.03200867027044296,
+      0.04393233731389046
+    ],
+    "low_mean_sensitivity": 0.057280464999999975,
+    "high_mean_sensitivity": 0.03400018666666662,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 10,
+        "total": 24,
+        "logit_rmse": 0.4061365,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.10469444
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 10,
+        "total": 24,
+        "logit_rmse": 0.36804769,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.08880750666666663
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.33834322,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.07380231999999998
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.32665117,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.06722429333333328
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.31637335,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.059725159999999944
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.3075915,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.04919552000000005
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.29977909,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.013303759999999887
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.3035905,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.008593759999999895
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 18,
+        "total": 24,
+        "logit_rmse": 0.31138534,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.02651541333333333
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.32254346,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.042202799999999985
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.35333593,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.06919182666666668
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.38555084,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.08410878
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 10,
+        "total": 24,
+        "logit_rmse": 0.30995861,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.008516550000000012
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.30905128,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.01014562666666663
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.3073137,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.011743280000000023
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.30573293,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.011442320000000006
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.3037426,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.009202159999999848
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.30191038,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.0037465599999997323
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.30403433,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.02073816000000006
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.31074478,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.037210879999999946
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.32114854,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.05255061333333325
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.33431409,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.06574405999999999
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.3643124,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.08382711999999996
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 10,
+        "total": 24,
+        "logit_rmse": 0.39457697,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.09313491000000002
+      }
+    ]
+  },
+  {
+    "seed": 29,
+    "eigenvalues": [
+      0.0172938983887434,
+      0.20526498556137085
+    ],
+    "low_mean_sensitivity": 0.062092073333333324,
+    "high_mean_sensitivity": 0.07678613333333333,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.47840217,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.16825410000000002
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.40108708,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.12125201333333331
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.34456508,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.06883402000000005
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.32994559,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.0527933866666667
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.32089955,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.04300591999999992
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.31465169,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.03602895999999989
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.30683675,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.026490560000000052
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.30561196,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.01814443999999993
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.30904526,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.0029408266666666925
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.318984,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.017671859999999984
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.36023176,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.06677825333333336
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.43305861,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.12291054000000001
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.49623355,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.18608548000000003
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.43766618,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.17002414666666668
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.38206717,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.14383820000000003
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.3578208,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.12712727999999998
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.3374994,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.10940532000000003
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 16,
+        "total": 24,
+        "logit_rmse": 0.32165718,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.09207287999999991
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.30438828,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.046078319999999895
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.30416677,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.02392520000000009
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.30641363,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.00995850666666668
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.30873109,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.0028339600000000242
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.30921838,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.001239586666666644
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.30130335,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.008844719999999973
+      }
+    ]
+  },
+  {
+    "seed": 30,
+    "eigenvalues": [
+      0.0985221341252327,
+      0.7066396474838257
+    ],
+    "low_mean_sensitivity": 0.11260198722222224,
+    "high_mean_sensitivity": 0.18174143972222223,
+    "low_points": [
+      {
+        "probe": "eig_low_-1.000",
+        "direction": "eig_low",
+        "offset": -1.0,
+        "exact": 10,
+        "total": 24,
+        "logit_rmse": 0.48626311,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.19000381
+      },
+      {
+        "probe": "eig_low_-0.750",
+        "direction": "eig_low",
+        "offset": -0.75,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.44274591,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.19531548
+      },
+      {
+        "probe": "eig_low_-0.500",
+        "direction": "eig_low",
+        "offset": -0.5,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.38292886,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.17333911999999996
+      },
+      {
+        "probe": "eig_low_-0.375",
+        "direction": "eig_low",
+        "offset": -0.375,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.35429933,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.1547734133333334
+      },
+      {
+        "probe": "eig_low_-0.250",
+        "direction": "eig_low",
+        "offset": -0.25,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.33256032,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.14520408000000007
+      },
+      {
+        "probe": "eig_low_-0.125",
+        "direction": "eig_low",
+        "offset": -0.125,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.31348533,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.13780824000000003
+      },
+      {
+        "probe": "eig_low_+0.125",
+        "direction": "eig_low",
+        "offset": 0.125,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.28232816,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.11144912000000007
+      },
+      {
+        "probe": "eig_low_+0.250",
+        "direction": "eig_low",
+        "offset": 0.25,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.27367236,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.09034776
+      },
+      {
+        "probe": "eig_low_+0.375",
+        "direction": "eig_low",
+        "offset": 0.375,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.27113258,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.06700458666666664
+      },
+      {
+        "probe": "eig_low_+0.500",
+        "direction": "eig_low",
+        "offset": 0.5,
+        "exact": 14,
+        "total": 24,
+        "logit_rmse": 0.274409,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.04370059999999998
+      },
+      {
+        "probe": "eig_low_+0.750",
+        "direction": "eig_low",
+        "offset": 0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29370625,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.0034040666666666683
+      },
+      {
+        "probe": "eig_low_+1.000",
+        "direction": "eig_low",
+        "offset": 1.0,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.33513287,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.038873570000000024
+      }
+    ],
+    "high_points": [
+      {
+        "probe": "eig_high_-1.000",
+        "direction": "eig_high",
+        "offset": -1.0,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.31061898,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.014359679999999986
+      },
+      {
+        "probe": "eig_high_-0.750",
+        "direction": "eig_high",
+        "offset": -0.75,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.31398391,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.023632813333333298
+      },
+      {
+        "probe": "eig_high_-0.500",
+        "direction": "eig_high",
+        "offset": -0.5,
+        "exact": 11,
+        "total": 24,
+        "logit_rmse": 0.3098888,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.027259000000000033
+      },
+      {
+        "probe": "eig_high_-0.375",
+        "direction": "eig_high",
+        "offset": -0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.29969523,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.009162479999999936
+      },
+      {
+        "probe": "eig_high_-0.250",
+        "direction": "eig_high",
+        "offset": -0.25,
+        "exact": 15,
+        "total": 24,
+        "logit_rmse": 0.28637181,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.039549959999999995
+      },
+      {
+        "probe": "eig_high_-0.125",
+        "direction": "eig_high",
+        "offset": -0.125,
+        "exact": 17,
+        "total": 24,
+        "logit_rmse": 0.27912481,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.13707592000000002
+      },
+      {
+        "probe": "eig_high_+0.125",
+        "direction": "eig_high",
+        "offset": 0.125,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.34027473,
+        "latent_distance": 0.125,
+        "rmse_per_distance": 0.3521234400000002
+      },
+      {
+        "probe": "eig_high_+0.250",
+        "direction": "eig_high",
+        "offset": 0.25,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.3890344,
+        "latent_distance": 0.25,
+        "rmse_per_distance": 0.3711004
+      },
+      {
+        "probe": "eig_high_+0.375",
+        "direction": "eig_high",
+        "offset": 0.375,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.42733654,
+        "latent_distance": 0.375,
+        "rmse_per_distance": 0.3495393066666666
+      },
+      {
+        "probe": "eig_high_+0.500",
+        "direction": "eig_high",
+        "offset": 0.5,
+        "exact": 12,
+        "total": 24,
+        "logit_rmse": 0.45476405,
+        "latent_distance": 0.5,
+        "rmse_per_distance": 0.31700949999999994
+      },
+      {
+        "probe": "eig_high_+0.750",
+        "direction": "eig_high",
+        "offset": 0.75,
+        "exact": 13,
+        "total": 24,
+        "logit_rmse": 0.50524562,
+        "latent_distance": 0.75,
+        "rmse_per_distance": 0.2786484266666666
+      },
+      {
+        "probe": "eig_high_+1.000",
+        "direction": "eig_high",
+        "offset": 1.0,
+        "exact": 9,
+        "total": 24,
+        "logit_rmse": 0.55769565,
+        "latent_distance": 1.0,
+        "rmse_per_distance": 0.26143635
+      }
+    ]
+  }
+]

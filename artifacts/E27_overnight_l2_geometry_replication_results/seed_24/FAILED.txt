@@ -1,0 +1,3 @@
+Seed 24 failed.
+
+RuntimeError: E26_l2_geometry_replication_v1 does not expose run_geometry_for_seed(). Refusing to run a modified/guessed version of the experiment.

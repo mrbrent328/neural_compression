@@ -1,0 +1,10 @@
+seed,status,center,gradient,eigenvalues,eigenvectors,low_high_ratio
+22,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 884),,,,,
+23,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 896),,,,,
+24,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 886),,,,,
+25,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 884),,,,,
+26,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 886),,,,,
+27,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 893),,,,,
+28,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 888),,,,,
+29,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 890),,,,,
+30,ERROR: JSONDecodeError: Extra data: line 39 column 2 (char 881),,,,,

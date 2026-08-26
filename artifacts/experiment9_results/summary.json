@@ -1,0 +1,622 @@
+{
+  "experiment": "Experiment 9: Weight \u2192 Latent \u2192 Weight + Functional Equivalence",
+  "configuration": {
+    "model_dir": "Qwen2-0.5B",
+    "model_file": "Qwen2-0.5B/model.safetensors",
+    "device": "cpu",
+    "latent_sizes": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "steps": 250,
+    "batch_size": 128,
+    "learning_rate": 0.003,
+    "seed": 9
+  },
+  "source_weight": {
+    "shape": [
+      896,
+      896
+    ],
+    "dtype": "bfloat16",
+    "numel": 802816,
+    "raw_bytes": 1605632,
+    "sha256": "a515fc5f05e4cc898596d09bfcec7a04e8329dd88d1b9c1672af0f2f89b05028",
+    "min": -0.9609375,
+    "max": 0.76171875,
+    "mean": -2.8159820431028493e-06,
+    "std": 0.05355827137827873,
+    "frobenius_norm": 47.988975524902344
+  },
+  "baseline_fingerprint": [
+    {
+      "prompt": "The capital of France is",
+      "token_ids": [
+        785,
+        6722,
+        315,
+        9625,
+        374
+      ],
+      "next_token_id": 12095,
+      "next_token": " Paris",
+      "top5_token_ids": [
+        12095,
+        32671,
+        2130,
+        65892,
+        1304
+      ],
+      "top5_tokens": [
+        " Paris",
+        " ______",
+        "____",
+        " _____",
+        " __"
+      ],
+      "top5_logits": [
+        15.598188400268555,
+        15.340607643127441,
+        14.612048149108887,
+        14.33902645111084,
+        13.856261253356934
+      ]
+    },
+    {
+      "prompt": "In one sentence, explain why the sky appears blue.",
+      "token_ids": [
+        641,
+        825,
+        11652,
+        11,
+        10339,
+        3170,
+        279,
+        12884,
+        7952,
+        6303,
+        13
+      ],
+      "next_token_id": 576,
+      "next_token": " The",
+      "top5_token_ids": [
+        576,
+        220,
+        8697,
+        358,
+        758
+      ],
+      "top5_tokens": [
+        " The",
+        " ",
+        " Blue",
+        " I",
+        " In"
+      ],
+      "top5_logits": [
+        16.711833953857422,
+        14.45810317993164,
+        14.257416725158691,
+        14.046222686767578,
+        13.803544998168945
+      ]
+    },
+    {
+      "prompt": "def fibonacci(n):",
+      "token_ids": [
+        750,
+        75698,
+        1445,
+        1648
+      ],
+      "next_token_id": 715,
+      "next_token": " \n",
+      "top5_token_ids": [
+        715,
+        671,
+        220,
+        2303,
+        2529
+      ],
+      "top5_tokens": [
+        " \n",
+        " #",
+        " ",
+        "  \n",
+        " \r\n"
+      ],
+      "top5_logits": [
+        15.42349910736084,
+        14.748159408569336,
+        14.202356338500977,
+        13.701919555664062,
+        13.609935760498047
+      ]
+    },
+    {
+      "prompt": "The quick brown fox jumps over the",
+      "token_ids": [
+        785,
+        3974,
+        13876,
+        38835,
+        34208,
+        916,
+        279
+      ],
+      "next_token_id": 15678,
+      "next_token": " lazy",
+      "top5_token_ids": [
+        15678,
+        32671,
+        1304,
+        198,
+        2130
+      ],
+      "top5_tokens": [
+        " lazy",
+        " ______",
+        " __",
+        "\n",
+        "____"
+      ],
+      "top5_logits": [
+        16.879207611083984,
+        13.206964492797852,
+        13.004022598266602,
+        12.334829330444336,
+        12.139663696289062
+      ]
+    },
+    {
+      "prompt": "A small neural network can",
+      "token_ids": [
+        32,
+        2613,
+        29728,
+        3922,
+        646
+      ],
+      "next_token_id": 387,
+      "next_token": " be",
+      "top5_token_ids": [
+        387,
+        3960,
+        1172,
+        7023,
+        1281
+      ],
+      "top5_tokens": [
+        " be",
+        " learn",
+        " only",
+        " predict",
+        " make"
+      ],
+      "top5_logits": [
+        17.397369384765625,
+        15.61722183227539,
+        14.499833106994629,
+        14.332208633422852,
+        14.294172286987305
+      ]
+    },
+    {
+      "prompt": "Two plus two equals",
+      "token_ids": [
+        11613,
+        5519,
+        1378,
+        16819
+      ],
+      "next_token_id": 4236,
+      "next_token": " five",
+      "top5_token_ids": [
+        4236,
+        220,
+        2326,
+        3040,
+        311
+      ],
+      "top5_tokens": [
+        " five",
+        " ",
+        " three",
+        " four",
+        " to"
+      ],
+      "top5_logits": [
+        14.955668449401855,
+        14.948046684265137,
+        14.77741527557373,
+        14.77661418914795,
+        14.171469688415527
+      ]
+    }
+  ],
+  "results": [
+    {
+      "latent_size": 16,
+      "storage": {
+        "original_weight_values": 802816,
+        "original_weight_bytes": 1605632,
+        "compressed_values": 28672,
+        "compressed_bytes_assuming_bfloat16": 57344,
+        "compressed_to_original_ratio": 0.03571428571428571,
+        "compression_factor": 28.0,
+        "format": "latent_codes[896, latent] + decoder_weight[896, latent]",
+        "note": "Encoder parameters are excluded because they are training-only."
+      },
+      "training": {
+        "training_seconds": 0.1849036990024615,
+        "final_train_mse": 0.0010150715243071318,
+        "compressed_values": 28672,
+        "encoder_training_only_values": 14336
+      },
+      "numerical": {
+        "mse": 0.0011413773754611611,
+        "mae": 0.024056855589151382,
+        "max_abs_error": 0.583984375,
+        "relative_frobenius_error": 0.6307907700538635,
+        "cosine_similarity": 0.7759398818016052
+      },
+      "functional": {
+        "next_token_match_count": 5,
+        "probe_count": 6,
+        "next_token_match_rate": 0.8333333333333334,
+        "overall_logit_rmse": 0.09850996732711792,
+        "overall_logit_max_abs_error": 0.9777812957763672,
+        "per_probe": [
+          {
+            "prompt": "The capital of France is",
+            "baseline_next_token": " Paris",
+            "reconstructed_next_token": " Paris",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.04286498203873634,
+            "logit_max_abs_error": 0.19287514686584473,
+            "logit_cosine_similarity": 0.9999601244926453
+          },
+          {
+            "prompt": "In one sentence, explain why the sky appears blue.",
+            "baseline_next_token": " The",
+            "reconstructed_next_token": " The",
+            "next_token_match": true,
+            "top5_overlap": 4,
+            "logit_rmse": 0.11402714997529984,
+            "logit_max_abs_error": 0.5604157447814941,
+            "logit_cosine_similarity": 0.9995700120925903
+          },
+          {
+            "prompt": "def fibonacci(n):",
+            "baseline_next_token": " \n",
+            "reconstructed_next_token": " \n",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.04687125235795975,
+            "logit_max_abs_error": 0.2618086338043213,
+            "logit_cosine_similarity": 0.9999468326568604
+          },
+          {
+            "prompt": "The quick brown fox jumps over the",
+            "baseline_next_token": " lazy",
+            "reconstructed_next_token": " lazy",
+            "next_token_match": true,
+            "top5_overlap": 4,
+            "logit_rmse": 0.19809682667255402,
+            "logit_max_abs_error": 0.9777812957763672,
+            "logit_cosine_similarity": 0.9993452429771423
+          },
+          {
+            "prompt": "A small neural network can",
+            "baseline_next_token": " be",
+            "reconstructed_next_token": " be",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.030632857233285904,
+            "logit_max_abs_error": 0.18517780303955078,
+            "logit_cosine_similarity": 0.9999654293060303
+          },
+          {
+            "prompt": "Two plus two equals",
+            "baseline_next_token": " five",
+            "reconstructed_next_token": " ",
+            "next_token_match": false,
+            "top5_overlap": 5,
+            "logit_rmse": 0.031749989837408066,
+            "logit_max_abs_error": 0.15759515762329102,
+            "logit_cosine_similarity": 0.9999644160270691
+          }
+        ]
+      }
+    },
+    {
+      "latent_size": 32,
+      "storage": {
+        "original_weight_values": 802816,
+        "original_weight_bytes": 1605632,
+        "compressed_values": 57344,
+        "compressed_bytes_assuming_bfloat16": 114688,
+        "compressed_to_original_ratio": 0.07142857142857142,
+        "compression_factor": 14.0,
+        "format": "latent_codes[896, latent] + decoder_weight[896, latent]",
+        "note": "Encoder parameters are excluded because they are training-only."
+      },
+      "training": {
+        "training_seconds": 0.22490792500320822,
+        "final_train_mse": 0.0007255256059579551,
+        "compressed_values": 57344,
+        "encoder_training_only_values": 28672
+      },
+      "numerical": {
+        "mse": 0.0007756940321996808,
+        "mae": 0.02031565271317959,
+        "max_abs_error": 0.458984375,
+        "relative_frobenius_error": 0.5200183987617493,
+        "cosine_similarity": 0.8541858196258545
+      },
+      "functional": {
+        "next_token_match_count": 5,
+        "probe_count": 6,
+        "next_token_match_rate": 0.8333333333333334,
+        "overall_logit_rmse": 0.11058884859085083,
+        "overall_logit_max_abs_error": 0.9220914840698242,
+        "per_probe": [
+          {
+            "prompt": "The capital of France is",
+            "baseline_next_token": " Paris",
+            "reconstructed_next_token": " Paris",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.02942800149321556,
+            "logit_max_abs_error": 0.1338825225830078,
+            "logit_cosine_similarity": 0.9999794960021973
+          },
+          {
+            "prompt": "In one sentence, explain why the sky appears blue.",
+            "baseline_next_token": " The",
+            "reconstructed_next_token": " The",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.17977897822856903,
+            "logit_max_abs_error": 0.8934177160263062,
+            "logit_cosine_similarity": 0.9988836646080017
+          },
+          {
+            "prompt": "def fibonacci(n):",
+            "baseline_next_token": " \n",
+            "reconstructed_next_token": " \n",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.03308779001235962,
+            "logit_max_abs_error": 0.16749167442321777,
+            "logit_cosine_similarity": 0.9999638795852661
+          },
+          {
+            "prompt": "The quick brown fox jumps over the",
+            "baseline_next_token": " lazy",
+            "reconstructed_next_token": " lazy",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.19127197563648224,
+            "logit_max_abs_error": 0.9220914840698242,
+            "logit_cosine_similarity": 0.9993915557861328
+          },
+          {
+            "prompt": "A small neural network can",
+            "baseline_next_token": " be",
+            "reconstructed_next_token": " be",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.022698570042848587,
+            "logit_max_abs_error": 0.11404705047607422,
+            "logit_cosine_similarity": 0.9999832510948181
+          },
+          {
+            "prompt": "Two plus two equals",
+            "baseline_next_token": " five",
+            "reconstructed_next_token": " ",
+            "next_token_match": false,
+            "top5_overlap": 5,
+            "logit_rmse": 0.044697560369968414,
+            "logit_max_abs_error": 0.2151050567626953,
+            "logit_cosine_similarity": 0.9999366402626038
+          }
+        ]
+      }
+    },
+    {
+      "latent_size": 64,
+      "storage": {
+        "original_weight_values": 802816,
+        "original_weight_bytes": 1605632,
+        "compressed_values": 114688,
+        "compressed_bytes_assuming_bfloat16": 229376,
+        "compressed_to_original_ratio": 0.14285714285714285,
+        "compression_factor": 7.0,
+        "format": "latent_codes[896, latent] + decoder_weight[896, latent]",
+        "note": "Encoder parameters are excluded because they are training-only."
+      },
+      "training": {
+        "training_seconds": 0.24407717199937906,
+        "final_train_mse": 0.0004942124942317605,
+        "compressed_values": 114688,
+        "encoder_training_only_values": 57344
+      },
+      "numerical": {
+        "mse": 0.0004657111130654812,
+        "mae": 0.016154823824763298,
+        "max_abs_error": 0.240234375,
+        "relative_frobenius_error": 0.402931809425354,
+        "cosine_similarity": 0.9152100086212158
+      },
+      "functional": {
+        "next_token_match_count": 5,
+        "probe_count": 6,
+        "next_token_match_rate": 0.8333333333333334,
+        "overall_logit_rmse": 0.06498721241950989,
+        "overall_logit_max_abs_error": 0.6637697219848633,
+        "per_probe": [
+          {
+            "prompt": "The capital of France is",
+            "baseline_next_token": " Paris",
+            "reconstructed_next_token": " Paris",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.02800932712852955,
+            "logit_max_abs_error": 0.1278367042541504,
+            "logit_cosine_similarity": 0.9999814033508301
+          },
+          {
+            "prompt": "In one sentence, explain why the sky appears blue.",
+            "baseline_next_token": " The",
+            "reconstructed_next_token": " The",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.06448040902614594,
+            "logit_max_abs_error": 0.3359658718109131,
+            "logit_cosine_similarity": 0.9998582005500793
+          },
+          {
+            "prompt": "def fibonacci(n):",
+            "baseline_next_token": " \n",
+            "reconstructed_next_token": " \n",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.04202855005860329,
+            "logit_max_abs_error": 0.19943690299987793,
+            "logit_cosine_similarity": 0.9999460577964783
+          },
+          {
+            "prompt": "The quick brown fox jumps over the",
+            "baseline_next_token": " lazy",
+            "reconstructed_next_token": " lazy",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.1320875734090805,
+            "logit_max_abs_error": 0.6637697219848633,
+            "logit_cosine_similarity": 0.9997137784957886
+          },
+          {
+            "prompt": "A small neural network can",
+            "baseline_next_token": " be",
+            "reconstructed_next_token": " be",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.01665143482387066,
+            "logit_max_abs_error": 0.08295059204101562,
+            "logit_cosine_similarity": 0.9999899864196777
+          },
+          {
+            "prompt": "Two plus two equals",
+            "baseline_next_token": " five",
+            "reconstructed_next_token": " ",
+            "next_token_match": false,
+            "top5_overlap": 5,
+            "logit_rmse": 0.030116120353341103,
+            "logit_max_abs_error": 0.16411256790161133,
+            "logit_cosine_similarity": 0.9999678134918213
+          }
+        ]
+      }
+    },
+    {
+      "latent_size": 128,
+      "storage": {
+        "original_weight_values": 802816,
+        "original_weight_bytes": 1605632,
+        "compressed_values": 229376,
+        "compressed_bytes_assuming_bfloat16": 458752,
+        "compressed_to_original_ratio": 0.2857142857142857,
+        "compression_factor": 3.5,
+        "format": "latent_codes[896, latent] + decoder_weight[896, latent]",
+        "note": "Encoder parameters are excluded because they are training-only."
+      },
+      "training": {
+        "training_seconds": 0.29425809100212064,
+        "final_train_mse": 0.00023388372210320085,
+        "compressed_values": 229376,
+        "encoder_training_only_values": 114688
+      },
+      "numerical": {
+        "mse": 0.00023982973652891815,
+        "mae": 0.011894102208316326,
+        "max_abs_error": 0.1376953125,
+        "relative_frobenius_error": 0.2891456186771393,
+        "cosine_similarity": 0.9572563767433167
+      },
+      "functional": {
+        "next_token_match_count": 6,
+        "probe_count": 6,
+        "next_token_match_rate": 1.0,
+        "overall_logit_rmse": 0.05323203280568123,
+        "overall_logit_max_abs_error": 0.48274803161621094,
+        "per_probe": [
+          {
+            "prompt": "The capital of France is",
+            "baseline_next_token": " Paris",
+            "reconstructed_next_token": " Paris",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.02151026949286461,
+            "logit_max_abs_error": 0.0977330207824707,
+            "logit_cosine_similarity": 0.9999895095825195
+          },
+          {
+            "prompt": "In one sentence, explain why the sky appears blue.",
+            "baseline_next_token": " The",
+            "reconstructed_next_token": " The",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.06773842126131058,
+            "logit_max_abs_error": 0.34317922592163086,
+            "logit_cosine_similarity": 0.9998419880867004
+          },
+          {
+            "prompt": "def fibonacci(n):",
+            "baseline_next_token": " \n",
+            "reconstructed_next_token": " \n",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.020112132653594017,
+            "logit_max_abs_error": 0.10565948486328125,
+            "logit_cosine_similarity": 0.9999889135360718
+          },
+          {
+            "prompt": "The quick brown fox jumps over the",
+            "baseline_next_token": " lazy",
+            "reconstructed_next_token": " lazy",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.10197146236896515,
+            "logit_max_abs_error": 0.48274803161621094,
+            "logit_cosine_similarity": 0.9998382329940796
+          },
+          {
+            "prompt": "A small neural network can",
+            "baseline_next_token": " be",
+            "reconstructed_next_token": " be",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.011019970290362835,
+            "logit_max_abs_error": 0.0513768196105957,
+            "logit_cosine_similarity": 0.999996542930603
+          },
+          {
+            "prompt": "Two plus two equals",
+            "baseline_next_token": " five",
+            "reconstructed_next_token": " five",
+            "next_token_match": true,
+            "top5_overlap": 5,
+            "logit_rmse": 0.032040465623140335,
+            "logit_max_abs_error": 0.13039004802703857,
+            "logit_cosine_similarity": 0.9999726414680481
+          }
+        ]
+      }
+    }
+  ],
+  "interpretation": "Use numerical error, compression factor, next-token match rate, and logit RMSE together. A promising next rotation/alternate-coordinate experiment should improve the functional metrics at a fixed compressed-to-original storage ratio, not merely reduce matrix MSE."
+}
