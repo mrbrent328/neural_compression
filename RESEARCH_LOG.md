@@ -78,13 +78,29 @@ The recovered material confirms that the original project had at least two disti
 
 ### Coding compression
 
-The early work included direct neural byte-stream compression. One recovered implementation is a batch-aware online neural compressor using a byte vocabulary, finite context windows, learned next-byte probabilities, explicit conversion of negative log probabilities into estimated bit cost, GPU-oriented minibatching, and online gradient updates. The same historical code compares the neural estimate against conventional compressors including gzip and zstandard. This is a genuine information-theoretic compression branch, not merely a latent-size experiment.
+The early work included direct neural byte-stream compression. One recovered implementation is a synchronized online neural range compressor: the encoder and decoder initialize the same model state, predict the next byte from a fixed context, range-code the prediction, then both update the model from the observed/decoded byte. The implementation verifies exact reconstruction with SHA-256. fileciteturn26file0
 
 The important conceptual ingredients are:
 
-`observed stream → context → probability model → predicted symbol cost → adaptive update`
+`observed stream → context → probability model → predicted symbol cost → encode → shared model update`
 
-That branch forces explicit questions about predictability, bit cost, online adaptation, and what information is actually reusable.
+That branch forces explicit questions about predictability, bit cost, online adaptation, synchronization, and what information is actually reusable.
+
+### The forgotten synchronization insight
+
+The evolution of this code reveals something more important than the codec itself. The model does not need to be transmitted alongside the compressed data if **both sides can deterministically reconstruct the same evolving model state from the same history**. The compressed stream is therefore not merely carrying symbols; it is carrying information that drives two copies of a shared adaptive state machine along the same trajectory.
+
+This is a strong early precursor to the project's later notion of persistent state. The system effectively turns history into state:
+
+`shared initial state + observations → evolving internal state → next prediction`
+
+and the decoder reproduces that state trajectory because it receives the same observations through decoding.
+
+That should be treated as a foundational architectural idea, not merely an implementation trick. It is an early example of **persistent reusable structure emerging through sequential interaction rather than being re-sent from scratch**.
+
+The later versions are explicitly optimizations of the same algorithm rather than new compression methods: the PyTorch optimized version reduces redundant forward passes, replaces Adam with SGD for throughput, reuses a rolling context, and keeps encoder/decoder synchronization. fileciteturn26file1 The NumPy version removes framework overhead while preserving the same architecture and online-learning rule, and the Numba version compiles the hot path as an execution optimization rather than changing the compression method. fileciteturn26file4 fileciteturn26file2
+
+This is historically useful because it separates **research evolution** from **implementation evolution**. The core idea stayed stable while the machinery changed around it.
 
 ### Representation / model compression
 
@@ -92,7 +108,7 @@ The other branch attempted to retain useful behavior or structure of a larger sy
 
 The historical relationship is therefore better represented as:
 
-`raw-data coding → learned predictability → representation/latent compression → functional recovery → relational attention → latent geometry → observation invariance → persistent structure → relational structure`
+`raw-data coding → learned predictability → synchronized adaptive state → representation/latent compression → functional recovery → relational attention → latent geometry → observation invariance → persistent structure → relational structure`
 
 The coding branch should not be discarded as obsolete history. It is a concrete precursor to the current question because both branches ask what information is predictable, reusable, and worth preserving.
 
@@ -117,7 +133,7 @@ The goal is not to reproduce every historical file. The goal is to recover durab
 
 ## Foundational Historical Branch: E14B / test14b.py
 
-**E14B has now been explicitly archived in the repository as `ROCM-test/test14b.py`.** It should be treated as a foundational implementation, not merely an old script. The source converts tensors from a GGUF model into a tiled latent representation using a convolutional encoder, stores latent grids in a binary file, and records tensor-level metadata and byte offsets in a JSON index. The uploaded source is 173 lines and is preserved verbatim as the historical implementation. fileciteturn24file0
+**E14B has now been explicitly archived in the repository as `ROCM-test/test14b.py`.** It should be treated as a foundational implementation, not merely an old script. The source converts tensors from a GGUF model into a tiled latent representation using a convolutional encoder, stores latent grids in a binary file, and records tensor-level metadata and byte offsets in a JSON index. The uploaded source is preserved verbatim as the historical implementation. fileciteturn24file0
 
 The core pipeline is:
 
@@ -290,6 +306,8 @@ The ROCM-test dump is now explicitly part of the reconstruction process. Histori
 **Historical refinement:** The original compression objective had both a coding-compression branch and a representation-compression branch. The coding branch is an important precursor because it makes predictability, bit cost, online adaptation, and reusable information explicit.
 
 **Foundational refinement from E14B:** The recovered early implementation already represented a large model as addressable local latent units. Its most important legacy may therefore be architectural rather than its nominal compression ratio: local representation + persistent indexing is an early precursor to the later persistent-unit/relational approach. It also exposes the need to count decoder/model cost and validate functional preservation rather than treating latent-size reduction as sufficient.
+
+**Foundational refinement from the neural compressor evolution:** The original neural coding branch evolved from a straightforward synchronized online predictor/range coder into optimized, NumPy, and Numba implementations without changing the core algorithm. The durable idea is that **shared adaptive state can be reconstructed rather than transmitted**: identical initial state plus identical history produces identical model state at both encoder and decoder. This is an early concrete instance of persistent state serving as reusable structure. The later optimization work is implementation evolution, not a change in the research hypothesis. fileciteturn26file0 fileciteturn26file1 fileciteturn26file4 fileciteturn26file2
 
 **Current architectural direction:** Test whether local representations connected through a shared relational / interaction mechanism provide a better abstraction than treating observations as independent latent objects.
 
