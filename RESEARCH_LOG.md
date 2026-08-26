@@ -66,6 +66,32 @@ The deeper question was not simply whether a geometric statistic survives rotati
 
 This distinction should remain explicit in future experiments.
 
+#### 5a. Observation basis versus physical rotation
+
+A recent clarification separates two ideas that had been getting conflated in conversation.
+
+The newer “angle” or “rotation” concept is not primarily about physically rotating the observed object. A physical rotating spherical/disc-like light source can be a useful analogy, but its mechanical rotation is not itself the research variable.
+
+The intended analogy is instead a change in the **observation basis or observation state**. Different observation conditions can produce different apparent shapes or distributions from the same underlying generative system. In the physical color example, individual color conditions act as distinct observation states, while mixed colors represent combined observations. The source remains the same even though the observed manifestation changes.
+
+This suggests a sharper hypothesis:
+
+> **Changing the observation basis can change the observed form without changing the underlying system, and combining observations may expose relational information that is not explicit in any individual observation.**
+
+This should currently be treated as a hypothesis, not an established property of the system.
+
+The important distinction is therefore:
+
+`underlying system → observation condition / basis → observed representation`
+
+rather than assuming:
+
+`observed representation = underlying system`
+
+A useful future experiment should vary observation basis while holding the underlying system fixed, compare the resulting representations, and test whether a compact shared structure can explain both the individual observations and their mixtures.
+
+The recent physical light analogy is useful because each color condition produces a visibly different manifestation while the same source remains responsible for all of them. It is an intuition pump for observation-dependent representation, not evidence by itself for any particular neural mechanism.
+
 ### 6. What persists across observations?
 
 Traversal changes, viewpoint changes, local representations, shared interaction layers, and information-leak tests increasingly point toward relationships between observations as a central object of study.
@@ -139,9 +165,13 @@ Is the structure behaviorally meaningful?
         ↓
 Which parts are observation / coordinate artifacts?
         ↓
+What changes when the observation basis changes?
+        ↓
 What survives changes in viewpoint / traversal?
         ↓
 What relationships persist across observations?
+        ↓
+What information appears only through combinations of observations?
         ↓
 What is the minimum structure required?
 ```
@@ -162,11 +192,13 @@ The implementation language is secondary to the structure being tested. C#, C++,
 
 Do not silently turn a metaphor into a technical definition. Terminology used in conversation may be an approximate handle for a structural idea. When terminology is ambiguous, reconstruct the operation or relationship being described before correcting the vocabulary.
 
-Do not treat repeated experiments as automatically redundant. A superficially repeated experiment may be testing a different projection, viewpoint, traversal, representation, or invariant.
+Do not treat repeated experiments as automatically redundant. A superficially repeated experiment may be testing a different projection, viewpoint, traversal, representation, observation basis, or invariant.
 
 At the same time, do not repeat an experiment merely because it is familiar. Before rerunning something, identify what uncertainty the new version is intended to remove.
 
 Do not confuse a good reconstruction score with discovery of the underlying structure. Explicitly audit information pathways and ask whether the system could succeed without discovering the intended reusable structure.
+
+When using physical analogies, preserve the operational mapping. A physical object's mechanical rotation should not be substituted for the research concept if the intended variable is a change in observation basis, channel, or state. The analogy is useful only insofar as it preserves the relevant information relationship.
 
 ## Historical Reconstruction Status
 
@@ -179,6 +211,8 @@ The goal is not to reproduce every conversation. The goal is to preserve the sma
 **North star:** Find the smallest persistent relational structure capable of explaining multiple observations of the same underlying system.
 
 **Primary concern:** Distinguish structure belonging to the underlying system from structure belonging only to a particular observation, coordinate system, traversal, seed, or implementation.
+
+**Recent conceptual refinement:** Treat changes in observation basis/state as distinct from literal physical rotation. Test whether different observation states can yield different forms while sharing a compact underlying relational structure, and whether mixed observations reveal relational information unavailable to individual observations.
 
 **Current architectural direction:** Test whether local representations connected through a shared relational / interaction mechanism provide a better abstraction than treating observations as independent latent objects.
 
