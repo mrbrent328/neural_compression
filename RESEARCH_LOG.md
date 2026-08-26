@@ -78,6 +78,32 @@ The current hypothesis is that the useful compressed object may not be an isolat
 
 The target is not merely a compact encoding. The target is the **minimum reusable structure** that accounts for the observed family without being tied to any particular presentation.
 
+## Recent Evidence: E36–E37
+
+The latest work makes the persistent-structure question concrete rather than purely latent.
+
+### E36 — local observer / adaptive information memory
+
+E36 tests whether a moving observer can build useful persistent knowledge from only locally visible information, rather than being given the whole world. The memory can update existing chunks, create new chunks, and merge compatible chunks. The experiment explicitly compares persistent knowledge cost with raw observation cost and asks whether information topology can emerge from traversal rather than being imposed. fileciteturn11file13
+
+The later E36 relational version strengthens the information boundary: memory receives relative positions, local features, observer motion, and rotation changes, but not absolute world coordinates, world identifiers, or hidden geometry. It retains sparse relations between persistent local anchors and tests reuse across repeated traversal. fileciteturn11file16
+
+This is important because it moves the question from “what shape does a latent space have?” toward “can persistent structure emerge from observations without being handed the underlying coordinate system?”
+
+### E37 — Minimal Persistent Relational Structure
+
+E37 makes the current research question explicit and turns it into an interpretable, non-neural baseline. It separates simulator knowledge from observer input and asks whether structure learned on one traversal can explain a second traversal with a different starting phase or direction. It measures reconstruction, next-observation prediction, structure cost, reuse, ablations, and a relation-budget Pareto curve. fileciteturn11file2
+
+The experiment therefore gives us a concrete way to test the phrase **minimum persistent relational structure** rather than treating it as an architectural metaphor.
+
+### Current interpretation of E36 → E37
+
+E36 asks whether persistent structure can emerge from local observation.
+
+E37 asks whether that persistent structure is sufficient to explain changed observations, and how much relational structure is actually necessary.
+
+That progression is currently more important than the individual implementation details.
+
 ## Important Methodological Insight
 
 A recurring failure mode in the project has been mistaking experimental machinery for the research question.
@@ -156,7 +182,9 @@ The goal is not to reproduce every conversation. The goal is to preserve the sma
 
 **Current architectural direction:** Test whether local representations connected through a shared relational / interaction mechanism provide a better abstraction than treating observations as independent latent objects.
 
-**Highest-value next step:** Design experiments that directly test persistence and relational sufficiency across changed observations, rather than spending additional effort only validating the existing experimental pipeline.
+**Recent concrete baseline:** E37 MPRS explicitly tests persistent units plus sparse relations across changed traversals and measures the cost/error tradeoff. fileciteturn11file2
+
+**Highest-value next step:** Interpret the E37 result and its ablations before adding architectural complexity. In particular, determine whether relations provide explanatory power beyond persistent units alone, and identify the smallest tested structure that remains sufficient under changed observation.
 
 **Known danger:** Getting absorbed in the machinery of measurement and losing the original question.
 
