@@ -1,0 +1,2853 @@
+{
+  "experiment": "local_structure_adaptive_representation_v4",
+  "input": "/home/xetal/Desktop/largecalgarycorpus/news",
+  "chunk_size": 32000,
+  "region_size": 1024,
+  "train_fraction": 0.5,
+  "adaptive_budget": {
+    "total_slots": 32,
+    "min_slots": 1,
+    "max_slots": 8
+  },
+  "design": {
+    "fixed_boundaries": true,
+    "adaptive_dimension": "representation_count_per_region",
+    "purpose": "Test whether variable representation capacity should depend on local structural complexity."
+  },
+  "training": [
+    {
+      "index": 1,
+      "plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5277743891965826,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5465708599362701,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.4767328737677682,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.4810223977689484,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.555330392965466,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.48979286448010584,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.4835886415802825,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5096967339292648,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.4773233951423253,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5327749930013992,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.526691313329877,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.4681703754693628,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.4553881634806316,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5123023902446293,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5290698870739062,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5337955668149604,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5390487503631135,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5416628466060082,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.4791753095933553,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.47710694381820695,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5334895979367147,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.49005522382006367,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.49322721607832876,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5232485385958776,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5349873325439252,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5447482173200304,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5360616634736602,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.48418100875537734,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.4835138235137732,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5548111756962226,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.5415553031600456,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.522607421025475,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5120470503275611
+    },
+    {
+      "index": 2,
+      "plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5469691066626627,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.49804362460950796,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.550766587445912,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.5155935885833476,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.5240598479032039,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.47809874215717507,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5260752479850692,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5123753797355439,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.5388366343413892,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5095757089582271,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.36167067434213684,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.5323539412828142,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.50853933918726,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.42094814475905773,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5179572477247577,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.4736294712895215,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5579865869060316,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.4609588884683484,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5435802943131764,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.43941143466819044,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5112253158843874,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5194222100754339,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5043270994652322,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5334898139892499,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.4791098792431176,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.48572427455216005,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.4831875704562908,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.47891567659500434,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.47207007580444366,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5109861077050463,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.49765790428582496,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.5378268842016376,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5009804157369113
+    },
+    {
+      "index": 3,
+      "plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.534413907977231,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5341236500845868,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.4982254741407749,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.4860187063366732,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.4849275836277593,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.5055258968485872,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5056143823928816,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.472154438532353,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.4899689697114721,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5349664961169567,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.4840817549556461,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.4775077427244167,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5137906097960815,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5412788726741731,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5373041392914127,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.545193708215717,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.540748344446689,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5502785791242406,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5309439525912898,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.4762158370043048,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5388696882491508,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5347450987671828,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5491199951510456,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5086597956741422,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5387899574386456,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.49342357588392993,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5374287294246256,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.5467773799081164,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5263599248868748,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5426102056093696,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.5146922207024085,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.5358983332711165,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5190830609862455
+    },
+    {
+      "index": 4,
+      "plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.47558666572168706,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5364938168758335,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.5033359814531053,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.5425579991377713,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.3758143841824638,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.5393262039517247,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5432875343107009,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5435626526191322,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.5585944780150173,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5492483733753226,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5116504443072246,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.496909075806587,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5224810258316596,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.532744566511371,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.495004764445504,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.4967066663055337,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.47485262518942306,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5406657259385789,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5042698688427145,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.5346533927364376,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5542355719140728,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5233748353046979,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5288570943654056,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.4723514996166268,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5307444413518345,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.4685945191480188,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5378458748963246,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.5236342503552839,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5312621590395175,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5252924629918744,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.4610440785478439,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.48458996148462535,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.513111656080435
+    },
+    {
+      "index": 5,
+      "plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5022147675417166,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.49969660602447236,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.4870697054231618,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.46887812845565924,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.4699801137832126,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.4966060837621699,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5293969471294429,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5329469178291464,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.534615738859079,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.48880561923982035,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5436212028202556,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.529970854701584,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5500250557705215,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5487904013524808,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5344156624058548,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5427879240341652,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5379373099262134,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5163781835371948,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5288116409970232,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.529720856185857,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5432800432475354,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.546821445444618,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5309707566904367,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5250467785023366,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5254958916377093,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5243412057437058,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5225156162610066,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.5371901901207708,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5235852096206847,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5356321476674327,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.4933621519959544,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.483872565462161,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5207744913179182
+    },
+    {
+      "index": 6,
+      "plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5424217133160071,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5177653272870989,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.5211848898761178,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.5308935021461081,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.5235154128707171,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.49313706224105924,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.551162541639507,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5460554071848935,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.5122474612575376,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5614498089056799,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.53370241779093,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.49102430854115503,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.43396657089651947,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5301961845157389,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.4735572749918914,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.48779438385490304,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.505761153766115,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5324491414412317,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5381753996281322,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.48203006538472304,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5286897446200811,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5376199736163954,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5293964953496696,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5175510462299717,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.4750252089342383,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.49845672814030717,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5387159112105977,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.47138357908986356,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5234671147362734,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5053514242782638,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.48033612952549753,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.6082812751736243,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5163363955762765
+    }
+  ],
+  "test": [
+    {
+      "index": 1,
+      "size": 32000,
+      "adaptive_plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5138713719623901,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5404686036064242,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.48492760858883804,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.527154334547122,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.5397534019026453,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.5257806971296498,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5293978801264294,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5321746927196006,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.536792416734403,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5253009489204469,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5516964934648073,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.4918735417208494,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5341516860195904,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5351636053293063,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.47025125237762916,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5301066136072787,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5089644167355185,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.525878582561412,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.4654541681904866,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.46354953971938817,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5214815666963011,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5159941524552895,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.47051215601376983,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5339053768604517,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5145168876032611,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5199925990943772,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5199669606128734,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.5314896503728125,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5357134786376248,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.541857065520265,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.5399717868418876,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.5125834188080626,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5184592798587873
+    },
+    {
+      "index": 2,
+      "size": 32000,
+      "adaptive_plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5278105514963484,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.49444052873271976,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.4088975629624729,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.5323560862173692,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.49537918901662314,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.5513723110939772,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5327445659395194,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5182485789699071,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.535347155681329,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5003096253590696,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5000841054035337,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.5392039701963129,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.44671224960279204,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5216795541710131,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5287085610489588,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5112772101811484,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5353735516906352,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5434723635883995,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5250782572017365,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.47636579114887534,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5314242948712211,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5425572870929029,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5306914493756005,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5463574128021983,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5483476121804792,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5444242732067566,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5307718083164363,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.5621099360330672,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5445072626310012,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.48390219836874043,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.5507483330721549,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.5079695075505962,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5202710357876218
+    },
+    {
+      "index": 3,
+      "size": 32000,
+      "adaptive_plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5078716852479245,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5354636912779072,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.5360760307335504,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.506157465102232,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.5154514651140241,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.49780706923051365,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5364365474007146,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.48654219337466886,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.5517110478562753,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.46913984580577717,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5323564599685636,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.4777248349828018,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5346096727875793,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.47621780393528934,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5343479295451643,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5385139047933201,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5008013170925165,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5355841752264369,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5332395610279876,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.5438663582595742,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5125740289907752,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5311775178300091,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.4917454461800264,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5270650212690249,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5446677549932887,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5177354669837121,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5355852375374148,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.4858861721470877,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5087718910539347,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5483407177063038,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.500539065577351,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.5442810939291548,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5186965147800283
+    },
+    {
+      "index": 4,
+      "size": 32000,
+      "adaptive_plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5008642537454567,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5277647390013298,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.5292007497652447,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.5398257481341266,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.4668690373766272,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.47800756885679474,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5323362366693767,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.500894857806654,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.515895261970801,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5343637721325384,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5301861283737176,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.5074242825895938,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5121845798835913,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.530153630152902,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.541503426598966,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5229385430593901,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5508626295353197,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5344623775991261,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5076666625436725,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.5334202376230998,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5318859654098557,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5256429738203036,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.48997439850255736,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.4747188615246686,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.5263373496311129,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5063224393375161,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.4886404533037841,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.4808331913064153,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.47456943554219855,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.48860919974079825,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.4728637308189,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.4970784306377455,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5110719110310683
+    },
+    {
+      "index": 5,
+      "size": 32000,
+      "adaptive_plan": {
+        "regions": 32,
+        "total_slots": 32,
+        "mean_slots": 1.0,
+        "min_slots": 1,
+        "max_slots": 1,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.48201163289314386,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.4631533373412639,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.4805394257604952,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.47046229344581303,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.4974207199955593,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.48981536183964053,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.49214271891976935,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.532776210768188,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.5142007733284124,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.5436729608679362,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5363627245556388,
+            "slots": 1
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.5134338657016797,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5317609483481611,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5507593300208737,
+            "slots": 1
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5307265883062678,
+            "slots": 1
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5355219757049735,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5438050289115348,
+            "slots": 1
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5372526852159701,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.5432326707863002,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.47016349431583204,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.45743740822473083,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.5579292901327814,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.48254001765972454,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.48638242716361557,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 1024,
+            "complexity": 0.54520885249147,
+            "slots": 1
+          },
+          {
+            "region_index": 25,
+            "bytes": 1024,
+            "complexity": 0.5460211288480844,
+            "slots": 1
+          },
+          {
+            "region_index": 26,
+            "bytes": 1024,
+            "complexity": 0.5180246541627083,
+            "slots": 1
+          },
+          {
+            "region_index": 27,
+            "bytes": 1024,
+            "complexity": 0.5366817706844661,
+            "slots": 1
+          },
+          {
+            "region_index": 28,
+            "bytes": 1024,
+            "complexity": 0.5262426934130966,
+            "slots": 1
+          },
+          {
+            "region_index": 29,
+            "bytes": 1024,
+            "complexity": 0.5403061702734846,
+            "slots": 1
+          },
+          {
+            "region_index": 30,
+            "bytes": 1024,
+            "complexity": 0.5170443859083934,
+            "slots": 1
+          },
+          {
+            "region_index": 31,
+            "bytes": 256,
+            "complexity": 0.5703213242587846,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5169798396952748
+    },
+    {
+      "index": 6,
+      "size": 25109,
+      "adaptive_plan": {
+        "regions": 25,
+        "total_slots": 32,
+        "mean_slots": 1.28,
+        "min_slots": 1,
+        "max_slots": 2,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          2,
+          2,
+          2,
+          1,
+          1,
+          1,
+          2,
+          1,
+          1,
+          2,
+          2,
+          1,
+          2,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.5249026355738751,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.5383133898583284,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.542633199711632,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.542171897379489,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.5522004298169947,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.5460737715460776,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.5468677367204895,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.5302869553432925,
+            "slots": 1
+          },
+          {
+            "region_index": 8,
+            "bytes": 1024,
+            "complexity": 0.5157953134036561,
+            "slots": 1
+          },
+          {
+            "region_index": 9,
+            "bytes": 1024,
+            "complexity": 0.512802861853053,
+            "slots": 1
+          },
+          {
+            "region_index": 10,
+            "bytes": 1024,
+            "complexity": 0.5447684837497022,
+            "slots": 2
+          },
+          {
+            "region_index": 11,
+            "bytes": 1024,
+            "complexity": 0.5322601851739966,
+            "slots": 1
+          },
+          {
+            "region_index": 12,
+            "bytes": 1024,
+            "complexity": 0.5378262269882195,
+            "slots": 1
+          },
+          {
+            "region_index": 13,
+            "bytes": 1024,
+            "complexity": 0.5476316334416569,
+            "slots": 2
+          },
+          {
+            "region_index": 14,
+            "bytes": 1024,
+            "complexity": 0.5552332317255135,
+            "slots": 2
+          },
+          {
+            "region_index": 15,
+            "bytes": 1024,
+            "complexity": 0.5047433343081789,
+            "slots": 1
+          },
+          {
+            "region_index": 16,
+            "bytes": 1024,
+            "complexity": 0.5462930589963843,
+            "slots": 2
+          },
+          {
+            "region_index": 17,
+            "bytes": 1024,
+            "complexity": 0.5379199957529284,
+            "slots": 1
+          },
+          {
+            "region_index": 18,
+            "bytes": 1024,
+            "complexity": 0.530280112793532,
+            "slots": 1
+          },
+          {
+            "region_index": 19,
+            "bytes": 1024,
+            "complexity": 0.5343806595564309,
+            "slots": 1
+          },
+          {
+            "region_index": 20,
+            "bytes": 1024,
+            "complexity": 0.5334675215708118,
+            "slots": 1
+          },
+          {
+            "region_index": 21,
+            "bytes": 1024,
+            "complexity": 0.4695169618205384,
+            "slots": 1
+          },
+          {
+            "region_index": 22,
+            "bytes": 1024,
+            "complexity": 0.5001641265487698,
+            "slots": 1
+          },
+          {
+            "region_index": 23,
+            "bytes": 1024,
+            "complexity": 0.5432423506058198,
+            "slots": 1
+          },
+          {
+            "region_index": 24,
+            "bytes": 533,
+            "complexity": 0.41193014681706763,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.5318992052204143
+    }
+  ],
+  "diagnostics": {
+    "mean_slots_per_region": 1.037837837837838,
+    "slot_histogram": {
+      "1": 178,
+      "2": 7
+    }
+  }
+}

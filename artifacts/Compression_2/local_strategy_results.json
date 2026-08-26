@@ -1,0 +1,803 @@
+{
+  "experiment": "local_structure_strategy_selection_v2_knn",
+  "input": "/home/xetal/Desktop/largecalgarycorpus/news",
+  "raw_test_bytes": 185109,
+  "chunk_size": 32000,
+  "train_fraction": 0.5,
+  "candidates": [
+    {
+      "name": "small",
+      "context": 8,
+      "embed": 32,
+      "hidden": 64,
+      "states": 1
+    },
+    {
+      "name": "baseline",
+      "context": 16,
+      "embed": 32,
+      "hidden": 64,
+      "states": 1
+    },
+    {
+      "name": "large",
+      "context": 10,
+      "embed": 48,
+      "hidden": 300,
+      "states": 3
+    }
+  ],
+  "training_chunks": 6,
+  "test_chunks": 6,
+  "knn": {
+    "k": 5,
+    "continuous_features": [
+      "entropy",
+      "repetition",
+      "unique_fraction"
+    ],
+    "selector_accuracy": 0.5,
+    "matched_oracle": 3,
+    "test_count": 6,
+    "total_regret_bytes": 180,
+    "average_regret_bytes": 30.0
+  },
+  "test_totals": {
+    "fixed_bytes": 114775,
+    "learner_bytes": 103301,
+    "oracle_bytes": 103121,
+    "fixed_reduction": 37.995991550924046,
+    "learner_reduction": 44.19450161796563,
+    "oracle_reduction": 44.2917416225035
+  },
+  "learner_choices": [
+    "small",
+    "small",
+    "small",
+    "small",
+    "small",
+    "small"
+  ],
+  "training": [
+    {
+      "index": 1,
+      "size": 32000,
+      "entropy": 5.073187397240402,
+      "repetition": 0.053814181693177914,
+      "unique_fraction": 0.37109375,
+      "signature": [
+        5.1,
+        0.05,
+        0.37
+      ],
+      "candidates": [
+        {
+          "candidate": "small",
+          "compressed_bytes": 17820,
+          "elapsed": 12.674418687820435,
+          "success": true
+        },
+        {
+          "candidate": "baseline",
+          "compressed_bytes": 19602,
+          "elapsed": 12.269504070281982,
+          "success": true
+        },
+        {
+          "candidate": "large",
+          "compressed_bytes": 17889,
+          "elapsed": 17.716858386993408,
+          "success": true
+        }
+      ],
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17820,
+        "elapsed": 12.674418687820435,
+        "success": true
+      }
+    },
+    {
+      "index": 2,
+      "size": 32000,
+      "entropy": 4.96156503911824,
+      "repetition": 0.08725272664770774,
+      "unique_fraction": 0.37890625,
+      "signature": [
+        5.0,
+        0.09,
+        0.38
+      ],
+      "candidates": [
+        {
+          "candidate": "small",
+          "compressed_bytes": 17353,
+          "elapsed": 11.911175966262817,
+          "success": true
+        },
+        {
+          "candidate": "baseline",
+          "compressed_bytes": 19126,
+          "elapsed": 12.219568967819214,
+          "success": true
+        },
+        {
+          "candidate": "large",
+          "compressed_bytes": 17750,
+          "elapsed": 17.7497615814209,
+          "success": true
+        }
+      ],
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17353,
+        "elapsed": 11.911175966262817,
+        "success": true
+      }
+    },
+    {
+      "index": 3,
+      "size": 32000,
+      "entropy": 5.126917478074668,
+      "repetition": 0.0608769024032001,
+      "unique_fraction": 0.37109375,
+      "signature": [
+        5.1,
+        0.06,
+        0.37
+      ],
+      "candidates": [
+        {
+          "candidate": "small",
+          "compressed_bytes": 18050,
+          "elapsed": 11.909327030181885,
+          "success": true
+        },
+        {
+          "candidate": "baseline",
+          "compressed_bytes": 20007,
+          "elapsed": 12.145962715148926,
+          "success": true
+        },
+        {
+          "candidate": "large",
+          "compressed_bytes": 18449,
+          "elapsed": 17.302029132843018,
+          "success": true
+        }
+      ],
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 18050,
+        "elapsed": 11.909327030181885,
+        "success": true
+      }
+    },
+    {
+      "index": 4,
+      "size": 32000,
+      "entropy": 5.159933343806116,
+      "repetition": 0.06915841120035002,
+      "unique_fraction": 0.37890625,
+      "signature": [
+        5.2,
+        0.07,
+        0.38
+      ],
+      "candidates": [
+        {
+          "candidate": "small",
+          "compressed_bytes": 17902,
+          "elapsed": 11.89284873008728,
+          "success": true
+        },
+        {
+          "candidate": "baseline",
+          "compressed_bytes": 19867,
+          "elapsed": 12.109861612319946,
+          "success": true
+        },
+        {
+          "candidate": "large",
+          "compressed_bytes": 18175,
+          "elapsed": 17.520397663116455,
+          "success": true
+        }
+      ],
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17902,
+        "elapsed": 11.89284873008728,
+        "success": true
+      }
+    },
+    {
+      "index": 5,
+      "size": 32000,
+      "entropy": 5.303816881225318,
+      "repetition": 0.048657770555329855,
+      "unique_fraction": 0.375,
+      "signature": [
+        5.3,
+        0.05,
+        0.38
+      ],
+      "candidates": [
+        {
+          "candidate": "small",
+          "compressed_bytes": 18094,
+          "elapsed": 11.761711597442627,
+          "success": true
+        },
+        {
+          "candidate": "baseline",
+          "compressed_bytes": 20361,
+          "elapsed": 12.096464157104492,
+          "success": true
+        },
+        {
+          "candidate": "large",
+          "compressed_bytes": 18143,
+          "elapsed": 17.518263578414917,
+          "success": true
+        }
+      ],
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 18094,
+        "elapsed": 11.761711597442627,
+        "success": true
+      }
+    },
+    {
+      "index": 6,
+      "size": 32000,
+      "entropy": 5.194470511528408,
+      "repetition": 0.05250164067627113,
+      "unique_fraction": 0.36328125,
+      "signature": [
+        5.2,
+        0.05,
+        0.36
+      ],
+      "candidates": [
+        {
+          "candidate": "small",
+          "compressed_bytes": 17551,
+          "elapsed": 11.904762744903564,
+          "success": true
+        },
+        {
+          "candidate": "baseline",
+          "compressed_bytes": 19477,
+          "elapsed": 12.026358366012573,
+          "success": true
+        },
+        {
+          "candidate": "large",
+          "compressed_bytes": 17662,
+          "elapsed": 17.585508108139038,
+          "success": true
+        }
+      ],
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17551,
+        "elapsed": 11.904762744903564,
+        "success": true
+      }
+    }
+  ],
+  "test": [
+    {
+      "index": 1,
+      "size": 32000,
+      "entropy": 5.162297997763892,
+      "repetition": 0.05375167973999188,
+      "unique_fraction": 0.37109375,
+      "signature": [
+        5.2,
+        0.05,
+        0.37
+      ],
+      "fixed": {
+        "candidate": "baseline",
+        "compressed_bytes": 19940,
+        "elapsed": 12.206332921981812,
+        "success": true
+      },
+      "learner": {
+        "candidate": "small",
+        "compressed_bytes": 17991,
+        "elapsed": 11.880233526229858,
+        "success": true
+      },
+      "oracle": {
+        "candidate": "large",
+        "compressed_bytes": 17971,
+        "elapsed": 17.764780282974243,
+        "success": true
+      },
+      "learned_strategy": "small",
+      "matched_oracle": false,
+      "regret_bytes": 20,
+      "knn_neighbors": [
+        {
+          "distance": 0.008386171882087465,
+          "strategy": "small",
+          "index": 3,
+          "signature": [
+            5.1,
+            0.06,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.008875287752571898,
+          "strategy": "small",
+          "index": 6,
+          "signature": [
+            5.2,
+            0.05,
+            0.36
+          ]
+        },
+        {
+          "distance": 0.011139000418912878,
+          "strategy": "small",
+          "index": 1,
+          "signature": [
+            5.1,
+            0.05,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.01727686022138867,
+          "strategy": "small",
+          "index": 4,
+          "signature": [
+            5.2,
+            0.07,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.018818551006167316,
+          "strategy": "small",
+          "index": 5,
+          "signature": [
+            5.3,
+            0.05,
+            0.38
+          ]
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "size": 32000,
+      "entropy": 5.200153629399232,
+      "repetition": 0.08050251570361573,
+      "unique_fraction": 0.37890625,
+      "signature": [
+        5.2,
+        0.08,
+        0.38
+      ],
+      "fixed": {
+        "candidate": "baseline",
+        "compressed_bytes": 19839,
+        "elapsed": 12.189898014068604,
+        "success": true
+      },
+      "learner": {
+        "candidate": "small",
+        "compressed_bytes": 17800,
+        "elapsed": 11.925516366958618,
+        "success": true
+      },
+      "oracle": {
+        "candidate": "large",
+        "compressed_bytes": 17716,
+        "elapsed": 17.524370431900024,
+        "success": true
+      },
+      "learned_strategy": "small",
+      "matched_oracle": false,
+      "regret_bytes": 84,
+      "knn_neighbors": [
+        {
+          "distance": 0.012408256210569457,
+          "strategy": "small",
+          "index": 4,
+          "signature": [
+            5.2,
+            0.07,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.023021838984820242,
+          "strategy": "small",
+          "index": 3,
+          "signature": [
+            5.1,
+            0.06,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.030577947954473158,
+          "strategy": "small",
+          "index": 2,
+          "signature": [
+            5.0,
+            0.09,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.03201849395583308,
+          "strategy": "small",
+          "index": 1,
+          "signature": [
+            5.1,
+            0.05,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.0320732642690284,
+          "strategy": "small",
+          "index": 6,
+          "signature": [
+            5.2,
+            0.05,
+            0.36
+          ]
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "size": 32000,
+      "entropy": 5.148631699952113,
+      "repetition": 0.05956436138629332,
+      "unique_fraction": 0.37109375,
+      "signature": [
+        5.1,
+        0.06,
+        0.37
+      ],
+      "fixed": {
+        "candidate": "baseline",
+        "compressed_bytes": 19608,
+        "elapsed": 12.48783540725708,
+        "success": true
+      },
+      "learner": {
+        "candidate": "small",
+        "compressed_bytes": 17893,
+        "elapsed": 12.082223892211914,
+        "success": true
+      },
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17893,
+        "elapsed": 12.082223892211914,
+        "success": true
+      },
+      "learned_strategy": "small",
+      "matched_oracle": true,
+      "regret_bytes": 0,
+      "knn_neighbors": [
+        {
+          "distance": 0.0030149738874567455,
+          "strategy": "small",
+          "index": 3,
+          "signature": [
+            5.1,
+            0.06,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.011045343382405362,
+          "strategy": "small",
+          "index": 1,
+          "signature": [
+            5.1,
+            0.05,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.011989511152790455,
+          "strategy": "small",
+          "index": 6,
+          "signature": [
+            5.2,
+            0.05,
+            0.36
+          ]
+        },
+        {
+          "distance": 0.012452978955365207,
+          "strategy": "small",
+          "index": 4,
+          "signature": [
+            5.2,
+            0.07,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.022594261333860114,
+          "strategy": "small",
+          "index": 5,
+          "signature": [
+            5.3,
+            0.05,
+            0.38
+          ]
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "size": 32000,
+      "entropy": 5.160837308876514,
+      "repetition": 0.06150192193506047,
+      "unique_fraction": 0.37890625,
+      "signature": [
+        5.2,
+        0.06,
+        0.38
+      ],
+      "fixed": {
+        "candidate": "baseline",
+        "compressed_bytes": 19407,
+        "elapsed": 12.191282033920288,
+        "success": true
+      },
+      "learner": {
+        "candidate": "small",
+        "compressed_bytes": 17170,
+        "elapsed": 11.929011106491089,
+        "success": true
+      },
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17170,
+        "elapsed": 11.929011106491089,
+        "success": true
+      },
+      "learned_strategy": "small",
+      "matched_oracle": true,
+      "regret_bytes": 0,
+      "knn_neighbors": [
+        {
+          "distance": 0.007657323023273337,
+          "strategy": "small",
+          "index": 4,
+          "signature": [
+            5.2,
+            0.07,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.008910848798830055,
+          "strategy": "small",
+          "index": 3,
+          "signature": [
+            5.1,
+            0.06,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.015497602340525734,
+          "strategy": "small",
+          "index": 1,
+          "signature": [
+            5.1,
+            0.05,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.018515414328257825,
+          "strategy": "small",
+          "index": 6,
+          "signature": [
+            5.2,
+            0.05,
+            0.36
+          ]
+        },
+        {
+          "distance": 0.02235297204359623,
+          "strategy": "small",
+          "index": 5,
+          "signature": [
+            5.3,
+            0.05,
+            0.38
+          ]
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "size": 32000,
+      "entropy": 5.195037479333438,
+      "repetition": 0.05437669927185224,
+      "unique_fraction": 0.37890625,
+      "signature": [
+        5.2,
+        0.05,
+        0.38
+      ],
+      "fixed": {
+        "candidate": "baseline",
+        "compressed_bytes": 19934,
+        "elapsed": 12.326762437820435,
+        "success": true
+      },
+      "learner": {
+        "candidate": "small",
+        "compressed_bytes": 17835,
+        "elapsed": 11.928848505020142,
+        "success": true
+      },
+      "oracle": {
+        "candidate": "small",
+        "compressed_bytes": 17835,
+        "elapsed": 11.928848505020142,
+        "success": true
+      },
+      "learned_strategy": "small",
+      "matched_oracle": true,
+      "regret_bytes": 0,
+      "knn_neighbors": [
+        {
+          "distance": 0.013258696190741832,
+          "strategy": "small",
+          "index": 3,
+          "signature": [
+            5.1,
+            0.06,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.015259584128965095,
+          "strategy": "small",
+          "index": 5,
+          "signature": [
+            5.3,
+            0.05,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.015419263932200297,
+          "strategy": "small",
+          "index": 4,
+          "signature": [
+            5.2,
+            0.07,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.015737264451995754,
+          "strategy": "small",
+          "index": 6,
+          "signature": [
+            5.2,
+            0.05,
+            0.36
+          ]
+        },
+        {
+          "distance": 0.017127255221833136,
+          "strategy": "small",
+          "index": 1,
+          "signature": [
+            5.1,
+            0.05,
+            0.37
+          ]
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "size": 25109,
+      "entropy": 5.310142509591481,
+      "repetition": 0.061653656205193565,
+      "unique_fraction": 0.37890625,
+      "signature": [
+        5.3,
+        0.06,
+        0.38
+      ],
+      "fixed": {
+        "candidate": "baseline",
+        "compressed_bytes": 16047,
+        "elapsed": 9.580957412719727,
+        "success": true
+      },
+      "learner": {
+        "candidate": "small",
+        "compressed_bytes": 14612,
+        "elapsed": 9.375189781188965,
+        "success": true
+      },
+      "oracle": {
+        "candidate": "large",
+        "compressed_bytes": 14536,
+        "elapsed": 13.827672958374023,
+        "success": true
+      },
+      "learned_strategy": "small",
+      "matched_oracle": false,
+      "regret_bytes": 76,
+      "knn_neighbors": [
+        {
+          "distance": 0.013593272048485138,
+          "strategy": "small",
+          "index": 5,
+          "signature": [
+            5.3,
+            0.05,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.02022041037553554,
+          "strategy": "small",
+          "index": 4,
+          "signature": [
+            5.2,
+            0.07,
+            0.38
+          ]
+        },
+        {
+          "distance": 0.023172455356308925,
+          "strategy": "small",
+          "index": 6,
+          "signature": [
+            5.2,
+            0.05,
+            0.36
+          ]
+        },
+        {
+          "distance": 0.02421139851274459,
+          "strategy": "small",
+          "index": 3,
+          "signature": [
+            5.1,
+            0.06,
+            0.37
+          ]
+        },
+        {
+          "distance": 0.03161962561776385,
+          "strategy": "small",
+          "index": 1,
+          "signature": [
+            5.1,
+            0.05,
+            0.37
+          ]
+        }
+      ]
+    }
+  ]
+}

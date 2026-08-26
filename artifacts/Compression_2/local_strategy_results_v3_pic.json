@@ -1,0 +1,4525 @@
+{
+  "experiment": "local_structure_adaptive_representation_v4",
+  "input": "/home/xetal/Desktop/largecalgarycorpus/pic",
+  "chunk_size": 8192,
+  "region_size": 1024,
+  "train_fraction": 0.5,
+  "adaptive_budget": {
+    "total_slots": 32,
+    "min_slots": 1,
+    "max_slots": 8
+  },
+  "design": {
+    "fixed_boundaries": true,
+    "adaptive_dimension": "representation_count_per_region",
+    "purpose": "Test whether variable representation capacity should depend on local structural complexity."
+  },
+  "training": [
+    {
+      "index": 1,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 3,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          3,
+          8,
+          3,
+          3,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.002493670143402389,
+            "slots": 8
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.0007700451018330019
+    },
+    {
+      "index": 2,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 4,
+        "max_slots": 4,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.00019550342130987292
+    },
+    {
+      "index": 3,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 3,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          8,
+          4,
+          4,
+          3,
+          3,
+          3,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.002493670143402389,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.0007700451018330019
+    },
+    {
+      "index": 4,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 3,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          8,
+          3,
+          3,
+          3,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.002493670143402389,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.0007700451018330019
+    },
+    {
+      "index": 5,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 4,
+        "max_slots": 4,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.00019550342130987292
+    },
+    {
+      "index": 6,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 4,
+        "max_slots": 4,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.00019550342130987292
+    },
+    {
+      "index": 7,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          4,
+          8,
+          8,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.018547928864198832,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.1591651564315287,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2889577089894863,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.36452922985858116,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.322933316053313,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.2645986595020402
+    },
+    {
+      "index": 8,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          6,
+          2,
+          1,
+          1,
+          5,
+          6,
+          7,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.25497258009394996,
+            "slots": 6
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.13720676110449026,
+            "slots": 2
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.03769077528075359,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0968723464844699,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.2170234674429735,
+            "slots": 5
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2410965713246236,
+            "slots": 6
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.27487557922504197,
+            "slots": 7
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.19161771310237216,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.22378464989641547
+    },
+    {
+      "index": 9,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          6,
+          7,
+          6,
+          8,
+          1,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.04890979100327154,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.09442604830433557,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.24498901793341443,
+            "slots": 6
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.2742711271848176,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.24167138703936467,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.28601009655475157,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.10435285133606426,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.10714948043884487,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.23718527325280536
+    },
+    {
+      "index": 10,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          5,
+          8,
+          7,
+          7,
+          2,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.14775643126762425,
+            "slots": 5
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.20343068829935496,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.1906147752520936,
+            "slots": 7
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.18787729416544005,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.09562714550978499,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.046987610050387096,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.018723615995361886,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.015622909733923529,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.16525814298296684
+    },
+    {
+      "index": 11,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 5,
+        "slot_distribution": [
+          5,
+          5,
+          4,
+          2,
+          4,
+          5,
+          3,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.006273047677983467,
+            "slots": 5
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.006273047677983467,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.006016018313125089,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.003930088562175308,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.006016018313125089,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.006273047677983467,
+            "slots": 5
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.004467579779795054,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.006273047677983467,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.005893092776575699
+    },
+    {
+      "index": 12,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          3,
+          4,
+          3,
+          2,
+          3,
+          4,
+          5,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.07424889202169119,
+            "slots": 3
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.09529641299410735,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.0814021770670032,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.05315413856134381,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.07384622104748048,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.08295585625686,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.10158966240791854,
+            "slots": 5
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.12925900290626968,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.09530717374452599
+    },
+    {
+      "index": 13,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 7,
+        "slot_distribution": [
+          7,
+          5,
+          5,
+          3,
+          4,
+          3,
+          3,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.1244984449724974,
+            "slots": 7
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.09936099777799741,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.10486301591375324,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.08394535201527147,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.09863262318471004,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.07462488903050221,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.07232671786733959,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.05894045136134829,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.09680348298334723
+    },
+    {
+      "index": 14,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          3,
+          3,
+          2,
+          2,
+          3,
+          3,
+          8,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.02851674671103888,
+            "slots": 3
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.026259180236103772,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.02343631204092948,
+            "slots": 2
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.02339990226795205,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.02689685581597775,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.025723856940776422,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.09518216032581063,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.19604649176619957,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.08580286138954797
+    },
+    {
+      "index": 15,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          6,
+          8,
+          2,
+          1,
+          2,
+          2,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.25587397997442357,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.23118724993271533,
+            "slots": 6
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.25441751927482303,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.1084382609069301,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.08076298514394474,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.10332977341903697,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.1269045395479893,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.13899514039853883,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.20764215773992933
+    },
+    {
+      "index": 16,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          3,
+          7,
+          8,
+          8,
+          3,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.15977952535217266,
+            "slots": 3
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.24511883566447812,
+            "slots": 7
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.28341687640443597,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.27813076883075577,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.14920873565846543,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.058679658656087735,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.03543185062264764,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.049365388577913956,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.22745795913817013
+    },
+    {
+      "index": 17,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          2,
+          5,
+          8,
+          8,
+          5,
+          2,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.0948060647698031,
+            "slots": 2
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.15470992151448656,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2158898388781669,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.23068861175376876,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.1664338865358163,
+            "slots": 5
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.08003205099101415,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.05277333255575624,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.07427808210532794,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.1767210716090537
+    },
+    {
+      "index": 18,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          2,
+          5,
+          8,
+          7,
+          6,
+          1,
+          1,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.12017320649443498,
+            "slots": 2
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.21506042079740473,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.27798991055313327,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.277267187452359,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.25601443431951726,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.0817699946082782,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.06964826442590626,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.13394613667249378,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.23236985162074214
+    },
+    {
+      "index": 19,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 6,
+        "slot_distribution": [
+          5,
+          6,
+          6,
+          1,
+          1,
+          2,
+          6,
+          5
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.22622517045765478,
+            "slots": 5
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.2679037352306659,
+            "slots": 6
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2705423209324231,
+            "slots": 6
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.1130862424097621,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.08863357799803284,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.12665603999859082,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.26638800320970074,
+            "slots": 6
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.2527722279285993,
+            "slots": 5
+          }
+        ]
+      },
+      "proxy_score": 0.2399694765179058
+    },
+    {
+      "index": 20,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          7,
+          4,
+          1,
+          1,
+          3,
+          6,
+          6,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.2704072056284457,
+            "slots": 7
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.2149440508769661,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.06453395715769851,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0904845187850419,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.1728172712147855,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.24813840093609166,
+            "slots": 6
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.2537548572201928,
+            "slots": 6
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.2182852099626786,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.2284561662900782
+    },
+    {
+      "index": 21,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          2,
+          1,
+          3,
+          6,
+          8,
+          8,
+          3,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.08497004338302674,
+            "slots": 2
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.05242042224840725,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.126050444670734,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.19183052283806998,
+            "slots": 6
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.24150880930588187,
+            "slots": 8
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2487845451699855,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.11345812623776949,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.03212819369642317,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.18894826213349228
+    },
+    {
+      "index": 22,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          1,
+          6,
+          7,
+          7,
+          6,
+          1,
+          1,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.0931082277651274,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.2278390199674148,
+            "slots": 6
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.24661301719648654,
+            "slots": 7
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.2455078795532758,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.21284500331842754,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.03609301959577231,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.07784858000182693,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.1576580139101649,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.21153044643926913
+    },
+    {
+      "index": 23,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          4,
+          7,
+          6,
+          3,
+          3,
+          1,
+          3,
+          5
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.298327664961366,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.4203156465574674,
+            "slots": 7
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.39227371591410987,
+            "slots": 6
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.2573433791685007,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.23109388198422243,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.14662388113069882,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.2580645718810723,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.35018770950452743,
+            "slots": 5
+          }
+        ]
+      },
+      "proxy_score": 0.3320697002808474
+    },
+    {
+      "index": 24,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          5,
+          3,
+          1,
+          4,
+          4,
+          4,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.3902419298005004,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.2845417030420307,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2231895041438512,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0909605131485647,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.23538982708199788,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2444787055439097,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.2331590980728999,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.2157868125580149,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.2751451231144859
+    },
+    {
+      "index": 25,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          3,
+          7,
+          8,
+          8,
+          3,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.04321633488144306,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.05829818539730692,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2111296009213996,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.36041164659121533,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.40049072321118884,
+            "slots": 8
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.38792354858968664,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.24077423576446869,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.04937795752778611,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.3230249902628016
+    },
+    {
+      "index": 26,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          1,
+          5,
+          7,
+          7,
+          5,
+          2,
+          1,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.13837334427946213,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.32280292967898305,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.37634985429007195,
+            "slots": 7
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.38086162108651955,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.3046335968506127,
+            "slots": 5
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.16126558733011145,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.1217544599584585,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.28605458200948947,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.31764188335063187
+    },
+    {
+      "index": 27,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          7,
+          6,
+          5,
+          2,
+          1,
+          1,
+          5,
+          5
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.4207313250555523,
+            "slots": 7
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.4013744004811242,
+            "slots": 6
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.37540850589629327,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.23604994912298538,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.10883725198737601,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.15522125218668242,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.3405366279108229,
+            "slots": 5
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.3532890107743606,
+            "slots": 5
+          }
+        ]
+      },
+      "proxy_score": 0.3573654626125945
+    },
+    {
+      "index": 28,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          8,
+          6,
+          1,
+          2,
+          2,
+          2,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.3467152590610899,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.2275225718653889,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.030931451264160144,
+            "slots": 6
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.006016018313125089,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.01768169608070317,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.0155465382642546,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.016288257468776393,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.02269130437710788,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.15476919593964714
+    },
+    {
+      "index": 29,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          2,
+          5,
+          6,
+          1,
+          1,
+          5,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.06943438451743275,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.053994937144208124,
+            "slots": 2
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.0861284178798376,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.08751262174009958,
+            "slots": 6
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.022833363476602246,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.029509125548723616,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.0854918368403054,
+            "slots": 5
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.10557785702027671,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.08330843004959372
+    },
+    {
+      "index": 30,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          3,
+          2,
+          1,
+          1,
+          7,
+          6,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.04471117063874474,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.03794670128771205,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.02965413843636728,
+            "slots": 2
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.015502104487398484,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.017803391906734196,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.060476304755254985,
+            "slots": 7
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.056417544187246274,
+            "slots": 6
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.06412146243868522,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.05187842680014771
+    },
+    {
+      "index": 31,
+      "plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          3,
+          5,
+          8,
+          8,
+          5
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.04365673923095172,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.04103826005290811,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.041167543845455436,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0661797565348922,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.09150402971290046,
+            "slots": 5
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.12273161965411386,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.1384846523894324,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.09971732993665881,
+            "slots": 5
+          }
+        ]
+      },
+      "proxy_score": 0.10531996210406744
+    }
+  ],
+  "test": [
+    {
+      "index": 1,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          5,
+          4,
+          3,
+          3,
+          7,
+          5,
+          4,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.06997419096029732,
+            "slots": 5
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.062239193783081403,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.0532851069469332,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.060003287062117786,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.09075167257138134,
+            "slots": 7
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.07245847562543073,
+            "slots": 5
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.06200807916123225,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.03146558640713884,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.0692420281606205
+    },
+    {
+      "index": 2,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          3,
+          3,
+          3,
+          3,
+          8,
+          8,
+          2,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.032393349248712226,
+            "slots": 3
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.03329133344025211,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.031535581723708954,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.030242713952747104,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.0894698234170621,
+            "slots": 8
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.07879910891671746,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.023556726398857863,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.021582802258909597,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.05683810784631352
+    },
+    {
+      "index": 3,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          3,
+          7,
+          8,
+          6,
+          2,
+          1,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.02230413114335292,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.04831106455835162,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.07713913954995932,
+            "slots": 7
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.08730173232401979,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.07074134212258182,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.03643340202884853,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.02701400642555631,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.0549373525255111,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.06717823229940843
+    },
+    {
+      "index": 4,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          6,
+          1,
+          2,
+          4,
+          4,
+          4,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.0710458050301946,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.05641114604596875,
+            "slots": 6
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.020557012186775473,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0248040250905516,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.045404265286414204,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.048873598021199956,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.04301600183036878,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.03622702836801227,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.051089216391913016
+    },
+    {
+      "index": 5,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 3,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          3,
+          3,
+          3,
+          4,
+          4,
+          3,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.025125492797121774,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.021682228556867113,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.019596070654529268,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.021093356333985402,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.02309509219021876,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.022757936368070587,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.019974052469163287,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.06103509890530236,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.03185100002211558
+    },
+    {
+      "index": 6,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          2,
+          5,
+          6,
+          7,
+          5,
+          1,
+          1,
+          5
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.117499491933687,
+            "slots": 2
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.22555426072175722,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2525499803337808,
+            "slots": 6
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.2695637198956704,
+            "slots": 7
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.24301818251362858,
+            "slots": 5
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.10318802816756924,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.0671793522156852,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.22621579450662674,
+            "slots": 5
+          }
+        ]
+      },
+      "proxy_score": 0.2275485460697834
+    },
+    {
+      "index": 7,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 6,
+        "slot_distribution": [
+          4,
+          5,
+          5,
+          1,
+          1,
+          4,
+          6,
+          6
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.22222337743097315,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.25801702419474953,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2361696297348642,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0839841169648122,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.10132235296254646,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.21271667503482763,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.2761029562853548,
+            "slots": 6
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.2591072316350234,
+            "slots": 6
+          }
+        ]
+      },
+      "proxy_score": 0.23772690865502813
+    },
+    {
+      "index": 8,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          4,
+          1,
+          2,
+          4,
+          4,
+          5,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.26853269898232895,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.13177210324400365,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.07369838051811446,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.08746082328837736,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.1354430358611538,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.15047919875347818,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.15760110389354604,
+            "slots": 5
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.13117849678025373,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.16813682740552463
+    },
+    {
+      "index": 9,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          5,
+          3,
+          2,
+          7,
+          4,
+          1,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.10560775716601581,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.06661590915108118,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.04465912255514354,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.04288890783272632,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.08160505717025687,
+            "slots": 7
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.057437512663328874,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.02933493300726329,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.032585218841875443,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.07166211274845448
+    },
+    {
+      "index": 10,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          1,
+          4,
+          8,
+          8,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.028685002757696018,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.04048285113651047,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.031964484892575036,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.032413591184428055,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.0865413522633314,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.14191153776251925,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.13605502915923476,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.17769612299602722,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.12890665182396202
+    },
+    {
+      "index": 11,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          8,
+          5,
+          2,
+          1,
+          1,
+          3,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.190856782550865,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.14859192480323402,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.08444458412735766,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.045012470031222995,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.041043691944744304,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.04218847503300493,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.07016286320498226,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.07733859557958951,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.11971602057634627
+    },
+    {
+      "index": 12,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          6,
+          2,
+          2,
+          2,
+          2,
+          4,
+          6,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.05982654792717921,
+            "slots": 6
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.02978418308707312,
+            "slots": 2
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.02905375730273085,
+            "slots": 2
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.02877564421449488,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.02536918648752522,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.04717219173529327,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.06132968127929656,
+            "slots": 6
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.06734951748363352,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.052512119507273254
+    },
+    {
+      "index": 13,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          5,
+          7,
+          5,
+          8,
+          4,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.07008174936643581,
+            "slots": 5
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.08851591829843626,
+            "slots": 7
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.07202707510867312,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.09934104773454884,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.05924651540575726,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.029703753880107743,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.026829195701630452,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.024354988516809575,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.07633618537695519
+    },
+    {
+      "index": 14,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 3,
+        "max_slots": 5,
+        "slot_distribution": [
+          4,
+          3,
+          5,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.024643634631056857,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.021453641680643787,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.0261779011180866,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.02323817486673782,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.021761673086896204,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.024823161327297807,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.025084402933397833,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.0220715742463454,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.023804403593727878
+    },
+    {
+      "index": 15,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          8,
+          8,
+          2,
+          2,
+          3,
+          2,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.03963580623836094,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.07071639525640715,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.0962438761051427,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.030058501180897635,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.02733662995448425,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.033751722679305665,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.031379448811050675,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.035129887791305554,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.05870060584845442
+    },
+    {
+      "index": 16,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          3,
+          3,
+          4,
+          3,
+          2,
+          3,
+          8,
+          6
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.031072850707157793,
+            "slots": 3
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.031606575967098406,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.033954802469175795,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.03108142072661521,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.0188545155326469,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.02876825734372233,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.05065773928214511,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.042154189582210455,
+            "slots": 6
+          }
+        ]
+      },
+      "proxy_score": 0.03747820646644381
+    },
+    {
+      "index": 17,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          2,
+          2,
+          3,
+          4,
+          3,
+          4,
+          6
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.054490574991112053,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.017658878676366004,
+            "slots": 2
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.02036523901912618,
+            "slots": 2
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.02310509602867849,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.03081204271759719,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.027734817346409146,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.03120650663780711,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.03865474843701329,
+            "slots": 6
+          }
+        ]
+      },
+      "proxy_score": 0.03576547698402627
+    },
+    {
+      "index": 18,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          4,
+          6,
+          8,
+          3,
+          2,
+          3,
+          3,
+          3
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.04357614995012053,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.05727466370039099,
+            "slots": 6
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.07014421794215604,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.04043673391419637,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.03314941117700825,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.036661580146858566,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.03979481659443004,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.03534177147337016,
+            "slots": 3
+          }
+        ]
+      },
+      "proxy_score": 0.05006593294627057
+    },
+    {
+      "index": 19,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          1,
+          2,
+          3,
+          8,
+          8,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.03422722703097496,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.041711693205655924,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.03784109253148896,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.059559287492722796,
+            "slots": 2
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.09486976414465696,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2612003766723367,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.21860137124989423,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.26055869920377095,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.201262233037361
+    },
+    {
+      "index": 20,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          3,
+          1,
+          1,
+          5,
+          8,
+          7,
+          6,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.18138591616942545,
+            "slots": 3
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.060280836118526145,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.08561024084521814,
+            "slots": 1
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.22042230854271333,
+            "slots": 5
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.29592704703644235,
+            "slots": 8
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2837297447700489,
+            "slots": 7
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.2550391912118931,
+            "slots": 6
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.07663825371484544,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.24226744871417727
+    },
+    {
+      "index": 21,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          3,
+          8,
+          8,
+          8,
+          1,
+          1,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.09891321378488892,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.17378821879029224,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.29848317578918077,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.3284591832262759,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.2895415028175631,
+            "slots": 8
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.10022746511490525,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.06635584207759543,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.11228813346728853,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.26072838559209377
+    },
+    {
+      "index": 22,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 7,
+        "slot_distribution": [
+          6,
+          5,
+          5,
+          4,
+          1,
+          1,
+          3,
+          7
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.2670386382035222,
+            "slots": 6
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.23412252441890782,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.24861624985801972,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.21536888514844954,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.05736412932827324,
+            "slots": 1
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.06952575506833111,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.18128401904115288,
+            "slots": 3
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.2940928378586969,
+            "slots": 7
+          }
+        ]
+      },
+      "proxy_score": 0.23771228274157843
+    },
+    {
+      "index": 23,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          8,
+          6,
+          4,
+          3,
+          1,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.2894870246064336,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.24776515340069633,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.09578030195398628,
+            "slots": 6
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.06986224577495023,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.060634322265324905,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.03603067409651665,
+            "slots": 1
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.02708404943928342,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.020624287499926522,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.16930594364726437
+    },
+    {
+      "index": 24,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          4,
+          8,
+          8,
+          6,
+          2,
+          2,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.08067553715060773,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.1606142737023744,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.23042590502546895,
+            "slots": 8
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.24871783155612018,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.1946617000250575,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.10811579306071255,
+            "slots": 2
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.08967527280653437,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.023983455136596908,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.19199432223857044
+    },
+    {
+      "index": 25,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          2,
+          3,
+          5,
+          8,
+          6,
+          5,
+          2,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.01922587101803535,
+            "slots": 2
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.02442630251479357,
+            "slots": 3
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.03582604932061397,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.0477880931090561,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.038390651803351404,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.03772762807739708,
+            "slots": 5
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.022335131481018268,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.011046295516197433,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.03587075783566556
+    },
+    {
+      "index": 26,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          1,
+          7,
+          8,
+          6,
+          7,
+          1,
+          1
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.018034055153550076,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.07643612314217033,
+            "slots": 1
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.2188191999611646,
+            "slots": 7
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.24320846658448847,
+            "slots": 8
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.21727818291131612,
+            "slots": 6
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.2263695211461444,
+            "slots": 7
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.07234674664859686,
+            "slots": 1
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.024142104263331216,
+            "slots": 1
+          }
+        ]
+      },
+      "proxy_score": 0.20489427834695675
+    },
+    {
+      "index": 27,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 1,
+        "max_slots": 8,
+        "slot_distribution": [
+          1,
+          2,
+          2,
+          1,
+          2,
+          8,
+          8,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.019199897691321622,
+            "slots": 1
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.024677095548078305,
+            "slots": 2
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.02688569407328666,
+            "slots": 2
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.01852012625074964,
+            "slots": 1
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.023503582563202632,
+            "slots": 2
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.1128545685290191,
+            "slots": 8
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.23398088703723596,
+            "slots": 8
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.23247446087145807,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.15069787811915347
+    },
+    {
+      "index": 28,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 2,
+        "max_slots": 8,
+        "slot_distribution": [
+          8,
+          8,
+          3,
+          3,
+          3,
+          3,
+          2,
+          2
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.23263661206997868,
+            "slots": 8
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.1673948431675648,
+            "slots": 8
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 3
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 2
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 2
+          }
+        ]
+      },
+      "proxy_score": 0.10010561552004081
+    },
+    {
+      "index": 29,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 4,
+        "max_slots": 4,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.00019550342130987292
+    },
+    {
+      "index": 30,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 4,
+        "max_slots": 4,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.00019550342130987292
+    },
+    {
+      "index": 31,
+      "size": 8192,
+      "adaptive_plan": {
+        "regions": 8,
+        "total_slots": 32,
+        "mean_slots": 4.0,
+        "min_slots": 4,
+        "max_slots": 4,
+        "slot_distribution": [
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 6,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 7,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          }
+        ]
+      },
+      "proxy_score": 0.00019550342130987292
+    },
+    {
+      "index": 32,
+      "size": 5312,
+      "adaptive_plan": {
+        "regions": 6,
+        "total_slots": 32,
+        "mean_slots": 5.333333333333333,
+        "min_slots": 4,
+        "max_slots": 8,
+        "slot_distribution": [
+          5,
+          5,
+          5,
+          5,
+          4,
+          8
+        ],
+        "regions_detail": [
+          {
+            "region_index": 0,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 5
+          },
+          {
+            "region_index": 1,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 5
+          },
+          {
+            "region_index": 2,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 5
+          },
+          {
+            "region_index": 3,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 5
+          },
+          {
+            "region_index": 4,
+            "bytes": 1024,
+            "complexity": 0.00019550342130987292,
+            "slots": 4
+          },
+          {
+            "region_index": 5,
+            "bytes": 192,
+            "complexity": 0.0010471204188481676,
+            "slots": 8
+          }
+        ]
+      },
+      "proxy_score": 0.0004084076706944466
+    }
+  ],
+  "diagnostics": {
+    "mean_slots_per_region": 4.031496062992126,
+    "slot_histogram": {
+      "1": 42,
+      "2": 31,
+      "3": 37,
+      "4": 59,
+      "5": 22,
+      "6": 16,
+      "7": 9,
+      "8": 38
+    }
+  }
+}
