@@ -1,0 +1,452 @@
+{
+  "experiment": "Experiment 16 \u2014 true pairwise relational interaction",
+  "rank": 48,
+  "local_latent_dim": 4,
+  "relational_dim": 32,
+  "hidden": 512,
+  "heads": 4,
+  "train_steps": 500,
+  "latent_steps": 500,
+  "learning_rate": 0.002,
+  "latent_learning_rate": 0.002,
+  "seeds": [
+    9,
+    10,
+    11
+  ],
+  "train_targets": [
+    "model.layers.0.self_attn.q_proj.weight",
+    "model.layers.1.self_attn.q_proj.weight",
+    "model.layers.2.self_attn.q_proj.weight",
+    "model.layers.3.self_attn.q_proj.weight"
+  ],
+  "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+  "results": [
+    {
+      "architecture": "pairwise_relational",
+      "seed": 9,
+      "local_latent_dim": 4,
+      "relational_dim": 32,
+      "heads": 4,
+      "train_targets": [
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.1.self_attn.q_proj.weight",
+        "model.layers.2.self_attn.q_proj.weight",
+        "model.layers.3.self_attn.q_proj.weight"
+      ],
+      "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+      "train_results": [
+        {
+          "target": "model.layers.0.self_attn.q_proj.weight",
+          "local_latent": [
+            -1.0710833072662354,
+            -0.7198466062545776,
+            1.1028327941894531,
+            -1.5653409957885742
+          ],
+          "weight_error": 0.5306903123855591
+        },
+        {
+          "target": "model.layers.1.self_attn.q_proj.weight",
+          "local_latent": [
+            1.4251950979232788,
+            0.6234313249588013,
+            -0.7943841814994812,
+            -2.48117733001709
+          ],
+          "weight_error": 0.9553414583206177
+        },
+        {
+          "target": "model.layers.2.self_attn.q_proj.weight",
+          "local_latent": [
+            1.0177528858184814,
+            0.435373455286026,
+            -0.33826375007629395,
+            -0.7079912424087524
+          ],
+          "weight_error": 0.9637392163276672
+        },
+        {
+          "target": "model.layers.3.self_attn.q_proj.weight",
+          "local_latent": [
+            1.69920814037323,
+            2.2397825717926025,
+            -0.05685615539550781,
+            0.23526179790496826
+          ],
+          "weight_error": 1.0092436075210571
+        }
+      ],
+      "heldout": {
+        "local_latent": [
+          -0.6749125719070435,
+          0.7949255704879761,
+          -1.0464731454849243,
+          -0.02068226970732212
+        ],
+        "weight_error": 1.0051220655441284,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "greedy_exact_continuation_count": 12,
+          "greedy_total_continuations": 24,
+          "logit_rmse": 0.29234620298879194
+        }
+      }
+    },
+    {
+      "architecture": "pairwise_relational",
+      "seed": 10,
+      "local_latent_dim": 4,
+      "relational_dim": 32,
+      "heads": 4,
+      "train_targets": [
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.1.self_attn.q_proj.weight",
+        "model.layers.2.self_attn.q_proj.weight",
+        "model.layers.3.self_attn.q_proj.weight"
+      ],
+      "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+      "train_results": [
+        {
+          "target": "model.layers.0.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.8160495758056641,
+            -0.5499148964881897,
+            -0.8093169331550598,
+            -1.3143471479415894
+          ],
+          "weight_error": 0.5306899547576904
+        },
+        {
+          "target": "model.layers.1.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.196819007396698,
+            -0.9717648029327393,
+            -0.4936054050922394,
+            2.629310131072998
+          ],
+          "weight_error": 0.955341637134552
+        },
+        {
+          "target": "model.layers.2.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.7289634346961975,
+            1.017534852027893,
+            -0.2465517222881317,
+            0.47723254561424255
+          ],
+          "weight_error": 0.9637393355369568
+        },
+        {
+          "target": "model.layers.3.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.6471817493438721,
+            -0.3773707151412964,
+            -1.473546028137207,
+            -0.24233010411262512
+          ],
+          "weight_error": 1.0092437267303467
+        }
+      ],
+      "heldout": {
+        "local_latent": [
+          -1.2499823570251465,
+          -1.327205777168274,
+          -0.6414333581924438,
+          -0.7757970094680786
+        ],
+        "weight_error": 1.0341912508010864,
+        "behavior": {
+          "greedy_token_match_rate": 0.7013888888888888,
+          "greedy_exact_continuation_count": 12,
+          "greedy_total_continuations": 24,
+          "logit_rmse": 0.29459070442522867
+        }
+      }
+    },
+    {
+      "architecture": "pairwise_relational",
+      "seed": 11,
+      "local_latent_dim": 4,
+      "relational_dim": 32,
+      "heads": 4,
+      "train_targets": [
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.1.self_attn.q_proj.weight",
+        "model.layers.2.self_attn.q_proj.weight",
+        "model.layers.3.self_attn.q_proj.weight"
+      ],
+      "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+      "train_results": [
+        {
+          "target": "model.layers.0.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.5301917195320129,
+            1.031874656677246,
+            -0.3540598750114441,
+            0.1215752363204956
+          ],
+          "weight_error": 0.530688464641571
+        },
+        {
+          "target": "model.layers.1.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.17967024445533752,
+            -1.5150322914123535,
+            0.13308049738407135,
+            -0.5110834240913391
+          ],
+          "weight_error": 0.955443799495697
+        },
+        {
+          "target": "model.layers.2.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.24583014845848083,
+            -0.5247249007225037,
+            2.9039385318756104,
+            -0.5758175849914551
+          ],
+          "weight_error": 0.9638735055923462
+        },
+        {
+          "target": "model.layers.3.self_attn.q_proj.weight",
+          "local_latent": [
+            1.3245731592178345,
+            0.3475951850414276,
+            -1.3280320167541504,
+            0.014860009774565697
+          ],
+          "weight_error": 1.0092767477035522
+        }
+      ],
+      "heldout": {
+        "local_latent": [
+          0.8144775629043579,
+          1.3356398344039917,
+          -1.220768690109253,
+          -2.082122802734375
+        ],
+        "weight_error": 1.0456970930099487,
+        "behavior": {
+          "greedy_token_match_rate": 0.7013888888888888,
+          "greedy_exact_continuation_count": 12,
+          "greedy_total_continuations": 24,
+          "logit_rmse": 0.29049046653977234
+        }
+      }
+    },
+    {
+      "architecture": "independent_local_control",
+      "seed": 9,
+      "local_latent_dim": 4,
+      "relational_dim": null,
+      "heads": null,
+      "train_targets": [
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.1.self_attn.q_proj.weight",
+        "model.layers.2.self_attn.q_proj.weight",
+        "model.layers.3.self_attn.q_proj.weight"
+      ],
+      "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+      "train_results": [
+        {
+          "target": "model.layers.0.self_attn.q_proj.weight",
+          "local_latent": [
+            -1.0596592426300049,
+            -0.7025949954986572,
+            1.0802603960037231,
+            -1.5534406900405884
+          ],
+          "weight_error": 0.5306492447853088
+        },
+        {
+          "target": "model.layers.1.self_attn.q_proj.weight",
+          "local_latent": [
+            1.4231760501861572,
+            0.61769038438797,
+            -0.7774426341056824,
+            -2.4691407680511475
+          ],
+          "weight_error": 0.9553489685058594
+        },
+        {
+          "target": "model.layers.2.self_attn.q_proj.weight",
+          "local_latent": [
+            0.9563204050064087,
+            0.4161810874938965,
+            -0.30821916460990906,
+            -0.6898430585861206
+          ],
+          "weight_error": 0.9638193845748901
+        },
+        {
+          "target": "model.layers.3.self_attn.q_proj.weight",
+          "local_latent": [
+            1.6846946477890015,
+            2.2238032817840576,
+            -0.06517327576875687,
+            0.22934339940547943
+          ],
+          "weight_error": 1.0089387893676758
+        }
+      ],
+      "heldout": {
+        "local_latent": [
+          -0.9848552942276001,
+          1.35682213306427,
+          -0.7776340842247009,
+          -0.2432268261909485
+        ],
+        "weight_error": 1.013155221939087,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "greedy_exact_continuation_count": 12,
+          "greedy_total_continuations": 24,
+          "logit_rmse": 0.2910533718800902
+        }
+      }
+    },
+    {
+      "architecture": "independent_local_control",
+      "seed": 10,
+      "local_latent_dim": 4,
+      "relational_dim": null,
+      "heads": null,
+      "train_targets": [
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.1.self_attn.q_proj.weight",
+        "model.layers.2.self_attn.q_proj.weight",
+        "model.layers.3.self_attn.q_proj.weight"
+      ],
+      "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+      "train_results": [
+        {
+          "target": "model.layers.0.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.8253461122512817,
+            -0.5596070289611816,
+            -0.8206993937492371,
+            -1.3137012720108032
+          ],
+          "weight_error": 0.5322867631912231
+        },
+        {
+          "target": "model.layers.1.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.18762144446372986,
+            -0.9483674168586731,
+            -0.49420684576034546,
+            2.612668752670288
+          ],
+          "weight_error": 0.9525766968727112
+        },
+        {
+          "target": "model.layers.2.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.742756724357605,
+            1.0056415796279907,
+            -0.2399074137210846,
+            0.4597107470035553
+          ],
+          "weight_error": 0.966360330581665
+        },
+        {
+          "target": "model.layers.3.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.6369603872299194,
+            -0.3575759828090668,
+            -1.4601545333862305,
+            -0.23771339654922485
+          ],
+          "weight_error": 1.0110695362091064
+        }
+      ],
+      "heldout": {
+        "local_latent": [
+          -0.01816190779209137,
+          -0.3975020945072174,
+          -0.5303143262863159,
+          -0.6930968761444092
+        ],
+        "weight_error": 1.0080878734588623,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "greedy_exact_continuation_count": 12,
+          "greedy_total_continuations": 24,
+          "logit_rmse": 0.2907071814467628
+        }
+      }
+    },
+    {
+      "architecture": "independent_local_control",
+      "seed": 11,
+      "local_latent_dim": 4,
+      "relational_dim": null,
+      "heads": null,
+      "train_targets": [
+        "model.layers.0.self_attn.q_proj.weight",
+        "model.layers.1.self_attn.q_proj.weight",
+        "model.layers.2.self_attn.q_proj.weight",
+        "model.layers.3.self_attn.q_proj.weight"
+      ],
+      "heldout_target": "model.layers.4.self_attn.q_proj.weight",
+      "train_results": [
+        {
+          "target": "model.layers.0.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.5191635489463806,
+            1.0288432836532593,
+            -0.34986937046051025,
+            0.1262359917163849
+          ],
+          "weight_error": 0.5306903123855591
+        },
+        {
+          "target": "model.layers.1.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.1912064552307129,
+            -1.4949424266815186,
+            0.1382683515548706,
+            -0.5205134749412537
+          ],
+          "weight_error": 0.9553414583206177
+        },
+        {
+          "target": "model.layers.2.self_attn.q_proj.weight",
+          "local_latent": [
+            -0.23834210634231567,
+            -0.5146231055259705,
+            2.8809003829956055,
+            -0.5898420214653015
+          ],
+          "weight_error": 0.9637391567230225
+        },
+        {
+          "target": "model.layers.3.self_attn.q_proj.weight",
+          "local_latent": [
+            1.3058693408966064,
+            0.3492380380630493,
+            -1.307086706161499,
+            -0.017030863091349602
+          ],
+          "weight_error": 1.0092437267303467
+        }
+      ],
+      "heldout": {
+        "local_latent": [
+          0.5712273716926575,
+          1.1584492921829224,
+          -0.07220334559679031,
+          -1.811097502708435
+        ],
+        "weight_error": 1.0259028673171997,
+        "behavior": {
+          "greedy_token_match_rate": 0.7222222222222222,
+          "greedy_exact_continuation_count": 12,
+          "greedy_total_continuations": 24,
+          "logit_rmse": 0.2983721076795549
+        }
+      }
+    }
+  ]
+}
