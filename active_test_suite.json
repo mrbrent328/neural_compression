@@ -1,0 +1,693 @@
+{
+  "metadata": {
+    "description": "Active Test Suite designed to evaluate neural net weight constructors. Eliminates insensitive floor prompts (Category A) and unsolvable ceiling prompts (Category B), focusing exclusively on high-sensitivity prompts that require accurate weight reconstruction.",
+    "original_prompts_total": 24,
+    "original_prompts_kept_as_controls": [
+      1,
+      2,
+      4,
+      7
+    ],
+    "new_candidates_generated": 25,
+    "total_active_suite_size": 33
+  },
+  "original_prompt_analysis": [
+    {
+      "prompt_index": 1,
+      "prompt": "Explain photosynthesis in simple terms.",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 2,
+      "prompt": "A binary search works efficiently because",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 3,
+      "prompt": "Water freezes at approximately",
+      "category": "C (Noise Sensitive)",
+      "description": "Solved when zeroed, but broken by random noise. Partially active.",
+      "baselines": {
+        "zero": 1,
+        "random": 0,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 4,
+      "prompt": "A good scientific hypothesis should be",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 5,
+      "prompt": "In Python, a list is different from a tuple because",
+      "category": "C (True Active)",
+      "description": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 6,
+      "prompt": "The capital of France is",
+      "category": "C (Noise Sensitive)",
+      "description": "Solved when zeroed, but broken by random noise. Partially active.",
+      "baselines": {
+        "zero": 1,
+        "random": 0,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 7,
+      "prompt": "An operating system is responsible for",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 8,
+      "prompt": "A triangle with three equal sides is",
+      "category": "C (True Active)",
+      "description": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 9,
+      "prompt": "A database index is useful because",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 10,
+      "prompt": "The first law of thermodynamics states that",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 11,
+      "prompt": "An electric circuit needs",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 12,
+      "prompt": "A variable is useful in a program because",
+      "category": "C (Noise Sensitive)",
+      "description": "Solved when zeroed, but broken by random noise. Partially active.",
+      "baselines": {
+        "zero": 1,
+        "random": 0,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 13,
+      "prompt": "The Earth completes one orbit around the Sun in",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 14,
+      "prompt": "A function takes inputs and",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 15,
+      "prompt": "Version control lets developers",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 16,
+      "prompt": "A compiler translates source code into",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 17,
+      "prompt": "A prime number is divisible by",
+      "category": "C (True Active)",
+      "description": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 18,
+      "prompt": "A balanced ecosystem contains",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 19,
+      "prompt": "A probability between zero and one represents",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 20,
+      "prompt": "A stack follows the",
+      "category": "C (Marginal Active)",
+      "description": "Requires weight structure; exhibits intermediate sensitivity.",
+      "baselines": {
+        "zero": 0,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 21,
+      "prompt": "A map scale tells us",
+      "category": "C (True Active)",
+      "description": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 22,
+      "prompt": "An API allows software to",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 23,
+      "prompt": "The opposite of compression is",
+      "category": "A (Insensitive Floor)",
+      "description": "Prompt is resolved correctly even when Q-projection is zeroed or randomized. Completely insensitive.",
+      "baselines": {
+        "zero": 1,
+        "random": 1,
+        "low_rank_48": 1,
+        "low_rank_96": 1
+      },
+      "source": "original"
+    },
+    {
+      "prompt_index": 24,
+      "prompt": "A good test should be",
+      "category": "B (Unsolvable Ceiling)",
+      "description": "Prompt is not resolved even with high-fidelity Low-Rank 96 factorization. Blocked by factorization loss.",
+      "baselines": {
+        "zero": 0,
+        "random": 0,
+        "low_rank_48": 0,
+        "low_rank_96": 0
+      },
+      "source": "original"
+    }
+  ],
+  "active_test_suite_prompts": [
+    {
+      "prompt_index": 1,
+      "prompt": "Water freezes at approximately",
+      "type": "original_active",
+      "category_target": "C (Noise Sensitive)",
+      "original_index": 3,
+      "validation_baseline_zero": 1,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Solved when zeroed, but broken by random noise. Partially active."
+    },
+    {
+      "prompt_index": 2,
+      "prompt": "In Python, a list is different from a tuple because",
+      "type": "original_active",
+      "category_target": "C (True Active)",
+      "original_index": 5,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+    },
+    {
+      "prompt_index": 3,
+      "prompt": "The capital of France is",
+      "type": "original_active",
+      "category_target": "C (Noise Sensitive)",
+      "original_index": 6,
+      "validation_baseline_zero": 1,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Solved when zeroed, but broken by random noise. Partially active."
+    },
+    {
+      "prompt_index": 4,
+      "prompt": "A triangle with three equal sides is",
+      "type": "original_active",
+      "category_target": "C (True Active)",
+      "original_index": 8,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+    },
+    {
+      "prompt_index": 5,
+      "prompt": "A variable is useful in a program because",
+      "type": "original_active",
+      "category_target": "C (Noise Sensitive)",
+      "original_index": 12,
+      "validation_baseline_zero": 1,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Solved when zeroed, but broken by random noise. Partially active."
+    },
+    {
+      "prompt_index": 6,
+      "prompt": "A prime number is divisible by",
+      "type": "original_active",
+      "category_target": "C (True Active)",
+      "original_index": 17,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+    },
+    {
+      "prompt_index": 7,
+      "prompt": "A stack follows the",
+      "type": "original_active",
+      "category_target": "C (Marginal Active)",
+      "original_index": 20,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 1,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Requires weight structure; exhibits intermediate sensitivity."
+    },
+    {
+      "prompt_index": 8,
+      "prompt": "A map scale tells us",
+      "type": "original_active",
+      "category_target": "C (True Active)",
+      "original_index": 21,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+    },
+    {
+      "prompt_index": 9,
+      "prompt": "In Python, a dictionary stores data as",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Programming - Semantic Definition)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Requires precise projection of variable-binding semantic tokens. Zero-state is highly likely to fail on compound technical terms."
+    },
+    {
+      "prompt_index": 10,
+      "prompt": "In Python, the 'len' function returns",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Programming - Functional Syntax)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Requires precise syntactic resolution of standard function definitions. Should break under random weight noise."
+    },
+    {
+      "prompt_index": 11,
+      "prompt": "A JSON object is enclosed in",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Programming - Syntax)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Tests structural syntax. Zeroing the Q-matrix should disrupt the brackets-token association."
+    },
+    {
+      "prompt_index": 12,
+      "prompt": "In programming, a boolean can only be",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Programming - Logic)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Highly constrained completion. Zeroing Q-projection should cause it to drift to other type definitions."
+    },
+    {
+      "prompt_index": 13,
+      "prompt": "An array index in Python starts at",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Programming - Indexing)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Tests precise association of numerical indexing standard in Python. Zero-projection is likely to output 1 or null."
+    },
+    {
+      "prompt_index": 14,
+      "prompt": "The sum of angles in a triangle is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Mathematics - Geometry)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Geometry recall task. Requires projection weights to bind the concept of 'triangle' to the numeric constant '180'."
+    },
+    {
+      "prompt_index": 15,
+      "prompt": "An even number is always divisible by",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Mathematics - Arithmetic)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Precise mathematical rule. Zero-state will likely output 'itself' or fail to constrain."
+    },
+    {
+      "prompt_index": 16,
+      "prompt": "The square root of nine is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Mathematics - Calculation)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Highly precise mapping. Weight degradation will cause mathematical drift."
+    },
+    {
+      "prompt_index": 17,
+      "prompt": "In a right triangle, the hypotenuse is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Mathematics - Definition)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Tests relative spatial/mathematical terms that are highly sensitive to attention head alignment."
+    },
+    {
+      "prompt_index": 18,
+      "prompt": "A queue follows the first-in, first-out",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Data Structures - Core Flow)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Tests sequential flow syntax (FIFO) to see if it mirrors the stack/LIFO pattern of Prompt 20."
+    },
+    {
+      "prompt_index": 19,
+      "prompt": "A binary tree node can have at most",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Data Structures - Trees)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Requires numeric constraint binding in a technical context."
+    },
+    {
+      "prompt_index": 20,
+      "prompt": "In a database, a primary key must",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Database - Integrity)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Requires specific conceptual recall of database properties. Highly sensitive to projection distortion."
+    },
+    {
+      "prompt_index": 21,
+      "prompt": "The chemical formula for water is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Chemistry - Formula)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Direct, highly constrained alphanumeric completion. Will fail if token projection is noisy."
+    },
+    {
+      "prompt_index": 22,
+      "prompt": "The speed of light in a vacuum is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Physics - Constant)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Physical constant recall. Requires deep attention alignment to fetch exact mathematical values."
+    },
+    {
+      "prompt_index": 23,
+      "prompt": "An atom consists of a nucleus containing",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Physics - Definition)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Complex multi-token scientific definition. Highly likely to degrade under zero-projection."
+    },
+    {
+      "prompt_index": 24,
+      "prompt": "DNA stands for deoxyribonucleic",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Biology - Terminology)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Alphanumeric suffix retrieval. Tests if the Q-matrix is needed to project rare scientific tokens."
+    },
+    {
+      "prompt_index": 25,
+      "prompt": "The process of liquid water turning into vapor is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Earth Science - Processes)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Noun-phrase to single-term semantic mapping. Breaks under representation distortion."
+    },
+    {
+      "prompt_index": 26,
+      "prompt": "Photosynthesis occurs in the plant cell's",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Biology - Botany)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Compares with the easy Prompt 1. Here, the target token 'chloroplasts' is much more specific than simple terms."
+    },
+    {
+      "prompt_index": 27,
+      "prompt": "The acceleration due to gravity on Earth is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Physics - Constant)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Numerical constant retrieval. Highly sensitive to precise weight representation."
+    },
+    {
+      "prompt_index": 28,
+      "prompt": "The boiling point of water is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Physics - Temperature)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Compares with Prompt 3 (freezing). Water temperature values are often adjacent in vector space; tests precision."
+    },
+    {
+      "prompt_index": 29,
+      "prompt": "The third planet from the Sun is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Astronomy - Fact)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Ordinal numeric and astronomical fact binding."
+    },
+    {
+      "prompt_index": 30,
+      "prompt": "An element with the atomic number 1 is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Chemistry - Element)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Integer-to-element mapping. High precision required."
+    },
+    {
+      "prompt_index": 31,
+      "prompt": "In an atom, electrons carry a",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Physics - Charge)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Polarity assignment task. Highly sensitive to semantic inversion under weight noise."
+    },
+    {
+      "prompt_index": 32,
+      "prompt": "The standard unit of electrical resistance is",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Physics - Electricity)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Specific noun retrieval. Expected to fail in zero-projection."
+    },
+    {
+      "prompt_index": 33,
+      "prompt": "A molecule of oxygen gas is written as",
+      "type": "new_candidate_high_sensitivity",
+      "category_target": "C (Chemistry - Molecular)",
+      "original_index": null,
+      "validation_baseline_zero": 0,
+      "validation_baseline_random": 0,
+      "validation_baseline_low_rank_96": 1,
+      "hypothesis": "Alphanumeric representation task. Sharp validation criterion."
+    }
+  ]
+}

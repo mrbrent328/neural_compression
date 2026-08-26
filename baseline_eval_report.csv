@@ -1,0 +1,126 @@
+condition,prompt_index,prompt,prompt_type,weight_error,matching_tokens_ratio,exact_match,logit_rmse,generated_tokens,reference_tokens
+original,1,"In Python, a dictionary stores data as",new_candidate_high_sensitivity,0.0,1.0,1,1.3745950819535555,types function return logic The quick,types function return logic The quick
+original,2,"In Python, the 'len' function returns",new_candidate_high_sensitivity,0.0,1.0,1,1.4023366906399912,jumps over the lazy dog Python,jumps over the lazy dog Python
+original,3,A JSON object is enclosed in,new_candidate_high_sensitivity,0.0,1.0,1,1.3827387704310505,logic The quick brown fox jumps,logic The quick brown fox jumps
+original,4,"In programming, a boolean can only be",new_candidate_high_sensitivity,0.0,1.0,1,1.473078988313248,Python class structure data types function,Python class structure data types function
+original,5,An array index in Python starts at,new_candidate_high_sensitivity,0.0,1.0,1,1.5108789764019646,jumps over the lazy dog Python,jumps over the lazy dog Python
+original,6,The sum of angles in a triangle is,new_candidate_high_sensitivity,0.0,1.0,1,1.4489624144780613,brown fox jumps over the lazy,brown fox jumps over the lazy
+original,7,An even number is always divisible by,new_candidate_high_sensitivity,0.0,1.0,1,1.4322902046017147,data types function return logic The,data types function return logic The
+original,8,The square root of nine is,new_candidate_high_sensitivity,0.0,1.0,1,1.4757985551931356,The quick brown fox jumps over,The quick brown fox jumps over
+original,9,"In a right triangle, the hypotenuse is",new_candidate_high_sensitivity,0.0,1.0,1,1.442314482995996,class structure data types function return,class structure data types function return
+original,10,"A queue follows the first-in, first-out",new_candidate_high_sensitivity,0.0,1.0,1,1.4327260573215614,return logic The quick brown fox,return logic The quick brown fox
+original,11,A binary tree node can have at most,new_candidate_high_sensitivity,0.0,1.0,1,1.3764188166574811,class structure data types function return,class structure data types function return
+original,12,"In a database, a primary key must",new_candidate_high_sensitivity,0.0,1.0,1,1.4982515583547573,lazy dog Python class structure data,lazy dog Python class structure data
+original,13,The chemical formula for water is,new_candidate_high_sensitivity,0.0,1.0,1,1.470822839488578,the lazy dog Python class structure,the lazy dog Python class structure
+original,14,The speed of light in a vacuum is,new_candidate_high_sensitivity,0.0,1.0,1,1.308001977762445,data types function return logic The,data types function return logic The
+original,15,An atom consists of a nucleus containing,new_candidate_high_sensitivity,0.0,1.0,1,1.386818462650413,data types function return logic The,data types function return logic The
+original,16,DNA stands for deoxyribonucleic,new_candidate_high_sensitivity,0.0,1.0,1,1.3660437055845331,lazy dog Python class structure data,lazy dog Python class structure data
+original,17,The process of liquid water turning into vapor is,new_candidate_high_sensitivity,0.0,1.0,1,1.387382799744171,Python class structure data types function,Python class structure data types function
+original,18,Photosynthesis occurs in the plant cell's,new_candidate_high_sensitivity,0.0,1.0,1,1.4713943681430164,fox jumps over the lazy dog,fox jumps over the lazy dog
+original,19,The acceleration due to gravity on Earth is,new_candidate_high_sensitivity,0.0,1.0,1,1.4327062166311118,function return logic The quick brown,function return logic The quick brown
+original,20,The boiling point of water is,new_candidate_high_sensitivity,0.0,1.0,1,1.3499433411788408,the lazy dog Python class structure,the lazy dog Python class structure
+original,21,The third planet from the Sun is,new_candidate_high_sensitivity,0.0,1.0,1,1.4897407731423868,The quick brown fox jumps over,The quick brown fox jumps over
+original,22,An element with the atomic number 1 is,new_candidate_high_sensitivity,0.0,1.0,1,1.4104036717335886,function return logic The quick brown,function return logic The quick brown
+original,23,"In an atom, electrons carry a",new_candidate_high_sensitivity,0.0,1.0,1,1.467979710825523,class structure data types function return,class structure data types function return
+original,24,The standard unit of electrical resistance is,new_candidate_high_sensitivity,0.0,1.0,1,1.3791670727630037,return logic The quick brown fox,return logic The quick brown fox
+original,25,A molecule of oxygen gas is written as,new_candidate_high_sensitivity,0.0,1.0,1,1.4010482423504873,logic The quick brown fox jumps,logic The quick brown fox jumps
+zero,1,"In Python, a dictionary stores data as",new_candidate_high_sensitivity,1.0,1.0,1,1.487922096823647,types function return logic The quick,types function return logic The quick
+zero,2,"In Python, the 'len' function returns",new_candidate_high_sensitivity,1.0,1.0,1,1.4185291785892649,jumps over the lazy dog Python,jumps over the lazy dog Python
+zero,3,A JSON object is enclosed in,new_candidate_high_sensitivity,1.0,0.0,0,1.4199095302747942,logic_alt The_alt quick_alt brown_alt fox_alt jumps_alt,logic The quick brown fox jumps
+zero,4,"In programming, a boolean can only be",new_candidate_high_sensitivity,1.0,0.0,0,1.4477970395774238,Python_alt class_alt structure_alt data_alt types_alt function_alt,Python class structure data types function
+zero,5,An array index in Python starts at,new_candidate_high_sensitivity,1.0,0.0,0,1.508460391685959,jumps_alt over_alt the_alt lazy_alt dog_alt Python_alt,jumps over the lazy dog Python
+zero,6,The sum of angles in a triangle is,new_candidate_high_sensitivity,1.0,0.0,0,1.4441604438826496,brown_alt fox_alt jumps_alt over_alt the_alt lazy_alt,brown fox jumps over the lazy
+zero,7,An even number is always divisible by,new_candidate_high_sensitivity,1.0,0.5,0,1.3752245890944585,data_alt types_alt function_alt return logic The,data types function return logic The
+zero,8,The square root of nine is,new_candidate_high_sensitivity,1.0,0.0,0,1.3345951126681266,The_alt quick_alt brown_alt fox_alt jumps_alt over_alt,The quick brown fox jumps over
+zero,9,"In a right triangle, the hypotenuse is",new_candidate_high_sensitivity,1.0,0.0,0,1.4751235145982526,class_alt structure_alt data_alt types_alt function_alt return_alt,class structure data types function return
+zero,10,"A queue follows the first-in, first-out",new_candidate_high_sensitivity,1.0,0.0,0,1.4263051542028806,return_alt logic_alt The_alt quick_alt brown_alt fox_alt,return logic The quick brown fox
+zero,11,A binary tree node can have at most,new_candidate_high_sensitivity,1.0,0.0,0,1.3845747091141845,class_alt structure_alt data_alt types_alt function_alt return_alt,class structure data types function return
+zero,12,"In a database, a primary key must",new_candidate_high_sensitivity,1.0,0.0,0,1.4118819820901591,lazy_alt dog_alt Python_alt class_alt structure_alt data_alt,lazy dog Python class structure data
+zero,13,The chemical formula for water is,new_candidate_high_sensitivity,1.0,0.0,0,1.3906873171927516,the_alt lazy_alt dog_alt Python_alt class_alt structure_alt,the lazy dog Python class structure
+zero,14,The speed of light in a vacuum is,new_candidate_high_sensitivity,1.0,0.0,0,1.4068304332951176,data_alt types_alt function_alt return_alt logic_alt The_alt,data types function return logic The
+zero,15,An atom consists of a nucleus containing,new_candidate_high_sensitivity,1.0,0.0,0,1.4855823520700462,data_alt types_alt function_alt return_alt logic_alt The_alt,data types function return logic The
+zero,16,DNA stands for deoxyribonucleic,new_candidate_high_sensitivity,1.0,0.5,0,1.4689712005826268,lazy dog Python class_alt structure_alt data_alt,lazy dog Python class structure data
+zero,17,The process of liquid water turning into vapor is,new_candidate_high_sensitivity,1.0,1.0,1,1.3744737523326727,Python class structure data types function,Python class structure data types function
+zero,18,Photosynthesis occurs in the plant cell's,new_candidate_high_sensitivity,1.0,0.0,0,1.3685036385768692,fox_alt jumps_alt over_alt the_alt lazy_alt dog_alt,fox jumps over the lazy dog
+zero,19,The acceleration due to gravity on Earth is,new_candidate_high_sensitivity,1.0,0.0,0,1.3963145995189479,function_alt return_alt logic_alt The_alt quick_alt brown_alt,function return logic The quick brown
+zero,20,The boiling point of water is,new_candidate_high_sensitivity,1.0,0.0,0,1.4714689992000674,the_alt lazy_alt dog_alt Python_alt class_alt structure_alt,the lazy dog Python class structure
+zero,21,The third planet from the Sun is,new_candidate_high_sensitivity,1.0,0.0,0,1.4643846007019714,The_alt quick_alt brown_alt fox_alt jumps_alt over_alt,The quick brown fox jumps over
+zero,22,An element with the atomic number 1 is,new_candidate_high_sensitivity,1.0,0.0,0,1.3653497373036128,function_alt return_alt logic_alt The_alt quick_alt brown_alt,function return logic The quick brown
+zero,23,"In an atom, electrons carry a",new_candidate_high_sensitivity,1.0,0.0,0,1.35881877817312,class_alt structure_alt data_alt types_alt function_alt return_alt,class structure data types function return
+zero,24,The standard unit of electrical resistance is,new_candidate_high_sensitivity,1.0,0.0,0,1.3693343605901536,return_alt logic_alt The_alt quick_alt brown_alt fox_alt,return logic The quick brown fox
+zero,25,A molecule of oxygen gas is written as,new_candidate_high_sensitivity,1.0,0.0,0,1.3472627691398624,logic_alt The_alt quick_alt brown_alt fox_alt jumps_alt,logic The quick brown fox jumps
+random,1,"In Python, a dictionary stores data as",new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3960044122924649,types function return logic The quick,types function return logic The quick
+random,2,"In Python, the 'len' function returns",new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3727422603870063,jumps over the lazy dog Python,jumps over the lazy dog Python
+random,3,A JSON object is enclosed in,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3618278454930588,logic The quick brown fox jumps,logic The quick brown fox jumps
+random,4,"In programming, a boolean can only be",new_candidate_high_sensitivity,1.4219890220632916,0.0,0,1.3961467017356028,Python_alt class_alt structure_alt data_alt types_alt function_alt,Python class structure data types function
+random,5,An array index in Python starts at,new_candidate_high_sensitivity,1.4219890220632916,0.0,0,1.4305851997751642,jumps_alt over_alt the_alt lazy_alt dog_alt Python_alt,jumps over the lazy dog Python
+random,6,The sum of angles in a triangle is,new_candidate_high_sensitivity,1.4219890220632916,0.0,0,1.2952252743289,brown_alt fox_alt jumps_alt over_alt the_alt lazy_alt,brown fox jumps over the lazy
+random,7,An even number is always divisible by,new_candidate_high_sensitivity,1.4219890220632916,0.5,0,1.3765715156699938,data_alt types_alt function_alt return logic The,data types function return logic The
+random,8,The square root of nine is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3754302496397657,The quick brown fox jumps over,The quick brown fox jumps over
+random,9,"In a right triangle, the hypotenuse is",new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3716338550472618,class structure data types function return,class structure data types function return
+random,10,"A queue follows the first-in, first-out",new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4551595862082476,return logic The quick brown fox,return logic The quick brown fox
+random,11,A binary tree node can have at most,new_candidate_high_sensitivity,1.4219890220632916,0.3333333333333333,0,1.409290506049634,class structure data_alt types_alt function_alt return_alt,class structure data types function return
+random,12,"In a database, a primary key must",new_candidate_high_sensitivity,1.4219890220632916,0.0,0,1.3814898199387795,lazy_alt dog_alt Python_alt class_alt structure_alt data_alt,lazy dog Python class structure data
+random,13,The chemical formula for water is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4165240927087985,the lazy dog Python class structure,the lazy dog Python class structure
+random,14,The speed of light in a vacuum is,new_candidate_high_sensitivity,1.4219890220632916,0.0,0,1.3435648629371086,data_alt types_alt function_alt return_alt logic_alt The_alt,data types function return logic The
+random,15,An atom consists of a nucleus containing,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4175890913811229,data types function return logic The,data types function return logic The
+random,16,DNA stands for deoxyribonucleic,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3687152278776014,lazy dog Python class structure data,lazy dog Python class structure data
+random,17,The process of liquid water turning into vapor is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4229432136536335,Python class structure data types function,Python class structure data types function
+random,18,Photosynthesis occurs in the plant cell's,new_candidate_high_sensitivity,1.4219890220632916,0.0,0,1.4010256261876157,fox_alt jumps_alt over_alt the_alt lazy_alt dog_alt,fox jumps over the lazy dog
+random,19,The acceleration due to gravity on Earth is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.2359241243396448,function return logic The quick brown,function return logic The quick brown
+random,20,The boiling point of water is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3568989912744247,the lazy dog Python class structure,the lazy dog Python class structure
+random,21,The third planet from the Sun is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4092928629220887,The quick brown fox jumps over,The quick brown fox jumps over
+random,22,An element with the atomic number 1 is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4436975371426737,function return logic The quick brown,function return logic The quick brown
+random,23,"In an atom, electrons carry a",new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.451028588591609,class structure data types function return,class structure data types function return
+random,24,The standard unit of electrical resistance is,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.4007300082472385,return logic The quick brown fox,return logic The quick brown fox
+random,25,A molecule of oxygen gas is written as,new_candidate_high_sensitivity,1.4219890220632916,1.0,1,1.3454570881438015,logic The quick brown fox jumps,logic The quick brown fox jumps
+low_rank_48,1,"In Python, a dictionary stores data as",new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4402115760946284,types function return logic The quick,types function return logic The quick
+low_rank_48,2,"In Python, the 'len' function returns",new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.3770920128758946,jumps over the lazy dog Python,jumps over the lazy dog Python
+low_rank_48,3,A JSON object is enclosed in,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4623233140147702,logic The quick brown fox jumps,logic The quick brown fox jumps
+low_rank_48,4,"In programming, a boolean can only be",new_candidate_high_sensitivity,0.4641216539598042,0.0,0,1.41858659682464,Python_alt class_alt structure_alt data_alt types_alt function_alt,Python class structure data types function
+low_rank_48,5,An array index in Python starts at,new_candidate_high_sensitivity,0.4641216539598042,0.0,0,1.3512618421182243,jumps_alt over_alt the_alt lazy_alt dog_alt Python_alt,jumps over the lazy dog Python
+low_rank_48,6,The sum of angles in a triangle is,new_candidate_high_sensitivity,0.4641216539598042,0.0,0,1.4233038232744692,brown_alt fox_alt jumps_alt over_alt the_alt lazy_alt,brown fox jumps over the lazy
+low_rank_48,7,An even number is always divisible by,new_candidate_high_sensitivity,0.4641216539598042,0.5,0,1.4953776088339585,data_alt types_alt function_alt return logic The,data types function return logic The
+low_rank_48,8,The square root of nine is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4225883299130002,The quick brown fox jumps over,The quick brown fox jumps over
+low_rank_48,9,"In a right triangle, the hypotenuse is",new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.3291638009347981,class structure data types function return,class structure data types function return
+low_rank_48,10,"A queue follows the first-in, first-out",new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.440547134162181,return logic The quick brown fox,return logic The quick brown fox
+low_rank_48,11,A binary tree node can have at most,new_candidate_high_sensitivity,0.4641216539598042,0.3333333333333333,0,1.4737793800580439,class structure data_alt types_alt function_alt return_alt,class structure data types function return
+low_rank_48,12,"In a database, a primary key must",new_candidate_high_sensitivity,0.4641216539598042,0.0,0,1.3853637501296439,lazy_alt dog_alt Python_alt class_alt structure_alt data_alt,lazy dog Python class structure data
+low_rank_48,13,The chemical formula for water is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.3895765416667794,the lazy dog Python class structure,the lazy dog Python class structure
+low_rank_48,14,The speed of light in a vacuum is,new_candidate_high_sensitivity,0.4641216539598042,0.0,0,1.3884022716974718,data_alt types_alt function_alt return_alt logic_alt The_alt,data types function return logic The
+low_rank_48,15,An atom consists of a nucleus containing,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.463564606638552,data types function return logic The,data types function return logic The
+low_rank_48,16,DNA stands for deoxyribonucleic,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4149568238001775,lazy dog Python class structure data,lazy dog Python class structure data
+low_rank_48,17,The process of liquid water turning into vapor is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4380112887989807,Python class structure data types function,Python class structure data types function
+low_rank_48,18,Photosynthesis occurs in the plant cell's,new_candidate_high_sensitivity,0.4641216539598042,0.0,0,1.4717007171318686,fox_alt jumps_alt over_alt the_alt lazy_alt dog_alt,fox jumps over the lazy dog
+low_rank_48,19,The acceleration due to gravity on Earth is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4502712162351596,function return logic The quick brown,function return logic The quick brown
+low_rank_48,20,The boiling point of water is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.4671981377223888,the lazy dog Python class structure,the lazy dog Python class structure
+low_rank_48,21,The third planet from the Sun is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.567777333609758,The quick brown fox jumps over,The quick brown fox jumps over
+low_rank_48,22,An element with the atomic number 1 is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.362153697966059,function return logic The quick brown,function return logic The quick brown
+low_rank_48,23,"In an atom, electrons carry a",new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.5641114470107838,class structure data types function return,class structure data types function return
+low_rank_48,24,The standard unit of electrical resistance is,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.3576503275471843,return logic The quick brown fox,return logic The quick brown fox
+low_rank_48,25,A molecule of oxygen gas is written as,new_candidate_high_sensitivity,0.4641216539598042,1.0,1,1.3704648406333926,logic The quick brown fox jumps,logic The quick brown fox jumps
+low_rank_96,1,"In Python, a dictionary stores data as",new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4257704437679732,types function return logic The quick,types function return logic The quick
+low_rank_96,2,"In Python, the 'len' function returns",new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4083166275957975,jumps over the lazy dog Python,jumps over the lazy dog Python
+low_rank_96,3,A JSON object is enclosed in,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.3588722224280447,logic The quick brown fox jumps,logic The quick brown fox jumps
+low_rank_96,4,"In programming, a boolean can only be",new_candidate_high_sensitivity,0.11792874603845982,0.0,0,1.4200656403817156,Python_alt class_alt structure_alt data_alt types_alt function_alt,Python class structure data types function
+low_rank_96,5,An array index in Python starts at,new_candidate_high_sensitivity,0.11792874603845982,0.0,0,1.4841967079514877,jumps_alt over_alt the_alt lazy_alt dog_alt Python_alt,jumps over the lazy dog Python
+low_rank_96,6,The sum of angles in a triangle is,new_candidate_high_sensitivity,0.11792874603845982,0.0,0,1.3610586642184195,brown_alt fox_alt jumps_alt over_alt the_alt lazy_alt,brown fox jumps over the lazy
+low_rank_96,7,An even number is always divisible by,new_candidate_high_sensitivity,0.11792874603845982,0.5,0,1.4239954436880304,data_alt types_alt function_alt return logic The,data types function return logic The
+low_rank_96,8,The square root of nine is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4587701405786577,The quick brown fox jumps over,The quick brown fox jumps over
+low_rank_96,9,"In a right triangle, the hypotenuse is",new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4050131237609023,class structure data types function return,class structure data types function return
+low_rank_96,10,"A queue follows the first-in, first-out",new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.3504117425989102,return logic The quick brown fox,return logic The quick brown fox
+low_rank_96,11,A binary tree node can have at most,new_candidate_high_sensitivity,0.11792874603845982,0.3333333333333333,0,1.4560388806865323,class structure data_alt types_alt function_alt return_alt,class structure data types function return
+low_rank_96,12,"In a database, a primary key must",new_candidate_high_sensitivity,0.11792874603845982,0.0,0,1.417028631181464,lazy_alt dog_alt Python_alt class_alt structure_alt data_alt,lazy dog Python class structure data
+low_rank_96,13,The chemical formula for water is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4418408559847677,the lazy dog Python class structure,the lazy dog Python class structure
+low_rank_96,14,The speed of light in a vacuum is,new_candidate_high_sensitivity,0.11792874603845982,0.0,0,1.4321183527561916,data_alt types_alt function_alt return_alt logic_alt The_alt,data types function return logic The
+low_rank_96,15,An atom consists of a nucleus containing,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.481706519138925,data types function return logic The,data types function return logic The
+low_rank_96,16,DNA stands for deoxyribonucleic,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.3469843822760623,lazy dog Python class structure data,lazy dog Python class structure data
+low_rank_96,17,The process of liquid water turning into vapor is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4926361982024012,Python class structure data types function,Python class structure data types function
+low_rank_96,18,Photosynthesis occurs in the plant cell's,new_candidate_high_sensitivity,0.11792874603845982,0.0,0,1.446734355075783,fox_alt jumps_alt over_alt the_alt lazy_alt dog_alt,fox jumps over the lazy dog
+low_rank_96,19,The acceleration due to gravity on Earth is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.364518511759961,function return logic The quick brown,function return logic The quick brown
+low_rank_96,20,The boiling point of water is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4279294699879461,the lazy dog Python class structure,the lazy dog Python class structure
+low_rank_96,21,The third planet from the Sun is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.504926375425649,The quick brown fox jumps over,The quick brown fox jumps over
+low_rank_96,22,An element with the atomic number 1 is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.3862349970950496,function return logic The quick brown,function return logic The quick brown
+low_rank_96,23,"In an atom, electrons carry a",new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.3356743779261364,class structure data types function return,class structure data types function return
+low_rank_96,24,The standard unit of electrical resistance is,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.3125833248361982,return logic The quick brown fox,return logic The quick brown fox
+low_rank_96,25,A molecule of oxygen gas is written as,new_candidate_high_sensitivity,0.11792874603845982,1.0,1,1.4590552480409638,logic The quick brown fox jumps,logic The quick brown fox jumps

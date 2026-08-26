@@ -1,0 +1,34 @@
+prompt_index,prompt,type,category_target,hypothesized_zero_baseline,hypothesized_random_baseline,hypothesized_low_rank_96_baseline,hypothesis
+1,Water freezes at approximately,original_active,C (Noise Sensitive),1,0,1,"Solved when zeroed, but broken by random noise. Partially active."
+2,"In Python, a list is different from a tuple because",original_active,C (True Active),0,0,1,"Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+3,The capital of France is,original_active,C (Noise Sensitive),1,0,1,"Solved when zeroed, but broken by random noise. Partially active."
+4,A triangle with three equal sides is,original_active,C (True Active),0,0,1,"Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+5,A variable is useful in a program because,original_active,C (Noise Sensitive),1,0,1,"Solved when zeroed, but broken by random noise. Partially active."
+6,A prime number is divisible by,original_active,C (True Active),0,0,1,"Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+7,A stack follows the,original_active,C (Marginal Active),0,1,1,Requires weight structure; exhibits intermediate sensitivity.
+8,A map scale tells us,original_active,C (True Active),0,0,1,"Highly sensitive to Q-projection quality. Broken by zero/random, resolved by factorization."
+9,"In Python, a dictionary stores data as",new_candidate_high_sensitivity,C (Programming - Semantic Definition),0,0,1,Requires precise projection of variable-binding semantic tokens. Zero-state is highly likely to fail on compound technical terms.
+10,"In Python, the 'len' function returns",new_candidate_high_sensitivity,C (Programming - Functional Syntax),0,0,1,Requires precise syntactic resolution of standard function definitions. Should break under random weight noise.
+11,A JSON object is enclosed in,new_candidate_high_sensitivity,C (Programming - Syntax),0,0,1,Tests structural syntax. Zeroing the Q-matrix should disrupt the brackets-token association.
+12,"In programming, a boolean can only be",new_candidate_high_sensitivity,C (Programming - Logic),0,0,1,Highly constrained completion. Zeroing Q-projection should cause it to drift to other type definitions.
+13,An array index in Python starts at,new_candidate_high_sensitivity,C (Programming - Indexing),0,0,1,Tests precise association of numerical indexing standard in Python. Zero-projection is likely to output 1 or null.
+14,The sum of angles in a triangle is,new_candidate_high_sensitivity,C (Mathematics - Geometry),0,0,1,Geometry recall task. Requires projection weights to bind the concept of 'triangle' to the numeric constant '180'.
+15,An even number is always divisible by,new_candidate_high_sensitivity,C (Mathematics - Arithmetic),0,0,1,Precise mathematical rule. Zero-state will likely output 'itself' or fail to constrain.
+16,The square root of nine is,new_candidate_high_sensitivity,C (Mathematics - Calculation),0,0,1,Highly precise mapping. Weight degradation will cause mathematical drift.
+17,"In a right triangle, the hypotenuse is",new_candidate_high_sensitivity,C (Mathematics - Definition),0,0,1,Tests relative spatial/mathematical terms that are highly sensitive to attention head alignment.
+18,"A queue follows the first-in, first-out",new_candidate_high_sensitivity,C (Data Structures - Core Flow),0,0,1,Tests sequential flow syntax (FIFO) to see if it mirrors the stack/LIFO pattern of Prompt 20.
+19,A binary tree node can have at most,new_candidate_high_sensitivity,C (Data Structures - Trees),0,0,1,Requires numeric constraint binding in a technical context.
+20,"In a database, a primary key must",new_candidate_high_sensitivity,C (Database - Integrity),0,0,1,Requires specific conceptual recall of database properties. Highly sensitive to projection distortion.
+21,The chemical formula for water is,new_candidate_high_sensitivity,C (Chemistry - Formula),0,0,1,"Direct, highly constrained alphanumeric completion. Will fail if token projection is noisy."
+22,The speed of light in a vacuum is,new_candidate_high_sensitivity,C (Physics - Constant),0,0,1,Physical constant recall. Requires deep attention alignment to fetch exact mathematical values.
+23,An atom consists of a nucleus containing,new_candidate_high_sensitivity,C (Physics - Definition),0,0,1,Complex multi-token scientific definition. Highly likely to degrade under zero-projection.
+24,DNA stands for deoxyribonucleic,new_candidate_high_sensitivity,C (Biology - Terminology),0,0,1,Alphanumeric suffix retrieval. Tests if the Q-matrix is needed to project rare scientific tokens.
+25,The process of liquid water turning into vapor is,new_candidate_high_sensitivity,C (Earth Science - Processes),0,0,1,Noun-phrase to single-term semantic mapping. Breaks under representation distortion.
+26,Photosynthesis occurs in the plant cell's,new_candidate_high_sensitivity,C (Biology - Botany),0,0,1,"Compares with the easy Prompt 1. Here, the target token 'chloroplasts' is much more specific than simple terms."
+27,The acceleration due to gravity on Earth is,new_candidate_high_sensitivity,C (Physics - Constant),0,0,1,Numerical constant retrieval. Highly sensitive to precise weight representation.
+28,The boiling point of water is,new_candidate_high_sensitivity,C (Physics - Temperature),0,0,1,Compares with Prompt 3 (freezing). Water temperature values are often adjacent in vector space; tests precision.
+29,The third planet from the Sun is,new_candidate_high_sensitivity,C (Astronomy - Fact),0,0,1,Ordinal numeric and astronomical fact binding.
+30,An element with the atomic number 1 is,new_candidate_high_sensitivity,C (Chemistry - Element),0,0,1,Integer-to-element mapping. High precision required.
+31,"In an atom, electrons carry a",new_candidate_high_sensitivity,C (Physics - Charge),0,0,1,Polarity assignment task. Highly sensitive to semantic inversion under weight noise.
+32,The standard unit of electrical resistance is,new_candidate_high_sensitivity,C (Physics - Electricity),0,0,1,Specific noun retrieval. Expected to fail in zero-projection.
+33,A molecule of oxygen gas is written as,new_candidate_high_sensitivity,C (Chemistry - Molecular),0,0,1,Alphanumeric representation task. Sharp validation criterion.

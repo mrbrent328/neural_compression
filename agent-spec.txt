@@ -1,0 +1,54 @@
+# Personal Agent System — Requirements Spec
+
+## Core purpose
+A general conversational assistant, first and foremost — like talking to Claude/ChatGPT.
+Not an "experiment platform." Not primarily a task-runner. Vision, experimentation
+sub-agents, etc. are later add-ons, not the core.
+
+## Interface
+- Web UI from day one. No CLI-first design.
+- Telegram as a future delivery channel (for proactive pings, not required for v1).
+
+## Memory
+- Persistent by default, agent's own judgment on what's durable (like Claude), not
+  "one chat log per topic" like ChatGPT requires.
+- Keep: projects, ongoing work (garden, builds, etc.), facts, decisions.
+- Drop: transient moods/bad days, unless it's a genuinely major life event.
+- Private by default — no need to narrate everything it saves — but should give some
+  light ambient signal that something was saved, so the user knows to expect recall later.
+- Corrections happen conversationally ("no, actually—", "forget that") and the agent
+  updates on its own. No memory-editing UI required for v1 (nice-to-have, not essential).
+
+## Knowledge access
+- Needs BOTH open web search AND local file/project access from day one. Web search
+  alone is a solved problem elsewhere (that's just a chat window); the value here is
+  combining live knowledge with the user's own local context.
+
+## Proactivity
+- Should act on its own, not just respond when spoken to — e.g. checking in on
+  ongoing tasks, flagging things it noticed unprompted.
+- Telegram (once built) is the channel for it to reach out first.
+
+## Autonomy / risk handling
+- Default posture for now: ask before acting on anything the agent judges "serious."
+- Low-risk actions (e.g. deleting a file) should still default to a safe fallback
+  (e.g. back it up rather than hard-delete) rather than full autonomy.
+- No access to system-critical operations without explicit approval.
+- This is a *current* setting, expected to loosen over time as trust is established —
+  don't hardcode "always ask" as a permanent constraint, make it adjustable.
+
+## Performance
+- Latency is not a hard constraint. User is fine with long-running jobs (has watched
+  multi-hour local compute jobs before). Prioritize reasoning/coding capability over speed.
+
+## Personality
+- Should have *some* personality — not a bare "I am a tool" affect.
+- Should NOT have an imposed/heavy persona bolted on.
+- Treat as a soft preference, not a hard spec — lowest priority item on this list.
+
+## Explicit non-goals for v1
+- Not primarily an experimentation platform (that's a secondary sub-agent, separate
+  from the main conversational agent — keep them architecturally distinct so the
+  "experimental" framing doesn't bleed into the main agent's behavior).
+- Not CLI-based.
+- Not a system requiring one-topic-per-session memory workarounds.

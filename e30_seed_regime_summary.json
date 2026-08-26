@@ -1,0 +1,122 @@
+{
+  "experiment": "E30_seed_geometry_regime_clustering",
+  "question": "Are the different E28 geometry/behavior outcomes separable into recurring seed-level regimes?",
+  "seeds": [
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30
+  ],
+  "records": [
+    {
+      "seed": 22,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 23,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 24,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 25,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 26,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 27,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 28,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 29,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    },
+    {
+      "seed": 30,
+      "geometry_found": false,
+      "behavior_found": false,
+      "low_curvature": null,
+      "high_curvature": null,
+      "curvature_ratio": null,
+      "behavior_separation": null,
+      "behavior_span_fallback": null,
+      "e28_record_found": true
+    }
+  ],
+  "clustering": {
+    "status": "insufficient_data",
+    "reason": "Need at least three seeds with both curvature ratio and E28 behavior separation."
+  },
+  "cross_seed_relationship": null,
+  "interpretation_guardrail": "This experiment is descriptive. With nine seeds, a cluster is evidence of a possible regime, not proof of a population level phenomenon."
+}

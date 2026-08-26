@@ -1,0 +1,141 @@
+{
+  "experiment": "E30_fixed_cross_seed_regime_analysis",
+  "question": "Do the seed-to-seed geometry/behavior differences form recurring regimes?",
+  "source_files": [
+    "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+  ],
+  "records": [
+    {
+      "seed": 22,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.009716764092445374,
+      "high_curvature": 0.4260864555835724,
+      "curvature_ratio": 0.022804677231847686
+    },
+    {
+      "seed": 23,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.01642955280840397,
+      "high_curvature": 0.10875814408063889,
+      "curvature_ratio": 0.15106503469038837
+    },
+    {
+      "seed": 24,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.09120850265026093,
+      "high_curvature": 0.31793493032455444,
+      "curvature_ratio": 0.2868778921433811
+    },
+    {
+      "seed": 25,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.06327784806489944,
+      "high_curvature": 0.8393397331237793,
+      "curvature_ratio": 0.07539003048193325
+    },
+    {
+      "seed": 26,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": -0.005461378023028374,
+      "high_curvature": 0.15208083391189575,
+      "curvature_ratio": -0.03591102101789031
+    },
+    {
+      "seed": 27,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.004460236988961697,
+      "high_curvature": 0.0181560255587101,
+      "curvature_ratio": 0.2456615284297152
+    },
+    {
+      "seed": 28,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.03200867027044296,
+      "high_curvature": 0.04393233731389046,
+      "curvature_ratio": 0.7285901963682345
+    },
+    {
+      "seed": 29,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.0172938983887434,
+      "high_curvature": 0.20526498556137085,
+      "curvature_ratio": 0.08425157530616838
+    },
+    {
+      "seed": 30,
+      "source_files": [
+        "E28_geometry_behavior_results/e28_cross_seed_summary.json"
+      ],
+      "found_fields": {
+        "low_curvature": "low_curvature",
+        "high_curvature": "high_curvature",
+        "curvature_ratio": "derived(low/high)"
+      },
+      "low_curvature": 0.0985221341252327,
+      "high_curvature": 0.7066396474838257,
+      "curvature_ratio": 0.13942344514073954
+    }
+  ],
+  "classification": {
+    "status": "insufficient_data",
+    "usable_seeds": [],
+    "reason": "Fewer than three seeds have both curvature_ratio and behavior_separation. The parser did not invent missing values."
+  },
+  "guardrail": "This is analysis of existing E27/E28 outputs. No model was retrained and missing values were not fabricated."
+}
