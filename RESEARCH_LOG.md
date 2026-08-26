@@ -115,6 +115,58 @@ As the ROCM-test dump is reviewed, specifically look for:
 
 The goal is not to reproduce every historical file. The goal is to recover durable relationships between experiments, observations, and changed hypotheses.
 
+## Foundational Historical Branch: E14B / test14b.py
+
+**E14B has now been explicitly archived in the repository as `ROCM-test/test14b.py`.** It should be treated as a foundational implementation, not merely an old script. The source converts tensors from a GGUF model into a tiled latent representation using a convolutional encoder, stores latent grids in a binary file, and records tensor-level metadata and byte offsets in a JSON index. The uploaded source is 173 lines and is preserved verbatim as the historical implementation. fileciteturn24file0
+
+The core pipeline is:
+
+`GGUF tensor → normalize/reshape → 256×256 tiles → convolutional encoder → latent grid → binary storage + index`
+
+Several details matter historically:
+
+- Large tensors are spatialized into 256×256 tiles rather than treated only as flat parameter vectors.
+- The encoder reduces each 256×256 tile to a `16 × 32 × 32` latent grid. At the raw float32 tensor level this is a nominal **16× reduction in stored values per encoded tile**, before accounting for the encoder itself, decoder, metadata, and any subsequent quantization/entropy coding.
+- Small and one-dimensional tensors bypass the latent path and are stored uncompressed.
+- The JSON index preserves original shape, flattened shape, padded shape, tile count, latent shape, byte offset, and byte length.
+- The implementation is therefore already thinking in terms of **structured local pieces plus an addressable persistent index**, rather than one monolithic compressed vector.
+
+### E14B — the important thing we missed
+
+The most important historical insight is not the nominal compression ratio. It is the **choice to turn a large model into a collection of spatially addressable local representations**.
+
+That is an early ancestor of the current local-unit/relational view:
+
+`large system → local units → compact representation → persistent index`
+
+The later E36/E37 work makes the same structural move more explicitly: persistent units become reusable objects, and relations are added between them. E14B therefore appears, in retrospect, to be an early engineering precursor to the idea that a large system may be better represented as **many reusable local pieces with explicit structure between them** rather than as one compressed monolith.
+
+There is also an important methodological warning in E14B. The encoder is instantiated and used immediately in evaluation, but this script itself contains no training procedure for the autoencoder and no decoder. Therefore the historical script demonstrates a **representation pipeline**, not by itself a validated lossless or behavior-preserving compression result. The printed `LATENT` ratio is a raw tensor-value reduction, not a complete end-to-end compression ratio. Encoder/decoder cost and reconstruction quality must be accounted for before calling it genuine compression.
+
+This reinforces an earlier archaeological finding: the project repeatedly had to distinguish **small representation** from **small complete explanatory system**.
+
+### Why E14B may have sent the project in a suboptimal direction
+
+The potentially consequential choice was treating the weight matrix as an image and applying ordinary convolutional locality. That imposes a strong prior: neighboring parameter values in the chosen tensor layout are assumed to have useful local structure. For some neural tensors that may be useful; for others it may be an arbitrary coordinate artifact. The tile boundaries also prevent the encoder from directly modeling relationships between neighboring tiles.
+
+A stronger follow-up, had we pursued E14B immediately, would have been to test three things separately:
+
+1. **Locality:** does nearby weight position actually predict nearby structure?
+2. **Cross-tile structure:** does information shared between tiles account for a meaningful part of the compressible signal?
+3. **Functional value:** does a compact tile representation preserve what the corresponding model component does, rather than merely its numeric values?
+
+That third question points directly toward E18's functional-latent objective, while the second points toward the later relational direction. In that sense, E14B may not have been a wrong turn so much as an **unfinished fork** whose most interesting questions were never isolated.
+
+### E14B archaeological status
+
+**Status: foundational precursor; not a validated compression result.**
+
+**Recovered idea worth preserving:** local compact representations plus explicit addressing/indexing.
+
+**Potentially missed branch:** learn or test relations *between* latent tiles, and evaluate functional reconstruction rather than raw weight reconstruction.
+
+**Current relevance:** high. E14B may be the earliest concrete implementation in the recovered archive of the architectural instinct that later became “local representations + shared relational layer.”
+
 ## E18–E22: Functional and Relational Turn
 
 E18 explicitly compared optimizing a held-out latent for factor/weight MSE against optimizing it for the function of the recovered Q projection. The constructor remained fixed, so the experiment isolated the effect of the latent objective.
@@ -236,6 +288,8 @@ The ROCM-test dump is now explicitly part of the reconstruction process. Histori
 **Recent conceptual refinement:** Treat changes in observation basis/state as distinct from literal physical rotation. Test whether different observation states can yield different forms while sharing compact underlying relational structure, and whether mixed observations reveal relational information unavailable to individual observations.
 
 **Historical refinement:** The original compression objective had both a coding-compression branch and a representation-compression branch. The coding branch is an important precursor because it makes predictability, bit cost, online adaptation, and reusable information explicit.
+
+**Foundational refinement from E14B:** The recovered early implementation already represented a large model as addressable local latent units. Its most important legacy may therefore be architectural rather than its nominal compression ratio: local representation + persistent indexing is an early precursor to the later persistent-unit/relational approach. It also exposes the need to count decoder/model cost and validate functional preservation rather than treating latent-size reduction as sufficient.
 
 **Current architectural direction:** Test whether local representations connected through a shared relational / interaction mechanism provide a better abstraction than treating observations as independent latent objects.
 
