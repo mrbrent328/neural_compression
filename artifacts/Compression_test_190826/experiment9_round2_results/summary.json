@@ -1,0 +1,654 @@
+{
+  "source_weight": {
+    "shape": [
+      896,
+      896
+    ],
+    "dtype": "bfloat16",
+    "numel": 802816,
+    "raw_bytes": 1605632,
+    "sha256": "a515fc5f05e4cc898596d09bfcec7a04e8329dd88d1b9c1672af0f2f89b05028",
+    "min": -0.9609375,
+    "max": 0.76171875,
+    "mean": -2.8159820431028493e-06,
+    "std": 0.05355827137827873,
+    "frobenius_norm": 47.988975524902344
+  },
+  "configuration": {
+    "ranks": [
+      16,
+      32,
+      64,
+      128
+    ],
+    "seeds": [
+      9,
+      10,
+      11
+    ],
+    "steps": 600,
+    "probe_count": 24,
+    "continuation_tokens": 6
+  },
+  "aggregate": [
+    {
+      "method": "autoencoder",
+      "rank": 16,
+      "runs": 3,
+      "compression_factor": 28.0,
+      "relative_frobenius_mean": 0.6084362069765726,
+      "teacher_match_mean": 0.9768518408139547,
+      "greedy_match_mean": 0.9467592636744181,
+      "exact_continuations_mean": 20.666666666666668,
+      "logit_rmse_min": 0.11138825118541718,
+      "logit_rmse_max": 0.11502954363822937
+    },
+    {
+      "method": "autoencoder",
+      "rank": 32,
+      "runs": 3,
+      "compression_factor": 14.0,
+      "relative_frobenius_mean": 0.4984132448832194,
+      "teacher_match_mean": 0.9837962985038757,
+      "greedy_match_mean": 0.9259259303410848,
+      "exact_continuations_mean": 21.666666666666668,
+      "logit_rmse_min": 0.07845787703990936,
+      "logit_rmse_max": 0.11660415679216385
+    },
+    {
+      "method": "autoencoder",
+      "rank": 64,
+      "runs": 3,
+      "compression_factor": 7.0,
+      "relative_frobenius_mean": 0.38471532861391705,
+      "teacher_match_mean": 0.9814814925193787,
+      "greedy_match_mean": 0.8958333134651184,
+      "exact_continuations_mean": 21.333333333333332,
+      "logit_rmse_min": 0.056935522705316544,
+      "logit_rmse_max": 0.09599103778600693
+    },
+    {
+      "method": "autoencoder",
+      "rank": 128,
+      "runs": 3,
+      "compression_factor": 3.5,
+      "relative_frobenius_mean": 0.27551983793576557,
+      "teacher_match_mean": 0.9837962985038757,
+      "greedy_match_mean": 0.9328703681627909,
+      "exact_continuations_mean": 21.666666666666668,
+      "logit_rmse_min": 0.04064870625734329,
+      "logit_rmse_max": 0.062490977346897125
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 16,
+      "runs": 1,
+      "compression_factor": 27.984383714445062,
+      "relative_frobenius_mean": 0.602131187915802,
+      "teacher_match_mean": 0.9722222089767456,
+      "greedy_match_mean": 0.9305555820465088,
+      "exact_continuations_mean": 20.0,
+      "logit_rmse_min": 0.10779943317174911,
+      "logit_rmse_max": 0.10779943317174911
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 32,
+      "runs": 1,
+      "compression_factor": 13.992191857222531,
+      "relative_frobenius_mean": 0.49010542035102844,
+      "teacher_match_mean": 0.9861111044883728,
+      "greedy_match_mean": 0.9375,
+      "exact_continuations_mean": 22.0,
+      "logit_rmse_min": 0.08752670139074326,
+      "logit_rmse_max": 0.08752670139074326
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 64,
+      "runs": 1,
+      "compression_factor": 6.996095928611266,
+      "relative_frobenius_mean": 0.3685610890388489,
+      "teacher_match_mean": 0.9930555820465088,
+      "greedy_match_mean": 0.9652777910232544,
+      "exact_continuations_mean": 23.0,
+      "logit_rmse_min": 0.06549292802810669,
+      "logit_rmse_max": 0.06549292802810669
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 128,
+      "runs": 1,
+      "compression_factor": 3.498047964305633,
+      "relative_frobenius_mean": 0.2442023903131485,
+      "teacher_match_mean": 1.0,
+      "greedy_match_mean": 1.0,
+      "exact_continuations_mean": 24.0,
+      "logit_rmse_min": 0.03325112536549568,
+      "logit_rmse_max": 0.03325112536549568
+    }
+  ],
+  "runs": [
+    {
+      "method": "truncated_svd",
+      "rank": 16,
+      "seed": null,
+      "storage": {
+        "compressed_values": 28688,
+        "compression_factor": 27.984383714445062,
+        "format": "U + S + Vh"
+      },
+      "numerical": {
+        "mse": 0.0010400163009762764,
+        "mae": 0.023160791024565697,
+        "max_abs_error": 0.515625,
+        "relative_frobenius_error": 0.602131187915802,
+        "cosine_similarity": 0.7983779311180115
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9722222089767456,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9305555820465088,
+        "greedy_exact_continuation_count": 20,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.10779943317174911,
+        "logit_max_abs_error": 1.4748985767364502,
+        "logit_cosine_similarity": 1.0012528896331787
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 16,
+      "seed": 9,
+      "storage": {
+        "compressed_values": 28672,
+        "compression_factor": 28.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0010738190030679107,
+        "mae": 0.02346871607005596,
+        "max_abs_error": 0.5654296875,
+        "relative_frobenius_error": 0.6118382811546326,
+        "cosine_similarity": 0.7910324335098267
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9861111044883728,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9722222089767456,
+        "greedy_exact_continuation_count": 22,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.11502954363822937,
+        "logit_max_abs_error": 2.1980714797973633,
+        "logit_cosine_similarity": 1.0012171268463135
+      },
+      "training": {
+        "training_seconds": 0.4460137520072749,
+        "final_train_mse": 0.0010863132774829865,
+        "compressed_values": 28672,
+        "encoder_training_only_values": 14336
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 16,
+      "seed": 10,
+      "storage": {
+        "compressed_values": 28672,
+        "compression_factor": 28.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0010574684711173177,
+        "mae": 0.02331027388572693,
+        "max_abs_error": 0.5263671875,
+        "relative_frobenius_error": 0.607162594795227,
+        "cosine_similarity": 0.7945592403411865
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9722222089767456,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9513888955116272,
+        "greedy_exact_continuation_count": 20,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.11138825118541718,
+        "logit_max_abs_error": 1.4703011512756348,
+        "logit_cosine_similarity": 1.0012294054031372
+      },
+      "training": {
+        "training_seconds": 0.47613527900830377,
+        "final_train_mse": 0.0011110013583675027,
+        "compressed_values": 28672,
+        "encoder_training_only_values": 14336
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 16,
+      "seed": 11,
+      "storage": {
+        "compressed_values": 28672,
+        "compression_factor": 28.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.001054494408890605,
+        "mae": 0.023284029215574265,
+        "max_abs_error": 0.5546875,
+        "relative_frobenius_error": 0.6063077449798584,
+        "cosine_similarity": 0.7952256202697754
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9722222089767456,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9166666865348816,
+        "greedy_exact_continuation_count": 20,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.1127905324101448,
+        "logit_max_abs_error": 1.563462257385254,
+        "logit_cosine_similarity": 1.0012320280075073
+      },
+      "training": {
+        "training_seconds": 0.42327458699583076,
+        "final_train_mse": 0.0011959228431805968,
+        "compressed_values": 28672,
+        "encoder_training_only_values": 14336
+      }
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 32,
+      "seed": null,
+      "storage": {
+        "compressed_values": 57376,
+        "compression_factor": 13.992191857222531,
+        "format": "U + S + Vh"
+      },
+      "numerical": {
+        "mse": 0.0006890192162245512,
+        "mae": 0.019298331812024117,
+        "max_abs_error": 0.349609375,
+        "relative_frobenius_error": 0.49010542035102844,
+        "cosine_similarity": 0.8716413974761963
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9861111044883728,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9375,
+        "greedy_exact_continuation_count": 22,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.08752670139074326,
+        "logit_max_abs_error": 1.4133262634277344,
+        "logit_cosine_similarity": 1.0013532638549805
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 32,
+      "seed": 9,
+      "storage": {
+        "compressed_values": 57344,
+        "compression_factor": 14.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0007097475463524461,
+        "mae": 0.01954706385731697,
+        "max_abs_error": 0.3876953125,
+        "relative_frobenius_error": 0.4974227845668793,
+        "cosine_similarity": 0.8675026297569275
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9861111044883728,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9375,
+        "greedy_exact_continuation_count": 22,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.07845787703990936,
+        "logit_max_abs_error": 1.181370735168457,
+        "logit_cosine_similarity": 1.0013970136642456
+      },
+      "training": {
+        "training_seconds": 0.47516030800761655,
+        "final_train_mse": 0.0006518250447697937,
+        "compressed_values": 57344,
+        "encoder_training_only_values": 28672
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 32,
+      "seed": 10,
+      "storage": {
+        "compressed_values": 57344,
+        "compression_factor": 14.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0007171208271756768,
+        "mae": 0.019647516310214996,
+        "max_abs_error": 0.359375,
+        "relative_frobenius_error": 0.49999821186065674,
+        "cosine_similarity": 0.8660047054290771
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9791666865348816,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9027777910232544,
+        "greedy_exact_continuation_count": 21,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.11660415679216385,
+        "logit_max_abs_error": 2.4830851554870605,
+        "logit_cosine_similarity": 1.0012131929397583
+      },
+      "training": {
+        "training_seconds": 0.5082713320007315,
+        "final_train_mse": 0.0006858261185698211,
+        "compressed_values": 57344,
+        "encoder_training_only_values": 28672
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 32,
+      "seed": 11,
+      "storage": {
+        "compressed_values": 57344,
+        "compression_factor": 14.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0007108778227120638,
+        "mae": 0.019565818831324577,
+        "max_abs_error": 0.35546875,
+        "relative_frobenius_error": 0.4978187382221222,
+        "cosine_similarity": 0.8672586679458618
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9861111044883728,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9375,
+        "greedy_exact_continuation_count": 22,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.08979403227567673,
+        "logit_max_abs_error": 1.4519314765930176,
+        "logit_cosine_similarity": 1.0013312101364136
+      },
+      "training": {
+        "training_seconds": 0.49507020600140095,
+        "final_train_mse": 0.0006746194558218122,
+        "compressed_values": 57344,
+        "encoder_training_only_values": 28672
+      }
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 64,
+      "seed": null,
+      "storage": {
+        "compressed_values": 114752,
+        "compression_factor": 6.996095928611266,
+        "format": "U + S + Vh"
+      },
+      "numerical": {
+        "mse": 0.0003896548005286604,
+        "mae": 0.014949643984436989,
+        "max_abs_error": 0.197265625,
+        "relative_frobenius_error": 0.3685610890388489,
+        "cosine_similarity": 0.9295772314071655
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9930555820465088,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9652777910232544,
+        "greedy_exact_continuation_count": 23,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.06549292802810669,
+        "logit_max_abs_error": 1.102231502532959,
+        "logit_cosine_similarity": 1.001427173614502
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 64,
+      "seed": 9,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.00042466504964977503,
+        "mae": 0.015503717586398125,
+        "max_abs_error": 0.24609375,
+        "relative_frobenius_error": 0.3847649395465851,
+        "cosine_similarity": 0.9229961633682251
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9791666865348816,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.8819444179534912,
+        "greedy_exact_continuation_count": 21,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.09599103778600693,
+        "logit_max_abs_error": 1.9401488304138184,
+        "logit_cosine_similarity": 1.001301646232605
+      },
+      "training": {
+        "training_seconds": 0.597168114996748,
+        "final_train_mse": 0.0003921296156477183,
+        "compressed_values": 114688,
+        "encoder_training_only_values": 57344
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 64,
+      "seed": 10,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0004261117719579488,
+        "mae": 0.015521086752414703,
+        "max_abs_error": 0.1875,
+        "relative_frobenius_error": 0.38541996479034424,
+        "cosine_similarity": 0.9227713346481323
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9791666865348816,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.8819444179534912,
+        "greedy_exact_continuation_count": 21,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.0709322914481163,
+        "logit_max_abs_error": 1.2231664657592773,
+        "logit_cosine_similarity": 1.0014188289642334
+      },
+      "training": {
+        "training_seconds": 0.6056444059940986,
+        "final_train_mse": 0.0003881124430336058,
+        "compressed_values": 114688,
+        "encoder_training_only_values": 57344
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 64,
+      "seed": 11,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.000422891927883029,
+        "mae": 0.015470974147319794,
+        "max_abs_error": 0.244140625,
+        "relative_frobenius_error": 0.3839610815048218,
+        "cosine_similarity": 0.9233328104019165
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9861111044883728,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9236111044883728,
+        "greedy_exact_continuation_count": 22,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.056935522705316544,
+        "logit_max_abs_error": 1.0472216606140137,
+        "logit_cosine_similarity": 1.0014548301696777
+      },
+      "training": {
+        "training_seconds": 0.6132321949990001,
+        "final_train_mse": 0.00041209813207387924,
+        "compressed_values": 114688,
+        "encoder_training_only_values": 57344
+      }
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 128,
+      "seed": null,
+      "storage": {
+        "compressed_values": 229504,
+        "compression_factor": 3.498047964305633,
+        "format": "U + S + Vh"
+      },
+      "numerical": {
+        "mse": 0.00017106808081734926,
+        "mae": 0.010164844803512096,
+        "max_abs_error": 0.1005859375,
+        "relative_frobenius_error": 0.2442023903131485,
+        "cosine_similarity": 0.9696946740150452
+      },
+      "functional": {
+        "teacher_forced_match_rate": 1.0,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 1.0,
+        "greedy_exact_continuation_count": 24,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.03325112536549568,
+        "logit_max_abs_error": 0.46135008335113525,
+        "logit_cosine_similarity": 1.0015231370925903
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 128,
+      "seed": 9,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0002175760018872097,
+        "mae": 0.011233055964112282,
+        "max_abs_error": 0.20794677734375,
+        "relative_frobenius_error": 0.275404155254364,
+        "cosine_similarity": 0.9612983465194702
+      },
+      "functional": {
+        "teacher_forced_match_rate": 1.0,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 1.0,
+        "greedy_exact_continuation_count": 24,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.04064870625734329,
+        "logit_max_abs_error": 0.7114048004150391,
+        "logit_cosine_similarity": 1.0014939308166504
+      },
+      "training": {
+        "training_seconds": 0.7146214929962298,
+        "final_train_mse": 0.00020405651594046503,
+        "compressed_values": 229376,
+        "encoder_training_only_values": 114688
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 128,
+      "seed": 10,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0002073600480798632,
+        "mae": 0.011073542758822441,
+        "max_abs_error": 0.119140625,
+        "relative_frobenius_error": 0.26886048913002014,
+        "cosine_similarity": 0.9632086753845215
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9722222089767456,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.875,
+        "greedy_exact_continuation_count": 20,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.062490977346897125,
+        "logit_max_abs_error": 0.9505958557128906,
+        "logit_cosine_similarity": 1.0014482736587524
+      },
+      "training": {
+        "training_seconds": 0.7684890829987125,
+        "final_train_mse": 0.0002310803538421169,
+        "compressed_values": 229376,
+        "encoder_training_only_values": 114688
+      }
+    },
+    {
+      "method": "autoencoder",
+      "rank": 128,
+      "seed": 11,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.000228600823902525,
+        "mae": 0.011483602225780487,
+        "max_abs_error": 0.1818084716796875,
+        "relative_frobenius_error": 0.2822948694229126,
+        "cosine_similarity": 0.9593002796173096
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9791666865348816,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9236111044883728,
+        "greedy_exact_continuation_count": 21,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.054002005606889725,
+        "logit_max_abs_error": 1.9343570470809937,
+        "logit_cosine_similarity": 1.0014684200286865
+      },
+      "training": {
+        "training_seconds": 0.8530175180057995,
+        "final_train_mse": 0.00021286898117978126,
+        "compressed_values": 229376,
+        "encoder_training_only_values": 114688
+      }
+    }
+  ],
+  "decision_rule": "Only pursue rotations if they beat truncated SVD at an equal compression factor across repeated runs, especially on greedy match rate and logit RMSE."
+}

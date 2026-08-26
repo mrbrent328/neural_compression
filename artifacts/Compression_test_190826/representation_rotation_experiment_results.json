@@ -1,0 +1,11 @@
+{
+  "experiment": "representation_rotation_baseline",
+  "bytes_original": 1600,
+  "representation_bytes_float64": 12800,
+  "alternative_representation_bytes_float64": 12800,
+  "original_sha256": "6d5bf1fdeaa074df7382f8999aaf92fc8cc77aad35987da84f96e40f34959b0e",
+  "rotation_max_error": 1.7763568394002505e-14,
+  "alternate_rotation_max_error": 1.7763568394002505e-14,
+  "exact_within_1e-10": true,
+  "interpretation": "Both representations preserve the same underlying data because the transformations are reversible. This is the baseline for the later neural experiment: change the representation without changing the recoverable state."
+}

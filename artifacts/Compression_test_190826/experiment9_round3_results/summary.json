@@ -1,0 +1,395 @@
+{
+  "experiment": "Experiment 9 Round 3: activation-aware low-rank factors versus SVD",
+  "source_weight": {
+    "shape": [
+      896,
+      896
+    ],
+    "dtype": "bfloat16",
+    "numel": 802816,
+    "raw_bytes": 1605632,
+    "sha256": "a515fc5f05e4cc898596d09bfcec7a04e8329dd88d1b9c1672af0f2f89b05028",
+    "min": -0.9609375,
+    "max": 0.76171875,
+    "mean": -2.8159820431028493e-06,
+    "std": 0.05355827137827873,
+    "frobenius_norm": 47.988975524902344
+  },
+  "calibration_prompts": [
+    "Explain gravity to a curious child.",
+    "Write a short haiku about rain.",
+    "The purpose of a compiler is to",
+    "A hexadecimal number uses the digits",
+    "Describe the difference between a stack and a queue.",
+    "In a healthy ecosystem, predators help",
+    "The Pythagorean theorem states that",
+    "A reliable experiment should include",
+    "What is the difference between an adjective and an adverb?",
+    "A REST API commonly uses HTTP methods such as",
+    "The moon affects ocean tides because",
+    "To make bread rise, bakers usually add",
+    "A class in object-oriented programming is",
+    "The boiling point of water depends on",
+    "An algorithm is efficient when it",
+    "The mitochondria are often called",
+    "A map is useful because it represents",
+    "A recursive function must have",
+    "The next prime number after 19 is",
+    "In music, a rhythm is",
+    "A secure connection on the web usually begins with",
+    "The central limit theorem concerns",
+    "A balanced argument should acknowledge",
+    "The main purpose of version control is to",
+    "The opposite of increase is",
+    "A dictionary in Python maps keys to",
+    "The human heart pumps blood through",
+    "A good error message should tell the user",
+    "The area of a circle is",
+    "A variable in algebra represents",
+    "A test set should not be used to",
+    "A telescope helps astronomers observe"
+  ],
+  "evaluation_prompts": [
+    "The capital of France is",
+    "Two plus two equals",
+    "The quick brown fox jumps over the",
+    "A small neural network can",
+    "The opposite of hot is",
+    "Water freezes at",
+    "The largest planet in our solar system is",
+    "A triangle has",
+    "The author of Romeo and Juliet was",
+    "In Python, a list is written using",
+    "def fibonacci(n):",
+    "SELECT name FROM users WHERE",
+    "A JSON object usually begins with",
+    "The derivative of x squared is",
+    "A synonym for happy is",
+    "The chemical symbol for gold is",
+    "The first month of the year is",
+    "A good password should be",
+    "The purpose of a unit test is to",
+    "Machine learning models improve by",
+    "Photosynthesis takes place in",
+    "A binary search works best on data that is",
+    "The Earth orbits the",
+    "A database index is used to"
+  ],
+  "configuration": {
+    "ranks": [
+      64,
+      128
+    ],
+    "seeds": [
+      9,
+      10,
+      11
+    ],
+    "steps": 1000,
+    "calibration_vectors": 225,
+    "continuation_tokens": 6
+  },
+  "aggregate": [
+    {
+      "method": "activation_aware",
+      "rank": 64,
+      "runs": 3,
+      "compression_factor": 7.0,
+      "relative_frobenius_mean": 0.5191888213157654,
+      "teacher_match_mean": 0.9953703880310059,
+      "greedy_match_mean": 0.9722222089767456,
+      "exact_continuation_mean": 23.333333333333332,
+      "logit_rmse_min": 0.04162200540304184,
+      "logit_rmse_max": 0.04353949800133705
+    },
+    {
+      "method": "activation_aware",
+      "rank": 128,
+      "runs": 3,
+      "compression_factor": 3.5,
+      "relative_frobenius_mean": 0.4063834349314372,
+      "teacher_match_mean": 1.0,
+      "greedy_match_mean": 1.0,
+      "exact_continuation_mean": 24.0,
+      "logit_rmse_min": 0.03685353323817253,
+      "logit_rmse_max": 0.03854752704501152
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 64,
+      "runs": 1,
+      "compression_factor": 7.0,
+      "relative_frobenius_mean": 0.3685610890388489,
+      "teacher_match_mean": 0.9930555820465088,
+      "greedy_match_mean": 0.9652777910232544,
+      "exact_continuation_mean": 23.0,
+      "logit_rmse_min": 0.06549292802810669,
+      "logit_rmse_max": 0.06549292802810669
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 128,
+      "runs": 1,
+      "compression_factor": 3.5,
+      "relative_frobenius_mean": 0.29285284876823425,
+      "teacher_match_mean": 0.9930555820465088,
+      "greedy_match_mean": 0.9583333134651184,
+      "exact_continuation_mean": 23.0,
+      "logit_rmse_min": 0.04925970733165741,
+      "logit_rmse_max": 0.04925970733165741
+    }
+  ],
+  "runs": [
+    {
+      "method": "truncated_svd",
+      "rank": 64,
+      "seed": null,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0003896548005286604,
+        "mae": 0.014949643984436989,
+        "max_abs_error": 0.197265625,
+        "relative_frobenius_error": 0.3685610890388489,
+        "cosine_similarity": 0.9295772314071655
+      },
+      "training": null,
+      "functional": {
+        "teacher_forced_match_rate": 0.9930555820465088,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9652777910232544,
+        "greedy_exact_continuation_count": 23,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.06549292802810669,
+        "logit_max_abs_error": 1.102231502532959,
+        "logit_cosine_similarity": 1.001427173614502
+      }
+    },
+    {
+      "method": "activation_aware",
+      "rank": 64,
+      "seed": 9,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.000769950682297349,
+        "mae": 0.020935025066137314,
+        "max_abs_error": 0.22705078125,
+        "relative_frobenius_error": 0.5180901288986206,
+        "cosine_similarity": 0.8596224784851074
+      },
+      "training": {
+        "final_batch_activation_mse": 0.0009055457194335759,
+        "full_calibration_activation_mse": 0.0008715491858310997
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9930555820465088,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9583333134651184,
+        "greedy_exact_continuation_count": 23,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.04353949800133705,
+        "logit_max_abs_error": 1.0360584259033203,
+        "logit_cosine_similarity": 1.0014979839324951
+      }
+    },
+    {
+      "method": "activation_aware",
+      "rank": 64,
+      "seed": 10,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0007695594686083496,
+        "mae": 0.02094532921910286,
+        "max_abs_error": 0.22998046875,
+        "relative_frobenius_error": 0.5179582834243774,
+        "cosine_similarity": 0.859704315662384
+      },
+      "training": {
+        "final_batch_activation_mse": 0.0009928877698257565,
+        "full_calibration_activation_mse": 0.0009373394423164427
+      },
+      "functional": {
+        "teacher_forced_match_rate": 1.0,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 1.0,
+        "greedy_exact_continuation_count": 24,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.042036447674036026,
+        "logit_max_abs_error": 0.9204168319702148,
+        "logit_cosine_similarity": 1.0015089511871338
+      }
+    },
+    {
+      "method": "activation_aware",
+      "rank": 64,
+      "seed": 11,
+      "storage": {
+        "compressed_values": 114688,
+        "compression_factor": 7.0,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0007801731117069721,
+        "mae": 0.021067515015602112,
+        "max_abs_error": 0.22900390625,
+        "relative_frobenius_error": 0.5215180516242981,
+        "cosine_similarity": 0.8580172061920166
+      },
+      "training": {
+        "final_batch_activation_mse": 0.001120643108151853,
+        "full_calibration_activation_mse": 0.0010207823943346739
+      },
+      "functional": {
+        "teacher_forced_match_rate": 0.9930555820465088,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9583333134651184,
+        "greedy_exact_continuation_count": 23,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.04162200540304184,
+        "logit_max_abs_error": 0.9614343643188477,
+        "logit_cosine_similarity": 1.0015015602111816
+      }
+    },
+    {
+      "method": "truncated_svd",
+      "rank": 128,
+      "seed": null,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0002460193354636431,
+        "mae": 0.012005520984530449,
+        "max_abs_error": 0.12939453125,
+        "relative_frobenius_error": 0.29285284876823425,
+        "cosine_similarity": 0.9565285444259644
+      },
+      "training": null,
+      "functional": {
+        "teacher_forced_match_rate": 0.9930555820465088,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 0.9583333134651184,
+        "greedy_exact_continuation_count": 23,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.04925970733165741,
+        "logit_max_abs_error": 0.7074871063232422,
+        "logit_cosine_similarity": 1.0014926195144653
+      }
+    },
+    {
+      "method": "activation_aware",
+      "rank": 128,
+      "seed": 9,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.00046993434079922736,
+        "mae": 0.01676955260336399,
+        "max_abs_error": 0.128173828125,
+        "relative_frobenius_error": 0.40475529432296753,
+        "cosine_similarity": 0.916940450668335
+      },
+      "training": {
+        "final_batch_activation_mse": 0.0001445627713110298,
+        "full_calibration_activation_mse": 0.0001308442442677915
+      },
+      "functional": {
+        "teacher_forced_match_rate": 1.0,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 1.0,
+        "greedy_exact_continuation_count": 24,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.03717319294810295,
+        "logit_max_abs_error": 0.6822404861450195,
+        "logit_cosine_similarity": 1.0015239715576172
+      }
+    },
+    {
+      "method": "activation_aware",
+      "rank": 128,
+      "seed": 10,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.0004723580786958337,
+        "mae": 0.01679578423500061,
+        "max_abs_error": 0.1324462890625,
+        "relative_frobenius_error": 0.40579739212989807,
+        "cosine_similarity": 0.9165458083152771
+      },
+      "training": {
+        "final_batch_activation_mse": 0.0001303134486079216,
+        "full_calibration_activation_mse": 0.0001415598817402497
+      },
+      "functional": {
+        "teacher_forced_match_rate": 1.0,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 1.0,
+        "greedy_exact_continuation_count": 24,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.03854752704501152,
+        "logit_max_abs_error": 0.7561550140380859,
+        "logit_cosine_similarity": 1.0015158653259277
+      }
+    },
+    {
+      "method": "activation_aware",
+      "rank": 128,
+      "seed": 11,
+      "storage": {
+        "compressed_values": 229376,
+        "compression_factor": 3.5,
+        "format": "Z + decoder"
+      },
+      "numerical": {
+        "mse": 0.00047889910638332367,
+        "mae": 0.016916070133447647,
+        "max_abs_error": 0.1339111328125,
+        "relative_frobenius_error": 0.4085976183414459,
+        "cosine_similarity": 0.9155782461166382
+      },
+      "training": {
+        "final_batch_activation_mse": 0.0003198252816218883,
+        "full_calibration_activation_mse": 0.00018888401973526925
+      },
+      "functional": {
+        "teacher_forced_match_rate": 1.0,
+        "teacher_forced_top5_rate": 1.0,
+        "greedy_token_match_rate": 1.0,
+        "greedy_exact_continuation_count": 24,
+        "prompt_count": 24,
+        "continuation_tokens": 6,
+        "logit_rmse": 0.03685353323817253,
+        "logit_max_abs_error": 0.736872673034668,
+        "logit_cosine_similarity": 1.0015168190002441
+      }
+    }
+  ],
+  "decision_rule": "Activation-aware compression is useful only if it beats SVD on held-out greedy continuation agreement and logit RMSE at the same rank."
+}
