@@ -160,6 +160,14 @@ The conceptual bridge is:
 
 This is still an experiment, not a claim that the project has proven a novel architecture.
 
+## Standing project workflow
+
+The canonical project workflow is maintained in [`PROJECT_WORKFLOW.md`](../PROJECT_WORKFLOW.md).
+
+Every new research conversation should follow that procedure: review the persistent project state, propose exactly one experiment, discuss and agree on it, design the implementation, code it, commit it to the canonical branch, have the user run it, analyze the actual output, and leave a handoff for the next conversation.
+
+Do not repeatedly re-plan an experiment after the user has explicitly approved it. Do not substitute assumed results for the user's real run. Preserve exactness requirements.
+
 ## Current branch/workflow
 
 Branch: `neural-memory-network`
@@ -188,6 +196,6 @@ The correct recovery is to resume from the agreed adaptive experiment and actual
 
 When continuing this project in a new conversation:
 
-**Review this handoff and the current `neural-memory-network` branch, then implement and commit `memory_network/adaptive_delta.py` containing both Oracle (A) and Adaptive (B).**
+**Review this handoff and the current canonical branch, then implement and commit `memory_network/adaptive_delta.py` containing both Oracle (A) and Adaptive (B).**
 
 After the user runs it, analyze the output and decide where the evidence points next.
