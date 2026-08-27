@@ -20,6 +20,10 @@ def pack_f32(values):
     return np.asarray(values, dtype="<f4").tobytes()
 
 
+def pack_f64(values):
+    return np.asarray(values, dtype="<f8").tobytes()
+
+
 def pack_packet(kind, index_count, range_count, value_count, payload):
     return HEADER.pack(MAGIC, VERSION, kind, index_count, range_count, value_count) + payload
 
@@ -61,18 +65,22 @@ def encode_ranges(indices, values):
 
 
 def encode_factored(indices, values):
-    base = float(np.mean(values)) if len(values) else 0.0
-    residuals = (values - base).astype(np.float32) if len(values) else np.array([], dtype=np.float32)
-    payload = struct.pack("<f", base) + indices.astype("<i4").tobytes() + pack_f32(residuals)
+    # Keep the factoring lossless: promote the original float32 values to float64,
+    # perform the factorization there, and reconstruct back to float32.
+    values64 = np.asarray(values, dtype=np.float64)
+    base = float(np.mean(values64)) if len(values64) else 0.0
+    residuals = values64 - base
+    payload = struct.pack("<d", base) + indices.astype("<i4").tobytes() + pack_f64(residuals)
     return pack_packet(4, len(indices), 0, len(values), payload)
 
 
 def encode_combined(indices, values):
     starts, lengths = find_ranges(indices)
-    base = float(np.mean(values)) if len(values) else 0.0
-    residuals = (values - base).astype(np.float32) if len(values) else np.array([], dtype=np.float32)
-    payload = (struct.pack("<f", base) + starts.astype("<i4").tobytes() +
-               lengths.astype("<i4").tobytes() + pack_f32(residuals))
+    values64 = np.asarray(values, dtype=np.float64)
+    base = float(np.mean(values64)) if len(values64) else 0.0
+    residuals = values64 - base
+    payload = (struct.pack("<d", base) + starts.astype("<i4").tobytes() +
+               lengths.astype("<i4").tobytes() + pack_f64(residuals))
     return pack_packet(5, len(indices), len(starts), len(values), payload)
 
 
@@ -82,8 +90,6 @@ def read_packet(payload):
     magic, version, kind, index_count, range_count, value_count = HEADER.unpack(payload[:HEADER.size])
     if magic != MAGIC or version != VERSION:
         raise ValueError("invalid structured delta packet header")
-    if index_count < 0 or range_count < 0 or value_count < 0:
-        raise ValueError("negative packet count")
     return kind, index_count, range_count, value_count, payload[HEADER.size:]
 
 
@@ -99,7 +105,11 @@ def ranges_to_indices(starts, lengths, expected_count):
     if len(starts) != len(lengths):
         raise ValueError("range metadata length mismatch")
     if np.any(lengths <= 0):
-        raise ValueError("range lengths must be positive")
+        if len(lengths):
+            raise ValueError("range lengths must be positive")
+        if expected_count != 0:
+            raise ValueError("empty ranges cannot represent nonzero indices")
+        return np.array([], dtype=np.int32)
     total = int(np.sum(lengths, dtype=np.int64))
     if total != expected_count:
         raise ValueError("range lengths do not match index count")
@@ -132,6 +142,8 @@ def decode_and_reconstruct(payload):
         return indices, values
 
     if kind == 3:
+        if value_count != index_count:
+            raise ValueError("invalid range packet counts")
         starts, offset = take_array(data, offset, range_count, "<i4")
         lengths, offset = take_array(data, offset, range_count, "<i4")
         indices = ranges_to_indices(starts, lengths, index_count)
@@ -141,26 +153,28 @@ def decode_and_reconstruct(payload):
     if kind == 4:
         if range_count != 0 or index_count != value_count:
             raise ValueError("invalid factored-value packet counts")
-        if offset + 4 > len(data):
+        if offset + 8 > len(data):
             raise ValueError("factored-value packet is missing its base")
-        (base,) = struct.unpack("<f", data[offset:offset + 4])
-        offset += 4
+        (base,) = struct.unpack("<d", data[offset:offset + 8])
+        offset += 8
         indices, offset = take_array(data, offset, index_count, "<i4")
-        residuals, offset = take_array(data, offset, value_count, "<f4")
-        return indices, (base + residuals).astype(np.float32)
+        residuals, offset = take_array(data, offset, value_count, "<f8")
+        values = (base + residuals).astype(np.float32)
+        return indices, values
 
     if kind == 5:
-        if range_count < 0 or index_count != value_count:
+        if index_count != value_count:
             raise ValueError("invalid combined packet counts")
-        if offset + 4 > len(data):
+        if offset + 8 > len(data):
             raise ValueError("combined packet is missing its base")
-        (base,) = struct.unpack("<f", data[offset:offset + 4])
-        offset += 4
+        (base,) = struct.unpack("<d", data[offset:offset + 8])
+        offset += 8
         starts, offset = take_array(data, offset, range_count, "<i4")
         lengths, offset = take_array(data, offset, range_count, "<i4")
         indices = ranges_to_indices(starts, lengths, index_count)
-        residuals, offset = take_array(data, offset, value_count, "<f4")
-        return indices, (base + residuals).astype(np.float32)
+        residuals, offset = take_array(data, offset, value_count, "<f8")
+        values = (base + residuals).astype(np.float32)
+        return indices, values
 
     raise ValueError(f"unknown representation {kind}")
 
@@ -202,7 +216,8 @@ def run_case(rng, changed, pattern):
         }
 
     if not all(result["exact"] for result in results.values()):
-        raise RuntimeError("a delta representation failed exact reconstruction")
+        failed = [name for name, result in results.items() if not result["exact"]]
+        raise RuntimeError(f"delta representation failed exact reconstruction: {failed}")
     best = min(results, key=lambda name: results[name]["compressed_bytes"])
     return {
         "pattern": pattern,
