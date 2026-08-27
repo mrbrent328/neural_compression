@@ -60,9 +60,22 @@ def encode_combined(indices, values):
 
 
 def ranges_to_indices(starts, lengths):
+    if len(starts) != len(lengths):
+        raise ValueError("range metadata length mismatch")
     if len(starts) == 0:
         return np.array([], dtype=np.int32)
-    return np.concatenate([np.arange(s, s + n, dtype=np.int32) for s, n in zip(starts, lengths)])
+    if np.any(lengths <= 0):
+        raise ValueError("range lengths must be positive")
+    total = int(np.sum(lengths, dtype=np.int64))
+    indices = np.empty(total, dtype=np.int32)
+    offset = 0
+    for start, length in zip(starts, lengths):
+        length = int(length)
+        indices[offset:offset + length] = np.arange(int(start), int(start) + length, dtype=np.int32)
+        offset += length
+    if offset != total:
+        raise ValueError("range reconstruction length mismatch")
+    return indices
 
 
 def decode_and_reconstruct(payload):
@@ -93,6 +106,8 @@ def decode_and_reconstruct(payload):
         starts = np.frombuffer(payload[offset:offset + 4 * range_count], dtype="<i4").copy(); offset += 4 * range_count
         lengths = np.frombuffer(payload[offset:offset + 4 * range_count], dtype="<i4").copy(); offset += 4 * range_count
         indices = ranges_to_indices(starts, lengths)
+        if len(indices) != value_count:
+            raise ValueError("combined range metadata does not match value count")
         residuals = np.frombuffer(payload[offset:offset + 4 * value_count], dtype="<f4").copy()
         return indices, (base + residuals).astype(np.float32)
     raise ValueError(f"unknown representation {kind}")
@@ -121,7 +136,10 @@ def run_case(rng, changed, pattern):
         decoded_indices, decoded_values = decode_and_reconstruct(zlib.decompress(compressed))
         exact = bool(np.array_equal(indices, decoded_indices) and np.array_equal(values, decoded_values))
         results[name] = {"raw_bytes": len(raw), "compressed_bytes": len(compressed), "reduction_vs_full_percent": 100.0 * (1.0 - len(compressed) / (STATE_SIZE * 4)), "exact": exact}
-    best = min(results, key=lambda name: results[name]["compressed_bytes"])
+    valid = {name: result for name, result in results.items() if result["exact"]}
+    if len(valid) != len(results):
+        raise RuntimeError("a delta representation failed exact reconstruction")
+    best = min(valid, key=lambda name: valid[name]["compressed_bytes"])
     return {"pattern": pattern, "changed_values": changed, "representations": results, "best_representation": best, "best_compressed_bytes": results[best]["compressed_bytes"]}
 
 
