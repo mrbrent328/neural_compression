@@ -1,11 +1,11 @@
 # Neural Compression — Context Handoff
 
-**Date:** 2026-08-27
-**Branch:** `neural-memory-network`
+**Date:** 2026-08-28
+**Branch:** `main`
 
 ## Why this file exists
 
-This is a handoff checkpoint for starting a fresh conversation without losing the current research thread. Preserve the experimental direction and workflow below.
+This is the handoff checkpoint for starting a fresh conversation without losing the current research thread. Preserve the experimental direction and workflow below.
 
 ## Current research direction
 
@@ -79,100 +79,77 @@ Several bugs occurred while building this experiment:
 
 **Workflow lesson:** when changing code, first inspect the actual current repository version and make sure the user's executed local file corresponds to it. Do not claim a fix was applied unless the repository was actually updated. Do not weaken exactness checks just to make a test pass.
 
-## Current next experiment: Adaptive Delta
+## Experiment: Adaptive Delta Representation Selection
 
-The next experiment was agreed upon and should be continued rather than re-designed from scratch.
-
-Create one self-contained script, intended to be named:
-
-`memory_network/adaptive_delta.py`
-
-It should contain **Part A and Part B in the same script**.
-
-### Part A — Oracle
-
-For every generated state change:
-- encode using every currently supported representation;
-- compress each representation;
-- verify exact reconstruction;
-- select the smallest valid compressed result.
-
-The oracle is deliberately allowed to "cheat". It establishes the best achievable representation for each case.
-
-### Part B — Adaptive chooser
-
-Build a simple rule-based chooser that must select a representation from structural statistics **before** encoding/compressing it.
-
-Candidate statistics:
-- change density (`changed_values / state_values`)
-- number of contiguous runs
-- average index gap
-- gap variance
-- value mean
-- value standard deviation
-
-Initial rules can be simple and transparent, e.g. clustered/low-run changes favor `ranges`, predictable sparse gaps favor `index_delta`, highly similar values may favor factored representation, otherwise use `absolute`.
-
-The exact rules are experimental and can be revised after seeing results.
-
-### Key metric
-
-Compare adaptive compressed size against oracle compressed size:
-
-`adaptive_size / oracle_size`
-
-Also report:
-- oracle representation
-- adaptive chosen representation
-- oracle bytes
-- adaptive bytes
-- regret in bytes
-- efficiency/ratio
-- exact reconstruction status
-
-Example desired output shape:
-
-```text
-pattern       changed   oracle       oracle bytes   adaptive      adaptive bytes   efficiency   regret
--------------------------------------------------------------------------------------------------------
-random        64        index_delta  398            index_delta   398              100%         0
-clustered     256       ranges       1010           ranges        1010             100%         0
-```
-
-The purpose is to answer:
+### Question
 
 > How close can a simple system get to the optimal representation of a state change without trying every representation?
 
-This is more important than simply asking whether it beats generic compression.
+### Implementation
 
-## Longer-term direction
+`memory_network/adaptive_delta.py` contains both the oracle and adaptive selector.
 
-If the adaptive rule-based system works, the next possible progression is:
+The oracle evaluates every currently supported representation, compresses it, verifies exact reconstruction, and selects the smallest valid result.
 
-1. adaptive rule-based representation selection;
-2. scale state size from 1K to larger arrays/tensors;
-3. use actual neural-network tensors instead of synthetic arrays;
-4. potentially replace hand-written rules with a tiny learned predictor that chooses the representation.
+The adaptive system observes only structural statistics of the current delta: change density, run count, average index gap, gap variance, value mean, and value standard deviation. A small nearest-centroid classifier is trained on a separate population using oracle-selected representations as labels. The classifier is then frozen before evaluating a separate test population.
 
-The conceptual bridge is:
+The test comparison also includes a fixed `absolute` baseline. Adaptive decisions are made before candidate encoding sizes are inspected. Oracle results are calculated independently afterward.
 
-> Instead of learning to compress an object directly, learn how to describe the relationship/change between two synchronized states as cheaply as possible.
+### Actual result
 
-This is still an experiment, not a claim that the project has proven a novel architecture.
+The user ran the committed experiment with training seed `1001` and test seed `2002`, using a state of 1024 values, three pattern families (`random`, `clustered`, `similar`), seven change counts (1, 4, 16, 64, 256, 512, 1024), and 100 cases per cell for both training and testing.
+
+The test contained 2100 cases.
+
+Adaptive selector matched the oracle on 1749 of 2100 cases: **83.2857% exact representation-choice match rate**.
+
+The fixed absolute baseline matched the oracle on only **15.8095%** of cases.
+
+Mean adaptive/oracle compressed-size ratio was **1.0115999**, meaning adaptive output was on average about **1.16% larger than the oracle**.
+
+Median ratio was **1.0**. Worst ratio was **1.40217**.
+
+Mean adaptive regret was **1.835 bytes** and maximum regret was **37 bytes**. There were **1749 zero-regret cases**.
+
+Adaptive output was better than the absolute baseline in **1443 cases**, equal in **655 cases**, and worse in only **2 cases**.
+
+Mean absolute-baseline size was **1430.035 bytes**. Mean adaptive size was **1058.786 bytes**, approximately a **26.0% reduction versus the fixed absolute baseline** on this test distribution.
+
+### Observations
+
+The main result is stronger than the raw 83.3% classification accuracy suggests. Most adaptive mistakes were cheap: the classifier was usually close to the oracle even when it selected a different representation.
+
+The printed representative errors included clustered/4 changes, where adaptive chose `absolute` instead of oracle `ranges` for a 5-byte penalty, and similar/4, 16, and 64 changes, where adaptive chose `absolute` instead of `index_delta` for penalties of 1, 11, and 22 bytes respectively.
+
+The adaptive system dramatically outperformed the fixed absolute baseline on this controlled distribution.
+
+### What this does and does not establish
+
+This experiment supports the claim that **structural statistics of a delta can predict which lossless representation is efficient**, and that a very small learned selector can approach the oracle closely on the tested distribution.
+
+It does not establish that the selector generalizes to arbitrary unseen change structures. Training and test data used different random seeds but the same three pattern families and seven change-count levels.
+
+The result therefore supports the structural-selection hypothesis while leaving distributional generalization as the important unresolved question.
+
+## Important implementation/workflow note
+
+The first committed version of `adaptive_delta.py` used hard-coded rules despite describing a training phase. That mismatch was caught during code review before the user's run. It was replaced with the current nearest-centroid selector, which actually learns from oracle labels on the training population and freezes before testing.
+
+This reinforces the standing requirement to review code against the agreed experimental design before the user runs it.
 
 ## Standing project workflow
 
 The canonical project workflow is maintained in [`PROJECT_WORKFLOW.md`](../PROJECT_WORKFLOW.md).
 
-Every new research conversation should follow that procedure: review the persistent project state, propose exactly one experiment, discuss and agree on it, design the implementation, code it, commit it to the canonical branch, have the user run it, analyze the actual output, and leave a handoff for the next conversation.
+Every new research conversation should follow that procedure: review the persistent project state, propose exactly one experiment, discuss and agree on it, design the implementation, code it, commit it to the canonical branch, have the user run it, analyze the actual output, explicitly summarize the completed experiment, and leave a handoff for the next conversation.
 
 Do not repeatedly re-plan an experiment after the user has explicitly approved it. Do not substitute assumed results for the user's real run. Preserve exactness requirements.
 
 ## Current branch/workflow
 
-Branch: `neural-memory-network`
+Canonical branch: `main`.
 
-The structured-delta work lives under `memory_network/`.
+The structured-delta and memory-network work lives under `memory_network/`.
 
 The user prefers the following workflow for this project:
 
@@ -183,19 +160,19 @@ The user prefers the following workflow for this project:
 5. Give the user the exact file/link and commit.
 6. User runs it on their machine.
 7. Analyze the actual output together.
+8. Before ending the conversation, create an explicit experiment summary covering the question, implementation, actual result, main observation, limits, implementation lessons, and unresolved next decision.
+9. Update the handoff with that summary and the next unresolved question.
 
 Do not repeatedly re-plan after the user has explicitly approved the experiment. Avoid excessive sanity-checking that blocks progress. If something looks like it is working, proceed and test it; fix concrete failures when they appear.
 
-## Context/workflow failure in the previous conversation
+## Context/workflow failure in an earlier conversation
 
-The previous conversation became very long and context handling degraded. Near the end, the user explicitly asked to code and commit the adaptive experiment. Instead of executing, the assistant repeatedly described the plan and then incorrectly implied that code had been/was being committed. The user noticed this as a context/workflow regression.
+A previous conversation became very long and context handling degraded. Near the end, the user explicitly asked to code and commit the adaptive experiment. Instead of executing, the assistant repeatedly described the plan and incorrectly implied that code had been/was being committed. The user noticed this as a context/workflow regression.
 
-The correct recovery is to resume from the agreed adaptive experiment and actually perform the requested repository action. Do not make the user repeat the design unless the repository state makes it necessary.
+The current workflow was created specifically to prevent that failure: repository state is authoritative, one experiment is handled per conversation, approved designs are executed rather than repeatedly re-planned, and each completed experiment receives an explicit closeout summary and handoff.
 
-## Immediate next action
+## Immediate next decision
 
-When continuing this project in a new conversation:
+The next conversation should **not** automatically start coding. It should first review this handoff, `PROJECT_WORKFLOW.md`, and the current `main` branch, then propose exactly one next experiment based on the Adaptive Delta evidence.
 
-**Review this handoff and the current canonical branch, then implement and commit `memory_network/adaptive_delta.py` containing both Oracle (A) and Adaptive (B).**
-
-After the user runs it, analyze the output and decide where the evidence points next.
+The strongest unresolved question currently identified is whether the structural selector generalizes to **novel change structures that were not represented by the training/test pattern families**, rather than merely to new random instances of known families.
