@@ -1,0 +1,51 @@
+{
+  "experiment": "out-of-distribution structural delta selection generalization",
+  "date": "2026-08-28",
+  "state_values": 1024,
+  "training_patterns": ["random", "clustered", "similar"],
+  "novel_test_patterns": ["strided", "alternating", "multi_cluster", "edge_biased", "clustered_similar"],
+  "seeds": {"training": 1001, "test": 2003},
+  "training_cases": 2100,
+  "test_cases": 5600,
+  "known": {
+    "cases": 2100,
+    "match_rate": 0.830952380952381,
+    "mean_ratio": 1.0112543215845775,
+    "median_ratio": 1.0,
+    "mean_regret_bytes": 1.7571428571428571,
+    "max_regret_bytes": 38
+  },
+  "novel": {
+    "cases": 3500,
+    "match_rate": 0.8211428571428572,
+    "mean_ratio": 1.0558700172676458,
+    "median_ratio": 1.0,
+    "mean_regret_bytes": 40.114285714285714,
+    "max_regret_bytes": 821
+  },
+  "overall": {
+    "cases": 5600,
+    "match_rate": 0.8248214285714286,
+    "mean_ratio": 1.039139131386495,
+    "median_ratio": 1.0,
+    "mean_regret_bytes": 25.730357142857144,
+    "max_regret_bytes": 821,
+    "zero_regret_cases": 4619,
+    "adaptive_better_than_absolute_cases": 3789,
+    "adaptive_equal_absolute_cases": 1799,
+    "adaptive_worse_than_absolute_cases": 12,
+    "mean_absolute_bytes": 1448.3382142857142,
+    "mean_adaptive_bytes": 1072.6601785714286
+  },
+  "by_pattern": {
+    "random": {"cases": 700, "match_rate": 0.9957142857142857, "mean_ratio": 1.0001215805471124, "mean_regret_bytes": 0.005714285714285714, "max_regret_bytes": 2},
+    "clustered": {"cases": 700, "match_rate": 0.8857142857142857, "mean_ratio": 1.0116486843366161, "mean_regret_bytes": 0.6485714285714286, "max_regret_bytes": 37},
+    "similar": {"cases": 700, "match_rate": 0.6114285714285714, "mean_ratio": 1.0219926998700033, "mean_regret_bytes": 4.617142857142857, "max_regret_bytes": 38},
+    "strided": {"cases": 700, "match_rate": 0.9514285714285714, "mean_ratio": 1.0063581759987035, "mean_regret_bytes": 0.27, "max_regret_bytes": 8},
+    "alternating": {"cases": 700, "match_rate": 0.9957142857142857, "mean_ratio": 1.0001229020747984, "mean_regret_bytes": 0.004285714285714286, "max_regret_bytes": 1},
+    "multi_cluster": {"cases": 700, "match_rate": 0.8728571428571429, "mean_ratio": 1.0028039656581083, "mean_regret_bytes": 2.7671428571428573, "max_regret_bytes": 83},
+    "edge_biased": {"cases": 700, "match_rate": 1.0, "mean_ratio": 1.0, "mean_regret_bytes": 0.0, "max_regret_bytes": 0},
+    "clustered_similar": {"cases": 700, "match_rate": 0.2857142857142857, "mean_ratio": 1.2700650426066193, "mean_regret_bytes": 197.53, "max_regret_bytes": 821}
+  },
+  "worst_case_characterization": "The largest failures were clustered_similar cases with 512 changed values, where the adaptive selector chose absolute while the oracle chose ranges, producing regrets up to 821 bytes."
+}
