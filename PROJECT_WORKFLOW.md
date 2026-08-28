@@ -64,9 +64,15 @@ Separate observations from interpretation. Preserve exactness checks and do not 
 
 Decide what the evidence supports, weakens, or leaves unresolved.
 
-### 9. Leave a handoff for the next conversation
+### 9. Close the experiment with a summary
 
-Before the conversation ends, create or update a concise handoff file containing the current research state, the result of the experiment, important implementation lessons, and the next unresolved decision.
+Before ending the conversation, explicitly summarize the completed experiment in a compact experiment summary. The summary should state the question tested, what was implemented, the actual result, the main observation, what the result means and does not mean, important implementation lessons, and the unresolved question or next decision.
+
+This summary belongs in the handoff so a fresh conversation can recover the experiment without reconstructing the discussion from chat history.
+
+### 10. Leave a handoff for the next conversation
+
+Before the conversation ends, create or update a concise handoff file containing the current research state, the experiment summary, important implementation lessons, and the next unresolved decision.
 
 The handoff should make it possible for a fresh conversation to resume without asking the user to reconstruct the prior discussion.
 
@@ -94,6 +100,6 @@ Historical branch references may exist for archaeology or recovery, but they are
 
 The purpose of the workflow is to maintain a continuous experimental chain:
 
-`question → proposal → discussion → approved design → implementation → commit → real run → analysis → handoff → next question`
+`question → proposal → discussion → approved design → implementation → commit → real run → analysis → experiment summary → handoff → next question`
 
 Each conversation should advance exactly one link in the research chain rather than repeatedly rebuilding context.
