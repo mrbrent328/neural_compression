@@ -9,7 +9,7 @@ from pathlib import Path
 import torch
 import torch.nn.functional as F
 
-from .model import RelationalLanguageModel
+from model import RelationalLanguageModel
 
 
 def load_ids(path: Path) -> torch.Tensor:
