@@ -1,118 +1,175 @@
 # Neural Compression — Context Handoff
 
-**Date:** 2026-08-28
+**Date:** 2026-08-28  
 **Branch:** `main`
 
 ## Purpose
 
-This is the durable checkpoint for resuming Neural Compression research in a fresh conversation. The repository is authoritative. Follow `PROJECT_WORKFLOW.md`: one experiment per conversation, discuss before coding, implement only after approval, commit to `main`, use the user's real run for analysis, then close out and update this handoff.
+This is the durable checkpoint for resuming Neural Compression research in a fresh conversation. **`main` is the authoritative repository state.** Follow `PROJECT_WORKFLOW.md`: establish current state from `main` before continuing, read the relevant research notes/artifacts, discuss before coding, implement only after approval, use the user's real run for analysis, commit completed work to `main`, then close out and update this handoff.
 
 ## Current research direction
 
-The project is now pivoting from isolated component experiments toward building a small complete trainable system that combines the useful mechanisms discovered across the experiments.
+The research has progressed from isolated compression mechanisms toward a complete trainable relational system and, now, a first language-domain implementation of the relational principles discovered in earlier experiments.
 
-The central new idea is:
+The central hypothesis is:
 
-> Can concepts exist as persistent entities whose identity remains stable while their meaning is represented by a changing relational neighborhood?
+> A useful model may be built from persistent entities/local representations whose identity remains stable while their meaning is represented through changing relational/contextual structure.
 
-The longer-term architectural hypothesis is that a useful model may consist of persistent local representations connected by a shared relational/interaction layer, with state evolving over time and potentially admitting a compact geometric representation. The user is particularly interested in whether abstract concepts can be represented more like objects embedded in a structured relational space: for example, `apple` would not be a single flat vector but a persistent identity connected to concepts such as `red`, `fruit`, `sweet`, `food`, `tree`, etc. The meaning of a concept would emerge from its surrounding structure and relationships.
+The longer-term question remains:
 
-The project should eventually test whether such relational structure can develop useful geometry, potentially in two or three dimensions and later possibly with time as an additional dimension. Coordinates must not be treated as the answer in advance; the first goal is to determine whether the relational architecture itself produces useful structure.
+> What is the smallest persistent relational structure capable of explaining multiple observations of the same underlying system?
 
-## Completed experiment: Out-of-Distribution Structural Delta Selection
+The current language work is an engineering test of this hypothesis, **not** a claim about human neuroscience or cognition.
 
-### Question
+## Historical architectural progression
 
-Can the small nearest-centroid structural selector learned from the original `random`, `clustered`, and `similar` delta families choose efficient lossless representations for genuinely unseen change structures?
+### R3 / R4 — distributed local representations + shared interaction
 
-### Actual result
+R3 moved away from a single global latent bottleneck toward multiple local representations. The architecture represented an observation as local units, passed those representations through shared interaction machinery, and reconstructed from the resulting states.
 
-The complete test contained 5600 cases. Known cases produced an 83.0952% oracle-choice match rate, 1.0112543 mean ratio, 1.7571-byte mean regret, and 38-byte maximum regret. Novel cases produced an 82.1143% match rate, 1.0558700 mean ratio, 40.1143-byte mean regret, and 821-byte maximum regret. Overall match was 82.4821%, with 4619 zero-regret cases. Adaptive output was better than fixed `absolute` in 3789 cases, equal in 1799, and worse in only 12.
+R4 continued this direction and explicitly tested interaction as a separable mechanism through ablation. The important architectural principle was the separation between distributed representations and a shared mechanism through which those representations can interact.
 
-The dominant failure was `clustered_similar`, which had only 28.5714% oracle-choice match and 197.53-byte mean regret, with worst cases reaching 821 bytes. The experiment supports the narrower claim that cheap structural statistics contain transferable information for selecting among lossless delta representations, but does not establish universal generalization.
+These experiments motivate the current language architecture but do not by themselves establish semantic representations.
 
-The earlier handoff proposed investigating whether that failure was caused by missing information or an insufficient nearest-centroid model. That investigation is now intentionally **paused rather than continued as the next research train**. The failure remains useful historical evidence and should not be silently converted into a successful result or retroactively tuned.
+### S5E1 — persistent relational concept memory
 
-## Completed experiment: S5E1 Persistent Relational Concept Memory
+S5E1 tested persistent concept identities plus relational context. It demonstrated identity persistence and strong relation retrieval, but closeout identified an important limitation: the evaluation path did not actually apply relational updates to persistent concept states. Therefore it demonstrated the substrate for persistent identity plus relational context, not the full dynamic-memory mechanism.
 
-### Question
+### S6E2 — integrated persistent relational system
 
-Can a model maintain persistent identities for concepts while their meaning is represented by a changing relational neighborhood?
+S6E2 combined persistent entities, exact durable observations, mutable contextual states, shared neural interaction, learned relation prediction, checkpoint persistence, observation replay, and an interactive CLI.
 
-### Implementation
+The live system demonstrated that adding a relational observation changed contextual state while the underlying entity remained persistent. It successfully learned observed relationships. It did **not** yet demonstrate held-out relational inference or semantic understanding.
 
-The experiment used 24 persistent concept states, 8 generic relation states, 16-dimensional embeddings, a shared neural interaction function, and symbolic relational observations. No target embeddings or coordinates were supplied. The model learned relation scores for persistent concept pairs and produced neighborhood signatures.
+## RLM — language-domain implementation
 
-The experiment was intentionally designed as a precursor to explicit spatial geometry rather than a geometry experiment itself.
+RLM adapts the distributed/persistent representation + shared interaction principle to language.
 
-### Actual result
+Conceptual mapping:
 
-The supplied run showed identity persistence at effectively numerical precision, with mean cosine similarity of approximately 1.0 and minimum approximately 0.99999988. Relation retrieval accuracy was approximately 97.9167%, and neighborhood signatures had nonzero mean norm, indicating contextual structure around persistent identities.
+| Earlier relational work | RLM |
+|---|---|
+| observation | token sequence / context |
+| local/entity representation | persistent token identity |
+| shared interaction | relational field |
+| contextual state | context-dependent token state |
+| reconstruction | next-token prediction |
 
-These results support the basic architectural premise that persistent concept representations can coexist with relational context. However, an important implementation limitation was identified during closeout: the current evaluation path did **not actually apply relational updates to the persistent concept states**. Therefore the experiment does not establish the stronger claim that a concept's persistent representation dynamically changes in response to new relational observations. It demonstrates the substrate for persistent identity plus relational context, not the full dynamic-memory mechanism.
+RLM should therefore be described as a **language-domain implementation of the relational architectural principle developed through R3/R4 and subsequent persistent-memory experiments**, rather than as a literal copy of R3/R4.
 
-Repository artifact: `memory_network/relational_concept_experiment.py`.
+## RLM v1
 
-## Completed experiment: S6E2 Integrated Persistent Relational System
+RLM v1 used byte-level persistent identities. It successfully learned nontrivial next-token statistics, but generated severely degraded text. This established a working language-prediction baseline while showing that byte-level persistent units were not a particularly useful substrate for readable generation.
 
-### Question
+## RLM v2
 
-Can persistent identities, changing relational context, shared relational interaction, durable observations, and online learning coexist in one small inspectable system?
+RLM v2 changed the persistent unit from bytes to learned vocabulary tokens while retaining the relational-field approach.
 
-### System
+### Gorgias-scale run
 
-S6E2 produced the first application-oriented Neural Compression system combining persistent entities and exact observations in SQLite, persistent learned identities, mutable contextual states, a shared neural interaction mechanism, learned relation prediction, checkpoint persistence, observation replay, and an interactive CLI. No target embeddings or explicit coordinates are supplied.
+Reported result:
 
-### Actual result
+- vocabulary: **2,996**
+- training tokens: **70,678**
+- validation tokens: **7,854**
+- validation loss: **3.3774792554427164**
+- validation perplexity: **29.296829223632812**
 
-The system was successfully run interactively. The live session created observations including `apple → is_a → fruit`, `apple → color → red`, `Aetal → is_a → friend`, and `Aetal → likes → apple`.
+Generation from `CALLICLES: Yes, Gorgias, but I must complain` produced recognizable Gorgias-specific vocabulary, character/dialogue names, punctuation, and local dialogue structure, but remained substantially incoherent as prose. This is evidence of learned corpus structure, not semantic understanding.
 
-Adding `Aetal → likes → apple` changed Aetal's contextual state norm from approximately 0.2442 to 0.3661. After 1,000 training steps, the live run showed contextual norms of approximately 0.7121 for Aetal and 0.7336 for apple. The observed `Aetal → likes → apple` relationship received a learned score of approximately +2.991 after training, compared with weak and poorly differentiated initial scores. The implementation smoke test also verified exact contextual-state restoration across restart.
+### Large-corpus stress test
 
-### Interpretation
+A much larger text corpus was also trained with RLM v2. Reported final checkpoint metadata:
 
-The integrated architecture is operational. Persistent entity identity, mutable relational context, shared interaction, durable symbolic observations, and learned relational scoring can coexist in one inspectable application. The strongest result is architectural: relational observations produce measurable changes in contextual state while the underlying entity remains persistent.
+- training tokens: **2,155,783**
+- validation tokens: **239,532**
+- vocabulary: approximately **38,538** tokens in the reported run
+- final validation loss: **4.870605817903878**
+- final validation perplexity: **130.39990234375**
 
-S6E2 does **not** yet establish relational inference or semantic understanding. The system can learn observed relationships, but no controlled held-out test has demonstrated that it can infer an unobserved relationship from multi-step relational structure. Exploratory scores for unobserved combinations are treated as exploratory behavior, not evidence of inference.
+Training perplexity reached approximately **20** late in the run while validation remained around **130**, establishing a substantial generalization gap. The large vocabulary also revealed that the persistent identity table dominates model parameter count at this scale; with 128-dimensional identities, the vocabulary embedding matrix alone is roughly 4.95M parameters.
 
-### Conclusion
+Generation from `Hi friend` produced recognizable English words and corpus vocabulary such as `CHAPTER`, `infection`, `Haversian`, `iodoform`, `prince`, `capital`, `pupil`, `assembled`, and `assiduity`, but not coherent prose. This indicates learned lexical/local distributional structure rather than useful language understanding.
 
-S6E2 successfully moved Neural Compression from isolated mechanism experiments to a working integrated relational-memory system. This is a systems milestone rather than a claim of a complete theory of representation. The architecture is now functional enough to support controlled experiments on whether relational context supports generalization beyond directly observed edges.
+## RLM v2 architectural configuration of interest
 
-Formal closeout: `memory_network/EXPERIMENT_CLOSEOUT_S6E2_2026-08-28.md`.
+The stronger Gorgias experiment used:
 
-## Current active direction: Held-Out Relational Inference
+- `context = 32`
+- `dim = 512`
+- `heads = 1`
+- `rounds = 2`
+- `lr = 3e-4`
+- `batch-size = 8`
+- `val-fraction = 0.1`
 
-The next experiment should construct small relational worlds with deliberately withheld target relationships and disconnected/scrambled controls. The goal is to determine whether the learned system can recover an unobserved relationship from multi-step relational structure rather than from direct memorization, vocabulary, frequency, or incidental parameter correlations.
+This is notable because it gives persistent entities a relatively large representation while keeping the shared relational interaction mechanism comparatively small/simple. This is conceptually compatible with the earlier research direction of persistent/distributed representations connected through shared interaction.
 
-A useful progression is:
+The parameter count must always be considered alongside vocabulary size; a large vocabulary makes the persistent identity table the dominant component.
 
-`persistent concepts → relational neighborhoods → changing relationships → integrated learned system → held-out relational inference → emergent geometry`
+## RLM identity-space inspection
 
-If relational inference is demonstrated, later experiments can investigate whether the resulting contextual states exhibit stable low-dimensional structure without supplying coordinates as targets. Geometry remains an emergent question and must not be supplied as the answer in advance.
+A diagnostic tool was added as `rlm_inspect.py` after an initial `inspect.py` name collision with Python's standard-library `inspect` module was discovered and corrected.
 
-## Important interpretation boundary
+For the large-corpus checkpoint, inspecting static identity vectors produced non-obvious nearest neighbors. Examples included:
 
-Do not claim that this architecture reproduces how human brains work. The motivating intuition is that humans often experience abstract ideas spatially or relationally, but the experiments test an engineering hypothesis, not a neuroscience claim.
+- `the` → `intrusion`, `bwother`, `Indians`, `donning`, ...
+- `infection` → `Cladius`, `importunity`, `590`, `limbs_`, ...
+- `prince` → `Nullification`, `aren't`, `autocracy`, `desk`, ...
+- `patient` → `assumes`, `Antivenin`, `appreciated`, ...
 
-Do not give the model coordinates and then interpret successful coordinate prediction as discovered geometry. If geometry is tested later, the representation must arise from relational constraints or learned structure rather than being supplied as the target.
+The strongest similarities were only around 0.30–0.36 and were not obviously semantic. The correct interpretation is **not** that the relational model failed. Static identity-vector cosine geometry is not directly optimized to produce human-readable semantic neighborhoods. The next diagnostic target should therefore be contextual/interaction states and prediction behavior rather than raw nearest-neighbor identity geometry.
 
-## Workflow note
+## Scientific synthesis
 
-The prior `clustered_similar` selector investigation remains paused. The active research thread is the integrated relational model and its held-out inference behavior. Future handoffs should preserve this distinction so the project does not accidentally resume the older selector-debugging train.
+The current evidence supports the following narrower claims:
 
-## Repository artifacts
+- Distributed/local representations are a viable alternative to forcing an observation through one global latent bottleneck.
+- Shared interaction between distributed representations is a meaningful architectural mechanism worth isolating experimentally.
+- Persistent identities can coexist with changing relational/contextual state.
+- An integrated persistent relational system can be trained, persisted, inspected, and replayed.
+- The relational architecture can learn substantial statistical structure from real language.
+- Changing the persistent unit from bytes to learned tokens materially improves the linguistic substrate.
+- RLM v2 can train on a corpus containing millions of tokens.
+- Static identity-vector geometry does not automatically become human-interpretable semantic geometry.
 
-`memory_network/generalization_delta.py` — OOD structural delta selection experiment.
+The following remain unestablished:
 
-`memory_network/generalization_delta_result_2026-08-28.json` — actual summarized OOD result.
+- genuine semantic understanding;
+- superior generalization versus conventional language-model representations;
+- useful long-range reasoning;
+- competitive performance against conventional LLMs;
+- that the learned structure is the smallest sufficient representation;
+- that the architecture reproduces biological brain organization.
 
-`memory_network/EXPERIMENT_CLOSEOUT_2026-08-28.md` — formal OOD experiment closeout.
+## Research progression
 
-`memory_network/relational_concept_experiment.py` — S5E1 persistent relational concept memory experiment.
+`distributed representations → shared interaction → persistent entities → changing relational context → integrated relational system → language-domain RLM → contextual relational analysis → held-out inference / generalization → emergent geometry`
 
-`memory_network/app/` — S6E2 integrated working relational-memory application.
+Geometry remains an emergent question. Coordinates must not be supplied as targets and then interpreted as discovered geometry.
 
-`memory_network/EXPERIMENT_CLOSEOUT_S6E2_2026-08-28.md` — S6E2 formal closeout.
+## Next research question
 
-`PROJECT_WORKFLOW.md` — canonical experiment workflow.
+The immediate next architectural/diagnostic question is whether persistent token identities and the shared relational field produce **structured contextual states** that explain prediction behavior.
+
+A useful next experiment is to inspect the same persistent entity under different contexts and compare its contextual state and prediction distribution. The test should distinguish persistent identity from changing relational/contextual state.
+
+Only after that should we move toward larger-scale training or direct comparison against conventional language models. If scaling is pursued, vocabulary size, parameter count, corpus composition, context length, and training budget should be controlled so results remain interpretable.
+
+## Important interpretation boundaries
+
+Do not equate low training loss with semantic understanding.
+
+Do not treat static embedding nearest-neighbor results as proof or disproof of relational semantics.
+
+Do not claim that RLM has beaten or reproduced an LLM without a controlled benchmark against a defined conventional baseline.
+
+Do not claim that the architecture reproduces human brain organization.
+
+Do not supply coordinates and then interpret successful coordinate prediction as discovered geometry.
+
+## Repository / workflow rule
+
+**All authoritative research notes, handoffs, and completed experiment artifacts belong on `main`.** When resuming in a new conversation, explicitly start by reading the current `main` state and the relevant docs. Do not rely on stale conversational summaries when repository evidence is available.
+
+The prior `clustered_similar` structural-selector investigation remains paused. Its failures remain historical evidence and should not be silently tuned into success.
