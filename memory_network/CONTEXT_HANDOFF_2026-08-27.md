@@ -53,27 +53,43 @@ These results support the basic architectural premise that persistent concept re
 
 Repository artifact: `memory_network/relational_concept_experiment.py`.
 
-## Closeout conclusion
+## Completed experiment: S6E2 Integrated Persistent Relational System
 
-The experiments are now considered sufficient to justify moving from isolated mechanism tests toward a first complete trainable system.
+### Question
 
-The conclusion is not that the individual experiments proved a complete theory of neural representation. Rather, multiple experiments have pointed toward the same architectural question: instead of continuing to optimize isolated selectors or memory components, build a small real system that combines persistent entities, local representations, relational interaction, changing context, and learning, then observe what behavior emerges.
+Can persistent identities, changing relational context, shared relational interaction, durable observations, and online learning coexist in one small inspectable system?
 
-The user's stated goal is straightforward: **build the system and see whether the idea actually works.** It does not need to compete with a large language model. The first meaningful success would be a behavior that emerges naturally from the architecture rather than being explicitly hard-coded.
+### System
 
-## Next experiment / active direction
+S6E2 produced the first application-oriented Neural Compression system combining persistent entities and exact observations in SQLite, persistent learned identities, mutable contextual states, a shared neural interaction mechanism, learned relation prediction, checkpoint persistence, observation replay, and an interactive CLI. No target embeddings or explicit coordinates are supplied.
 
-The next experiment is the first integrated model.
+### Actual result
 
-The system should begin small and be designed so that every component can be inspected. The initial architecture should include persistent concept/entity states, a shared relational interaction mechanism, a mechanism for incorporating observations over time, and a learning objective that requires the system to preserve identity while using relational context.
+The system was successfully run interactively. The live session created observations including `apple → is_a → fruit`, `apple → color → red`, `Aetal → is_a → friend`, and `Aetal → likes → apple`.
 
-The first version should avoid explicit coordinates. Geometry should remain an emergent question. If the relational system demonstrates useful structure, later experiments can test whether that structure can be compressed or organized into a low-dimensional spatial representation, followed by three-dimensional and potentially four-dimensional-with-time variants.
+Adding `Aetal → likes → apple` changed Aetal's contextual state norm from approximately 0.2442 to 0.3661. After 1,000 training steps, the live run showed contextual norms of approximately 0.7121 for Aetal and 0.7336 for apple. The observed `Aetal → likes → apple` relationship received a learned score of approximately +2.991 after training, compared with weak and poorly differentiated initial scores. The implementation smoke test also verified exact contextual-state restoration across restart.
 
-A useful conceptual progression is:
+### Interpretation
 
-`persistent concepts → relational neighborhoods → changing relationships → integrated learned system → emergent geometry`
+The integrated architecture is operational. Persistent entity identity, mutable relational context, shared interaction, durable symbolic observations, and learned relational scoring can coexist in one inspectable application. The strongest result is architectural: relational observations produce measurable changes in contextual state while the underlying entity remains persistent.
 
-The first integrated model should be deliberately small enough to understand, train, and inspect locally. The existing vision-model work is also relevant as evidence that the project can already construct a learned perception component; future architecture work can therefore consider perception as an input subsystem rather than treating it as an unsolved prerequisite.
+S6E2 does **not** yet establish relational inference or semantic understanding. The system can learn observed relationships, but no controlled held-out test has demonstrated that it can infer an unobserved relationship from multi-step relational structure. Exploratory scores for unobserved combinations are treated as exploratory behavior, not evidence of inference.
+
+### Conclusion
+
+S6E2 successfully moved Neural Compression from isolated mechanism experiments to a working integrated relational-memory system. This is a systems milestone rather than a claim of a complete theory of representation. The architecture is now functional enough to support controlled experiments on whether relational context supports generalization beyond directly observed edges.
+
+Formal closeout: `memory_network/EXPERIMENT_CLOSEOUT_S6E2_2026-08-28.md`.
+
+## Current active direction: Held-Out Relational Inference
+
+The next experiment should construct small relational worlds with deliberately withheld target relationships and disconnected/scrambled controls. The goal is to determine whether the learned system can recover an unobserved relationship from multi-step relational structure rather than from direct memorization, vocabulary, frequency, or incidental parameter correlations.
+
+A useful progression is:
+
+`persistent concepts → relational neighborhoods → changing relationships → integrated learned system → held-out relational inference → emergent geometry`
+
+If relational inference is demonstrated, later experiments can investigate whether the resulting contextual states exhibit stable low-dimensional structure without supplying coordinates as targets. Geometry remains an emergent question and must not be supplied as the answer in advance.
 
 ## Important interpretation boundary
 
@@ -83,7 +99,7 @@ Do not give the model coordinates and then interpret successful coordinate predi
 
 ## Workflow note
 
-The prior `clustered_similar` selector investigation remains paused. The active research thread is the integrated relational model described above. Future handoffs should preserve this distinction so the project does not accidentally resume the older selector-debugging train.
+The prior `clustered_similar` selector investigation remains paused. The active research thread is the integrated relational model and its held-out inference behavior. Future handoffs should preserve this distinction so the project does not accidentally resume the older selector-debugging train.
 
 ## Repository artifacts
 
@@ -94,5 +110,9 @@ The prior `clustered_similar` selector investigation remains paused. The active 
 `memory_network/EXPERIMENT_CLOSEOUT_2026-08-28.md` — formal OOD experiment closeout.
 
 `memory_network/relational_concept_experiment.py` — S5E1 persistent relational concept memory experiment.
+
+`memory_network/app/` — S6E2 integrated working relational-memory application.
+
+`memory_network/EXPERIMENT_CLOSEOUT_S6E2_2026-08-28.md` — S6E2 formal closeout.
 
 `PROJECT_WORKFLOW.md` — canonical experiment workflow.
