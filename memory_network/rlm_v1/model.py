@@ -33,7 +33,9 @@ class RelationalField(nn.Module):
             y, weights = self.attn(x, x, x, attn_mask=mask, need_weights=return_attention)
             x = self.norm1(x + y)
             x = self.norm2(x + self.ff(x))
-        return (x, weights) if return_attention else x
+        if return_attention:
+            return x, weights
+        return x
 
 
 class RelationalLanguageModel(nn.Module):
@@ -53,7 +55,12 @@ class RelationalLanguageModel(nn.Module):
             raise ValueError("sequence exceeds max_context")
         positions = torch.arange(input_ids.size(1), device=input_ids.device).unsqueeze(0)
         x = self.identity(input_ids) + self.position(positions)
-        x, attention = self.field(x, causal=True, return_attention=return_diagnostics)
+        field_output = self.field(x, causal=True, return_attention=return_diagnostics)
+        if return_diagnostics:
+            x, attention = field_output
+        else:
+            x = field_output
+            attention = None
         logits = self.readout(x)
         if return_diagnostics:
             return logits, {"contextual_states": x.detach(), "attention": None if attention is None else attention.detach()}
