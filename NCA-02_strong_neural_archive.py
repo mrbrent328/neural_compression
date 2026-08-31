@@ -23,9 +23,9 @@ and no cross-file deduplication.
 """
 from __future__ import annotations
 
+import argparse
 import importlib.util
 import json
-import math
 from pathlib import Path
 
 import torch
@@ -33,11 +33,8 @@ import torch.nn as nn
 
 HERE = Path(__file__).resolve().parent
 BASE_PATH = HERE / "NCA-01_local_adaptive_archive.py"
-
 if not BASE_PATH.exists():
-    raise FileNotFoundError(
-        "NCA-02 requires NCA-01_local_adaptive_archive.py in the same directory."
-    )
+    raise FileNotFoundError("NCA-02 requires NCA-01_local_adaptive_archive.py in the same directory.")
 
 spec = importlib.util.spec_from_file_location("nca01_base", BASE_PATH)
 if spec is None or spec.loader is None:
@@ -58,13 +55,10 @@ SEED = 42
 
 class StrongNeuralCompressor(nn.Module):
     """Three independent Series-4-inspired predictors."""
-
     def __init__(self, vocab_size=256, embed_dim=EMBED_DIM,
                  hidden_dim=HIDDEN_DIM, context_size=CONTEXT_SIZE,
                  num_states=NUM_STATES):
         super().__init__()
-        self.context_size = context_size
-        self.num_states = num_states
         self.states = nn.ModuleList([
             nn.Sequential(
                 nn.Embedding(vocab_size + 1, embed_dim, padding_idx=nca.PAD),
@@ -86,11 +80,6 @@ def make_model():
 
 
 def select_state(logits_by_state):
-    """Choose the most confident state using predictive entropy.
-
-    This is deterministic from the shared model/context and therefore requires
-    no selector bits in the archive.
-    """
     entropies = []
     for logits in logits_by_state:
         probs = torch.softmax(torch.clamp(logits.detach(), -50, 50), dim=-1)
@@ -108,8 +97,6 @@ def predict_selected(model, x):
 def train_selected(model, optimizer, criterion, logits, state_index, target):
     optimizer.zero_grad()
     criterion(logits.unsqueeze(0), target).backward()
-    # Only the selected predictor state participates in this update. Gradients
-    # for the other states are absent because their logits were not used.
     optimizer.step()
 
 
@@ -124,8 +111,8 @@ def neural_encode(data: bytes) -> bytes:
         freqs = nca.logits_to_freqs(logits.detach())
         cum = list(nca.accumulate(freqs, initial=0))
         enc.encode_symbol(byte, freqs, cum)
-        target = torch.tensor([byte], dtype=torch.long)
-        train_selected(model, optimizer, criterion, logits, state_index, target)
+        train_selected(model, optimizer, criterion, logits, state_index,
+                       torch.tensor([byte], dtype=torch.long))
         ctx = ctx[1:] + [byte]
     return enc.finish()
 
@@ -143,31 +130,33 @@ def neural_decode(stream: bytes, size: int) -> bytes:
         cum = list(nca.accumulate(freqs, initial=0))
         symbol = dec.decode_symbol(freqs, cum)
         out.append(symbol)
-        target = torch.tensor([symbol], dtype=torch.long)
-        train_selected(model, optimizer, criterion, logits, state_index, target)
+        train_selected(model, optimizer, criterion, logits, state_index,
+                       torch.tensor([symbol], dtype=torch.long))
         ctx = ctx[1:] + [symbol]
     return bytes(out)
 
 
 def encode_candidate(data, strategy):
-    if strategy == "neural":
-        return neural_encode(data)
-    return nca.encode_candidate(data, strategy)
+    return neural_encode(data) if strategy == "neural" else nca.encode_candidate(data, strategy)
 
 
 def decode_candidate(payload, size, strategy):
-    if strategy == "neural":
-        return neural_decode(payload, size)
-    return nca.decode_candidate(payload, size, strategy)
+    return neural_decode(payload, size) if strategy == "neural" else nca.decode_candidate(payload, size, strategy)
 
 
 def pack(input_path, archive_path, strategy, report_path=None):
-    # Patch only the candidate codec used by NCA-01's pack implementation.
+    # NCA-01's pack() resolves encode_candidate through its module globals.
+    # Temporarily replace that reference with this module's dispatcher, while
+    # preserving the original for classical/store paths to avoid recursion.
     original_encode = nca.encode_candidate
     original_magic = nca.MAGIC
     original_version = nca.VERSION
+    def dispatch(data, selected_strategy):
+        if selected_strategy == "neural":
+            return neural_encode(data)
+        return original_encode(data, selected_strategy)
     try:
-        nca.encode_candidate = encode_candidate
+        nca.encode_candidate = dispatch
         nca.MAGIC = MAGIC
         nca.VERSION = VERSION
         result = nca.pack(input_path, archive_path, strategy, None)
@@ -175,17 +164,11 @@ def pack(input_path, archive_path, strategy, report_path=None):
         nca.encode_candidate = original_encode
         nca.MAGIC = original_magic
         nca.VERSION = original_version
-
     result["experiment"] = EXPERIMENT
     result["neural_config"] = {
-        "embedding": EMBED_DIM,
-        "hidden": HIDDEN_DIM,
-        "context": CONTEXT_SIZE,
-        "states": NUM_STATES,
-        "optimizer": "SGD",
-        "learning_rate": LEARNING_RATE,
-        "seed": SEED,
-        "state_selection": "minimum predictive entropy",
+        "embedding": EMBED_DIM, "hidden": HIDDEN_DIM, "context": CONTEXT_SIZE,
+        "states": NUM_STATES, "optimizer": "SGD", "learning_rate": LEARNING_RATE,
+        "seed": SEED, "state_selection": "minimum predictive entropy",
     }
     if report_path:
         Path(report_path).write_text(json.dumps(result, indent=2))
@@ -198,13 +181,13 @@ def read_archive(path):
     if raw[:4] != MAGIC:
         raise ValueError("Not an NCA2 archive")
     n = int.from_bytes(raw[4:8], "big")
-    manifest = json.loads(raw[8:8 + n])
+    manifest = json.loads(raw[8:8+n])
     ptr = 8 + n
     payloads = []
     for _ in manifest["blocks"]:
-        size = int.from_bytes(raw[ptr:ptr + 4], "big")
+        size = int.from_bytes(raw[ptr:ptr+4], "big")
         ptr += 4
-        payloads.append(raw[ptr:ptr + size])
+        payloads.append(raw[ptr:ptr+size])
         ptr += size
     return manifest, payloads
 
@@ -225,8 +208,7 @@ def test_archive(path):
             raw = decode_candidate(payloads[i], b["size"], b["strategy"])
             if len(raw) != b["size"] or nca.sha256(raw) != b["sha256"]:
                 raise ValueError(f'Block failed: {f["path"]}')
-            data.extend(raw)
-            checked += 1
+            data.extend(raw); checked += 1
         if nca.sha256(data) != f["sha256"]:
             raise ValueError(f'File failed: {f["path"]}')
     print(f"OK: {len(manifest['files'])} files, {checked} blocks, exact reconstruction verified")
@@ -234,8 +216,7 @@ def test_archive(path):
 
 def extract(archive_path, output_dir):
     manifest, payloads = read_archive(archive_path)
-    root = Path(output_dir)
-    root.mkdir(parents=True, exist_ok=True)
+    root = Path(output_dir); root.mkdir(parents=True, exist_ok=True)
     for f in manifest["files"]:
         out = bytearray()
         for i in f["blocks"]:
@@ -246,38 +227,20 @@ def extract(archive_path, output_dir):
             out.extend(raw)
         if nca.sha256(out) != f["sha256"]:
             raise ValueError(f'File checksum failed: {f["path"]}')
-        target = root / f["path"]
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(out)
+        target = root / f["path"]; target.parent.mkdir(parents=True, exist_ok=True); target.write_bytes(out)
 
 
 def main():
-    ap = __import__("argparse").ArgumentParser(
-        prog="nca-02", description="NCA-02 Strong Neural Archive"
-    )
+    ap = argparse.ArgumentParser(prog="nca-02", description="NCA-02 Strong Neural Archive")
     sub = ap.add_subparsers(dest="cmd", required=True)
-    p = sub.add_parser("pack")
-    p.add_argument("input")
-    p.add_argument("archive")
-    p.add_argument("--strategy", choices=["store", "classical", "neural", "adaptive", "oracle"], default="adaptive")
-    p.add_argument("--report")
-    p = sub.add_parser("list")
-    p.add_argument("archive")
-    p = sub.add_parser("extract")
-    p.add_argument("archive")
-    p.add_argument("output")
-    p = sub.add_parser("test")
-    p.add_argument("archive")
+    p = sub.add_parser("pack"); p.add_argument("input"); p.add_argument("archive"); p.add_argument("--strategy", choices=["store", "classical", "neural", "adaptive", "oracle"], default="adaptive"); p.add_argument("--report")
+    p = sub.add_parser("list"); p.add_argument("archive")
+    p = sub.add_parser("extract"); p.add_argument("archive"); p.add_argument("output")
+    p = sub.add_parser("test"); p.add_argument("archive")
     args = ap.parse_args()
-    if args.cmd == "pack":
-        pack(args.input, args.archive, args.strategy, args.report)
-    elif args.cmd == "list":
-        list_archive(args.archive)
-    elif args.cmd == "extract":
-        extract(args.archive, args.output)
-    elif args.cmd == "test":
-        test_archive(args.archive)
+    if args.cmd == "pack": pack(args.input, args.archive, args.strategy, args.report)
+    elif args.cmd == "list": list_archive(args.archive)
+    elif args.cmd == "extract": extract(args.archive, args.output)
+    elif args.cmd == "test": test_archive(args.archive)
 
-
-if __name__ == "__main__":
-    main()
+if __name__ == "__main__": main()
