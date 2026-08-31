@@ -35,27 +35,29 @@ def load_base():
 
 def install_hex_mode(base):
     """Patch only the neural candidate path with reversible ASCII hex."""
-    original_encode = base.neural_encode
-    original_decode = base.neural_decode
+    original_neural_encode = base.neural_encode
+    original_neural_decode = base.neural_decode
+    original_encode_candidate = base.encode_candidate
+    original_decode_candidate = base.decode_candidate
 
     def hex_neural_encode(data: bytes, context_size=16, lr=0.04, num_states=4):
         transformed = data.hex().encode("ascii")
-        return original_encode(transformed, context_size, lr, num_states)
+        return original_neural_encode(transformed, context_size, lr, num_states)
 
     def hex_neural_decode(stream: bytes, size: int, context_size=16, lr=0.04, num_states=4):
         transformed_size = size * 2
-        transformed = original_decode(stream, transformed_size, context_size, lr, num_states)
+        transformed = original_neural_decode(stream, transformed_size, context_size, lr, num_states)
         return unhexlify(transformed)
 
     def encode_candidate(data, strategy):
         if strategy == "neural":
             return hex_neural_encode(data)
-        return base.encode_candidate(data, strategy)
+        return original_encode_candidate(data, strategy)
 
     def decode_candidate(payload, size, strategy):
         if strategy == "neural":
             return hex_neural_decode(payload, size)
-        return base.decode_candidate(payload, size, strategy)
+        return original_decode_candidate(payload, size, strategy)
 
     base.neural_encode = hex_neural_encode
     base.neural_decode = hex_neural_decode
