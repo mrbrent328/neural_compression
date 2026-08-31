@@ -13,11 +13,13 @@ Durable checkpoint for resuming Neural Compression research in a fresh conversat
 
 The research currently investigates whether persistent entities/local representations plus changing relational/contextual structure can provide a compact substrate for explaining multiple observations over time.
 
+The compression branch of this work asks whether those ideas can also yield practical lossless representations, including adaptive combinations of neural and classical coding.
+
 ## Research progression
 
 `distributed representations → shared interaction → persistent entities → changing relational context → integrated relational system → language-domain RLM → developmental continuous stream`
 
-Earlier experiments established the architectural motivation and persistent-memory substrate. RLM tested the relational principle in language and showed substantial learned statistical structure without establishing semantic understanding. The current Developmental Stream experiment moved the test into a continuous numerical environment with online prediction and finite adaptive memory.
+The parallel compression line progressed through neural byte prediction, latent/state experiments, local structural selection, Series 4 configuration/adaptive experiments, and now the NCA archive experiments.
 
 ## Developmental Stream — completed 2026-08-31
 
@@ -91,30 +93,110 @@ Not established:
 
 Do not add a threshold to the existing run and retroactively interpret it as the original experiment. First analyze whether the learned scorer developed meaningful relative preference among candidates.
 
+## NCA Archive Experiments — 2026-08-31
+
+### Purpose
+
+Test whether the neural compression work can function as part of a practical folder/archive compressor rather than only as a single-file experiment. The NCA architecture uses adaptive local selection so each block can use neural, classical, or store coding as appropriate.
+
+### NCA-01 — baseline
+
+Corpus: `/home/xetal/Desktop/largecalgarycorpus`  
+Original: **3,179,847 B**  
+Strategy: `adaptive`
+
+Configuration:
+
+- embedding: 32
+- hidden: 64
+- context: 16 bytes
+- states: 4
+- optimizer: SGD
+- learning rate: 0.04
+- seed: 42
+
+Result:
+
+- payload: **1,146,715 B**
+- archive: **1,172,168 B**
+- reduction: **63.1376%**
+- neural blocks: **48**
+- classical blocks: **8**
+- store blocks: **0**
+- elapsed: **2,532.5846 s** (~42m 12.6s)
+- SHA-256 manifest: `4c83e773af71310efd20af445df17f96d73b0829930c05fb58c63badc63d348f`
+
+NCA-01 subsequently passed the planned exact round-trip verification and is the locked archive baseline.
+
+### NCA-02 — stronger neural configuration
+
+Question: does the stronger Series-4-derived neural configuration improve the same archive architecture?
+
+Configuration:
+
+- embedding: **48**
+- hidden: **300**
+- context: **10 bytes**
+- states: **3**
+- optimizer: SGD
+- learning rate: 0.04
+- seed: 42
+- state selection: deterministic minimum predictive entropy
+
+Result on the same corpus:
+
+- payload: **1,297,872 B**
+- archive: **1,323,325 B**
+- reduction: **58.3840%**
+- neural blocks: **48**
+- classical blocks: **8**
+- store blocks: **0**
+- elapsed: **2,351.8005 s** (~39m 11.8s)
+- SHA-256 manifest: `1f3c2c498091020804248d6136cde48057b1d356f343c1452df8d252592fd038`
+
+NCA-02 produced an archive **151,157 B larger** than NCA-01 while completing about **180.8 s faster**. The adaptive allocation was identical: 48 neural, 8 classical, 0 store.
+
+The compression hypothesis therefore was **not supported**: a configuration that performed better in the Series-4 regime did not produce better sequential lossless coding in the archive workload.
+
+NCA-02 exact round-trip verification remains pending and is required before final closeout.
+
+### NCA-02 implementation note
+
+The first NCA-02 attempt failed with a recursive `encode_candidate` dispatch bug. This was an implementation error, not experimental evidence. The dispatcher was corrected and committed to `main`; a small smoke test then successfully produced a 31.29% reduction on a 40.6 KB repository. That smoke test was only a functionality check and is not part of the Calgary corpus experiment.
+
+### Paired interpretation
+
+The clean comparison is:
+
+`same corpus + same adaptive archive machinery + same block allocation → different neural configuration → worse NCA-02 compression`
+
+This suggests the next investigation should focus on **neural predictor/state behavior inside the neural-selected blocks**, rather than immediately changing the adaptive archive selector.
+
+Relevant detailed record: `NCA_RESULTS_2026-08-31.md`.
+
 ## Immediate next research decision
 
-Analyze the consolidation scorer before modifying the architecture.
+Before designing NCA-03, retrospectively analyze the earlier compression experiments—especially Series 4, latent-capacity/state experiments, and adaptive/agreement tests—to determine what property actually correlated with useful compression rather than simply selecting the configuration with the best score in another task.
 
-Measure:
+Specific questions:
 
-1. score distributions over time;
-2. correlation between consolidation score and actual prediction-error improvement;
-3. whether rankings consistently favor more useful candidate memories;
-4. whether ranking becomes more discriminating with experience;
-5. whether replacement preserves memories with measurable predictive value;
-6. structural characteristics of the final 12 memories.
+1. What did the Series-4 winning configuration optimize?
+2. How did context length, model capacity, and state count affect predictive entropy or coded size?
+3. Did adaptive/agreement experiments reveal state specialization or selection behavior relevant to NCA?
+4. Do the earlier latent/functional-state experiments suggest a better representation or state mechanism than simply increasing model capacity?
+5. Can we separate predictor quality from archive overhead and selection effects?
 
-Decision rule:
-
-- If ranking contains meaningful predictive information, design the next experiment around an explicit abstention/forgetting choice.
-- If ranking is not meaningful, reconsider the consolidation learning signal/mechanism before adding selective memory decisions.
+Do **not** automatically interpret the larger NCA-02 model as better simply because it had more capacity. Preserve the negative result and use the earlier evidence to choose the next experiment.
 
 ## Repository state
 
-Developmental Stream proposal, implementation design, implementation, real-run result, closeout, and this current handoff are committed to **`main`**. The prior `CONTEXT_HANDOFF_2026-08-27.md` remains historical; this 2026-08-31 handoff is the current checkpoint.
+Developmental Stream proposal, implementation design, implementation, real-run result, closeout, and this current handoff are committed to **`main`**. NCA-01/NCA-02 results and NCA-02 implementation are also committed to **`main`**.
 
-Relevant files:
+Relevant current files:
 
+- `NCA-01_local_adaptive_archive.py`
+- `NCA-02_strong_neural_archive.py`
+- `NCA_RESULTS_2026-08-31.md`
 - `memory_network/DEVELOPMENTAL_STREAM_PROPOSAL.md`
 - `memory_network/developmental_stream_design.md`
 - `memory_network/developmental_stream_experiment.py`
