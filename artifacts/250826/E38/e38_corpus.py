@@ -22,7 +22,16 @@ OBJECTS = ["bicycle", "camera", "lantern", "map", "key", "backpack", "compass", 
 PLACES = ["red barn", "old bridge", "north cabin", "blue shed", "stone tower", "green gate", "river dock", "hill house"]
 
 
-def build(seed: int = 3801, facts: int = 96, questions: int = 48) -> tuple[list[Item], list[Item]]:
+def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[Item], list[Item]]:
+    """Build a deterministic fact stream and a bounded question set.
+
+    ``facts`` counts observations, and each observation contributes two fact
+    items: an ownership edge and an object-location edge. Questions are built
+    from the final graph state, so every expected answer is unambiguous.
+    """
+    if facts < 0 or questions < 0:
+        raise ValueError("facts and questions must be non-negative")
+
     rng = random.Random(seed)
     stream: list[Item] = []
     graph: dict[tuple[str, str], str] = {}
@@ -36,19 +45,30 @@ def build(seed: int = 3801, facts: int = 96, questions: int = 48) -> tuple[list[
         stream.append(Item("fact", f"{subject} owns the {obj}."))
         stream.append(Item("fact", f"The {obj} is at the {place}."))
 
-    # Deduplicate the final question set while retaining one-hop and two-hop queries.
     candidates: list[Item] = []
-    for (subject, pred), obj in graph.items():
+    for (subject, predicate), obj in graph.items():
+        if predicate != "owns":
+            continue
         candidates.append(Item("question", f"What does {subject} own?", obj))
         place = graph.get((obj, "at"))
-        if place:
+        if place is not None:
             candidates.append(Item("question", f"Where is the object owned by {subject}?", place))
+
+    # There are only two semantic question types per entity. Keep one question
+    # per exact wording and fail clearly if a caller asks for more than exists.
     rng.shuffle(candidates)
-    seen = set()
+    unique: list[Item] = []
+    seen: set[str] = set()
     for item in candidates:
-        if item.text not in seen:
-            seen.add(item.text)
-            if len(questions) <= len(seen):
-                break
-    questions_out = [x for x in candidates if x.text in seen][:questions]
-    return stream, questions_out
+        if item.text in seen:
+            continue
+        seen.add(item.text)
+        unique.append(item)
+
+    if questions > len(unique):
+        raise ValueError(
+            f"requested {questions} questions, but this corpus can produce only "
+            f"{len(unique)} unique questions; reduce --questions or expand the corpus"
+        )
+
+    return stream, unique[:questions]
