@@ -25,9 +25,9 @@ PLACES = ["red barn", "old bridge", "north cabin", "blue shed", "stone tower", "
 def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[Item], list[Item]]:
     """Build a deterministic fact stream and a bounded question set.
 
-    ``facts`` counts observations, and each observation contributes two fact
-    items: an ownership edge and an object-location edge. Questions are built
-    from the final graph state, so every expected answer is unambiguous.
+    ``facts`` counts generated observations. Each observation contributes two
+    fact items: an ownership edge and an object-location edge. Questions are
+    built from the final graph state, so every expected answer is unambiguous.
     """
     if facts < 0 or questions < 0:
         raise ValueError("facts and questions must be non-negative")
@@ -46,16 +46,21 @@ def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[
         stream.append(Item("fact", f"The {obj} is at the {place}."))
 
     candidates: list[Item] = []
-    for (subject, predicate), obj in graph.items():
-        if predicate != "owns":
+    for subject in ENTITIES:
+        obj = graph.get((subject, "owns"))
+        if obj is None:
             continue
-        candidates.append(Item("question", f"What does {subject} own?", obj))
         place = graph.get((obj, "at"))
+        candidates.append(Item("question", f"What does {subject} own?", obj))
         if place is not None:
-            candidates.append(Item("question", f"Where is the object owned by {subject}?", place))
+            candidates.append(
+                Item("question", f"Where is the object owned by {subject}?", place)
+            )
+            candidates.append(Item("question", f"Where is the {obj}?", place))
 
-    # There are only two semantic question types per entity. Keep one question
-    # per exact wording and fail clearly if a caller asks for more than exists.
+    # Three distinct question forms per represented entity give the default
+    # corpus 24 possible questions (8 entities x 3), while remaining tied to
+    # the same final relational state used by the memory layer.
     rng.shuffle(candidates)
     unique: list[Item] = []
     seen: set[str] = set()
@@ -68,7 +73,7 @@ def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[
     if questions > len(unique):
         raise ValueError(
             f"requested {questions} questions, but this corpus can produce only "
-            f"{len(unique)} unique questions; reduce --questions or expand the corpus"
+            f"{len(unique)} unique questions; reduce --questions or increase --facts"
         )
 
     return stream, unique[:questions]
