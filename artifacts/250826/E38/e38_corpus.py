@@ -61,7 +61,9 @@ def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[
         candidates.append(Item("question", f"What does {subject} own?", obj))
         if place is not None:
             candidates.append(Item("question", f"Where is the object owned by {subject}?", place))
-            candidates.append(Item("question", f"Where is the {obj}?", place))
+            # Keep the subject in the question so repeated objects do not
+            # collapse distinct questions into duplicate text.
+            candidates.append(Item("question", f"Where is {subject}'s object?", place))
 
     rng.shuffle(candidates)
     unique: list[Item] = []
