@@ -23,20 +23,29 @@ PLACES = ["red barn", "old bridge", "north cabin", "blue shed", "stone tower", "
 
 
 def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[Item], list[Item]]:
-    """Build a deterministic fact stream and a bounded question set.
+    """Build a deterministic fact stream and bounded question set.
 
-    ``facts`` counts generated observations. Each observation contributes two
-    fact items: an ownership edge and an object-location edge. Questions are
-    built from the final graph state, so every expected answer is unambiguous.
+    ``facts`` counts observations. Each observation emits two fact items:
+    ownership and object-location. The first eight observations deliberately
+    cover every entity so the default 24-question space is always available;
+    remaining observations are randomized.
     """
-    if facts < 0 or questions < 0:
-        raise ValueError("facts and questions must be non-negative")
+    if facts < len(ENTITIES) or questions < 0:
+        raise ValueError(f"facts must be at least {len(ENTITIES)} and questions non-negative")
 
     rng = random.Random(seed)
     stream: list[Item] = []
     graph: dict[tuple[str, str], str] = {}
 
-    for _ in range(facts):
+    # Guarantee coverage of every entity. This makes the default question
+    # count deterministic instead of depending on random sampling luck.
+    for subject, obj, place in zip(ENTITIES, OBJECTS, PLACES):
+        graph[(subject, "owns")] = obj
+        graph[(obj, "at")] = place
+        stream.append(Item("fact", f"{subject} owns the {obj}."))
+        stream.append(Item("fact", f"The {obj} is at the {place}."))
+
+    for _ in range(facts - len(ENTITIES)):
         subject = rng.choice(ENTITIES)
         obj = rng.choice(OBJECTS)
         place = rng.choice(PLACES)
@@ -47,33 +56,22 @@ def build(seed: int = 3801, facts: int = 96, questions: int = 24) -> tuple[list[
 
     candidates: list[Item] = []
     for subject in ENTITIES:
-        obj = graph.get((subject, "owns"))
-        if obj is None:
-            continue
+        obj = graph[(subject, "owns")]
         place = graph.get((obj, "at"))
         candidates.append(Item("question", f"What does {subject} own?", obj))
         if place is not None:
-            candidates.append(
-                Item("question", f"Where is the object owned by {subject}?", place)
-            )
+            candidates.append(Item("question", f"Where is the object owned by {subject}?", place))
             candidates.append(Item("question", f"Where is the {obj}?", place))
 
-    # Three distinct question forms per represented entity give the default
-    # corpus 24 possible questions (8 entities x 3), while remaining tied to
-    # the same final relational state used by the memory layer.
     rng.shuffle(candidates)
     unique: list[Item] = []
     seen: set[str] = set()
     for item in candidates:
-        if item.text in seen:
-            continue
-        seen.add(item.text)
-        unique.append(item)
+        if item.text not in seen:
+            seen.add(item.text)
+            unique.append(item)
 
     if questions > len(unique):
-        raise ValueError(
-            f"requested {questions} questions, but this corpus can produce only "
-            f"{len(unique)} unique questions; reduce --questions or increase --facts"
-        )
+        raise ValueError(f"requested {questions} questions, but this corpus can produce only {len(unique)} unique questions")
 
     return stream, unique[:questions]
