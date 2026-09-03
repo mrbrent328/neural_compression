@@ -1,12 +1,14 @@
 # Product Direction — 2026-09-03
 
-**Status:** Strategic assessment. This is not an experimental closeout and does not make a novelty, generalization, or performance claim.
+**Status:** Strategic assessment informed by E39. This document is not an experimental closeout and does not make a novelty or broad generalization claim. E39 provides controlled evidence that strengthens the product architecture hypothesis, but real-workspace validation remains outstanding.
 
 ## Executive conclusion
 
 The strongest first product is a **local-first, verifiable relational-memory gateway for local AI**.
 
 It should turn trusted workspace facts into a compact, persistent, provenance-backed relationship graph; resolve direct factual and multi-hop questions deterministically where possible; and otherwise give a local language model only the smallest relevant, cited subgraph.
+
+E39 strengthens this direction by showing, in a controlled held-out setting, that the relational representation itself can preserve answerable information after the original observations are hidden. This means the product should be understood not merely as a retrieval optimization, but as a **persistent, inspectable information representation between accumulated observations and the language model**.
 
 The immediate user is a developer or researcher running private local-model workflows who needs durable workspace memory without replaying full chat histories or documents on every query.
 
@@ -18,7 +20,7 @@ This recommendation deliberately does **not** make the neural archive compressor
 
 ## Repository evidence
 
-### E37 / E38 form the product spine
+### E37 / E38 / E39 form the product spine
 
 [E37](artifacts/250826/E37) established the relevant architectural signal in a controlled synthetic setting: retaining relations did not change local reconstruction error, but it materially improved next-observation prediction. The recorded full-relation condition reached pass-two prediction F1 of approximately 0.553; the no-relations ablation was 0. The relation-budget sweep recorded approximately 0.516 F1 with 64 retained relations.
 
@@ -35,6 +37,16 @@ Its implementation already contains the right primitives:
 - measurements for answer correctness, prompt size, latency, and memory size.
 
 The E38 harness is therefore the best foundation for a real product. It is intentionally controlled and currently has no tracked results artifact, so it is a product hypothesis rather than proof of user value.
+
+[E39](artifacts/250826/E39) then tests the representation itself rather than the LLM layer:
+
+> How much of an information stream can be replaced by a persistent relational representation while preserving the ability to answer previously unseen questions about that stream?
+
+E39 builds a relational representation from source observations, hides the original observations from the evaluated condition, asks held-out direct and two-hop questions, and progressively removes relational facts. The full representation answered all 144 held-out questions correctly with explicit supporting evidence chains. At 75% of facts retained, accuracy remained 72.22%; at 50%, it fell to 45.14%; at 25%, 19.44%; and at 12.5%, 9.72%.
+
+The important product implication is not the exact synthetic percentages. It is that **the persistent relational representation retained useful answering capability after the original observations were removed, and degradation followed information removal rather than hallucinated answers**. When required relations were absent, the deterministic system returned no answer and no supporting chain. This makes inspectability and bounded failure a core architectural property rather than an afterthought.
+
+E39 also suggests that useful information is not uniformly distributed across stored facts. The capability curve falls substantially as the relation budget is reduced, which supports treating structured memory as a selective representation of what deserves to persist rather than indiscriminately storing or replaying everything.
 
 ### S6E2 contributes useful concepts, not a shippable base
 
@@ -102,14 +114,14 @@ candidate fact extraction + user review
 versioned local fact graph (SQLite + provenance)
         |
 question router
-   /                    \
+   /                    \\
 deterministic graph       compact cited subgraph
 answer                    + local LLM explanation
-   \                    /
+   \\                    /
       evidence, confidence, context/latency metrics
 ```
 
-The existing E38 relation store and local-model adapters can seed this architecture. The E37 relation budget provides a useful future control: retrieval should be bounded and measured rather than indiscriminately stuffing every connected fact into context.
+The existing E38 relation store and local-model adapters can seed this architecture. E39 adds a more fundamental design principle: the graph should be treated as a persistent representation in its own right, with deterministic answering and explicit evidence chains where possible. The E37 and E39 relation-budget results provide useful future controls: retrieval and storage should be bounded and measured rather than indiscriminately stuffing every connected fact into context.
 
 ## Validation gates
 
@@ -122,6 +134,8 @@ Do not treat the product direction as validated until it meets all of the follow
 5. Users can correct or revoke a memory without fighting the system.
 
 Measure accuracy, evidence coverage, context tokens/characters, latency, direct-resolution rate, and correction rate. Keep the raw-history baseline in every evaluation.
+
+E39 should be treated as architectural evidence, not as satisfaction of these product gates. Its controlled synthetic corpus does not establish performance on real user workspaces.
 
 ## Market posture
 
@@ -140,8 +154,10 @@ Related context, not evidence from this repository:
 
 ## Recommended next build decision
 
-Productize E38 as a small, deterministic, evidence-first vertical slice before adding neural memory:
+Productize the E38 architecture as a small, deterministic, evidence-first vertical slice, now informed by E39's representation result:
 
 `ingest reviewed facts → persist source-backed relations → direct graph answer or compact local-LLM answer → show evidence and savings`
+
+The key product primitive is therefore not simply “retrieval.” It is a **persistent relational memory representation with bounded, inspectable access to a local model**.
 
 That smallest artifact is both useful and falsifiable. If it does not preserve answer quality while cutting context in real workspaces, the product hypothesis should be revised before expanding the model, graph, or UI.
