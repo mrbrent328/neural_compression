@@ -1,175 +1,106 @@
 # Neural Compression — Context Handoff
 
-**Date:** 2026-08-28  
+**Date:** 2026-08-28
 **Branch:** `main`
 
 ## Purpose
 
-This is the durable checkpoint for resuming Neural Compression research in a fresh conversation. **`main` is the authoritative repository state.** Follow `PROJECT_WORKFLOW.md`: establish current state from `main` before continuing, read the relevant research notes/artifacts, discuss before coding, implement only after approval, use the user's real run for analysis, commit completed work to `main`, then close out and update this handoff.
+This is the durable checkpoint for resuming Neural Compression research in a fresh conversation. The repository is authoritative. Follow `PROJECT_WORKFLOW.md`: one experiment per conversation, discuss before coding, implement only after approval, commit to `main`, use the user's real run for analysis, then close out and update this handoff.
 
 ## Current research direction
 
-The research has progressed from isolated compression mechanisms toward a complete trainable relational system and, now, a first language-domain implementation of the relational principles discovered in earlier experiments.
+The project is increasingly centered on:
 
-The central hypothesis is:
+> If two systems already share the same state, what is the smallest persistent/relational structure needed to communicate a change between them exactly?
 
-> A useful model may be built from persistent entities/local representations whose identity remains stable while their meaning is represented through changing relational/contextual structure.
+Earlier work established exact synchronized-state communication and showed that different structures of change favor different descriptions. The project does not claim a complete theory of neural structure; it is looking for concrete, reusable mechanisms.
 
-The longer-term question remains:
+## Established delta findings
 
-> What is the smallest persistent relational structure capable of explaining multiple observations of the same underlying system?
+The structured-delta work uses five lossless representations: `absolute`, `index_delta`, `ranges`, `factored_values`, and `combined`. Exact reconstruction is a hard requirement. The experiments established that representation efficiency depends on the structure of the change: sparse/random changes often favor index deltas, while clustered changes increasingly favor ranges.
 
-The current language work is an engineering test of this hypothesis, **not** a claim about human neuroscience or cognition.
+The Adaptive Delta experiment then trained a small nearest-centroid selector using six structural statistics: change density, run count, average index gap, gap variance, value mean, and value standard deviation. On 2100 known-distribution test cases it matched the oracle on **83.2857%** of cases, had **1.0115999** mean adaptive/oracle ratio, **1.835 bytes** mean regret, and reduced mean size by about **26%** versus fixed absolute encoding.
 
-## Historical architectural progression
+## Completed experiment: Out-of-Distribution Structural Delta Selection
 
-### R3 / R4 — distributed local representations + shared interaction
+### Question
 
-R3 moved away from a single global latent bottleneck toward multiple local representations. The architecture represented an observation as local units, passed those representations through shared interaction machinery, and reconstructed from the resulting states.
+Can the small structural selector generalize to change structures that were not represented by its training families?
 
-R4 continued this direction and explicitly tested interaction as a separable mechanism through ablation. The important architectural principle was the separation between distributed representations and a shared mechanism through which those representations can interact.
+### Implementation
 
-These experiments motivate the current language architecture but do not by themselves establish semantic representations.
+`memory_network/generalization_delta.py` reused the existing lossless representations and nearest-centroid selector. Training used the original `random`, `clustered`, and `similar` families with seed `1001`, state size 1024, seven change counts (1, 4, 16, 64, 256, 512, 1024), and 100 cases per cell: **2100 training cases**.
 
-### S5E1 — persistent relational concept memory
+The selector was frozen before testing. Test seed was `2003`, with 100 cases per cell. Known controls were `random`, `clustered`, and `similar`. Novel structures were `strided`, `alternating`, `multi_cluster`, `edge_biased`, and `clustered_similar`.
 
-S5E1 tested persistent concept identities plus relational context. It demonstrated identity persistence and strong relation retrieval, but closeout identified an important limitation: the evaluation path did not actually apply relational updates to persistent concept states. Therefore it demonstrated the substrate for persistent identity plus relational context, not the full dynamic-memory mechanism.
+Adaptive decisions were made before candidate encoded sizes were inspected. The oracle was evaluated independently afterward. Exact reconstruction remained mandatory.
 
-### S6E2 — integrated persistent relational system
+### Actual user result
 
-S6E2 combined persistent entities, exact durable observations, mutable contextual states, shared neural interaction, learned relation prediction, checkpoint persistence, observation replay, and an interactive CLI.
+The user ran the experiment locally and supplied the complete output.
 
-The live system demonstrated that adding a relational observation changed contextual state while the underlying entity remained persistent. It successfully learned observed relationships. It did **not** yet demonstrate held-out relational inference or semantic understanding.
+Known controls: **2100 cases**, **83.0952%** oracle-choice match, **1.0112543** mean ratio, **1.7571 bytes** mean regret, **38 bytes** maximum regret.
 
-## RLM — language-domain implementation
+Novel structures: **3500 cases**, **82.1143%** oracle-choice match, **1.0558700** mean ratio, **40.1143 bytes** mean regret, **821 bytes** maximum regret.
 
-RLM adapts the distributed/persistent representation + shared interaction principle to language.
+Overall: **5600 cases**, **82.4821%** oracle-choice match, **1.0391391** mean ratio, **25.7304 bytes** mean regret, **821 bytes** maximum regret, and **4619 zero-regret cases**. Adaptive output was better than absolute in **3789** cases, equal in **1799**, and worse in only **12**. Mean absolute size was **1448.3382 bytes**; mean adaptive size was **1072.6602 bytes**.
 
-Conceptual mapping:
+### Per-pattern result
 
-| Earlier relational work | RLM |
-|---|---|
-| observation | token sequence / context |
-| local/entity representation | persistent token identity |
-| shared interaction | relational field |
-| contextual state | context-dependent token state |
-| reconstruction | next-token prediction |
+`random`: 99.5714% match, 0.0057-byte mean regret.
 
-RLM should therefore be described as a **language-domain implementation of the relational architectural principle developed through R3/R4 and subsequent persistent-memory experiments**, rather than as a literal copy of R3/R4.
+`clustered`: 88.5714% match, 0.6486-byte mean regret.
 
-## RLM v1
+`similar`: 61.1429% match, 4.6171-byte mean regret.
 
-RLM v1 used byte-level persistent identities. It successfully learned nontrivial next-token statistics, but generated severely degraded text. This established a working language-prediction baseline while showing that byte-level persistent units were not a particularly useful substrate for readable generation.
+`strided`: 95.1429% match, 0.27-byte mean regret.
 
-## RLM v2
+`alternating`: 99.5714% match, 0.0043-byte mean regret.
 
-RLM v2 changed the persistent unit from bytes to learned vocabulary tokens while retaining the relational-field approach.
+`multi_cluster`: 87.2857% match, 2.7671-byte mean regret.
 
-### Gorgias-scale run
+`edge_biased`: 100% match, 0-byte mean regret.
 
-Reported result:
+`clustered_similar`: **28.5714% match**, **197.53-byte mean regret**, **821-byte maximum regret**.
 
-- vocabulary: **2,996**
-- training tokens: **70,678**
-- validation tokens: **7,854**
-- validation loss: **3.3774792554427164**
-- validation perplexity: **29.296829223632812**
+### Main observation
 
-Generation from `CALLICLES: Yes, Gorgias, but I must complain` produced recognizable Gorgias-specific vocabulary, character/dialogue names, punctuation, and local dialogue structure, but remained substantially incoherent as prose. This is evidence of learned corpus structure, not semantic understanding.
+The selector generalizes substantially to genuinely unseen structures. Its novel-pattern match rate remains close to the known-pattern control, and several unseen geometries are handled extremely well. This is evidence against simple memorization of the original pattern labels.
 
-### Large-corpus stress test
+The dominant failure is the composed `clustered_similar` structure. The worst cases occur at 512 changed values, where the selector chooses `absolute` while the oracle chooses `ranges`, causing regrets up to 821 bytes.
 
-A much larger text corpus was also trained with RLM v2. Reported final checkpoint metadata:
+The current evidence therefore supports a narrower claim: cheap structural statistics contain transferable information for choosing among lossless delta representations. It does **not** establish universal generalization.
 
-- training tokens: **2,155,783**
-- validation tokens: **239,532**
-- vocabulary: approximately **38,538** tokens in the reported run
-- final validation loss: **4.870605817903878**
-- final validation perplexity: **130.39990234375**
+### Interpretation boundary
 
-Training perplexity reached approximately **20** late in the run while validation remained around **130**, establishing a substantial generalization gap. The large vocabulary also revealed that the persistent identity table dominates model parameter count at this scale; with 128-dimensional identities, the vocabulary embedding matrix alone is roughly 4.95M parameters.
+Do not retroactively tune the selector based on this result. The failure is part of the evidence.
 
-Generation from `Hi friend` produced recognizable English words and corpus vocabulary such as `CHAPTER`, `infection`, `Haversian`, `iodoform`, `prince`, `capital`, `pupil`, `assembled`, and `assiduity`, but not coherent prose. This indicates learned lexical/local distributional structure rather than useful language understanding.
+The current leading hypothesis is that the selector handles individual structural dimensions well but does not reliably model interactions between them when familiar properties are combined in a new way. This is a hypothesis, not yet an established cause.
 
-## RLM v2 architectural configuration of interest
+## Important implementation lessons
 
-The stronger Gorgias experiment used:
+Keep exact reconstruction checks intact. Keep adaptive decisions separate from oracle measurements. Review the actual repository version before making implementation claims. Preserve the distinction between observed results and interpretation.
 
-- `context = 32`
-- `dim = 512`
-- `heads = 1`
-- `rounds = 2`
-- `lr = 3e-4`
-- `batch-size = 8`
-- `val-fraction = 0.1`
+The `clustered_similar` failure should be investigated rather than patched immediately.
 
-This is notable because it gives persistent entities a relatively large representation while keeping the shared relational interaction mechanism comparatively small/simple. This is conceptually compatible with the earlier research direction of persistent/distributed representations connected through shared interaction.
+## Current unresolved question / next decision
 
-The parameter count must always be considered alongside vocabulary size; a large vocabulary makes the persistent identity table the dominant component.
+Before changing the selector, determine **why `clustered_similar` fails**.
 
-## RLM identity-space inspection
+The next experiment should distinguish two competing explanations:
 
-A diagnostic tool was added as `rlm_inspect.py` after an initial `inspect.py` name collision with Python's standard-library `inspect` module was discovered and corrected.
+**Missing information:** the six current structural features do not contain enough information to distinguish the relevant representation interaction.
 
-For the large-corpus checkpoint, inspecting static identity vectors produced non-obvious nearest neighbors. Examples included:
+**Insufficient model:** the features contain the needed information, but a nearest-centroid classifier cannot represent the interaction between them.
 
-- `the` → `intrusion`, `bwother`, `Indians`, `donning`, ...
-- `infection` → `Cladius`, `importunity`, `590`, `limbs_`, ...
-- `prince` → `Nullification`, `aren't`, `autocracy`, `desk`, ...
-- `patient` → `assumes`, `Antivenin`, `appreciated`, ...
+The first step in the next conversation should be to inspect the failed cases and compare the feature-space geometry of `clustered`, `similar`, and `clustered_similar`. Then propose exactly one experiment that cleanly separates those explanations.
 
-The strongest similarities were only around 0.30–0.36 and were not obviously semantic. The correct interpretation is **not** that the relational model failed. Static identity-vector cosine geometry is not directly optimized to produce human-readable semantic neighborhoods. The next diagnostic target should therefore be contextual/interaction states and prediction behavior rather than raw nearest-neighbor identity geometry.
+## Repository artifacts
 
-## Scientific synthesis
+The OOD experiment code is `memory_network/generalization_delta.py`.
 
-The current evidence supports the following narrower claims:
+The actual summarized result is recorded in `memory_network/generalization_delta_result_2026-08-28.json`.
 
-- Distributed/local representations are a viable alternative to forcing an observation through one global latent bottleneck.
-- Shared interaction between distributed representations is a meaningful architectural mechanism worth isolating experimentally.
-- Persistent identities can coexist with changing relational/contextual state.
-- An integrated persistent relational system can be trained, persisted, inspected, and replayed.
-- The relational architecture can learn substantial statistical structure from real language.
-- Changing the persistent unit from bytes to learned tokens materially improves the linguistic substrate.
-- RLM v2 can train on a corpus containing millions of tokens.
-- Static identity-vector geometry does not automatically become human-interpretable semantic geometry.
+The formal experiment closeout is `memory_network/EXPERIMENT_CLOSEOUT_2026-08-28.md`.
 
-The following remain unestablished:
-
-- genuine semantic understanding;
-- superior generalization versus conventional language-model representations;
-- useful long-range reasoning;
-- competitive performance against conventional LLMs;
-- that the learned structure is the smallest sufficient representation;
-- that the architecture reproduces biological brain organization.
-
-## Research progression
-
-`distributed representations → shared interaction → persistent entities → changing relational context → integrated relational system → language-domain RLM → contextual relational analysis → held-out inference / generalization → emergent geometry`
-
-Geometry remains an emergent question. Coordinates must not be supplied as targets and then interpreted as discovered geometry.
-
-## Next research question
-
-The immediate next architectural/diagnostic question is whether persistent token identities and the shared relational field produce **structured contextual states** that explain prediction behavior.
-
-A useful next experiment is to inspect the same persistent entity under different contexts and compare its contextual state and prediction distribution. The test should distinguish persistent identity from changing relational/contextual state.
-
-Only after that should we move toward larger-scale training or direct comparison against conventional language models. If scaling is pursued, vocabulary size, parameter count, corpus composition, context length, and training budget should be controlled so results remain interpretable.
-
-## Important interpretation boundaries
-
-Do not equate low training loss with semantic understanding.
-
-Do not treat static embedding nearest-neighbor results as proof or disproof of relational semantics.
-
-Do not claim that RLM has beaten or reproduced an LLM without a controlled benchmark against a defined conventional baseline.
-
-Do not claim that the architecture reproduces human brain organization.
-
-Do not supply coordinates and then interpret successful coordinate prediction as discovered geometry.
-
-## Repository / workflow rule
-
-**All authoritative research notes, handoffs, and completed experiment artifacts belong on `main`.** When resuming in a new conversation, explicitly start by reading the current `main` state and the relevant docs. Do not rely on stale conversational summaries when repository evidence is available.
-
-The prior `clustered_similar` structural-selector investigation remains paused. Its failures remain historical evidence and should not be silently tuned into success.
+The canonical workflow is `PROJECT_WORKFLOW.md`.
