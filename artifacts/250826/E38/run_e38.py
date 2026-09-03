@@ -58,7 +58,8 @@ def run(args):
     backend = choose_backend(args)
     results = []
 
-    # The stream is observed first. This is the persistent-learning phase.
+    # The stream is observed first. ``facts`` is the number of observations;
+    # the corpus expands each observation into two textual fact items.
     for item in facts:
         history.append(item.text)
         ingest_fact(memory, item.text)
@@ -94,7 +95,9 @@ def run(args):
     payload = {
         "experiment": "E38 — Relational-Assisted Local Inference",
         "seed": args.seed,
-        "facts": len(facts),
+        "fact_observations": args.facts,
+        "fact_items": len(facts),
+        "questions_requested": args.questions,
         "questions": len(questions),
         "memory": stats,
         "conditions": ["raw_history", "relational"],
@@ -103,7 +106,7 @@ def run(args):
     path = OUT / "e38_results.json"
     path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
     memory.close()
-    print(json.dumps({"output": str(path), "memory": stats, "questions": len(questions)}, indent=2))
+    print(json.dumps({"output": str(path), "memory": stats, "fact_observations": args.facts, "fact_items": len(facts), "questions": len(questions)}, indent=2))
 
 
 if __name__ == "__main__":
