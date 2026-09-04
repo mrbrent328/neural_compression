@@ -97,6 +97,15 @@ The major accounting problem remains: learned totals cover only the held-out 25%
 
 **Transition:** flawed synthetic scaling curve → real-corpus, leakage-free, decoder-valid scaling experiment while retaining the unresolved equal-domain accounting requirement.
 
+### Test 9
+Review: [`test_9.md`](test_9.md)
+
+Primarily an engineering/performance iteration of Test 8. It preserves the real-corpus, independent 75/25 split, decoder-valid hybrid selection, exact reconstruction, and per-scaling-point training while moving neural training, held-out prediction, and hybrid validation onto AMD ROCm hardware with controlled batching, synchronization, throughput reporting, and GPU-memory tracking.
+
+The code deliberately keeps exact predictive decoding sequential because each next prediction depends on previously reconstructed bytes. The underlying whole-file accounting problem remains unresolved.
+
+**Transition:** corrected real-corpus experiment → operational GPU scaling while respecting the sequential causal decoder constraint.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -139,8 +148,12 @@ then the scaling line adds:
 
 `if structural models have fixed cost → does reuse over scale amortize that cost?`
 
-and Test 8 strengthens that question with:
+then Test 8 strengthens that question with:
 
 `real corpus + independent train/held-out split + decoder-valid hybrid selection + exact causal reconstruction`
+
+and Test 9 adds:
+
+`GPU-scaled training/inference while keeping causal decoding sequential`.
 
 The remaining codec accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
