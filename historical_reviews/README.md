@@ -70,8 +70,19 @@ The arithmetic payload only represents the final 25%, while the first 75% is sup
 
 **Transition:** optimize learned context/model cost → use learned uncertainty directly as a causal lossless arithmetic-coded stream.
 
+### Test 6 / Latent Structure Discovery Branch
+Review: [`test_6_discovery_branch.md`](test_6_discovery_branch.md)
+
+Test 6 begins a deliberate side branch from the latent-representation idea: if useful latent structure can be stored, can the system discover that structure itself? The initial experiment searches for a compact mathematical law behind noisy observations without receiving the hidden generating equation.
+
+The branch continues through `discover_law2.py`, `discover_law3.py`, and `blind_law_suite.py`, progressively adding irrelevant-variable rejection, multivariable interactions, explicit complexity-aware scoring, and tests across multiple hidden law families. These are symbolic-regression experiments over supplied mathematical vocabularies, not unrestricted or neural scientific discovery.
+
+**Transition:** learn/store latent structure → discover latent structure → prefer compact explanatory/generative structure → test structural discovery across law families.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
+
+Test 6 temporarily branches away from direct codec development, but the branch follows directly from the compression hypothesis: perhaps the cheapest representation of observations is the compact relationship or process that generated them.
 
 ## Overall progression so far
 The preserved sequence currently shows an early progression from:
@@ -98,8 +109,12 @@ then:
 
 `optimize structural context/capacity by total representation cost`
 
-and now:
+then:
 
 `learned causal probability model → arithmetic-coded exact continuation`
 
-The remaining accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
+with the Test 6 side branch asking:
+
+`if latent structure is useful to store → can the latent/generative structure itself be discovered?`
+
+The remaining codec accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
