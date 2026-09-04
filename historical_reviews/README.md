@@ -115,10 +115,24 @@ The experiment also mixes neural and context distributions directly in probabili
 
 **Transition:** operational hard prediction at scale → direct learned uncertainty + causal entropy coding; hard predictor combination → probability-space mixture.
 
+### Test 11
+Not currently recovered. The retrospective intentionally leaves this slot unresolved rather than inferring that no Test 11 existed.
+
+### Test 12
+Review: [`test_12.md`](test_12.md)
+
+Introduces an online self-reconstructing model-state hypothesis. Instead of training a static model beforehand and paying to communicate that state, a fresh neural predictor is evaluated on each batch and then updated from that batch so learned structure accumulates progressively from the stream itself.
+
+The preserved script only sums ideal cross-entropy and does not emit or decode a compressed bitstream. Its batched contexts are drawn from the full source tensor, and shared initialization / deterministic numerical synchronization are not established, so it does not yet demonstrate a synchronized causal codec.
+
+**Transition:** transmitted static model state → shared initial state + online learning from decoded history → potentially decoder-reconstructible learned state with no explicit model payload.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
 Test 6 temporarily branches away from direct codec development, but the branch follows directly from the compression hypothesis: perhaps the cheapest representation of observations is the compact relationship or process that generated them.
+
+Test 11 is currently unresolved in the preserved repository and is intentionally left as a gap pending future recovery.
 
 ## Overall progression so far
 The preserved sequence currently shows an early progression from:
@@ -165,8 +179,12 @@ Test 9 adds:
 
 `GPU-scaled training/inference while keeping causal decoding sequential`
 
-and Test 10 reconnects that mature experimental line to direct probability coding:
+Test 10 reconnects that mature experimental line to direct probability coding:
 
-`full learned uncertainty → deterministic range coding → exact causal continuation`.
+`full learned uncertainty → deterministic range coding → exact causal continuation`
 
-The remaining codec accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
+and Test 12 introduces:
+
+`shared initialization → online learning from stream history → potentially self-reconstructed model state`.
+
+The remaining codec problem is to turn these ideas into complete representations and synchronized encoder/decoder protocols over equivalent coding domains. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
