@@ -52,6 +52,15 @@ Test 3 substantially improves the controls and addresses Test 2's latent-communi
 
 **Transition:** transmitted local latent state → shared learned structure + decoder-reconstructible state + exact correction. Introduces broader structural generalization and primitive predictor combination.
 
+### Test 4
+Review: [`test_4.md`](test_4.md)
+
+Tests learned next-byte predictors with multiple context widths (4, 8, 16, and 32 bytes) and explicitly chooses the model with the smallest combined compressed model + exact residual + metadata representation rather than the lowest prediction loss. This makes context/model capacity itself an economic compression variable.
+
+The experiment still compares a learned representation of only the held-out final 25% against full-file original/zlib sizes, so whole-file accounting remains unresolved. It also verifies residual arithmetic rather than exercising an independently packaged sequential decoder.
+
+**Transition:** decoder-reconstructible learned context → optimize how much contextual/model capacity is worth paying for. Early precursor to adaptive capacity allocation and local strategy selection.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -72,8 +81,12 @@ then:
 
 `learn whole-region structure → compact latent representation → exact correction information`
 
-and now:
+then:
 
 `shared learned structure + decoder-known history → prediction → exact correction`
 
-The next accounting problem is to compare complete representations over genuinely equivalent coding domains. Test 4 and subsequent reviews will extend this timeline as they are examined.
+and now:
+
+`optimize structural context/capacity by total representation cost`
+
+The remaining accounting problem is to compare complete representations over genuinely equivalent coding domains. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
