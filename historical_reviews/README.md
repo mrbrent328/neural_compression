@@ -106,6 +106,15 @@ The code deliberately keeps exact predictive decoding sequential because each ne
 
 **Transition:** corrected real-corpus experiment → operational GPU scaling while respecting the sequential causal decoder constraint.
 
+### Test 10
+Review: [`test_10.md`](test_10.md)
+
+Returns to direct probability coding with the matured real-corpus methodology. Instead of collapsing the neural output to one argmax byte and compressing a residual, the full 256-way probability distribution is deterministically quantized to integer frequencies and fed directly to a sequential range coder. Encoder and decoder maintain matching causal reconstruction state, and theoretical cross-entropy is compared with actual coded payload size.
+
+The experiment also mixes neural and context distributions directly in probability space rather than selecting a hard predictor. Exact held-out decoding is verified. The longstanding whole-file accounting mismatch remains: learned totals describe the held-out 25% plus model/metadata while the zlib baseline describes the full corpus.
+
+**Transition:** operational hard prediction at scale → direct learned uncertainty + causal entropy coding; hard predictor combination → probability-space mixture.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -152,8 +161,12 @@ then Test 8 strengthens that question with:
 
 `real corpus + independent train/held-out split + decoder-valid hybrid selection + exact causal reconstruction`
 
-and Test 9 adds:
+Test 9 adds:
 
-`GPU-scaled training/inference while keeping causal decoding sequential`.
+`GPU-scaled training/inference while keeping causal decoding sequential`
+
+and Test 10 reconnects that mature experimental line to direct probability coding:
+
+`full learned uncertainty → deterministic range coding → exact causal continuation`.
 
 The remaining codec accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
