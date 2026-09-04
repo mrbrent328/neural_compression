@@ -127,6 +127,15 @@ The preserved script only sums ideal cross-entropy and does not emit or decode a
 
 **Transition:** transmitted static model state → shared initial state + online learning from decoded history → potentially decoder-reconstructible learned state with no explicit model payload.
 
+### Test 13 / Latent-Native Computation Branch
+Review: [`test_13.md`](test_13.md)
+
+A four-part A→B→C→D branch exploring whether a learned latent representation can become a computational substrate rather than merely a compressed storage format. A and B create and steady-state benchmark a convolutional image encoder producing `[16, 32, 32]` spatial latents from 256×256 RGB inputs. C and D freeze that encoder and train/benchmark a downstream classifier that operates directly on the latent tensor without reconstructing the source image.
+
+Because the preserved scripts use random dummy images, random labels, and an untrained encoder, they do not establish useful semantic preservation or classification quality. Their contribution is architectural and operational: they demonstrate and benchmark the direct latent-computation path.
+
+**Transition:** latent representation as compressed storage → latent representation as computational state → apply latent representation to real neural-network model-weight tensors in Test 14.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -183,8 +192,12 @@ Test 10 reconnects that mature experimental line to direct probability coding:
 
 `full learned uncertainty → deterministic range coding → exact causal continuation`
 
-and Test 12 introduces:
+Test 12 introduces:
 
-`shared initialization → online learning from stream history → potentially self-reconstructed model state`.
+`shared initialization → online learning from stream history → potentially self-reconstructed model state`
+
+and Test 13 adds:
+
+`latent representation → direct downstream computation without reconstructing the original representation`.
 
 The remaining codec problem is to turn these ideas into complete representations and synchronized encoder/decoder protocols over equivalent coding domains. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
