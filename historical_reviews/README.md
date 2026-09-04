@@ -79,6 +79,15 @@ The branch continues through `discover_law2.py`, `discover_law3.py`, and `blind_
 
 **Transition:** learn/store latent structure → discover latent structure → prefer compact explanatory/generative structure → test structural discovery across law families.
 
+### Test 7
+Review: [`test_7.md`](test_7.md)
+
+Introduces an explicit scaling/amortization hypothesis: a learned structural representation may be too expensive on small data but become economical when its fixed cost is reused across enough information. The script compares previous-byte, context, neural, and hybrid predictive residual methods across 100 KB to 5 MB synthetic datasets while accounting for residual, model, and metadata costs.
+
+The hypothesis is historically important, but the preserved break-even experiment is not valid evidence of the claimed curve. Smaller curve points leak into the fixed model's training region, learned totals encode only each file's final 25% while zlib encodes the full file, and the hybrid uses the true target byte to choose the better predictor.
+
+**Transition:** model overhead hurts → ask whether reusable structural overhead can be amortized over scale → treat compression as representation economics rather than prediction quality alone.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -116,5 +125,9 @@ then:
 with the Test 6 side branch asking:
 
 `if latent structure is useful to store → can the latent/generative structure itself be discovered?`
+
+and Test 7 adding:
+
+`if structural models have fixed cost → does reuse over scale amortize that cost?`
 
 The remaining codec accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
