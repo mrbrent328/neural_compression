@@ -88,6 +88,15 @@ The hypothesis is historically important, but the preserved break-even experimen
 
 **Transition:** model overhead hurts → ask whether reusable structural overhead can be amortized over scale → treat compression as representation economics rather than prediction quality alone.
 
+### Test 8
+Review: [`test_8.md`](test_8.md)
+
+Repairs much of Test 7's scaling methodology and moves the experiment to real source-code/text corpora. Each scaling point trains its own model using only its first 75%, the final 25% is genuinely held out, file boundaries are respected, and the hybrid selector is learned from training-region behavior instead of consulting the held-out target byte. All predictor types are reconstructed sequentially and checked by byte equality and SHA-256.
+
+The major accounting problem remains: learned totals cover only the held-out 25% residual plus model/metadata while the zlib baseline covers the full corpus. Neural/context model sizes are also representation estimates, and hybrid selector-table storage is not separately charged.
+
+**Transition:** flawed synthetic scaling curve → real-corpus, leakage-free, decoder-valid scaling experiment while retaining the unresolved equal-domain accounting requirement.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -126,8 +135,12 @@ with the Test 6 side branch asking:
 
 `if latent structure is useful to store → can the latent/generative structure itself be discovered?`
 
-and Test 7 adding:
+then the scaling line adds:
 
 `if structural models have fixed cost → does reuse over scale amortize that cost?`
+
+and Test 8 strengthens that question with:
+
+`real corpus + independent train/held-out split + decoder-valid hybrid selection + exact causal reconstruction`
 
 The remaining codec accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
