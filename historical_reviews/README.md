@@ -61,6 +61,15 @@ The experiment still compares a learned representation of only the held-out fina
 
 **Transition:** decoder-reconstructible learned context → optimize how much contextual/model capacity is worth paying for. Early precursor to adaptive capacity allocation and local strategy selection.
 
+### Test 5
+Review: [`test_5.md`](test_5.md)
+
+Returns to direct entropy coding: an 8-byte-context neural predictor generates 256-symbol probabilities that are deterministically converted to arithmetic-coder frequency tables. Unlike Tests 2–4, the held-out continuation is actually decoded sequentially from the arithmetic stream, with each decoded symbol feeding the next neural context. Exact full-sequence equality and SHA-256 verification are performed.
+
+The arithmetic payload only represents the final 25%, while the first 75% is supplied to the decoder as an uncharged prefix and the comparison baseline remains full-file zlib. Thus the causal codec mechanism is substantially validated, but complete whole-file accounting remains unresolved.
+
+**Transition:** optimize learned context/model cost → use learned uncertainty directly as a causal lossless arithmetic-coded stream.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
@@ -85,8 +94,12 @@ then:
 
 `shared learned structure + decoder-known history → prediction → exact correction`
 
-and now:
+then:
 
 `optimize structural context/capacity by total representation cost`
 
-The remaining accounting problem is to compare complete representations over genuinely equivalent coding domains. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
+and now:
+
+`learned causal probability model → arithmetic-coded exact continuation`
+
+The remaining accounting problem is to compare complete representations over genuinely equivalent coding domains, especially eliminating or charging source-specific shared prefix/training information. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
