@@ -136,12 +136,25 @@ Because the preserved scripts use random dummy images, random labels, and an unt
 
 **Transition:** latent representation as compressed storage → latent representation as computational state → apply latent representation to real neural-network model-weight tensors in Test 14.
 
+### Test 14 / Model-as-Latent-State Branch
+Review: [`test_14.md`](test_14.md)
+
+Applies the latent representation idea to real neural-network model weights. The branch progresses from a single GGUF tensor tiled into convolutional latents, to a whole-model `.latents` binary container with JSON indexing, to reconstruction of latent-stored tensors and injection into an executable PyTorch layer.
+
+The branch then attempts to add exact reconstruction/fidelity validation. The preserved hash-check script contains a meaningful original-versus-reconstructed comparison routine, but that routine is never called, while the alternate hash path expects reference hashes that the converter did not store. This implementation mistake was not noticed at the time, and the line of inquiry was discontinued before the intended fidelity test actually ran.
+
+Accordingly, Test 14 is not evidence that latent model-weight storage failed. It establishes the architectural container/reconstruction path but leaves preservation of the original weights and model function unresolved.
+
+**Transition:** latent-native computation → model parameters as latent-representable state → whole-model indexed latent container → need for actual reconstruction/fidelity validation.
+
 ## Historical context
 The earliest work was not originally expected to become a long experiment series, so initial experiments were lettered rather than organized as a mature numbered research program. Tests C and D precede numbered Test 2. The first roughly fourteen tests were developed in a very compressed early research period, making this retrospective documentation particularly useful for reconstructing the actual conceptual progression.
 
 Test 6 temporarily branches away from direct codec development, but the branch follows directly from the compression hypothesis: perhaps the cheapest representation of observations is the compact relationship or process that generated them.
 
 Test 11 is currently unresolved in the preserved repository and is intentionally left as a gap pending future recovery.
+
+The repository also contains a later root-level `experiment10`→`experiment16` lineage whose numbering collides with the early `artifacts/test*` sequence. Those files are treated as a separate historical sequence rather than retroactively merged into Tests 10–16 here.
 
 ## Overall progression so far
 The preserved sequence currently shows an early progression from:
@@ -196,8 +209,14 @@ Test 12 introduces:
 
 `shared initialization → online learning from stream history → potentially self-reconstructed model state`
 
-and Test 13 adds:
+Test 13 adds:
 
-`latent representation → direct downstream computation without reconstructing the original representation`.
+`latent representation → direct downstream computation without reconstructing the original representation`
+
+and Test 14 extends that into:
+
+`model weights → latent-state container → reconstructable computational tensors`,
+
+while exposing that shape-compatible executability is not enough: reconstruction fidelity must be measured explicitly.
 
 The remaining codec problem is to turn these ideas into complete representations and synchronized encoder/decoder protocols over equivalent coding domains. Subsequent historical reviews will continue reconstructing how that issue and the broader architecture evolved.
