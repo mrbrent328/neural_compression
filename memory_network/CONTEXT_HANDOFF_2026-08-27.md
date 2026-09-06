@@ -9,90 +9,98 @@ This is the durable checkpoint for resuming Neural Compression research in a fre
 
 ## Current research direction
 
-The project is now pivoting from isolated component experiments toward building a small complete trainable system that combines the useful mechanisms discovered across the experiments.
+The project is increasingly centered on:
 
-The central new idea is:
+> If two systems already share the same state, what is the smallest persistent/relational structure needed to communicate a change between them exactly?
 
-> Can concepts exist as persistent entities whose identity remains stable while their meaning is represented by a changing relational neighborhood?
+Earlier work established exact synchronized-state communication and showed that different structures of change favor different descriptions. The project does not claim a complete theory of neural structure; it is looking for concrete, reusable mechanisms.
 
-The longer-term architectural hypothesis is that a useful model may consist of persistent local representations connected by a shared relational/interaction layer, with state evolving over time and potentially admitting a compact geometric representation. The user is particularly interested in whether abstract concepts can be represented more like objects embedded in a structured relational space: for example, `apple` would not be a single flat vector but a persistent identity connected to concepts such as `red`, `fruit`, `sweet`, `food`, `tree`, etc. The meaning of a concept would emerge from its surrounding structure and relationships.
+## Established delta findings
 
-The project should eventually test whether such relational structure can develop useful geometry, potentially in two or three dimensions and later possibly with time as an additional dimension. Coordinates must not be treated as the answer in advance; the first goal is to determine whether the relational architecture itself produces useful structure.
+The structured-delta work uses five lossless representations: `absolute`, `index_delta`, `ranges`, `factored_values`, and `combined`. Exact reconstruction is a hard requirement. The experiments established that representation efficiency depends on the structure of the change: sparse/random changes often favor index deltas, while clustered changes increasingly favor ranges.
+
+The Adaptive Delta experiment then trained a small nearest-centroid selector using six structural statistics: change density, run count, average index gap, gap variance, value mean, and value standard deviation. On 2100 known-distribution test cases it matched the oracle on **83.2857%** of cases, had **1.0115999** mean adaptive/oracle ratio, **1.835 bytes** mean regret, and reduced mean size by about **26%** versus fixed absolute encoding.
 
 ## Completed experiment: Out-of-Distribution Structural Delta Selection
 
 ### Question
 
-Can the small nearest-centroid structural selector learned from the original `random`, `clustered`, and `similar` delta families choose efficient lossless representations for genuinely unseen change structures?
-
-### Actual result
-
-The complete test contained 5600 cases. Known cases produced an 83.0952% oracle-choice match rate, 1.0112543 mean ratio, 1.7571-byte mean regret, and 38-byte maximum regret. Novel cases produced an 82.1143% match rate, 1.0558700 mean ratio, 40.1143-byte mean regret, and 821-byte maximum regret. Overall match was 82.4821%, with 4619 zero-regret cases. Adaptive output was better than fixed `absolute` in 3789 cases, equal in 1799, and worse in only 12.
-
-The dominant failure was `clustered_similar`, which had only 28.5714% oracle-choice match and 197.53-byte mean regret, with worst cases reaching 821 bytes. The experiment supports the narrower claim that cheap structural statistics contain transferable information for selecting among lossless delta representations, but does not establish universal generalization.
-
-The earlier handoff proposed investigating whether that failure was caused by missing information or an insufficient nearest-centroid model. That investigation is now intentionally **paused rather than continued as the next research train**. The failure remains useful historical evidence and should not be silently converted into a successful result or retroactively tuned.
-
-## Completed experiment: S5E1 Persistent Relational Concept Memory
-
-### Question
-
-Can a model maintain persistent identities for concepts while their meaning is represented by a changing relational neighborhood?
+Can the small structural selector generalize to change structures that were not represented by its training families?
 
 ### Implementation
 
-The experiment used 24 persistent concept states, 8 generic relation states, 16-dimensional embeddings, a shared neural interaction function, and symbolic relational observations. No target embeddings or coordinates were supplied. The model learned relation scores for persistent concept pairs and produced neighborhood signatures.
+`memory_network/generalization_delta.py` reused the existing lossless representations and nearest-centroid selector. Training used the original `random`, `clustered`, and `similar` families with seed `1001`, state size 1024, seven change counts (1, 4, 16, 64, 256, 512, 1024), and 100 cases per cell: **2100 training cases**.
 
-The experiment was intentionally designed as a precursor to explicit spatial geometry rather than a geometry experiment itself.
+The selector was frozen before testing. Test seed was `2003`, with 100 cases per cell. Known controls were `random`, `clustered`, and `similar`. Novel structures were `strided`, `alternating`, `multi_cluster`, `edge_biased`, and `clustered_similar`.
 
-### Actual result
+Adaptive decisions were made before candidate encoded sizes were inspected. The oracle was evaluated independently afterward. Exact reconstruction remained mandatory.
 
-The supplied run showed identity persistence at effectively numerical precision, with mean cosine similarity of approximately 1.0 and minimum approximately 0.99999988. Relation retrieval accuracy was approximately 97.9167%, and neighborhood signatures had nonzero mean norm, indicating contextual structure around persistent identities.
+### Actual user result
 
-These results support the basic architectural premise that persistent concept representations can coexist with relational context. However, an important implementation limitation was identified during closeout: the current evaluation path did **not actually apply relational updates to the persistent concept states**. Therefore the experiment does not establish the stronger claim that a concept's persistent representation dynamically changes in response to new relational observations. It demonstrates the substrate for persistent identity plus relational context, not the full dynamic-memory mechanism.
+The user ran the experiment locally and supplied the complete output.
 
-Repository artifact: `memory_network/relational_concept_experiment.py`.
+Known controls: **2100 cases**, **83.0952%** oracle-choice match, **1.0112543** mean ratio, **1.7571 bytes** mean regret, **38 bytes** maximum regret.
 
-## Closeout conclusion
+Novel structures: **3500 cases**, **82.1143%** oracle-choice match, **1.0558700** mean ratio, **40.1143 bytes** mean regret, **821 bytes** maximum regret.
 
-The experiments are now considered sufficient to justify moving from isolated mechanism tests toward a first complete trainable system.
+Overall: **5600 cases**, **82.4821%** oracle-choice match, **1.0391391** mean ratio, **25.7304 bytes** mean regret, **821 bytes** maximum regret, and **4619 zero-regret cases**. Adaptive output was better than absolute in **3789** cases, equal in **1799**, and worse in only **12**. Mean absolute size was **1448.3382 bytes**; mean adaptive size was **1072.6602 bytes**.
 
-The conclusion is not that the individual experiments proved a complete theory of neural representation. Rather, multiple experiments have pointed toward the same architectural question: instead of continuing to optimize isolated selectors or memory components, build a small real system that combines persistent entities, local representations, relational interaction, changing context, and learning, then observe what behavior emerges.
+### Per-pattern result
 
-The user's stated goal is straightforward: **build the system and see whether the idea actually works.** It does not need to compete with a large language model. The first meaningful success would be a behavior that emerges naturally from the architecture rather than being explicitly hard-coded.
+`random`: 99.5714% match, 0.0057-byte mean regret.
 
-## Next experiment / active direction
+`clustered`: 88.5714% match, 0.6486-byte mean regret.
 
-The next experiment is the first integrated model.
+`similar`: 61.1429% match, 4.6171-byte mean regret.
 
-The system should begin small and be designed so that every component can be inspected. The initial architecture should include persistent concept/entity states, a shared relational interaction mechanism, a mechanism for incorporating observations over time, and a learning objective that requires the system to preserve identity while using relational context.
+`strided`: 95.1429% match, 0.27-byte mean regret.
 
-The first version should avoid explicit coordinates. Geometry should remain an emergent question. If the relational system demonstrates useful structure, later experiments can test whether that structure can be compressed or organized into a low-dimensional spatial representation, followed by three-dimensional and potentially four-dimensional-with-time variants.
+`alternating`: 99.5714% match, 0.0043-byte mean regret.
 
-A useful conceptual progression is:
+`multi_cluster`: 87.2857% match, 2.7671-byte mean regret.
 
-`persistent concepts → relational neighborhoods → changing relationships → integrated learned system → emergent geometry`
+`edge_biased`: 100% match, 0-byte mean regret.
 
-The first integrated model should be deliberately small enough to understand, train, and inspect locally. The existing vision-model work is also relevant as evidence that the project can already construct a learned perception component; future architecture work can therefore consider perception as an input subsystem rather than treating it as an unsolved prerequisite.
+`clustered_similar`: **28.5714% match**, **197.53-byte mean regret**, **821-byte maximum regret**.
 
-## Important interpretation boundary
+### Main observation
 
-Do not claim that this architecture reproduces how human brains work. The motivating intuition is that humans often experience abstract ideas spatially or relationally, but the experiments test an engineering hypothesis, not a neuroscience claim.
+The selector generalizes substantially to genuinely unseen structures. Its novel-pattern match rate remains close to the known-pattern control, and several unseen geometries are handled extremely well. This is evidence against simple memorization of the original pattern labels.
 
-Do not give the model coordinates and then interpret successful coordinate prediction as discovered geometry. If geometry is tested later, the representation must arise from relational constraints or learned structure rather than being supplied as the target.
+The dominant failure is the composed `clustered_similar` structure. The worst cases occur at 512 changed values, where the selector chooses `absolute` while the oracle chooses `ranges`, causing regrets up to 821 bytes.
 
-## Workflow note
+The current evidence therefore supports a narrower claim: cheap structural statistics contain transferable information for choosing among lossless delta representations. It does **not** establish universal generalization.
 
-The prior `clustered_similar` selector investigation remains paused. The active research thread is the integrated relational model described above. Future handoffs should preserve this distinction so the project does not accidentally resume the older selector-debugging train.
+### Interpretation boundary
+
+Do not retroactively tune the selector based on this result. The failure is part of the evidence.
+
+The current leading hypothesis is that the selector handles individual structural dimensions well but does not reliably model interactions between them when familiar properties are combined in a new way. This is a hypothesis, not yet an established cause.
+
+## Important implementation lessons
+
+Keep exact reconstruction checks intact. Keep adaptive decisions separate from oracle measurements. Review the actual repository version before making implementation claims. Preserve the distinction between observed results and interpretation.
+
+The `clustered_similar` failure should be investigated rather than patched immediately.
+
+## Current unresolved question / next decision
+
+Before changing the selector, determine **why `clustered_similar` fails**.
+
+The next experiment should distinguish two competing explanations:
+
+**Missing information:** the six current structural features do not contain enough information to distinguish the relevant representation interaction.
+
+**Insufficient model:** the features contain the needed information, but a nearest-centroid classifier cannot represent the interaction between them.
+
+The first step in the next conversation should be to inspect the failed cases and compare the feature-space geometry of `clustered`, `similar`, and `clustered_similar`. Then propose exactly one experiment that cleanly separates those explanations.
 
 ## Repository artifacts
 
-`memory_network/generalization_delta.py` — OOD structural delta selection experiment.
+The OOD experiment code is `memory_network/generalization_delta.py`.
 
-`memory_network/generalization_delta_result_2026-08-28.json` — actual summarized OOD result.
+The actual summarized result is recorded in `memory_network/generalization_delta_result_2026-08-28.json`.
 
-`memory_network/EXPERIMENT_CLOSEOUT_2026-08-28.md` — formal OOD experiment closeout.
+The formal experiment closeout is `memory_network/EXPERIMENT_CLOSEOUT_2026-08-28.md`.
 
-`memory_network/relational_concept_experiment.py` — S5E1 persistent relational concept memory experiment.
-
-`PROJECT_WORKFLOW.md` — canonical experiment workflow.
+The canonical workflow is `PROJECT_WORKFLOW.md`.
