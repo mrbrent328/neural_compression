@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "Neural Compression"
+message: "If you use this research, please cite this project and the specific release or commit you used when practical."
+type: software
+authors:
+  - family-names: "Malone"
+    given-names: "Brent"
+repository-code: "https://github.com/mrbrent328/neural_compression"
+version: "0.1.0-research"
+date-released: "2026-10-04"
+keywords:
+  - neural compression
+  - neural networks
+  - latent representations
+  - low-rank representations
+  - relational memory
+  - machine learning
