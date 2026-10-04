@@ -88,6 +88,12 @@ The next major experiment proposed by the current audit is a matched comparison 
 
 The comparison should match data, tokenizer, optimization budget, seeds, and compute accounting as closely as practical, and measure validation loss/perplexity, throughput, active state bytes, checkpoint bytes, constructor amortization, memory, and behavioral performance.
 
+## License
+
+This repository is released under the Apache License 2.0. See LICENSE for the full terms.
+
+The project attribution in NOTICE and CITATION.cff is intended to make the research provenance easy to preserve and reference.
+
 ## Attribution
 
 This project was developed by Brent Malone (GitHub: @mrbrent328) with substantial AI-assisted research, analysis, coding, and documentation.
