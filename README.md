@@ -1,16 +1,16 @@
-# Neural Compression
+# Persistent Structure
 
-Neural Compression is an experimental research project investigating how much of the information required for neural behavior can be represented by a smaller, reusable structure rather than by storing every parameter directly.
+**Persistent Structure** is an experimental research project investigating how much of the information required to explain or reconstruct observations can be represented by a smaller, reusable structure rather than by storing every parameter or observation directly.
 
 The project began as an exploration of neural-weight compression. Over time, the research shifted toward a broader question:
 
-> Where does the information required for neural behavior actually live, and how small can the variable representation become if shared machinery captures reusable structure?
+> What is the smallest persistent relational structure capable of explaining multiple observations of the same underlying system?
 
 The current research direction is especially interested in tiny per-structure latent representations, shared constructors, low-rank generated structure, and persistent relational information.
 
 ## What this repository is
 
-This is a research archive and experimental codebase, not a finished neural-network architecture or a claim of a solved compression problem.
+This is a research archive and experimental codebase, not a finished architecture or a claim of a solved compression problem.
 
 The repository preserves experiments, controls, negative results, research notes, prototypes, and the reasoning that led from one experiment to the next. Some experiments are exploratory or incomplete. That is intentional: the history is part of the research record.
 
@@ -42,7 +42,7 @@ The project developed through several stages:
 
 neural weight compression -> behavioral/activation-aware compression -> tiny latent representations -> shared constructors -> relational representations -> persistent relational structure -> latent/shared-constructor language models.
 
-The research archive documents this progression rather than presenting the final hypothesis as if it appeared fully formed.
+The original repository name, neural_compression, is retained as historical provenance. The research title is now **Persistent Structure**.
 
 See ORIGIN.md for the project's conceptual lineage.
 
