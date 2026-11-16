@@ -1,0 +1,1 @@
+status,run,mode,heads,rank,latent_dim,constructor_hidden,fourier_bands,seed,total_params,attention_params,mlp_params,constructor_params,latent_params,checkpoint_bytes,best_val_loss,best_step,final_val_loss,final_train_loss,final_perplexity,tokens_per_second,peak_device_memory_bytes,sample
