@@ -142,13 +142,14 @@ class FastLatentMLP(nn.Module):
         """Get or generate factors for a specific layer."""
         layer = layer_idx % self.config.n_layers
 
-        if layer not எ                     # Pre-compute coordinates once for this layer and sequence length
-        coords = self._get_coords(layer, x.shape[1]
+        if layer not in self.factor_cache:  # Pre-compute coordinates once for this layer and sequence length
+            latent = self.layer_latents[layer]
+            coords = self._get_coords(layer, x.shape[1])
 
-        l_factors = self.constructor.forward(latent, matrix_type=2, coords=coords)
-        r_factors = self.constructor.forward(latent, matrix_type=1, coords=coords)
+            l_factors = self.constructor.forward(latent, matrix_type=2, coords=coords)
+            r_factors = self.constructor.forward(latent, matrix_type=1, coords=coords)
 
-        self.factor_cache[layer] = (l_factors, r_factors)
+            self.factor_cache[layer] = (l_factors, r_factors)
 
         return self.factor_cache[layer]
 
