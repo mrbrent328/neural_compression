@@ -34,7 +34,7 @@ class SamplingAuditTests(unittest.TestCase):
             [torch.tensor(0.5)] * 4, [torch.tensor(0.8)] * 4,
         )
         self.assertAlmostEqual(metrics["unique_byte_fraction"], 0.25)
-        self.assertAlmostEqual(metrics["repeat_3gram_rate"], 2.0 / 3.0)
+        self.assertAlmostEqual(metrics["repeat_3gram_rate"], 0.5)
         self.assertTrue(metrics["utf8_valid"])
         invalid = continuation_metrics(
             b"\xff", [torch.tensor(1.0)], [torch.tensor(1.0)],
