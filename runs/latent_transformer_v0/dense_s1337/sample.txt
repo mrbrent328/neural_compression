@@ -1,0 +1,1 @@
+The component is and the HL7 OID registry SHALL be used. A value set may or need not be present irrespective of other fields. Note that if a code is provided, the m
