@@ -124,10 +124,12 @@ def split_data(data: Tensor, fraction: float = 0.9) -> Tuple[Tensor, Tensor]:
     return data[:cut], data[cut:]
 
 
-def sample_batch(data: Tensor, batch_size: int, context: int, device: torch.device) -> Tuple[Tensor, Tensor]:
+def sample_batch(data: Tensor, batch_size: int, context: int, device: torch.device,
+                 generator: Optional[torch.Generator] = None) -> Tuple[Tensor, Tensor]:
     if data.numel() <= context + 1:
         raise ValueError(f"split has {data.numel()} bytes but context={context}")
-    starts = torch.randint(0, data.numel() - context - 1, (batch_size,))
+    starts = torch.randint(0, data.numel() - context - 1, (batch_size,),
+                           generator=generator)
     x = torch.stack([data[i:i + context] for i in starts.tolist()])
     y = torch.stack([data[i + 1:i + context + 1] for i in starts.tolist()])
     return x.to(device, non_blocking=True), y.to(device, non_blocking=True)
@@ -445,11 +447,12 @@ def lr_at(step: int, total: int, warmup: int, peak: float) -> float:
 
 @torch.no_grad()
 def evaluate(model: TinyLM, data: Tensor, batch_size: int, context: int,
-             batches: int, device: torch.device) -> float:
+             batches: int, device: torch.device,
+             generator: Optional[torch.Generator] = None) -> float:
     model.eval()
     losses = []
     for _ in range(batches):
-        x, y = sample_batch(data, batch_size, context, device)
+        x, y = sample_batch(data, batch_size, context, device, generator)
         _, loss = model(x, y)
         losses.append(float(loss))
     model.train()
@@ -472,6 +475,10 @@ def train(a: argparse.Namespace) -> None:
     torch.manual_seed(a.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(a.seed)
+
+    # Separate seeded CPU RNG streams isolate data sampling from model initialization.
+    train_generator = torch.Generator(device="cpu").manual_seed(a.seed + 1)
+    eval_generator = torch.Generator(device="cpu").manual_seed(a.seed + 2)
 
     device = choose_device(a.device)
     dtype = dtype_from_name(a.dtype)
@@ -536,7 +543,8 @@ def train(a: argparse.Namespace) -> None:
         optimizer.zero_grad(set_to_none=True)
         total_loss = 0.0
         for _ in range(a.grad_accum):
-            x, y = sample_batch(train_data, a.batch_size, cfg.context, device)
+            x, y = sample_batch(train_data, a.batch_size, cfg.context, device,
+                                train_generator)
             _, loss = model(x, y)
             (loss / a.grad_accum).backward()
             total_loss += float(loss.detach())
@@ -557,7 +565,7 @@ def train(a: argparse.Namespace) -> None:
 
         if one_based == 1 or one_based % a.eval_every == 0 or one_based == a.steps:
             val_loss = evaluate(model, val_data, a.batch_size, cfg.context,
-                                a.eval_batches, device)
+                                a.eval_batches, device, eval_generator)
             elapsed = time.perf_counter() - start
             row = {
                 "step": one_based,

@@ -1,0 +1,1 @@
+The = @"LOC.1", Type = @"SubComponent", Position = @"LOC.1.1", Name = @"Second Coding System", Length = 0, Usage = @"O", Rpt = @"1", DataType = @"ST", DataTypeName 

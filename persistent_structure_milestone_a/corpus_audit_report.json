@@ -1,0 +1,648 @@
+{
+  "audit": "persistent_structure_corpus_metadata_audit_v1",
+  "generated_at_utc": "2026-11-17T21:23:47.243306+00:00",
+  "dataset": "PleIAs/common_corpus",
+  "split": "train",
+  "requested_revision": "main",
+  "sampling": {
+    "method": "streaming_bounded_shuffle",
+    "max_records": 1000,
+    "shuffle_buffer": 5000,
+    "seed": 1337
+  },
+  "summary": {
+    "records_inspected": 1000,
+    "first_record_fields": [
+      "collection",
+      "creator",
+      "curator",
+      "date",
+      "identifier",
+      "language",
+      "language_type",
+      "license",
+      "open_type",
+      "text",
+      "title",
+      "token_count",
+      "word_count"
+    ],
+    "field_presence_counts": {
+      "collection": 1000,
+      "creator": 1000,
+      "curator": 1000,
+      "date": 1000,
+      "identifier": 1000,
+      "language": 1000,
+      "language_type": 1000,
+      "license": 1000,
+      "open_type": 1000,
+      "text": 1000,
+      "title": 1000,
+      "token_count": 1000,
+      "word_count": 1000
+    },
+    "license_values": [
+      {
+        "value": "Public Domain",
+        "count": 310,
+        "example_metadata": {
+          "identifier": "1257291_1",
+          "collection": "Caselaw Access Project",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "MIT",
+        "count": 167,
+        "example_metadata": {
+          "identifier": "https://github.com/RobertoMalatesta/uvCharts/blob/master/Gruntfile.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "CC-By-SA",
+        "count": 155,
+        "example_metadata": {
+          "identifier": "https://lld.wikipedia.org/wiki/Wootton%20%28Northamptonshire%29",
+          "collection": "Wikipedia",
+          "open_type": "Open Web"
+        }
+      },
+      {
+        "value": "CC0",
+        "count": 113,
+        "example_metadata": {
+          "identifier": "20151221-1500-COMMITTEE-LIBE_sk_159",
+          "collection": "VoxPopuli",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "Apache-2.0",
+        "count": 80,
+        "example_metadata": {
+          "identifier": "https://github.com/mindspore-ai/models/blob/master/official/cv/inceptionv4/modelarts/train_start.py",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "CC-By",
+        "count": 55,
+        "example_metadata": {
+          "identifier": "2013/32013D0488/32013D0488_LV.txt_1",
+          "collection": "Eurlex",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "Various open data",
+        "count": 29,
+        "example_metadata": {
+          "identifier": "52781924e3d507b260fe13283ab79a45",
+          "collection": "French Open Data",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "BSD-3-Clause",
+        "count": 21,
+        "example_metadata": {
+          "identifier": "https://github.com/kami-lang/madex-r8/blob/master/src/test/java/com/android/tools/r8/ir/desugar/backports/IntegerMethods.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Open Parliament Licence v3.0",
+        "count": 12,
+        "example_metadata": {
+          "identifier": "uk.org.publicwhip/lords/2015-06-04b.513.8",
+          "collection": "UK Hansard – House of Lords",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "Various open science",
+        "count": 10,
+        "example_metadata": {
+          "identifier": "https://openalex.org/W3197159907_8",
+          "collection": "Spanish-Science-Pile",
+          "open_type": "Open Science"
+        }
+      },
+      {
+        "value": "BSD-2-Clause",
+        "count": 6,
+        "example_metadata": {
+          "identifier": "https://github.com/universalcore/unicore-cms/blob/master/cms/tests/test_comments.py",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "CC0-1.0",
+        "count": 3,
+        "example_metadata": {
+          "identifier": "https://github.com/hutxs/iconfig-antd/blob/master/server/routes/routers.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Licence ouverte",
+        "count": 3,
+        "example_metadata": {
+          "identifier": "JURITEXT000007026505",
+          "collection": "French Open Data",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "RSA-MD",
+        "count": 3,
+        "example_metadata": {
+          "identifier": "https://github.com/Athar210/Virtual-Lolly/blob/master/src/images/melted-lolly.tsx",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Unlicense",
+        "count": 2,
+        "example_metadata": {
+          "identifier": "https://github.com/page-tek/kicad-libraries/blob/master/modules/Page-tek-SMDpassive.pretty/INDC286X203X203L51N-CC1008.kicad_mod",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Unlicense, MIT",
+        "count": 2,
+        "example_metadata": {
+          "identifier": "https://github.com/hugw/expressio/blob/master/src/core.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "0BSD",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/asleepysamurai/trashpanda/blob/master/src/router.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "<BLANK>",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/phetsims/rosetta/blob/master/scripts/js/remove-translations-without-english-key.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "ADSL",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/alecslaney/sql-challenge/blob/master/EmployeeSQL/tables.sql",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Apache-2.0, BSD-3-Clause, MIT",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/dhbfischer/celix/blob/master/bundles/remote_services/remote_service_admin_shm/private/include/remote_service_admin_shm_impl.h",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Apache-2.0, LicenseRef-scancode-unknown-license-reference",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/LoseYourself/big-data-plugin-8.0/blob/master/kettle-plugins/common/namedClusterBridge/src/main/java/org/pentaho/big/data/plugins/common/ui/named/cluster/bridge/NamedClusterBridgeImpl.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Artistic-1.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/graphviz-perl/GraphViz2-DBI/blob/master/scripts/sqlite.foreign.keys.pl",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "BSD-2-Clause, BSD-3-Clause",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/gift-surg/GiftCloudServerBuilder/blob/master/plugin-resources/webapp/xnat/java/org/nrg/xnat/turbine/modules/actions/ConfirmRegister.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "BSD-2-Clause, BSD-3-Clause, LicenseRef-scancode-unknown-license-reference",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/codeprimate/arid/blob/master/bin/kill_ruby",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "BSD-2-Clause-Views",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/nielsreijers/capevm/blob/master/src/lib/bm_fft16_base/c/common/bm_fft16_base_init.c",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "CC-BY-3.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/eldams/mXS/blob/master/bin/learnSciKit.py",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "CC-BY-4.0, Apache-2.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/ontop/ontop/blob/master/core/model/src/main/java/it/unibz/inf/ontop/model/term/functionsymbol/impl/RDFTermFunctionSymbolImpl.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "CC-BY-4.0, MIT",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/phetsims/sherpa/blob/master/js/fontawesome-5/cloneSolidShape.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "DOC",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/aimeedonahue/instant-sms-ussd/blob/master/isms-v1/src/com/m039/mqst/activities/EditActivity.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "ECL-2.0, Apache-2.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/GeniusesGroup/organization/blob/master/protocol/group-role.go",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "ECL-2.0, Apache-2.0, MIT-0, MIT",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/lifthrasiir/rust/blob/master/src/ci/docker/scripts/make3.sh",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "GPL-1.0-or-later, Apache-2.0, MIT, CPL-1.0, NPL-1.1, BSD-3-Clause, MPL-1.1",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/pietrobraione/sushi-experiments-closure72/blob/master/javadoc/com/google/javascript/jscomp/CodingConvention.html",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "LicenseRef-scancode-generic-cla, MIT",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/hattan/rover/blob/master/.env",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "LicenseRef-scancode-proprietary-license, MIT",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/justinludwig/jpgpj/blob/master/src/test/groovy/org/c02e/jpgpj/SubkeySpec.groovy",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "LicenseRef-scancode-unknown-license-reference, Apache-2.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/tybeewx/ebiten/blob/master/audio/contextimpl_monogame.go",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Linux-syscall-note, GPL-2.0-only, GPL-1.0-or-later, LicenseRef-scancode-free-unknown, Apache-2.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/OLIMEX/DIY-LAPTOP/blob/master/SOFTWARE/A64-TERES/linux-a64/drivers/gator/mali/mali_kbase_gator_api.h",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "MIT, BSD-3-Clause",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/jamieowen/threeflow.js/blob/master/sunflow/sponge.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "MIT, CC-BY-4.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/lar-rs/osloader/blob/master/src/cmd/setup.rs",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "MIT, LGPL-2.0-or-later, LicenseRef-scancode-generic-exception, LicenseRef-scancode-warranty-disclaimer, GPL-1.0-or-later, LicenseRef-scancode-other-copyleft, GPL-2.0-only, GPL-2.0-or-later, LicenseRef-scancode-proprietary-license",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/acerus/WordPressify/blob/master/www/wp-content/plugins/the-events-calendar/src/Tribe/Aggregator.php",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "MIT-0, MIT",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/andris9/mailuploader/blob/master/mailuploader.js",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "MS-PL",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/EWSoftware/PDI/blob/master/Source/EWSPDIData/PDIProperties/ClassificationProperty.cs",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Open Government Licence",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "ukleg/1987/ukpga-1987-31-historical-2017-01-31.htm#chunk1",
+          "collection": "ukleg",
+          "open_type": "Open Government"
+        }
+      },
+      {
+        "value": "PSF-2.0",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/ianloic/unladen-swallow/blob/master/Util/llvm/tools/clang/lib/Driver/Tools.cpp",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "WTFPL",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/deenu713/eide/blob/master/external/dx/src/main/java/____/com/android/dx/dex/file/AnnotationItem.java",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      },
+      {
+        "value": "Zlib, BSD-3-Clause",
+        "count": 1,
+        "example_metadata": {
+          "identifier": "https://github.com/blitzimagine/BlitzSharp3D/blob/master/BlitzSharp3D/mono/bank.cpp",
+          "collection": "Github Open Source",
+          "open_type": "Open Source"
+        }
+      }
+    ],
+    "open_type_values": {
+      "Open Culture": 159,
+      "Open Government": 297,
+      "Open Science": 35,
+      "Open Source": 312,
+      "Open Web": 162,
+      "Semantic data": 35
+    },
+    "collection_values": {
+      "Anno": 3,
+      "BNL Newspapers (1841-1879)": 2,
+      "Caselaw Access Project": 13,
+      "Chinese-Court-Decisions": 93,
+      "Court Listener": 15,
+      "Creative Commons Common Crawl (CCC)": 9,
+      "Câmara dos Deputados – Discursos": 4,
+      "Deutsches Zeitungsportal": 13,
+      "English-PD": 21,
+      "Eurlex": 9,
+      "Europeana": 1,
+      "Eurovoc": 4,
+      "French Open Data": 23,
+      "French-PD-Books": 3,
+      "French-PD-Newspapers": 11,
+      "French-PD-diverse": 8,
+      "French-Science-Pile": 5,
+      "GATT_library": 2,
+      "German-PD": 7,
+      "German-PD-Newspapers": 3,
+      "Github Open Source": 312,
+      "Italian-PD": 4,
+      "Japanese-PD": 2,
+      "Latin-PD": 8,
+      "LibriLight": 8,
+      "LoC-PD-Books": 1,
+      "Marianne-Europe": 1,
+      "NewZealand-PD-Newspapers": 3,
+      "One Million Posts": 2,
+      "Open Korean Historical Corpus - Diaries of the Royal Secretariat (Seungjeongwon ilgi)": 2,
+      "Open Korean Historical Corpus - Naver News Library": 3,
+      "Open Korean Historical Corpus - Veritable Records of the Joseon Dynasty": 1,
+      "Open Legal Data": 1,
+      "OpenAlex": 25,
+      "Polish-PD": 2,
+      "Pralekha": 4,
+      "SBB Fulltexts": 4,
+      "SEC": 2,
+      "Spanish-PD-Newspapers": 3,
+      "Spanish-Science-Pile": 5,
+      "StackExchange": 42,
+      "Superior Tribunal de Justiça": 4,
+      "UK Hansard – House of Commons": 6,
+      "UK Hansard – House of Lords": 2,
+      "UK Hansard – Northern Ireland Assembly": 1,
+      "UK Hansard – Scottish Parliament": 1,
+      "UK Hansard – Written Answers": 2,
+      "UN-Digital-Library": 1,
+      "US-PD-Books": 6,
+      "US-PD-Newspapers": 31,
+      "USPTO": 47,
+      "VoxPopuli": 52,
+      "WTO": 1,
+      "Wiki Discussions": 12,
+      "Wikidata": 35,
+      "Wikipedia": 96,
+      "Youtube-Commons": 1,
+      "dotgov": 4,
+      "enevaeldens_nyheder": 9,
+      "govinfo": 2,
+      "reg_docs": 2,
+      "ukleg": 1
+    },
+    "language_values": {
+      "Arabic": 3,
+      "AsciiDoc": 1,
+      "Basque": 2,
+      "Bosnian": 1,
+      "Bulgarian": 5,
+      "C": 14,
+      "C#": 24,
+      "C++": 17,
+      "CMake": 2,
+      "Cebuano": 11,
+      "Chinese": 94,
+      "ColdFusion": 1,
+      "Common Lisp": 1,
+      "Croatian": 2,
+      "Czech": 3,
+      "Danish": 14,
+      "Dutch": 3,
+      "Egyptian Arabic": 4,
+      "English": 257,
+      "Erlang": 1,
+      "Esperanto": 1,
+      "Estonian": 8,
+      "Finnish": 1,
+      "French": 48,
+      "Friulian": 1,
+      "GAS": 1,
+      "GLSL": 2,
+      "Georgian": 1,
+      "German": 59,
+      "Go": 8,
+      "Go Module": 1,
+      "Greek": 1,
+      "Groovy": 2,
+      "Haitian Creole": 1,
+      "Hanmun": 3,
+      "Hausa": 1,
+      "Hebrew": 2,
+      "Hindi": 1,
+      "Hungarian": 2,
+      "Ignore List": 2,
+      "Indonesian": 4,
+      "Italian": 8,
+      "Japanese": 5,
+      "Java": 53,
+      "JavaScript": 39,
+      "Kazakh": 2,
+      "KiCad Layout": 1,
+      "Korean": 1,
+      "Kotlin": 4,
+      "Ladin": 1,
+      "Latin": 9,
+      "Latvian": 3,
+      "Limburgish": 1,
+      "Lithuanian": 2,
+      "Lua": 3,
+      "MATLAB": 2,
+      "Makefile": 1,
+      "Malay": 1,
+      "Maltese": 1,
+      "Marathi": 2,
+      "Min Nan Chinese": 1,
+      "Modern Korean": 3,
+      "Multilingual": 35,
+      "Norwegian": 2,
+      "Norwegian Nynorsk": 1,
+      "Objective-C": 4,
+      "Objective-C++": 1,
+      "PHP": 23,
+      "Perl": 3,
+      "Persian": 1,
+      "Polish": 11,
+      "Portuguese": 13,
+      "Portugueuse": 1,
+      "PureScript": 2,
+      "Python": 26,
+      "R": 1,
+      "Romanian": 3,
+      "Ruby": 6,
+      "Russian": 6,
+      "Rust": 3,
+      "SCSS": 6,
+      "SQL": 1,
+      "Sardinian": 1,
+      "Sass": 1,
+      "Scala": 4,
+      "Scots": 1,
+      "Shan": 1,
+      "Shell": 9,
+      "Simple English": 1,
+      "Slovak": 7,
+      "Slovenian": 5,
+      "Solidity": 2,
+      "South Azerbaijani": 2,
+      "Spanish": 12,
+      "Swedish": 3,
+      "Swift": 2,
+      "TSX": 3,
+      "Telugu": 1,
+      "Twig": 1,
+      "TypeScript": 29,
+      "Ukrainian": 2,
+      "Unity3D Asset": 1,
+      "Unknown": 1,
+      "Urdu": 1,
+      "Venetian": 1,
+      "Vietnamese": 1,
+      "Vue": 4,
+      "Waray": 2
+    },
+    "missing_or_blank_counts": {
+      "creator": 60,
+      "date": 238,
+      "license": 1,
+      "title": 121
+    },
+    "limitations": [
+      "This is a bounded sample, not an exhaustive inventory of dataset metadata.",
+      "A license string is reported verbatim after trimming surrounding whitespace; no license equivalence is inferred.",
+      "No record is approved for ingestion by this audit.",
+      "No document text is included in the report."
+    ]
+  },
+  "decision": "INSPECTION_ONLY_NO_LICENSES_APPROVED"
+}
