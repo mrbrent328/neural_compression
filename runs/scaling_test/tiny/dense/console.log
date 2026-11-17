@@ -1,0 +1,23 @@
+========================================================================================
+LATENT TRANSFORMER v0
+========================================================================================
+mode:          dense
+device/dtype:  cpu / torch.float32
+corpus bytes:  600,361 (train 540,324, val 60,037)
+parameters:    590,464
+state bytes:   2,361,856 (2.25 MiB)
+breakdown:     {'total': 590464, 'constructor': 0, 'latents': 0, 'mlp': 393216, 'attention': 131072, 'other': 66176}
+run dir:       runs/scaling_test/tiny/dense/tiny_dense
+step      1/20 | train 5.6107 | lr 3e-06 | 9,134 tok/s
+  EVAL val 5.6032 | ppl 271.28 | overall 2,219 tok/s
+step     20/20 | train 5.2798 | lr 6e-05 | 16,693 tok/s
+  EVAL val 5.2344 | ppl 187.62 | overall 13,547 tok/s
+
+========================================================================================
+DONE
+========================================================================================
+checkpoint: runs/scaling_test/tiny/dense/tiny_dense/model.pt (2.26 MiB)
+report:     runs/scaling_test/tiny/dense/tiny_dense/report.json
+
+SAMPLE:
+The                                                                                rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr

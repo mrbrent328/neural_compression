@@ -1,0 +1,9 @@
+nohup: ignoring input
+Corpus: /tmp/corpus_full.txt (600,361 bytes)
+Scales: ['tiny', 'small', 'medium']
+Modes:  ['dense', 'lowrank', 'latent']
+Output: runs/scaling_comparison
+
+
+=== Scale: tiny (L=2, D=128, d_ff=512) ===
+  [run] tiny/dense — 3000 steps …

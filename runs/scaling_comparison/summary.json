@@ -1,0 +1,911 @@
+[
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 2,
+      "d_model": 128,
+      "n_heads": 4,
+      "d_ff": 512,
+      "dropout": 0.0,
+      "mode": "dense",
+      "rank": 32,
+      "latent_dim": 8,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "dense",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 590464,
+      "constructor": 0,
+      "latents": 0,
+      "mlp": 393216,
+      "attention": 131072,
+      "other": 66176
+    },
+    "state_dict_bytes_before_save": 2361856,
+    "checkpoint_file_bytes": 2369154,
+    "optimizer_parameter_elements": 590464,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.610711574554443,
+        "val_loss": 5.603155493736267,
+        "perplexity": 271.2810840150406,
+        "elapsed_seconds": 1.5065758019918576,
+        "tokens_per_second_overall": 2718.748034174345,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 3.099388360977173,
+        "val_loss": 3.0919568061828615,
+        "perplexity": 22.020124961395545,
+        "elapsed_seconds": 19.062922256998718,
+        "tokens_per_second_overall": 21486.737158025204,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.541806221008301,
+        "val_loss": 2.5642908573150636,
+        "perplexity": 12.991442316023159,
+        "elapsed_seconds": 36.244606413994916,
+        "tokens_per_second_overall": 22601.983606688776,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.479915142059326,
+        "val_loss": 2.4857339382171633,
+        "perplexity": 12.009931568719463,
+        "elapsed_seconds": 54.34628065896686,
+        "tokens_per_second_overall": 22610.56295114198,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.4501068592071533,
+        "val_loss": 2.4516879677772523,
+        "perplexity": 11.607923993332642,
+        "elapsed_seconds": 72.2160991129931,
+        "tokens_per_second_overall": 22687.46193887423,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.5060160160064697,
+        "val_loss": 2.44247419834137,
+        "perplexity": 11.501462467163767,
+        "elapsed_seconds": 90.70104640396312,
+        "tokens_per_second_overall": 22579.67334664084,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The the the the the the the the the the the the the the the the the the t the the the the t the the the the the the the the the the the the the the the the the the ",
+    "scale_name": "tiny",
+    "run_elapsed_seconds": 96.30748128890991,
+    "status": "OK",
+    "best_val_loss": 2.44247419834137
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 2,
+      "d_model": 128,
+      "n_heads": 4,
+      "d_ff": 512,
+      "dropout": 0.0,
+      "mode": "lowrank",
+      "rank": 32,
+      "latent_dim": 8,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "lowrank",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 320128,
+      "constructor": 0,
+      "latents": 0,
+      "mlp": 122880,
+      "attention": 131072,
+      "other": 66176
+    },
+    "state_dict_bytes_before_save": 1280512,
+    "checkpoint_file_bytes": 1289124,
+    "optimizer_parameter_elements": 320128,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.534328937530518,
+        "val_loss": 5.520877623558045,
+        "perplexity": 249.85421894471247,
+        "elapsed_seconds": 1.5281291349674575,
+        "tokens_per_second_overall": 2680.4017450313368,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 3.2728426456451416,
+        "val_loss": 3.2887580513954164,
+        "perplexity": 26.809546891974744,
+        "elapsed_seconds": 18.786482355964836,
+        "tokens_per_second_overall": 21802.910850415232,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 3.154456853866577,
+        "val_loss": 3.032357323169708,
+        "perplexity": 20.746080207511895,
+        "elapsed_seconds": 35.679124359972775,
+        "tokens_per_second_overall": 22960.204733024035,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.8904426097869873,
+        "val_loss": 2.938820457458496,
+        "perplexity": 18.893547420652233,
+        "elapsed_seconds": 52.127306389971636,
+        "tokens_per_second_overall": 23573.057675514174,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.8175835609436035,
+        "val_loss": 2.815214145183563,
+        "perplexity": 16.696750926309527,
+        "elapsed_seconds": 68.8646728870226,
+        "tokens_per_second_overall": 23791.58908788998,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.8907105922698975,
+        "val_loss": 2.806944561004639,
+        "perplexity": 16.55924508071476,
+        "elapsed_seconds": 86.41156998701626,
+        "tokens_per_second_overall": 23700.529921024714,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The on on te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te t",
+    "scale_name": "tiny",
+    "run_elapsed_seconds": 91.93878817558289,
+    "status": "OK",
+    "best_val_loss": 2.806944561004639
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 2,
+      "d_model": 128,
+      "n_heads": 4,
+      "d_ff": 512,
+      "dropout": 0.0,
+      "mode": "latent",
+      "rank": 32,
+      "latent_dim": 8,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "latent",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 249382,
+      "constructor": 52080,
+      "latents": 54,
+      "mlp": 0,
+      "attention": 131072,
+      "other": 66176
+    },
+    "state_dict_bytes_before_save": 997528,
+    "checkpoint_file_bytes": 1010339,
+    "optimizer_parameter_elements": 249382,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.536750793457031,
+        "val_loss": 5.544856166839599,
+        "perplexity": 255.91776613482781,
+        "elapsed_seconds": 1.666067435988225,
+        "tokens_per_second_overall": 2458.483919392173,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 3.2194550037384033,
+        "val_loss": 3.278262710571289,
+        "perplexity": 26.5296429728485,
+        "elapsed_seconds": 23.320706833037548,
+        "tokens_per_second_overall": 17563.79010861435,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.8266777992248535,
+        "val_loss": 2.8451645016670226,
+        "perplexity": 17.204388586758583,
+        "elapsed_seconds": 44.44523847603705,
+        "tokens_per_second_overall": 18431.670705101,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.666904926300049,
+        "val_loss": 2.628466308116913,
+        "perplexity": 13.852508122520275,
+        "elapsed_seconds": 65.62758706102613,
+        "tokens_per_second_overall": 18723.833299818823,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.5771243572235107,
+        "val_loss": 2.5975141882896424,
+        "perplexity": 13.430311280850265,
+        "elapsed_seconds": 85.82366718101548,
+        "tokens_per_second_overall": 19090.30520152861,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.591054916381836,
+        "val_loss": 2.589070725440979,
+        "perplexity": 13.317390339255144,
+        "elapsed_seconds": 107.31763141899137,
+        "tokens_per_second_overall": 19083.537093771316,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The t te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te te",
+    "scale_name": "tiny",
+    "run_elapsed_seconds": 114.59077858924866,
+    "status": "OK",
+    "best_val_loss": 2.589070725440979
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 4,
+      "d_model": 256,
+      "n_heads": 4,
+      "d_ff": 1024,
+      "dropout": 0.0,
+      "mode": "dense",
+      "rank": 48,
+      "latent_dim": 16,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "dense",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 4327680,
+      "constructor": 0,
+      "latents": 0,
+      "mlp": 3145728,
+      "attention": 1048576,
+      "other": 133376
+    },
+    "state_dict_bytes_before_save": 17310720,
+    "checkpoint_file_bytes": 17322172,
+    "optimizer_parameter_elements": 4327680,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.543181896209717,
+        "val_loss": 5.537394738197326,
+        "perplexity": 254.01536014383092,
+        "elapsed_seconds": 8.389165240980219,
+        "tokens_per_second_overall": 488.24881646048124,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 2.7100658416748047,
+        "val_loss": 2.577646291255951,
+        "perplexity": 13.16611246722072,
+        "elapsed_seconds": 143.58693124097772,
+        "tokens_per_second_overall": 2852.627300130681,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.342132806777954,
+        "val_loss": 2.4010288238525392,
+        "perplexity": 11.03452312333166,
+        "elapsed_seconds": 277.29838992800796,
+        "tokens_per_second_overall": 2954.2183790273007,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.2583365440368652,
+        "val_loss": 2.2291893124580384,
+        "perplexity": 9.292329849087828,
+        "elapsed_seconds": 406.2196324109682,
+        "tokens_per_second_overall": 3024.964580630696,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 1.9796090126037598,
+        "val_loss": 2.0235462546348573,
+        "perplexity": 7.565105210171279,
+        "elapsed_seconds": 555.878592159017,
+        "tokens_per_second_overall": 2947.4061838512253,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 1.917846441268921,
+        "val_loss": 1.8853995978832245,
+        "perplexity": 6.5889868612278075,
+        "elapsed_seconds": 700.3159736689995,
+        "tokens_per_second_overall": 2924.3942406031365,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The an a an the a sthe structure sture stucture secture sentred that structure se surrecture sed an a streconstructions ald a a a s a a a a a a a a s a s an an s at",
+    "scale_name": "small",
+    "run_elapsed_seconds": 708.968724489212,
+    "status": "OK",
+    "best_val_loss": 1.8853995978832245
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 4,
+      "d_model": 256,
+      "n_heads": 4,
+      "d_ff": 1024,
+      "dropout": 0.0,
+      "mode": "lowrank",
+      "rank": 48,
+      "latent_dim": 16,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "lowrank",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 1919232,
+      "constructor": 0,
+      "latents": 0,
+      "mlp": 737280,
+      "attention": 1048576,
+      "other": 133376
+    },
+    "state_dict_bytes_before_save": 7676928,
+    "checkpoint_file_bytes": 7691072,
+    "optimizer_parameter_elements": 1919232,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.598831653594971,
+        "val_loss": 5.584030675888061,
+        "perplexity": 266.1421796349692,
+        "elapsed_seconds": 9.814376373018604,
+        "tokens_per_second_overall": 417.346945370936,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 3.006150960922241,
+        "val_loss": 2.9400636553764343,
+        "perplexity": 18.917050445897004,
+        "elapsed_seconds": 121.7114659419749,
+        "tokens_per_second_overall": 3365.336181188336,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.4814043045043945,
+        "val_loss": 2.521430265903473,
+        "perplexity": 12.446385580021296,
+        "elapsed_seconds": 232.80808350699954,
+        "tokens_per_second_overall": 3518.778161220378,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.4689788818359375,
+        "val_loss": 2.4504297256469725,
+        "perplexity": 11.593327599143922,
+        "elapsed_seconds": 350.09058090701,
+        "tokens_per_second_overall": 3509.948759022426,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.400879383087158,
+        "val_loss": 2.4126294016838075,
+        "perplexity": 11.163275323733714,
+        "elapsed_seconds": 427.3956092710141,
+        "tokens_per_second_overall": 3833.4507057630553,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.3967816829681396,
+        "val_loss": 2.4092225432395935,
+        "perplexity": 11.125308335731368,
+        "elapsed_seconds": 494.539939839975,
+        "tokens_per_second_overall": 4141.222649605812,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The the athe ate anon the the the athe athe athe athe athe athe athe athe at athe athe athe at athe at athe athe athe athe athe athe athe at athe athe athe athe at ",
+    "scale_name": "small",
+    "run_elapsed_seconds": 502.00360679626465,
+    "status": "OK",
+    "best_val_loss": 2.4092225432395935
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 4,
+      "d_model": 256,
+      "n_heads": 4,
+      "d_ff": 1024,
+      "dropout": 0.0,
+      "mode": "latent",
+      "rank": 48,
+      "latent_dim": 16,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "latent",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 1240412,
+      "constructor": 58256,
+      "latents": 204,
+      "mlp": 0,
+      "attention": 1048576,
+      "other": 133376
+    },
+    "state_dict_bytes_before_save": 4961648,
+    "checkpoint_file_bytes": 4979903,
+    "optimizer_parameter_elements": 1240412,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.603542804718018,
+        "val_loss": 5.601033353805542,
+        "perplexity": 270.7059980165065,
+        "elapsed_seconds": 6.206157334963791,
+        "tokens_per_second_overall": 659.9897132681857,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 3.015932083129883,
+        "val_loss": 2.954153263568878,
+        "perplexity": 19.18547080318193,
+        "elapsed_seconds": 87.96285521797836,
+        "tokens_per_second_overall": 4656.510966873248,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.5343291759490967,
+        "val_loss": 2.5535539746284486,
+        "perplexity": 12.852700882043957,
+        "elapsed_seconds": 173.60253483598353,
+        "tokens_per_second_overall": 4718.8251068681975,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.5102882385253906,
+        "val_loss": 2.4597741842269896,
+        "perplexity": 11.702168707322892,
+        "elapsed_seconds": 258.9788529139478,
+        "tokens_per_second_overall": 4744.788951584011,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.4294660091400146,
+        "val_loss": 2.4389095187187193,
+        "perplexity": 11.460536425726419,
+        "elapsed_seconds": 342.913525618962,
+        "tokens_per_second_overall": 4777.880945473566,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.4367737770080566,
+        "val_loss": 2.4081239104270935,
+        "perplexity": 11.113092418576976,
+        "elapsed_seconds": 422.1708084049751,
+        "tokens_per_second_overall": 4851.117034210993,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The athe ate s athe the the the the the the the the the the the the the the the the the the the the the the the the the the the the the athe athe athe athe athe s a",
+    "scale_name": "small",
+    "run_elapsed_seconds": 434.4331147670746,
+    "status": "OK",
+    "best_val_loss": 2.4081239104270935
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 6,
+      "d_model": 384,
+      "n_heads": 6,
+      "d_ff": 1536,
+      "dropout": 0.0,
+      "mode": "dense",
+      "rank": 48,
+      "latent_dim": 16,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "dense",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 14357376,
+      "constructor": 0,
+      "latents": 0,
+      "mlp": 10616832,
+      "attention": 3538944,
+      "other": 201600
+    },
+    "state_dict_bytes_before_save": 57429504,
+    "checkpoint_file_bytes": 57445046,
+    "optimizer_parameter_elements": 14357376,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.630730628967285,
+        "val_loss": 5.562003874778748,
+        "perplexity": 260.3440107613588,
+        "elapsed_seconds": 18.264791318040807,
+        "tokens_per_second_overall": 224.256599962039,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 2.5032296180725098,
+        "val_loss": 2.4976179242134093,
+        "perplexity": 12.153508872863156,
+        "elapsed_seconds": 256.23600982903736,
+        "tokens_per_second_overall": 1598.5262971948723,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.3274848461151123,
+        "val_loss": 2.3133935809135435,
+        "perplexity": 10.108671106423415,
+        "elapsed_seconds": 500.68589805503143,
+        "tokens_per_second_overall": 1636.1555282109423,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 1.991071105003357,
+        "val_loss": 1.9776707231998443,
+        "perplexity": 7.225892264571128,
+        "elapsed_seconds": 751.0119422459975,
+        "tokens_per_second_overall": 1636.1923571083519,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 1.4454320669174194,
+        "val_loss": 1.558677315711975,
+        "perplexity": 4.752530987976613,
+        "elapsed_seconds": 998.7424760730355,
+        "tokens_per_second_overall": 1640.462921374927,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 1.335146188735962,
+        "val_loss": 1.2954699575901032,
+        "perplexity": 3.652712190653657,
+        "elapsed_seconds": 1385.6476325310068,
+        "tokens_per_second_overall": 1478.009236922051,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The recover the the reconstruction is a bethe a better as a be a a be a a observatior ter thater that the the sarchinged than strablesed that strater structure stru",
+    "scale_name": "medium",
+    "run_elapsed_seconds": 1395.386572599411,
+    "status": "OK",
+    "best_val_loss": 1.2954699575901032
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 6,
+      "d_model": 384,
+      "n_heads": 6,
+      "d_ff": 1536,
+      "dropout": 0.0,
+      "mode": "lowrank",
+      "rank": 48,
+      "latent_dim": 16,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "lowrank",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 5399424,
+      "constructor": 0,
+      "latents": 0,
+      "mlp": 1658880,
+      "attention": 3538944,
+      "other": 201600
+    },
+    "state_dict_bytes_before_save": 21597696,
+    "checkpoint_file_bytes": 21617244,
+    "optimizer_parameter_elements": 5399424,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.702212810516357,
+        "val_loss": 5.642080450057984,
+        "perplexity": 282.0488971505534,
+        "elapsed_seconds": 11.70289286901243,
+        "tokens_per_second_overall": 349.9989315330414,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 2.7744460105895996,
+        "val_loss": 2.7014179825782776,
+        "perplexity": 14.900845891450519,
+        "elapsed_seconds": 156.83793960901676,
+        "tokens_per_second_overall": 2611.612987400223,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.4573326110839844,
+        "val_loss": 2.4825805187225343,
+        "perplexity": 11.972118867370583,
+        "elapsed_seconds": 290.4105966380448,
+        "tokens_per_second_overall": 2820.8337074594265,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.4037275314331055,
+        "val_loss": 2.4117910146713255,
+        "perplexity": 11.15392010088218,
+        "elapsed_seconds": 424.0594268400455,
+        "tokens_per_second_overall": 2897.7070717578963,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.325721502304077,
+        "val_loss": 2.351514983177185,
+        "perplexity": 10.501467225646334,
+        "elapsed_seconds": 558.0654712660471,
+        "tokens_per_second_overall": 2935.8562469078543,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.355394124984741,
+        "val_loss": 2.324709939956665,
+        "perplexity": 10.223714164690536,
+        "elapsed_seconds": 691.9369455730193,
+        "tokens_per_second_overall": 2959.807267270536,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The arestion athe athe athe athe athe athe at athe athe an at ar athe athe athe athe athe athe athe athe athe athe athe an or or athe athe athe athe athe or athe at",
+    "scale_name": "medium",
+    "run_elapsed_seconds": 699.2620587348938,
+    "status": "OK",
+    "best_val_loss": 2.324709939956665
+  },
+  {
+    "experiment": "latent_transformer_v0",
+    "model_config": {
+      "vocab_size": 256,
+      "context": 256,
+      "n_layers": 6,
+      "d_model": 384,
+      "n_heads": 6,
+      "d_ff": 1536,
+      "dropout": 0.0,
+      "mode": "latent",
+      "rank": 48,
+      "latent_dim": 16,
+      "constructor_hidden": 128,
+      "constructor_type_dim": 16,
+      "constructor_fourier_bands": 8
+    },
+    "mode": "latent",
+    "seed": 1337,
+    "device": "cpu",
+    "dtype": "torch.float32",
+    "corpus_bytes": 600361,
+    "parameter_counts": {
+      "total": 3799106,
+      "constructor": 58256,
+      "latents": 306,
+      "mlp": 0,
+      "attention": 3538944,
+      "other": 201600
+    },
+    "state_dict_bytes_before_save": 15196424,
+    "checkpoint_file_bytes": 15220315,
+    "optimizer_parameter_elements": 3799106,
+    "history": [
+      {
+        "step": 1,
+        "tokens_seen": 4096,
+        "train_loss": 5.5684380531311035,
+        "val_loss": 5.547945499420166,
+        "perplexity": 256.70960372275033,
+        "elapsed_seconds": 12.74635093100369,
+        "tokens_per_second_overall": 321.34687191430305,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 100,
+        "tokens_seen": 409600,
+        "train_loss": 2.7744109630584717,
+        "val_loss": 2.7675455808639526,
+        "perplexity": 15.919512862580765,
+        "elapsed_seconds": 176.733912908996,
+        "tokens_per_second_overall": 2317.608393647187,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 200,
+        "tokens_seen": 819200,
+        "train_loss": 2.548647880554199,
+        "val_loss": 2.465067005157471,
+        "perplexity": 11.764270392362157,
+        "elapsed_seconds": 342.03461920801783,
+        "tokens_per_second_overall": 2395.0791937285762,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 300,
+        "tokens_seen": 1228800,
+        "train_loss": 2.485384464263916,
+        "val_loss": 2.4017558693885803,
+        "perplexity": 11.042548641215776,
+        "elapsed_seconds": 508.04891602904536,
+        "tokens_per_second_overall": 2418.664741191474,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 400,
+        "tokens_seen": 1638400,
+        "train_loss": 2.454047203063965,
+        "val_loss": 2.356576347351074,
+        "perplexity": 10.554753713039526,
+        "elapsed_seconds": 674.1597786900238,
+        "tokens_per_second_overall": 2430.2844100008674,
+        "peak_device_memory_bytes": null
+      },
+      {
+        "step": 500,
+        "tokens_seen": 2048000,
+        "train_loss": 2.288627862930298,
+        "val_loss": 2.3307536602020265,
+        "perplexity": 10.285690528223506,
+        "elapsed_seconds": 839.2923580520437,
+        "tokens_per_second_overall": 2440.1508965878197,
+        "peak_device_memory_bytes": null
+      }
+    ],
+    "sample": "The the the se sere sthe se sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe sthe se sthe sthe sthe sthe sthe sth",
+    "scale_name": "medium",
+    "run_elapsed_seconds": 854.3517153263092,
+    "status": "OK",
+    "best_val_loss": 2.3307536602020265
+  }
+]

@@ -1,0 +1,51 @@
+========================================================================================
+LATENT TRANSFORMER v0
+========================================================================================
+mode:          lowrank
+device/dtype:  cpu / torch.float32
+corpus bytes:  600,361 (train 540,324, val 60,037)
+parameters:    5,399,424
+state bytes:   21,597,696 (20.60 MiB)
+breakdown:     {'total': 5399424, 'constructor': 0, 'latents': 0, 'mlp': 1658880, 'attention': 3538944, 'other': 201600}
+run dir:       runs/scaling_comparison/medium/lowrank/medium_lowrank
+step      1/500 | train 5.7022 | lr 3e-06 | 2,765 tok/s
+  EVAL val 5.6421 | ppl 282.05 | overall 350 tok/s
+step     20/500 | train 4.0248 | lr 6e-05 | 2,120 tok/s
+step     40/500 | train 3.4526 | lr 0.00012 | 2,979 tok/s
+step     60/500 | train 3.2657 | lr 0.00018 | 2,951 tok/s
+step     80/500 | train 2.9789 | lr 0.00024 | 3,013 tok/s
+step    100/500 | train 2.7744 | lr 0.0003 | 2,976 tok/s
+  EVAL val 2.7014 | ppl 14.90 | overall 2,612 tok/s
+step    120/500 | train 2.6275 | lr 0.000298 | 2,439 tok/s
+step    140/500 | train 2.5401 | lr 0.000294 | 3,279 tok/s
+step    160/500 | train 2.4783 | lr 0.000286 | 3,293 tok/s
+step    180/500 | train 2.4708 | lr 0.000275 | 3,268 tok/s
+step    200/500 | train 2.4573 | lr 0.000261 | 3,287 tok/s
+  EVAL val 2.4826 | ppl 11.97 | overall 2,821 tok/s
+step    220/500 | train 2.4699 | lr 0.000245 | 2,407 tok/s
+step    240/500 | train 2.4429 | lr 0.000227 | 3,277 tok/s
+step    260/500 | train 2.4212 | lr 0.000208 | 3,276 tok/s
+step    280/500 | train 2.4020 | lr 0.000187 | 3,300 tok/s
+step    300/500 | train 2.4037 | lr 0.000166 | 3,265 tok/s
+  EVAL val 2.4118 | ppl 11.15 | overall 2,898 tok/s
+step    320/500 | train 2.3564 | lr 0.000145 | 2,453 tok/s
+step    340/500 | train 2.3212 | lr 0.000124 | 3,242 tok/s
+step    360/500 | train 2.3437 | lr 0.000105 | 3,241 tok/s
+step    380/500 | train 2.4164 | lr 8.65e-05 | 3,275 tok/s
+step    400/500 | train 2.3257 | lr 7.03e-05 | 3,259 tok/s
+  EVAL val 2.3515 | ppl 10.50 | overall 2,936 tok/s
+step    420/500 | train 2.3361 | lr 5.64e-05 | 2,456 tok/s
+step    440/500 | train 2.3537 | lr 4.52e-05 | 3,268 tok/s
+step    460/500 | train 2.3132 | lr 3.69e-05 | 3,267 tok/s
+step    480/500 | train 2.2608 | lr 3.18e-05 | 3,291 tok/s
+step    500/500 | train 2.3554 | lr 3e-05 | 3,248 tok/s
+  EVAL val 2.3247 | ppl 10.22 | overall 2,960 tok/s
+
+========================================================================================
+DONE
+========================================================================================
+checkpoint: runs/scaling_comparison/medium/lowrank/medium_lowrank/model.pt (20.62 MiB)
+report:     runs/scaling_comparison/medium/lowrank/medium_lowrank/report.json
+
+SAMPLE:
+The arestion athe athe athe athe athe athe at athe athe an at ar athe athe athe athe athe athe athe athe athe athe athe an or or athe athe athe athe athe or athe at
