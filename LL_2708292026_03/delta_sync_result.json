@@ -1,0 +1,69 @@
+{
+  "experiment": "delta communication cost",
+  "seed": 314,
+  "results": [
+    {
+      "changed_values": 1,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 8,
+      "communication_ratio": 0.001953125,
+      "reduction_percent": 99.8046875,
+      "synchronized": true
+    },
+    {
+      "changed_values": 4,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 32,
+      "communication_ratio": 0.0078125,
+      "reduction_percent": 99.21875,
+      "synchronized": true
+    },
+    {
+      "changed_values": 16,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 128,
+      "communication_ratio": 0.03125,
+      "reduction_percent": 96.875,
+      "synchronized": true
+    },
+    {
+      "changed_values": 64,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 512,
+      "communication_ratio": 0.125,
+      "reduction_percent": 87.5,
+      "synchronized": true
+    },
+    {
+      "changed_values": 256,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 2048,
+      "communication_ratio": 0.5,
+      "reduction_percent": 50.0,
+      "synchronized": true
+    },
+    {
+      "changed_values": 512,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 4096,
+      "communication_ratio": 1.0,
+      "reduction_percent": 0.0,
+      "synchronized": true
+    },
+    {
+      "changed_values": 1024,
+      "state_values": 1024,
+      "full_state_bytes": 4096,
+      "delta_bytes": 8192,
+      "communication_ratio": 2.0,
+      "reduction_percent": -100.0,
+      "synchronized": true
+    }
+  ]
+}

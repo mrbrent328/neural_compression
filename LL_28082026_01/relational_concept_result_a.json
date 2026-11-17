@@ -1,0 +1,23 @@
+{
+  "experiment": "S5E1 persistent relational concept memory",
+  "question": "Can persistent concept identities coexist with changing relational neighborhoods?",
+  "seed": 42,
+  "num_concepts": 24,
+  "num_relations": 8,
+  "train_steps": 12000,
+  "embed_dim": 16,
+  "identity_persistence_mean_cosine": 1.0000000248352687,
+  "identity_persistence_min_cosine": 0.9999998807907104,
+  "relation_retrieval_accuracy": 0.9791666666666666,
+  "neighborhood_signature_mean_norm": 0.4587021768093109,
+  "held_out_relation": [
+    0,
+    0,
+    1
+  ],
+  "interpretation": {
+    "identity": "persistent concept vectors are the identity carrier; no target coordinates were supplied",
+    "meaning": "relational scores and neighborhood signatures provide context around each identity",
+    "geometry": "not tested yet; this experiment intentionally precedes explicit spatial coordinates"
+  }
+}

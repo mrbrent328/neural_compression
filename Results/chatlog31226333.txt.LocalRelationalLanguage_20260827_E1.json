@@ -1,0 +1,214 @@
+{
+  "experiment": "LocalRelationalLanguage_20260827_E1",
+  "date": "2026-08-27",
+  "purpose": "Test R3-style local representations plus shared causal interaction for character-level next-character prediction.",
+  "architecture": {
+    "tokenization": "character-level",
+    "context_size": 10,
+    "embedding_dim": 48,
+    "ff_dim": 300,
+    "heads": 4,
+    "interaction_layers": 1,
+    "positional_embedding": false,
+    "causal": true,
+    "prediction": "final local representation -> next character"
+  },
+  "input": {
+    "path": "/home/xetal/Desktop/Private_Model_Pack/Sideways_L/chatlog31226333.txt",
+    "characters": 114066,
+    "vocabulary": 124,
+    "samples": 114056
+  },
+  "training": {
+    "epochs": 20,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "seed": 314,
+    "seconds": 88.30867843400483
+  },
+  "parameters": 50776,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.7248593372692027,
+      "train_accuracy": 0.24595961071981765,
+      "val_loss": 2.5432596768584497,
+      "val_accuracy": 0.2779482683033757,
+      "val_perplexity": 12.721070038003747,
+      "seconds": 4.419031407000148
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.5014629460402125,
+      "train_accuracy": 0.28396216305734967,
+      "val_loss": 2.464178732078047,
+      "val_accuracy": 0.28908373520385794,
+      "val_perplexity": 11.753825147475279,
+      "seconds": 4.420622466997884
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.430976072059946,
+      "train_accuracy": 0.29950999016083624,
+      "val_loss": 2.4348416300417823,
+      "val_accuracy": 0.29837790442788253,
+      "val_perplexity": 11.41401093378705,
+      "seconds": 4.832841893003206
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.3847924379634398,
+      "train_accuracy": 0.31205735940224644,
+      "val_loss": 2.3833248097872537,
+      "val_accuracy": 0.3146865409907935,
+      "val_perplexity": 10.840886897608895,
+      "seconds": 4.323962068003311
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.3456866830949425,
+      "train_accuracy": 0.3217211717372456,
+      "val_loss": 2.361516949378937,
+      "val_accuracy": 0.32441911442349847,
+      "val_perplexity": 10.607029581432641,
+      "seconds": 4.464878119993955
+    },
+    {
+      "epoch": 6,
+      "train_loss": 2.314645344781973,
+      "train_accuracy": 0.32936844258701814,
+      "val_loss": 2.3477883652499347,
+      "val_accuracy": 0.32941692240245507,
+      "val_perplexity": 10.462405099637193,
+      "seconds": 4.292136702999414
+    },
+    {
+      "epoch": 7,
+      "train_loss": 2.2850576522382804,
+      "train_accuracy": 0.33487252924959326,
+      "val_loss": 2.3258959691182715,
+      "val_accuracy": 0.3332748794388426,
+      "val_perplexity": 10.235846981344737,
+      "seconds": 4.268964594994031
+    },
+    {
+      "epoch": 8,
+      "train_loss": 2.261730037166751,
+      "train_accuracy": 0.3432309475796631,
+      "val_loss": 2.3160337207088446,
+      "val_accuracy": 0.3352038579570364,
+      "val_perplexity": 10.135394672741858,
+      "seconds": 4.411603821004974
+    },
+    {
+      "epoch": 9,
+      "train_loss": 2.2367299830791256,
+      "train_accuracy": 0.3492903137816485,
+      "val_loss": 2.2948071074036327,
+      "val_accuracy": 0.34353353792196406,
+      "val_perplexity": 9.922521846675581,
+      "seconds": 4.359069425001508
+    },
+    {
+      "epoch": 10,
+      "train_loss": 2.216735056131308,
+      "train_accuracy": 0.3523492221215575,
+      "val_loss": 2.2879733257051207,
+      "val_accuracy": 0.3459886014905743,
+      "val_perplexity": 9.854944665320158,
+      "seconds": 4.329647803002445
+    },
+    {
+      "epoch": 11,
+      "train_loss": 2.1967657543973216,
+      "train_accuracy": 0.35810659418807417,
+      "val_loss": 2.2822101457868422,
+      "val_accuracy": 0.35028496273564225,
+      "val_perplexity": 9.79831219443899,
+      "seconds": 4.298454604999279
+    },
+    {
+      "epoch": 12,
+      "train_loss": 2.1780586476051966,
+      "train_accuracy": 0.3636593895821765,
+      "val_loss": 2.281120229321371,
+      "val_accuracy": 0.3506356861025866,
+      "val_perplexity": 9.787638670325887,
+      "seconds": 4.446237750002183
+    },
+    {
+      "epoch": 13,
+      "train_loss": 2.163610844266935,
+      "train_accuracy": 0.3673028027004121,
+      "val_loss": 2.272638473673799,
+      "val_accuracy": 0.3528277071459886,
+      "val_perplexity": 9.704973379734179,
+      "seconds": 4.3355993009972735
+    },
+    {
+      "epoch": 14,
+      "train_loss": 2.14726564161644,
+      "train_accuracy": 0.37153072059697423,
+      "val_loss": 2.275681474929,
+      "val_accuracy": 0.346777729066199,
+      "val_perplexity": 9.734550604853585,
+      "seconds": 4.492841359002341
+    },
+    {
+      "epoch": 15,
+      "train_loss": 2.1332097598180653,
+      "train_accuracy": 0.37514490847629345,
+      "val_loss": 2.261402484211468,
+      "val_accuracy": 0.356510302498904,
+      "val_perplexity": 9.596538727211382,
+      "seconds": 4.4999460030012415
+    },
+    {
+      "epoch": 16,
+      "train_loss": 2.1188786274874603,
+      "train_accuracy": 0.37894418953541614,
+      "val_loss": 2.267570459482075,
+      "val_accuracy": 0.3547566856641824,
+      "val_perplexity": 9.655912861625355,
+      "seconds": 4.363471652002772
+    },
+    {
+      "epoch": 17,
+      "train_loss": 2.1067000126286133,
+      "train_accuracy": 0.3812627251561115,
+      "val_loss": 2.26300936656686,
+      "val_accuracy": 0.35940377027619463,
+      "val_perplexity": 9.611971632075491,
+      "seconds": 4.2691808360032155
+    },
+    {
+      "epoch": 18,
+      "train_loss": 2.093954901239044,
+      "train_accuracy": 0.3853932255896192,
+      "val_loss": 2.258808238315039,
+      "val_accuracy": 0.3601052170100833,
+      "val_perplexity": 9.571675210980384,
+      "seconds": 4.276156777996221
+    },
+    {
+      "epoch": 19,
+      "train_loss": 2.0824562633818315,
+      "train_accuracy": 0.3880234970920887,
+      "val_loss": 2.2604358248102305,
+      "val_accuracy": 0.36071898290223586,
+      "val_perplexity": 9.587266625035761,
+      "seconds": 4.278573974996107
+    },
+    {
+      "epoch": 20,
+      "train_loss": 2.072731272047656,
+      "train_accuracy": 0.39106292193938685,
+      "val_loss": 2.268159192635897,
+      "val_accuracy": 0.35686102586584834,
+      "val_perplexity": 9.661599291388026,
+      "seconds": 4.280188035998435
+    }
+  ],
+  "generated_sample": "Hey could r an farandor matiat mong behe th, isavey a fr ilowa s fin sorece ames.\nyou it f thatillinke the:\n\nBexpealacon in sonlike cown creron home the mentumory d mayou sentor stoner alablowat oghe, Vullkand tikeng tof ainend prctes\n\neintup t the ifoups tw in ithemexe upented se femoplince te\n\nSHonee ting a"
+}

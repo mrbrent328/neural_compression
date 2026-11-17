@@ -1,0 +1,20 @@
+{
+  "context": 4,
+  "embed_dim": 48,
+  "ff_dim": 512,
+  "heads": 1,
+  "batch": 16,
+  "epochs": 100,
+  "lr": 0.04,
+  "interactions": 1,
+  "seed": 314,
+  "val_fraction": 0.1,
+  "text": "/home/xetal/Desktop/rocm-test/great_books/great_books/Wealth.txt",
+  "vocab_size": 10992,
+  "token_count": 437913,
+  "train_tokens": 394121,
+  "val_tokens": 43792,
+  "parameters": 1125728,
+  "device": "cuda",
+  "optimizer": "SGD"
+}

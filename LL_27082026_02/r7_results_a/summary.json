@@ -1,0 +1,9 @@
+{
+  "best_val_accuracy": 0.13134851138353765,
+  "best_val_accuracy_epoch": 7,
+  "best_val_perplexity": 510.6803309970022,
+  "best_val_perplexity_epoch": 5,
+  "final_val_accuracy": 0.11996497373029773,
+  "final_val_perplexity": 6358458.358495088,
+  "training_seconds": 319.14626086500357
+}

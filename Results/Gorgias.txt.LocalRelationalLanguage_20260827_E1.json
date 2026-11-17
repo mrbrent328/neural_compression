@@ -1,0 +1,214 @@
+{
+  "experiment": "LocalRelationalLanguage_20260827_E1",
+  "date": "2026-08-27",
+  "purpose": "Test R3-style local representations plus shared causal interaction for character-level next-character prediction.",
+  "architecture": {
+    "tokenization": "character-level",
+    "context_size": 16,
+    "embedding_dim": 32,
+    "ff_dim": 64,
+    "heads": 4,
+    "interaction_layers": 1,
+    "positional_embedding": false,
+    "causal": true,
+    "prediction": "final local representation -> next character"
+  },
+  "input": {
+    "path": "/home/xetal/Desktop/Private_Model_Pack/Sideways_L/Gorgias.txt",
+    "characters": 195520,
+    "vocabulary": 70,
+    "samples": 195504
+  },
+  "training": {
+    "epochs": 20,
+    "batch_size": 128,
+    "learning_rate": 0.001,
+    "optimizer": "Adam",
+    "seed": 12345,
+    "seconds": 127.1098798019957
+  },
+  "parameters": 13094,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.413446377977267,
+      "train_accuracy": 0.3116837355217841,
+      "val_loss": 2.2239736568226536,
+      "val_accuracy": 0.3489514066496164,
+      "val_perplexity": 9.243990427015797,
+      "seconds": 6.016813817004731
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.2123751405063827,
+      "train_accuracy": 0.3498812189549541,
+      "val_loss": 2.1805559525648346,
+      "val_accuracy": 0.35641943734015347,
+      "val_perplexity": 8.85122575275068,
+      "seconds": 5.958097435999662
+    },
+    {
+      "epoch": 3,
+      "train_loss": 2.171637568978474,
+      "train_accuracy": 0.35926435318321837,
+      "val_loss": 2.1517261294879573,
+      "val_accuracy": 0.3634782608695652,
+      "val_perplexity": 8.599689771160655,
+      "seconds": 5.962900130005437
+    },
+    {
+      "epoch": 4,
+      "train_loss": 2.1467468598177373,
+      "train_accuracy": 0.3642656603430442,
+      "val_loss": 2.1337050411585348,
+      "val_accuracy": 0.3664450127877238,
+      "val_perplexity": 8.446102067543453,
+      "seconds": 6.018438926003
+    },
+    {
+      "epoch": 5,
+      "train_loss": 2.1292346047896027,
+      "train_accuracy": 0.3688009366084318,
+      "val_loss": 2.113707189950187,
+      "val_accuracy": 0.3725831202046036,
+      "val_perplexity": 8.278875830779697,
+      "seconds": 6.198682711001311
+    },
+    {
+      "epoch": 6,
+      "train_loss": 2.1150137526942614,
+      "train_accuracy": 0.3716653216181502,
+      "val_loss": 2.103850381392652,
+      "val_accuracy": 0.3709462915601023,
+      "val_perplexity": 8.197673392533707,
+      "seconds": 7.306909316001111
+    },
+    {
+      "epoch": 7,
+      "train_loss": 2.1017916404346084,
+      "train_accuracy": 0.375939165918365,
+      "val_loss": 2.0972046330395866,
+      "val_accuracy": 0.37514066496163684,
+      "val_perplexity": 8.143374346830445,
+      "seconds": 7.056541954996646
+    },
+    {
+      "epoch": 8,
+      "train_loss": 2.090903285726481,
+      "train_accuracy": 0.3785648521772736,
+      "val_loss": 2.083986449083099,
+      "val_accuracy": 0.3804092071611253,
+      "val_perplexity": 8.036442009275598,
+      "seconds": 6.293359999996028
+    },
+    {
+      "epoch": 9,
+      "train_loss": 2.0806843482790986,
+      "train_accuracy": 0.38136103754390355,
+      "val_loss": 2.0814781457993687,
+      "val_accuracy": 0.3805115089514067,
+      "val_perplexity": 8.016309435250475,
+      "seconds": 6.212329339999997
+    },
+    {
+      "epoch": 10,
+      "train_loss": 2.0728172150344593,
+      "train_accuracy": 0.38343544335451313,
+      "val_loss": 2.074302122720977,
+      "val_accuracy": 0.3772378516624041,
+      "val_perplexity": 7.958990122069458,
+      "seconds": 6.168732890000683
+    },
+    {
+      "epoch": 11,
+      "train_loss": 2.064806930861134,
+      "train_accuracy": 0.3845323209475204,
+      "val_loss": 2.0739736285782837,
+      "val_accuracy": 0.38296675191815854,
+      "val_perplexity": 7.956376069806541,
+      "seconds": 6.180699311997159
+    },
+    {
+      "epoch": 12,
+      "train_loss": 2.0576105845625325,
+      "train_accuracy": 0.3865157939006786,
+      "val_loss": 2.0645529295050578,
+      "val_accuracy": 0.38588235294117645,
+      "val_perplexity": 7.881773401528847,
+      "seconds": 6.18287200100167
+    },
+    {
+      "epoch": 13,
+      "train_loss": 2.0518194790751076,
+      "train_accuracy": 0.389499528285802,
+      "val_loss": 2.0596709158231534,
+      "val_accuracy": 0.38608695652173913,
+      "val_perplexity": 7.843388250600382,
+      "seconds": 6.1724584399999
+    },
+    {
+      "epoch": 14,
+      "train_loss": 2.0469856642475683,
+      "train_accuracy": 0.3900678586448731,
+      "val_loss": 2.0521974713357207,
+      "val_accuracy": 0.3872634271099744,
+      "val_perplexity": 7.784989615204301,
+      "seconds": 6.1701653209966025
+    },
+    {
+      "epoch": 15,
+      "train_loss": 2.041993685260381,
+      "train_accuracy": 0.39136365186355526,
+      "val_loss": 2.0556443295881266,
+      "val_accuracy": 0.38649616368286444,
+      "val_perplexity": 7.811869670160876,
+      "seconds": 6.393909373000497
+    },
+    {
+      "epoch": 16,
+      "train_loss": 2.037235075907924,
+      "train_accuracy": 0.39238096320629257,
+      "val_loss": 2.0474961152040136,
+      "val_accuracy": 0.3877237851662404,
+      "val_perplexity": 7.7484755067106725,
+      "seconds": 6.341420789001859
+    },
+    {
+      "epoch": 17,
+      "train_loss": 2.033568520796202,
+      "train_accuracy": 0.3925855621355582,
+      "val_loss": 2.0457250132890006,
+      "val_accuracy": 0.3889002557544757,
+      "val_perplexity": 7.734764312447622,
+      "seconds": 6.829192819997843
+    },
+    {
+      "epoch": 18,
+      "train_loss": 2.029812763545318,
+      "train_accuracy": 0.39448946883844643,
+      "val_loss": 2.0478110385367936,
+      "val_accuracy": 0.3881841432225064,
+      "val_perplexity": 7.750916066715684,
+      "seconds": 6.476735839001776
+    },
+    {
+      "epoch": 19,
+      "train_loss": 2.0264566803040305,
+      "train_accuracy": 0.3943928526774043,
+      "val_loss": 2.0522264848401783,
+      "val_accuracy": 0.38920716112531967,
+      "val_perplexity": 7.785215488311874,
+      "seconds": 6.2943747469980735
+    },
+    {
+      "epoch": 20,
+      "train_loss": 2.023791308580629,
+      "train_accuracy": 0.39560907964581654,
+      "val_loss": 2.041951256969091,
+      "val_accuracy": 0.38797953964194376,
+      "val_perplexity": 7.705630203829243,
+      "seconds": 6.220725106999453
+    }
+  ],
+  "generated_sample": "\n\n\n\n\nGORGIAS\n\nby ylecathatese aped s ssayofomu ablit thet meme by thiont se u ng o odowevit as sther by ougrise tad acre. pr eithas disees o hoginod as wis ce, id willernded hathe owhe de d mougre alyo tof conond y therellfu t ike\ncorsorof acotor icas iour ine inoncing g pinonllshaic.\n\nPOLUS: That is s mee be to to"
+}

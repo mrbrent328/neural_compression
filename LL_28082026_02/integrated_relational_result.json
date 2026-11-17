@@ -1,0 +1,31 @@
+{
+  "experiment": "S6E1 integrated persistent relational system",
+  "question": "Can persistent identities, changing relational context, shared interaction, and online learning coexist in one inspectable system?",
+  "seed": 42,
+  "num_entities": 24,
+  "num_relations": 8,
+  "embed_dim": 16,
+  "train_epochs": 128000,
+  "observations_per_epoch": 1,
+  "relation_retrieval_accuracy": 0.48936170212765956,
+  "identity_context_dynamics": {
+    "identity_mean_cosine": 1.0,
+    "identity_min_cosine": 0.9999998807907104,
+    "context_mean_delta": 0.724945604801178,
+    "context_max_delta": 1.0923713445663452
+  },
+  "neighborhood_signature": {
+    "mean_norm": 1.9452999830245972,
+    "min_norm": 1.9379124641418457,
+    "max_norm": 1.9489936828613281
+  },
+  "state_pairwise_cosine_mean": -0.009994762295020231,
+  "state_pairwise_cosine_min": -0.7525573968887329,
+  "state_pairwise_cosine_max": 0.816459596157074,
+  "interpretation": {
+    "identity": "persistent identity parameters are separate from mutable context states",
+    "meaning": "context is updated from observed relational edges through one shared interaction mechanism",
+    "learning": "relation prediction supplies the task pressure; observations drive online state transitions",
+    "geometry": "no coordinates or geometric targets are supplied; geometry remains an open follow-up question"
+  }
+}
