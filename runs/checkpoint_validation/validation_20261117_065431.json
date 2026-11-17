@@ -1,0 +1,75 @@
+{
+  "created_at": "2026-11-17T06:54:31",
+  "repository": "mrbrent328/neural_compression",
+  "device": "cuda",
+  "torch_version": "2.13.0+rocm7.1",
+  "settings": {
+    "device": "auto",
+    "scales": [
+      "tiny"
+    ],
+    "modes": [
+      "latent"
+    ],
+    "reps": 2,
+    "warmup": 1,
+    "gen_tokens": 8,
+    "eval_batches": 10,
+    "eval_batch_size": 16,
+    "prompt_tokens": 64,
+    "skip_bench": false,
+    "skip_eval": false,
+    "output": "/home/xetal/Desktop/N_Compress_AI/neural_compression/runs/checkpoint_validation/validation_20261117_065431.json"
+  },
+  "checkpoints": [
+    {
+      "scale": "tiny",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/tiny/latent/tiny_latent/model.pt",
+      "checkpoint_bytes": 1010339,
+      "checkpoint_sha256": "78a1090470c0e1f1d73d8422f5be11779d4032b5db486799d1fda3392aa059f4",
+      "strict_state_dict_load": true,
+      "parameter_count": 249382,
+      "reported_best_val_loss": 2.589070725440979,
+      "fixed_validation_loss": 3.485102,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 491520
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 7.751,
+          "generation_median_ms": 62.497,
+          "generation_tokens_per_second": 128.01,
+          "factor_cache_bytes": 0
+        },
+        {
+          "strategy": "all",
+          "forward_median_ms": 1.435,
+          "generation_median_ms": 11.887,
+          "generation_tokens_per_second": 672.99,
+          "factor_cache_bytes": 491520
+        },
+        {
+          "strategy": "layerwise",
+          "forward_median_ms": 7.318,
+          "generation_median_ms": 59.423,
+          "generation_tokens_per_second": 134.63,
+          "factor_cache_bytes": 0
+        }
+      ]
+    }
+  ]
+}

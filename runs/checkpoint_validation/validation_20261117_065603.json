@@ -1,0 +1,315 @@
+{
+  "created_at": "2026-11-17T06:56:03",
+  "repository": "mrbrent328/neural_compression",
+  "device": "cuda",
+  "torch_version": "2.13.0+rocm7.1",
+  "settings": {
+    "device": "auto",
+    "scales": [
+      "tiny",
+      "small",
+      "medium"
+    ],
+    "modes": [
+      "dense",
+      "lowrank",
+      "latent"
+    ],
+    "reps": 7,
+    "warmup": 2,
+    "gen_tokens": 16,
+    "eval_batches": 10,
+    "eval_batch_size": 16,
+    "prompt_tokens": 64,
+    "skip_bench": false,
+    "skip_eval": false,
+    "output": "/home/xetal/Desktop/N_Compress_AI/neural_compression/runs/checkpoint_validation/validation_20261117_065603.json"
+  },
+  "checkpoints": [
+    {
+      "scale": "tiny",
+      "mode": "dense",
+      "checkpoint": "runs/scaling_comparison/tiny/dense/tiny_dense/model.pt",
+      "checkpoint_bytes": 2369154,
+      "checkpoint_sha256": "cc6e73752401f769f0ae98c802435914f02b30c5b71666b43308690819219fbf",
+      "strict_state_dict_load": true,
+      "parameter_count": 590464,
+      "reported_best_val_loss": 2.44247419834137,
+      "fixed_validation_loss": 3.324833,
+      "cache_correctness": {
+        "applicable": false
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 1.142,
+          "generation_median_ms": 18.212,
+          "generation_tokens_per_second": 878.56,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "tiny",
+      "mode": "lowrank",
+      "checkpoint": "runs/scaling_comparison/tiny/lowrank/tiny_lowrank/model.pt",
+      "checkpoint_bytes": 1289124,
+      "checkpoint_sha256": "3c818fbf016e6fd8c24b416bcc392bc0698c7ba0c040ac366af38d82ff29670d",
+      "strict_state_dict_load": true,
+      "parameter_count": 320128,
+      "reported_best_val_loss": 2.806944561004639,
+      "fixed_validation_loss": 3.9678,
+      "cache_correctness": {
+        "applicable": false
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 1.243,
+          "generation_median_ms": 19.98,
+          "generation_tokens_per_second": 800.78,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "tiny",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/tiny/latent/tiny_latent/model.pt",
+      "checkpoint_bytes": 1010339,
+      "checkpoint_sha256": "78a1090470c0e1f1d73d8422f5be11779d4032b5db486799d1fda3392aa059f4",
+      "strict_state_dict_load": true,
+      "parameter_count": 249382,
+      "reported_best_val_loss": 2.589070725440979,
+      "fixed_validation_loss": 3.485102,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 491520
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 6.596,
+          "generation_median_ms": 112.332,
+          "generation_tokens_per_second": 142.43,
+          "factor_cache_bytes": 0
+        },
+        {
+          "strategy": "all",
+          "forward_median_ms": 1.411,
+          "generation_median_ms": 22.759,
+          "generation_tokens_per_second": 703.02,
+          "factor_cache_bytes": 491520
+        },
+        {
+          "strategy": "layerwise",
+          "forward_median_ms": 7.014,
+          "generation_median_ms": 113.606,
+          "generation_tokens_per_second": 140.84,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "small",
+      "mode": "dense",
+      "checkpoint": "runs/scaling_comparison/small/dense/small_dense/model.pt",
+      "checkpoint_bytes": 17322172,
+      "checkpoint_sha256": "58fe87a88c1f29b938315dc4201dfa30dc26fdc26ab949100159a8a151b30d8a",
+      "strict_state_dict_load": true,
+      "parameter_count": 4327680,
+      "reported_best_val_loss": 1.8853995978832245,
+      "fixed_validation_loss": 3.177272,
+      "cache_correctness": {
+        "applicable": false
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 2.05,
+          "generation_median_ms": 33.478,
+          "generation_tokens_per_second": 477.92,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "small",
+      "mode": "lowrank",
+      "checkpoint": "runs/scaling_comparison/small/lowrank/small_lowrank/model.pt",
+      "checkpoint_bytes": 7691072,
+      "checkpoint_sha256": "ff9310226232b2a66758e202c05f3d0b11e038b2cc78f704af83d2f02e47192d",
+      "strict_state_dict_load": true,
+      "parameter_count": 1919232,
+      "reported_best_val_loss": 2.4092225432395935,
+      "fixed_validation_loss": 3.202369,
+      "cache_correctness": {
+        "applicable": false
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 2.706,
+          "generation_median_ms": 41.212,
+          "generation_tokens_per_second": 388.24,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "small",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/small/latent/small_latent/model.pt",
+      "checkpoint_bytes": 4979903,
+      "checkpoint_sha256": "f9e7aa1dcc0f37327493b2f2d802fff22484527e108f71dbe0fae8edc3f7319b",
+      "strict_state_dict_load": true,
+      "parameter_count": 1240412,
+      "reported_best_val_loss": 2.4081239104270935,
+      "fixed_validation_loss": 3.309841,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 2949120
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 13.871,
+          "generation_median_ms": 214.767,
+          "generation_tokens_per_second": 74.5,
+          "factor_cache_bytes": 0
+        },
+        {
+          "strategy": "all",
+          "forward_median_ms": 2.617,
+          "generation_median_ms": 42.247,
+          "generation_tokens_per_second": 378.72,
+          "factor_cache_bytes": 2949120
+        },
+        {
+          "strategy": "layerwise",
+          "forward_median_ms": 13.218,
+          "generation_median_ms": 236.609,
+          "generation_tokens_per_second": 67.62,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "medium",
+      "mode": "dense",
+      "checkpoint": "runs/scaling_comparison/medium/dense/medium_dense/model.pt",
+      "checkpoint_bytes": 57445046,
+      "checkpoint_sha256": "a614c854a25a213149777b37e1f108628f8a2311cfa72a31d83a9b39e6697286",
+      "strict_state_dict_load": true,
+      "parameter_count": 14357376,
+      "reported_best_val_loss": 1.2954699575901032,
+      "fixed_validation_loss": 3.38087,
+      "cache_correctness": {
+        "applicable": false
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 3.287,
+          "generation_median_ms": 51.503,
+          "generation_tokens_per_second": 310.66,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "medium",
+      "mode": "lowrank",
+      "checkpoint": "runs/scaling_comparison/medium/lowrank/medium_lowrank/model.pt",
+      "checkpoint_bytes": 21617244,
+      "checkpoint_sha256": "34a3b2cfea30885865948382a503f150f5300d07914693f1a164eb157804b81c",
+      "strict_state_dict_load": true,
+      "parameter_count": 5399424,
+      "reported_best_val_loss": 2.324709939956665,
+      "fixed_validation_loss": 3.230513,
+      "cache_correctness": {
+        "applicable": false
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 3.314,
+          "generation_median_ms": 53.141,
+          "generation_tokens_per_second": 301.09,
+          "factor_cache_bytes": 0
+        }
+      ]
+    },
+    {
+      "scale": "medium",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/medium/latent/medium_latent/model.pt",
+      "checkpoint_bytes": 15220315,
+      "checkpoint_sha256": "015e130a19c01571908da1465010cdeac3263db545cb61f849f49d5ce7478980",
+      "strict_state_dict_load": true,
+      "parameter_count": 3799106,
+      "reported_best_val_loss": 2.3307536602020265,
+      "fixed_validation_loss": 3.411075,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 6635520
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      },
+      "benchmarks": [
+        {
+          "strategy": "none",
+          "forward_median_ms": 22.036,
+          "generation_median_ms": 330.979,
+          "generation_tokens_per_second": 48.34,
+          "factor_cache_bytes": 0
+        },
+        {
+          "strategy": "all",
+          "forward_median_ms": 3.672,
+          "generation_median_ms": 58.156,
+          "generation_tokens_per_second": 275.12,
+          "factor_cache_bytes": 6635520
+        },
+        {
+          "strategy": "layerwise",
+          "forward_median_ms": 19.808,
+          "generation_median_ms": 337.482,
+          "generation_tokens_per_second": 47.41,
+          "factor_cache_bytes": 0
+        }
+      ]
+    }
+  ]
+}

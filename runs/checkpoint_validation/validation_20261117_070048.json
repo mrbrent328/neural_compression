@@ -1,0 +1,192 @@
+{
+  "created_at": "2026-11-17T07:00:48",
+  "repository": "mrbrent328/neural_compression",
+  "device": "cuda",
+  "torch_version": "2.13.0+rocm7.1",
+  "settings": {
+    "device": "auto",
+    "scales": [
+      "tiny",
+      "small",
+      "medium"
+    ],
+    "modes": [
+      "dense",
+      "lowrank",
+      "latent"
+    ],
+    "reps": 7,
+    "warmup": 2,
+    "gen_tokens": 16,
+    "eval_batches": 100,
+    "eval_batch_size": 16,
+    "prompt_tokens": 64,
+    "skip_bench": true,
+    "skip_eval": false,
+    "output": "/home/xetal/Desktop/N_Compress_AI/neural_compression/runs/checkpoint_validation/validation_20261117_070048.json"
+  },
+  "checkpoints": [
+    {
+      "scale": "tiny",
+      "mode": "dense",
+      "checkpoint": "runs/scaling_comparison/tiny/dense/tiny_dense/model.pt",
+      "checkpoint_bytes": 2369154,
+      "checkpoint_sha256": "cc6e73752401f769f0ae98c802435914f02b30c5b71666b43308690819219fbf",
+      "strict_state_dict_load": true,
+      "parameter_count": 590464,
+      "reported_best_val_loss": 2.44247419834137,
+      "fixed_validation_loss": 3.416015,
+      "cache_correctness": {
+        "applicable": false
+      }
+    },
+    {
+      "scale": "tiny",
+      "mode": "lowrank",
+      "checkpoint": "runs/scaling_comparison/tiny/lowrank/tiny_lowrank/model.pt",
+      "checkpoint_bytes": 1289124,
+      "checkpoint_sha256": "3c818fbf016e6fd8c24b416bcc392bc0698c7ba0c040ac366af38d82ff29670d",
+      "strict_state_dict_load": true,
+      "parameter_count": 320128,
+      "reported_best_val_loss": 2.806944561004639,
+      "fixed_validation_loss": 3.976168,
+      "cache_correctness": {
+        "applicable": false
+      }
+    },
+    {
+      "scale": "tiny",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/tiny/latent/tiny_latent/model.pt",
+      "checkpoint_bytes": 1010339,
+      "checkpoint_sha256": "78a1090470c0e1f1d73d8422f5be11779d4032b5db486799d1fda3392aa059f4",
+      "strict_state_dict_load": true,
+      "parameter_count": 249382,
+      "reported_best_val_loss": 2.589070725440979,
+      "fixed_validation_loss": 3.525211,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 491520
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      }
+    },
+    {
+      "scale": "small",
+      "mode": "dense",
+      "checkpoint": "runs/scaling_comparison/small/dense/small_dense/model.pt",
+      "checkpoint_bytes": 17322172,
+      "checkpoint_sha256": "58fe87a88c1f29b938315dc4201dfa30dc26fdc26ab949100159a8a151b30d8a",
+      "strict_state_dict_load": true,
+      "parameter_count": 4327680,
+      "reported_best_val_loss": 1.8853995978832245,
+      "fixed_validation_loss": 3.281102,
+      "cache_correctness": {
+        "applicable": false
+      }
+    },
+    {
+      "scale": "small",
+      "mode": "lowrank",
+      "checkpoint": "runs/scaling_comparison/small/lowrank/small_lowrank/model.pt",
+      "checkpoint_bytes": 7691072,
+      "checkpoint_sha256": "ff9310226232b2a66758e202c05f3d0b11e038b2cc78f704af83d2f02e47192d",
+      "strict_state_dict_load": true,
+      "parameter_count": 1919232,
+      "reported_best_val_loss": 2.4092225432395935,
+      "fixed_validation_loss": 3.295109,
+      "cache_correctness": {
+        "applicable": false
+      }
+    },
+    {
+      "scale": "small",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/small/latent/small_latent/model.pt",
+      "checkpoint_bytes": 4979903,
+      "checkpoint_sha256": "f9e7aa1dcc0f37327493b2f2d802fff22484527e108f71dbe0fae8edc3f7319b",
+      "strict_state_dict_load": true,
+      "parameter_count": 1240412,
+      "reported_best_val_loss": 2.4081239104270935,
+      "fixed_validation_loss": 3.387707,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 2949120
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      }
+    },
+    {
+      "scale": "medium",
+      "mode": "dense",
+      "checkpoint": "runs/scaling_comparison/medium/dense/medium_dense/model.pt",
+      "checkpoint_bytes": 57445046,
+      "checkpoint_sha256": "a614c854a25a213149777b37e1f108628f8a2311cfa72a31d83a9b39e6697286",
+      "strict_state_dict_load": true,
+      "parameter_count": 14357376,
+      "reported_best_val_loss": 1.2954699575901032,
+      "fixed_validation_loss": 3.478564,
+      "cache_correctness": {
+        "applicable": false
+      }
+    },
+    {
+      "scale": "medium",
+      "mode": "lowrank",
+      "checkpoint": "runs/scaling_comparison/medium/lowrank/medium_lowrank/model.pt",
+      "checkpoint_bytes": 21617244,
+      "checkpoint_sha256": "34a3b2cfea30885865948382a503f150f5300d07914693f1a164eb157804b81c",
+      "strict_state_dict_load": true,
+      "parameter_count": 5399424,
+      "reported_best_val_loss": 2.324709939956665,
+      "fixed_validation_loss": 3.313945,
+      "cache_correctness": {
+        "applicable": false
+      }
+    },
+    {
+      "scale": "medium",
+      "mode": "latent",
+      "checkpoint": "runs/scaling_comparison/medium/latent/medium_latent/model.pt",
+      "checkpoint_bytes": 15220315,
+      "checkpoint_sha256": "015e130a19c01571908da1465010cdeac3263db545cb61f849f49d5ce7478980",
+      "strict_state_dict_load": true,
+      "parameter_count": 3799106,
+      "reported_best_val_loss": 2.3307536602020265,
+      "fixed_validation_loss": 3.473732,
+      "cache_correctness": {
+        "applicable": true,
+        "all": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 6635520
+        },
+        "layerwise": {
+          "logits_bit_identical": true,
+          "generated_tokens_identical": true,
+          "max_abs_logit_difference": 0.0,
+          "factor_cache_bytes_after_run": 0
+        }
+      }
+    }
+  ]
+}
