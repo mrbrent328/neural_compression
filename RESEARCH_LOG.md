@@ -446,3 +446,33 @@ The ROCM-test dump is now explicitly part of the reconstruction process. Histori
 **Known danger:** Getting absorbed in measurement machinery and losing the original question.
 
 **Living rule:** Every new experiment should state what assumption it tests, what observation would change our mind, and what part of the persistent structure it is intended to isolate.
+
+## GSA-01 — Generation Sampling Audit (Implemented; Awaiting Run)
+
+**Question:** Are the repetitive/collapsed continuations observed in the latent and low-rank checkpoints primarily a greedy-decoding artifact, or do the underlying next-byte distributions themselves show limited useful diversity?
+
+**Hypothesis under test:** Sampling may reveal plausible continuations that greedy argmax decoding suppresses. If sampling increases diversity without improving validity or continuation quality, that will distinguish distributional uncertainty from useful language behavior rather than count as a model-quality improvement.
+
+**Controls and protocol:**
+- Reuse the existing dense, low-rank, and latent checkpoints without training or modifying them.
+- Reuse the five fixed diagnostic prompts and four held-out prompts from the existing generation audit.
+- Keep prompt bytes and generated-byte budgets matched across models.
+- Compare one greedy baseline with temperature 0.7, 0.9, and 1.0, and top-p 0.90 and 0.95.
+- Use three deterministic seeds per prompt and sampling configuration. Seed derivation is stable and shared across model comparisons.
+- Check the custom greedy decoder against the model's existing generate method before the audit.
+- For the latent model, enable the existing all-factor inference cache only after confirming bit-identical cached and uncached logits.
+- Record byte diversity, repeated trigrams, whitespace/printability, UTF-8 validity, raw and filtered entropy, top-1 probabilities, and cross-seed byte agreement.
+
+**Implementation:**
+- generation_sampling_audit.py
+- test_generation_sampling_audit.py
+- GENERATION_SAMPLING_AUDIT_README.md
+
+**Output paths:** Timestamped JSON and TXT reports under runs/generation_audit/, with the prefix generation_sampling_audit_.
+
+**Status:** IMPLEMENTED AND COMMITTED; awaiting the user's local run. No experimental result has been measured yet.
+
+**What this experiment does not establish:** More varied samples do not necessarily mean more accurate, coherent, or useful language behavior. This remains a small qualitative/diagnostic study on a source-code-heavy corpus, not a general language benchmark or a training/scaling comparison.
+
+**Next action:** Run the focused unit tests, then execute the sampling audit on the local ROCm system and preserve the resulting JSON/TXT artifacts in GitHub. Analyze model and strategy differences before deciding whether decoding, data, or representation is the next bottleneck.
+
