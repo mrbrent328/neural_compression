@@ -447,7 +447,7 @@ The ROCM-test dump is now explicitly part of the reconstruction process. Histori
 
 **Living rule:** Every new experiment should state what assumption it tests, what observation would change our mind, and what part of the persistent structure it is intended to isolate.
 
-## GSA-01 — Generation Sampling Audit (Implemented; Awaiting Run)
+## GSA-01 — Generation Sampling Audit (Run complete; interpretation recorded below)
 
 **Question:** Are the repetitive/collapsed continuations observed in the latent and low-rank checkpoints primarily a greedy-decoding artifact, or do the underlying next-byte distributions themselves show limited useful diversity?
 
@@ -470,11 +470,11 @@ The ROCM-test dump is now explicitly part of the reconstruction process. Histori
 
 **Output paths:** Timestamped JSON and TXT reports under runs/generation_audit/, with the prefix generation_sampling_audit_.
 
-**Status:** IMPLEMENTED AND COMMITTED; awaiting the user's local run. No experimental result has been measured yet.
+**Status:** IMPLEMENTED, RUN, AND INTERPRETED; see completed results section below.
 
 **What this experiment does not establish:** More varied samples do not necessarily mean more accurate, coherent, or useful language behavior. This remains a small qualitative/diagnostic study on a source-code-heavy corpus, not a general language benchmark or a training/scaling comparison.
 
-**Next action:** Run the focused unit tests, then execute the sampling audit on the local ROCm system and preserve the resulting JSON/TXT artifacts in GitHub. Analyze model and strategy differences before deciding whether decoding, data, or representation is the next bottleneck.
+**Next action:** See the completed GSA-01 interpretation and research decision below. Do not repeat the temperature sweep without a new discriminating hypothesis.
 
 
 
