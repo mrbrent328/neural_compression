@@ -1,0 +1,387 @@
+{
+  "experiment": "latent_transformer_v0_generation_audit",
+  "created_at": "2026-11-17T17:25:25",
+  "repository_root": "/home/xetal/Desktop/N_Compress_AI/neural_compression",
+  "device": "cuda",
+  "settings": {
+    "device": "auto",
+    "run_root": "runs/latent_transformer_v0",
+    "dense": null,
+    "lowrank": null,
+    "latent": null,
+    "corpus": "corpus.txt",
+    "heldout_prompts": 4,
+    "new_bytes": 128,
+    "seed": 20261117,
+    "output_dir": "runs/generation_audit"
+  },
+  "prompts": [
+    {
+      "id": "documentation_english",
+      "prompt": "The component is ",
+      "source": "fixed diagnostic prompt"
+    },
+    {
+      "id": "documentation_english_2",
+      "prompt": "A value set may ",
+      "source": "fixed diagnostic prompt"
+    },
+    {
+      "id": "technical_requirement",
+      "prompt": "The system SHALL ",
+      "source": "fixed diagnostic prompt"
+    },
+    {
+      "id": "csharp",
+      "prompt": "public static void Main(string[] args) {\n",
+      "source": "fixed diagnostic prompt"
+    },
+    {
+      "id": "python",
+      "prompt": "def calculate_total(items):\n",
+      "source": "fixed diagnostic prompt"
+    },
+    {
+      "id": "heldout_1",
+      "prompt": "over time.\n\n    At each timestep it receives ONL",
+      "reference_continuation": "Y information that is currently\n    visible from its position/orientation. Hidden geometry is ne",
+      "source": "held-out final 10% of corpus"
+    },
+    {
+      "id": "heldout_2",
+      "prompt": "ss\"] == 2]\n    rel1 = [r[\"relations\"] for r in r",
+      "reference_continuation": "ows if r[\"pass\"] == 1]\n    rel2 = [r[\"relations\"] for r in rows if r[\"pass\"] == 2]\n\n    c1 = [r[",
+      "source": "held-out final 10% of corpus"
+    },
+    {
+      "id": "heldout_3",
+      "prompt": "y = ray / distance\n\n    for i, voxel in enumerat",
+      "reference_continuation": "e(world.voxels):\n        if i == ignore_index:\n            continue\n\n        rel = voxel.pos - o",
+      "source": "held-out final 10% of corpus"
+    },
+    {
+      "id": "heldout_4",
+      "prompt": "7),\n                math.cos(pos[1] * 0.6),\n    ",
+      "reference_continuation": "            math.sin(pos[2] * 0.9),\n                r / 3.0,\n            ])\n\n            feature",
+      "source": "held-out final 10% of corpus"
+    }
+  ],
+  "models": {
+    "dense": {
+      "metadata": {
+        "path": "/home/xetal/Desktop/N_Compress_AI/neural_compression/runs/latent_transformer_v0/dense_s1337/model.pt",
+        "sha256": "82eff18c9868a35aba41ce779dc5ffc2136dac5871d14ca145b714dfd0a33ed3",
+        "checkpoint_bytes": 57447286,
+        "parameters": {
+          "total": 14357376,
+          "constructor": 0,
+          "latents": 0,
+          "mlp": 10616832,
+          "attention": 3538944,
+          "other": 201600
+        },
+        "config": {
+          "vocab_size": 256,
+          "context": 256,
+          "n_layers": 6,
+          "d_model": 384,
+          "n_heads": 6,
+          "d_ff": 1536,
+          "dropout": 0.0,
+          "mode": "dense",
+          "rank": 64,
+          "latent_dim": 32,
+          "constructor_hidden": 128,
+          "constructor_type_dim": 16,
+          "constructor_fourier_bands": 8
+        },
+        "strict_load": true
+      },
+      "generations": [
+        {
+          "prompt_id": "documentation_english",
+          "prompt": "The component is ",
+          "generated_continuation": "and the HL7 OID registry SHALL be used. A value set may or need not be present irrespective of other fields. Note that if a code",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "documentation_english_2",
+          "prompt": "A value set may ",
+          "generated_continuation": "be a [Symbol.iterator](). - Realm() may be reall parameters will ignore garbage\n        // any unused fields. This means that ha",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "technical_requirement",
+          "prompt": "The system SHALL ",
+          "generated_continuation": "NOT reject an interpret as the contributor of the interpretation of the scheme (defined by the third component).\", Sample = @\"\",",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "csharp",
+          "prompt": "public static void Main(string[] args) {\n",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "python",
+          "prompt": "def calculate_total(items):\n",
+          "generated_continuation": "        return items\n\n    def __init__(self, item, item, item_id, item_id, item_id, item_id, item_id, item_id, item):\n        it",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_1",
+          "prompt": "over time.\n\n    At each timestep it receives ONL",
+          "generated_continuation": "Y_INDEATED TO THESORS AND OTHERWISED OTHERWISED OR In CONDITIONS OF ANY KIND, either\n                                           ",
+          "reference_continuation": "Y information that is currently\n    visible from its position/orientation. Hidden geometry is ne",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_2",
+          "prompt": "ss\"] == 2]\n    rel1 = [r[\"relations\"] for r in r",
+          "generated_continuation": "elations[\"label\"] Then self.assign(a) :\n        relabel.astic.astartswith(\"-\")\n        relabel.astics(0, relabel)\n        relabe",
+          "reference_continuation": "ows if r[\"pass\"] == 1]\n    rel2 = [r[\"relations\"] for r in rows if r[\"pass\"] == 2]\n\n    c1 = [r[",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_3",
+          "prompt": "y = ray / distance\n\n    for i, voxel in enumerat",
+          "generated_continuation": "e(state, tokenId) and to reach ellow the precipition about reactly exists).\n\n       if (tok != numel && !tokenId) {\n            ",
+          "reference_continuation": "e(world.voxels):\n        if i == ignore_index:\n            continue\n\n        rel = voxel.pos - o",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_4",
+          "prompt": "7),\n                math.cos(pos[1] * 0.6),\n    ",
+          "generated_continuation": "            referered: true,\n                headers: true,\n                title: 'comment-content'\n            },\n            ",
+          "reference_continuation": "            math.sin(pos[2] * 0.9),\n                r / 3.0,\n            ])\n\n            feature",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        }
+      ]
+    },
+    "lowrank": {
+      "metadata": {
+        "path": "/home/xetal/Desktop/N_Compress_AI/neural_compression/runs/latent_transformer_v0/lowrank_s1337/model.pt",
+        "sha256": "e0aa1db4cc619a48c6971edb8fdaac07ac1188df3b89e7bc2370f2d8a43c26c9",
+        "checkpoint_bytes": 23831580,
+        "parameters": {
+          "total": 5952384,
+          "constructor": 0,
+          "latents": 0,
+          "mlp": 2211840,
+          "attention": 3538944,
+          "other": 201600
+        },
+        "config": {
+          "vocab_size": 256,
+          "context": 256,
+          "n_layers": 6,
+          "d_model": 384,
+          "n_heads": 6,
+          "d_ff": 1536,
+          "dropout": 0.0,
+          "mode": "lowrank",
+          "rank": 64,
+          "latent_dim": 32,
+          "constructor_hidden": 128,
+          "constructor_type_dim": 16,
+          "constructor_fourier_bands": 8
+        },
+        "strict_load": true
+      },
+      "generations": [
+        {
+          "prompt_id": "documentation_english",
+          "prompt": "The component is ",
+          "generated_continuation": "a component and the component is a component and the component is a component and the component is a component and the component",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "documentation_english_2",
+          "prompt": "A value set may ",
+          "generated_continuation": "message message a message message message message message message message message message message message message message messag",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "technical_requirement",
+          "prompt": "The system SHALL ",
+          "generated_continuation": "= 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "csharp",
+          "prompt": "public static void Main(string[] args) {\n",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "python",
+          "prompt": "def calculate_total(items):\n",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_1",
+          "prompt": "over time.\n\n    At each timestep it receives ONL",
+          "generated_continuation": "Extender in in in in a setting and in a component in a component in a component in a component in a component in a component in ",
+          "reference_continuation": "Y information that is currently\n    visible from its position/orientation. Hidden geometry is ne",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_2",
+          "prompt": "ss\"] == 2]\n    rel1 = [r[\"relations\"] for r in r",
+          "generated_continuation": "elase in relase\n                                                                                                                ",
+          "reference_continuation": "ows if r[\"pass\"] == 1]\n    rel2 = [r[\"relations\"] for r in rows if r[\"pass\"] == 2]\n\n    c1 = [r[",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_3",
+          "prompt": "y = ray / distance\n\n    for i, voxel in enumerat",
+          "generated_continuation": "ion = false;\n    for (in in in in in In a a a a a a a a a a a a a a a a a data a a a a a a a con an a a a a a a a con an a a a a",
+          "reference_continuation": "e(world.voxels):\n        if i == ignore_index:\n            continue\n\n        rel = voxel.pos - o",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_4",
+          "prompt": "7),\n                math.cos(pos[1] * 0.6),\n    ",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": "            math.sin(pos[2] * 0.9),\n                r / 3.0,\n            ])\n\n            feature",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        }
+      ]
+    },
+    "latent": {
+      "metadata": {
+        "path": "/home/xetal/Desktop/N_Compress_AI/neural_compression/runs/latent_transformer_v0/latent_s1337/model.pt",
+        "sha256": "592d8492fd4568698884d4a8e13fe1040438e96f6b2ee77ad24fc1a414716682",
+        "checkpoint_bytes": 15257051,
+        "parameters": {
+          "total": 3807618,
+          "constructor": 66480,
+          "latents": 594,
+          "mlp": 0,
+          "attention": 3538944,
+          "other": 201600
+        },
+        "config": {
+          "vocab_size": 256,
+          "context": 256,
+          "n_layers": 6,
+          "d_model": 384,
+          "n_heads": 6,
+          "d_ff": 1536,
+          "dropout": 0.0,
+          "mode": "latent",
+          "rank": 64,
+          "latent_dim": 32,
+          "constructor_hidden": 128,
+          "constructor_type_dim": 16,
+          "constructor_fourier_bands": 8
+        },
+        "strict_load": true
+      },
+      "generations": [
+        {
+          "prompt_id": "documentation_english",
+          "prompt": "The component is ",
+          "generated_continuation": "a sert a sert a sert a sert and the component and and the component and and the component and the component and the component an",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "documentation_english_2",
+          "prompt": "A value set may ",
+          "generated_continuation": "not and the server in the can and the can and the can and the can and the can and the can and the can and the can and the can an",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "technical_requirement",
+          "prompt": "The system SHALL ",
+          "generated_continuation": "= \"System \"\" style for the secreeeeeeeced for the secreeeect an the secreeed for the secreeed secreed secreed secreed secreed se",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "csharp",
+          "prompt": "public static void Main(string[] args) {\n",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "python",
+          "prompt": "def calculate_total(items):\n",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": null,
+          "source": "fixed diagnostic prompt",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_1",
+          "prompt": "over time.\n\n    At each timestep it receives ONL",
+          "generated_continuation": "ICE.\n                                                                                                                           ",
+          "reference_continuation": "Y information that is currently\n    visible from its position/orientation. Hidden geometry is ne",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_2",
+          "prompt": "ss\"] == 2]\n    rel1 = [r[\"relations\"] for r in r",
+          "generated_continuation": "elections sets for the server for the server the serverser for the serverser the serverserser.\n                                 ",
+          "reference_continuation": "ows if r[\"pass\"] == 1]\n    rel2 = [r[\"relations\"] for r in rows if r[\"pass\"] == 2]\n\n    c1 = [r[",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_3",
+          "prompt": "y = ray / distance\n\n    for i, voxel in enumerat",
+          "generated_continuation": "ion = null & null & null & null & null & null & null & null & null & nul & null & nul & nul & nul & nul & nul & nul && nul &nul ",
+          "reference_continuation": "e(world.voxels):\n        if i == ignore_index:\n            continue\n\n        rel = voxel.pos - o",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        },
+        {
+          "prompt_id": "heldout_4",
+          "prompt": "7),\n                math.cos(pos[1] * 0.6),\n    ",
+          "generated_continuation": "                                                                                                                                ",
+          "reference_continuation": "            math.sin(pos[2] * 0.9),\n                r / 3.0,\n            ])\n\n            feature",
+          "source": "held-out final 10% of corpus",
+          "generated_bytes": 128
+        }
+      ]
+    }
+  },
+  "read_only": true
+}

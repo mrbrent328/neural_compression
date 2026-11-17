@@ -1,0 +1,292 @@
+LATENT TRANSFORMER V0 — GENERATION AUDIT
+Created: 2026-11-17T17:25:25
+Device: cuda
+Greedy decoding; same prompt and byte budget for each checkpoint.
+Existing checkpoints are loaded read-only.
+
+
+========================================================================================
+MODEL: DENSE
+Parameters: 14,357,376
+Checkpoint: 57,447,286 bytes
+SHA-256: 82eff18c9868a35aba41ce779dc5ffc2136dac5871d14ca145b714dfd0a33ed3
+
+--- documentation_english ---
+PROMPT:
+The component is 
+GENERATED:
+and the HL7 OID registry SHALL be used. A value set may or need not be present irrespective of other fields. Note that if a code
+
+--- documentation_english_2 ---
+PROMPT:
+A value set may 
+GENERATED:
+be a [Symbol.iterator](). - Realm() may be reall parameters will ignore garbage
+        // any unused fields. This means that ha
+
+--- technical_requirement ---
+PROMPT:
+The system SHALL 
+GENERATED:
+NOT reject an interpret as the contributor of the interpretation of the scheme (defined by the third component).", Sample = @"",
+
+--- csharp ---
+PROMPT:
+public static void Main(string[] args) {
+
+GENERATED:
+                                                                                                                                
+
+--- python ---
+PROMPT:
+def calculate_total(items):
+
+GENERATED:
+        return items
+
+    def __init__(self, item, item, item_id, item_id, item_id, item_id, item_id, item_id, item):
+        it
+
+--- heldout_1 ---
+PROMPT:
+over time.
+
+    At each timestep it receives ONL
+GENERATED:
+Y_INDEATED TO THESORS AND OTHERWISED OTHERWISED OR In CONDITIONS OF ANY KIND, either
+                                           
+REFERENCE (held-out actual text; not shown to model):
+Y information that is currently
+    visible from its position/orientation. Hidden geometry is ne
+
+--- heldout_2 ---
+PROMPT:
+ss"] == 2]
+    rel1 = [r["relations"] for r in r
+GENERATED:
+elations["label"] Then self.assign(a) :
+        relabel.astic.astartswith("-")
+        relabel.astics(0, relabel)
+        relabe
+REFERENCE (held-out actual text; not shown to model):
+ows if r["pass"] == 1]
+    rel2 = [r["relations"] for r in rows if r["pass"] == 2]
+
+    c1 = [r[
+
+--- heldout_3 ---
+PROMPT:
+y = ray / distance
+
+    for i, voxel in enumerat
+GENERATED:
+e(state, tokenId) and to reach ellow the precipition about reactly exists).
+
+       if (tok != numel && !tokenId) {
+            
+REFERENCE (held-out actual text; not shown to model):
+e(world.voxels):
+        if i == ignore_index:
+            continue
+
+        rel = voxel.pos - o
+
+--- heldout_4 ---
+PROMPT:
+7),
+                math.cos(pos[1] * 0.6),
+    
+GENERATED:
+            referered: true,
+                headers: true,
+                title: 'comment-content'
+            },
+            
+REFERENCE (held-out actual text; not shown to model):
+            math.sin(pos[2] * 0.9),
+                r / 3.0,
+            ])
+
+            feature
+
+========================================================================================
+MODEL: LOWRANK
+Parameters: 5,952,384
+Checkpoint: 23,831,580 bytes
+SHA-256: e0aa1db4cc619a48c6971edb8fdaac07ac1188df3b89e7bc2370f2d8a43c26c9
+
+--- documentation_english ---
+PROMPT:
+The component is 
+GENERATED:
+a component and the component is a component and the component is a component and the component is a component and the component
+
+--- documentation_english_2 ---
+PROMPT:
+A value set may 
+GENERATED:
+message message a message message message message message message message message message message message message message messag
+
+--- technical_requirement ---
+PROMPT:
+The system SHALL 
+GENERATED:
+= 0x0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+--- csharp ---
+PROMPT:
+public static void Main(string[] args) {
+
+GENERATED:
+                                                                                                                                
+
+--- python ---
+PROMPT:
+def calculate_total(items):
+
+GENERATED:
+                                                                                                                                
+
+--- heldout_1 ---
+PROMPT:
+over time.
+
+    At each timestep it receives ONL
+GENERATED:
+Extender in in in in a setting and in a component in a component in a component in a component in a component in a component in 
+REFERENCE (held-out actual text; not shown to model):
+Y information that is currently
+    visible from its position/orientation. Hidden geometry is ne
+
+--- heldout_2 ---
+PROMPT:
+ss"] == 2]
+    rel1 = [r["relations"] for r in r
+GENERATED:
+elase in relase
+                                                                                                                
+REFERENCE (held-out actual text; not shown to model):
+ows if r["pass"] == 1]
+    rel2 = [r["relations"] for r in rows if r["pass"] == 2]
+
+    c1 = [r[
+
+--- heldout_3 ---
+PROMPT:
+y = ray / distance
+
+    for i, voxel in enumerat
+GENERATED:
+ion = false;
+    for (in in in in in In a a a a a a a a a a a a a a a a a data a a a a a a a con an a a a a a a a con an a a a a
+REFERENCE (held-out actual text; not shown to model):
+e(world.voxels):
+        if i == ignore_index:
+            continue
+
+        rel = voxel.pos - o
+
+--- heldout_4 ---
+PROMPT:
+7),
+                math.cos(pos[1] * 0.6),
+    
+GENERATED:
+                                                                                                                                
+REFERENCE (held-out actual text; not shown to model):
+            math.sin(pos[2] * 0.9),
+                r / 3.0,
+            ])
+
+            feature
+
+========================================================================================
+MODEL: LATENT
+Parameters: 3,807,618
+Checkpoint: 15,257,051 bytes
+SHA-256: 592d8492fd4568698884d4a8e13fe1040438e96f6b2ee77ad24fc1a414716682
+
+--- documentation_english ---
+PROMPT:
+The component is 
+GENERATED:
+a sert a sert a sert a sert and the component and and the component and and the component and the component and the component an
+
+--- documentation_english_2 ---
+PROMPT:
+A value set may 
+GENERATED:
+not and the server in the can and the can and the can and the can and the can and the can and the can and the can and the can an
+
+--- technical_requirement ---
+PROMPT:
+The system SHALL 
+GENERATED:
+= "System "" style for the secreeeeeeeced for the secreeeect an the secreeed for the secreeed secreed secreed secreed secreed se
+
+--- csharp ---
+PROMPT:
+public static void Main(string[] args) {
+
+GENERATED:
+                                                                                                                                
+
+--- python ---
+PROMPT:
+def calculate_total(items):
+
+GENERATED:
+                                                                                                                                
+
+--- heldout_1 ---
+PROMPT:
+over time.
+
+    At each timestep it receives ONL
+GENERATED:
+ICE.
+                                                                                                                           
+REFERENCE (held-out actual text; not shown to model):
+Y information that is currently
+    visible from its position/orientation. Hidden geometry is ne
+
+--- heldout_2 ---
+PROMPT:
+ss"] == 2]
+    rel1 = [r["relations"] for r in r
+GENERATED:
+elections sets for the server for the server the serverser for the serverser the serverserser.
+                                 
+REFERENCE (held-out actual text; not shown to model):
+ows if r["pass"] == 1]
+    rel2 = [r["relations"] for r in rows if r["pass"] == 2]
+
+    c1 = [r[
+
+--- heldout_3 ---
+PROMPT:
+y = ray / distance
+
+    for i, voxel in enumerat
+GENERATED:
+ion = null & null & null & null & null & null & null & null & null & nul & null & nul & nul & nul & nul & nul & nul && nul &nul 
+REFERENCE (held-out actual text; not shown to model):
+e(world.voxels):
+        if i == ignore_index:
+            continue
+
+        rel = voxel.pos - o
+
+--- heldout_4 ---
+PROMPT:
+7),
+                math.cos(pos[1] * 0.6),
+    
+GENERATED:
+                                                                                                                                
+REFERENCE (held-out actual text; not shown to model):
+            math.sin(pos[2] * 0.9),
+                r / 3.0,
+            ])
+
+            feature
