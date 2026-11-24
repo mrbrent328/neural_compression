@@ -12,7 +12,7 @@ A fresh codec is trained for every cell in a 5 × 4 × 3 design:
 
 - Training-domain counts: **2, 4, 8, 16, 32**.
 - Payload dimensions: **8, 16, 24, 32**.
-- Seeds: **45, 46, 47**.
+- Seeds: **45, 46, 47**, each with an independently seeded family of projection domains.
 - Total: **60 runs**.
 
 The total training-record budget is fixed at 8,192 in every cell and divided evenly across the selected training domains. This isolates domain count from total training-example count. Each domain is an independently seeded random projection from 8-dimensional factors into 32-dimensional values.
