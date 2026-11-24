@@ -254,11 +254,12 @@ def train_with_structural_report(args):
         "atom_topk": args.atom_topk,
         "atom_temperature": args.atom_temperature,
     }
-    original_train(args)
     run_name = args.run_name or (
         f"structural_L{args.layers}_D{args.d_model}_R{args.rank}_"
         f"Z{args.latent_dim}_A{args.atom_count}_K{args.atom_topk}_seed{args.seed}"
     )
+    args.run_name = run_name
+    original_train(args)
     report_path = args.output_dir / run_name / "report.json"
     report = json.loads(report_path.read_text())
     report["experiment"] = "latent_transformer_v1_structural_atoms"
