@@ -126,3 +126,16 @@ python E43_multiseed_replication.py
 The runner launches a fresh process for each seed, saves every raw result under `runs/E43/multiseed/`, and writes an aggregate summary to `runs/E43/e43_multiseed_summary.json`. It reports means, sample standard deviations, medians, ranges, and paired per-seed differences against the controls. It does not change the Phase 1 model, task, split, optimizer, or channel.
 
 Do not treat this replication as a pretrained-LM experiment or a compression comparison. Its purpose is to determine whether the initial functional result is robust across random seeds.
+
+
+## Completed ten-seed replication
+
+The ten-seed replication (seeds 43–52, 60 epochs each) produced mean learned-channel accuracy of **68.9453%** (sample SD 4.2443 percentage points; range 62.8906–77.3438%). The learned channel beat shuffled, random, zero, and no-message controls in all 10 runs.
+
+**Important:** all ten runs reused the same fact-to-class mapping and held-out identities. This is replication across model initialization/training randomness, not across independent dataset assignments. No pretrained LMs or compression advantage were demonstrated.
+
+The original uploaded aggregate and seed-43 JSON artifacts are preserved in `E43/results/`; the human-readable summary is `E43/results/E43_RESULTS.md`.
+
+## Next experiment: E44
+
+E44 is a separate experiment under `E44/`. It independently randomizes balanced fact-to-class assignments and crosses dataset seeds with model seeds, directly testing whether E43's fixed `fact_id % 64` structure explains the result. See [E44/README.md](E44/README.md).
