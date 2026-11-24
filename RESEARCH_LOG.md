@@ -198,7 +198,6 @@ This creates a third distinction alongside raw storage and predictive modeling:
 Discover Law Two/Three primarily test the third category in a restricted mathematical hypothesis space. They do **not** establish arbitrary law discovery from an unrestricted space, and they do not establish that a neural network is necessary.
 
 This branch should remain central rather than being treated as a side experiment that was “to revisit later.” It is a historical bridge between compression, prediction, and explanatory structure.
-
 ## Representation Similarity versus Reconstructive Sufficiency
 
 A major conceptual refinement emerged during archaeology and discussion of earlier results:
@@ -398,7 +397,6 @@ In the research context this becomes a scientific question: what reusable mechan
 Implementation language is secondary. Python, C#, C++, or another language is an implementation detail, not the conceptual architecture.
 
 More strongly, **the discovery mechanism itself should not be assumed in advance**. Symbolic regression, neural networks, graphs, programs, dynamical systems, or hybrids are candidate mechanisms for searching or representing structure. The research question is the structure that survives, not the technology used to find it.
-
 ## Research Hygiene
 
 Do not silently turn a metaphor into a technical definition. Reconstruct the operation or relationship being described before correcting vocabulary.
@@ -578,3 +576,48 @@ Reproduction:
 ```bash
 python E43_multiseed_replication.py
 ```
+
+
+## E43 — Ten-Seed Phase 1 Replication (Results recorded 2026-11-24)
+
+**Status:** Completed descriptive replication; Phase 1 synthetic protocol effect reproduced across ten model/training seeds.
+
+**Run artifact:** Uploaded aggregate summary and seed-43 run are archived under `E43/results/`. A human-readable summary is in `E43/results/E43_RESULTS.md`.
+
+**Protocol:** Seeds 43–52, 60 epochs each, fresh process per seed, unchanged E43 Phase 1 v2 task, architecture, optimizer, split, and channel. Each run evaluated 512 held-out fact identities.
+
+**Aggregate learned-channel accuracy:** mean **68.9453%**, sample SD **4.2443 percentage points**, median **68.0664%**, range **62.8906–77.3438%**. The learned channel was higher than shuffled, random, zero, and no-message controls in **10/10** seeds. Mean paired advantages were +67.4023 pp over shuffled, +67.5391 pp over random, and +67.3828 pp over both zero and no-message.
+
+**Critical qualification:** All ten runs reused the same underlying fact-to-class mapping and the same held-out identities. The experiment demonstrates robustness across model initialization/training randomness on one fixed synthetic world; it is not ten independent datasets. No significance claim is made.
+
+**Interpretation:** The evidence supports task-specific information transfer through the explicit 20-byte quantized packet in this synthetic setting. It does not establish pretrained-LM communication, general semantic communication, or a compression advantage. Full adapter/base costs and matched text baselines remain unresolved.
+
+**Next decision:** E44 changes the data-generating condition rather than merely adding more model seeds. It independently randomizes balanced fact-to-class assignments and crosses dataset seeds with model seeds. This directly tests whether E43's result depends on the fixed `fact_id % 64` mapping.
+
+## E44 — Randomized-World Latent Communication Robustness
+
+**Status:** IMPLEMENTED; experiment not yet run.
+
+**Question:** Does the E43 learned-channel effect survive when the fixed modulo relationship between fact identity and value class is removed?
+
+**Intervention:** For each dataset seed, independently randomize a balanced mapping while preserving the same 2,048 facts, 64 classes, disjoint identity split, and exact class counts (24 training facts and 8 held-out facts per class). Cross five dataset seeds with five model seeds (25 independent fresh-process runs by default).
+
+**Preserved from E43:** Frozen synthetic sender/receiver bases, trainable sender/receiver adapters, 16-value int8 latent packet plus one float32 per-example scale (20 bytes before framing), STE quantization path, quantized/dequantized evaluation, shuffled/random/zero/no-message controls, majority baseline, and explicit parameter/checkpoint/packet/timing accounting.
+
+**Files:** `E44/E44_randomized_world.py`, `E44/E44_factorial_replication.py`, and `E44/README.md`.
+
+**Reproduction from repository root:**
+
+```bash
+python E44/E44_factorial_replication.py
+```
+
+Optional smoke run:
+
+```bash
+python E44/E44_factorial_replication.py --dataset-seeds 101 102 --model-seeds 43 44 --epochs 10
+```
+
+**Decision gate:** Consistent learned-channel superiority across dataset and model seeds would weaken the explanation that E43 depends on its modulo-based mapping and justify a harder query-conditioned task. Strong dataset sensitivity or collapse toward controls would be informative and should be understood before moving to pretrained models.
+
+**Limitations:** E44 remains a synthetic 64-class protocol with synthetic frozen networks. It does not test unseen classes, pretrained LMs, general semantic communication, or compression advantage. The factorial cells are controlled synthetic conditions, not independent natural datasets. Descriptive summaries are not significance tests.
