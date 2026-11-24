@@ -693,3 +693,26 @@ The learned channel beat shuffled, random, zero, and no-message controls in **25
 **Interpretation:** The three-seed replication supports the narrower claim that this learned address/payload memory can preserve and retrieve arbitrary synthetic key/value associations after a genuine writer-process exit, and that its complete serialized storage cost becomes lower than the raw float32 baseline as record count grows. It does not establish natural-language memory, pretrained-LM integration, cross-model portability, superiority to text or vector databases, continual-learning stability, or general compression advantage. Values have low-dimensional structure, the codec is trained for each run, and only three seeds and four record counts were tested.
 
 **Next decision:** Test one shared, frozen codec across multiple independently generated memory stores, charging the codec checkpoint only once. This separates the cost of learning the memory language from the cost of storing each memory. Then test continual writes, conflicting observations, deletion, interference, and forgetting. Do not integrate a pretrained LM until reusable-codec behavior is understood.
+
+
+## E45 — Persistent Latent Memory, Phase 3A: Shared Frozen Codec (2026-11-24)
+
+**Status:** Implemented and committed; execution pending.
+
+**Question:** Can one trained, frozen codec write and read multiple independent persistent memory stores without retraining, while sharing the fixed codec cost across those stores?
+
+**Design:** Train one codec on a dedicated association episode, save its weights once, and freeze it. Then generate multiple stores with new random keys, new random values, and independently randomized key/value pairings. The same codec writes all stores without store-specific updates. Training and test stores share a declared low-dimensional value domain: a fixed projection from random 8-dimensional factors into 32-dimensional values. Factors, keys, and associations are independently generated. Thus the test is unseen-key/unseen-association generalization within one value domain, not arbitrary cross-domain generalization.
+
+**Isolation test:** The evaluator pools records from every store and queries the pooled memory. It reports both top-1 record accuracy and top-1 store accuracy, plus per-store reconstruction. This tests whether a query retrieves its own association rather than a record belonging to another store.
+
+**Persistence:** The default runner launches a dedicated writer process, waits for it to exit, and starts a separate evaluator process that reloads the shared codec and all memory stores.
+
+**Storage accounting:** Compare raw key/value storage with one shared codec checkpoint plus all memory files and metadata. Also report a duplicated-codec accounting baseline that charges the same checkpoint once per store. The latter isolates the arithmetic benefit of sharing; it is not a separate trained-model quality comparison.
+
+**Files:** `E45/e45_latent_memory_phase3.py` and `E45/README_PHASE3.md`.
+
+**Default protocol:** One codec trained on 8,192 associations; 8 independent stores × 1,024 associations; 32-dimensional keys and values; 8-dimensional address and payload codes; 120 epochs. Run with `python E45/e45_latent_memory_phase3.py`; smoke test with `python E45/e45_latent_memory_phase3.py --device cpu --smoke`.
+
+**Decision gates:** High pooled record accuracy, high pooled store accuracy, strong reconstruction across stores, no codec updates after training, and complete storage accounting. If pooled retrieval fails while single-store retrieval is strong, investigate address collisions/cross-store interference. If reconstruction fails on new stores, investigate value-domain generalization.
+
+**Limitations:** Synthetic vectors only; no natural language or pretrained model. Train and test stores share one declared low-dimensional value domain. Cross-domain generalization, continual updates, deletion, conflict resolution, forgetting, and conventional vector-database comparisons remain untested.
