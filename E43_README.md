@@ -111,3 +111,18 @@ A smaller vector is not a compression win unless its full channel and adapter/sy
 ## Decision criteria
 
 Proceed to Phase 2 only if latent channel accuracy is materially above zero, shuffled, random, and no-message controls on held-out facts and the receiver demonstrably depends on the message. Do not require latent to beat text in Phase 1; Phase 1 only validates harness mechanics. Phase 2 is the first experiment that can address the core pretrained-model hypothesis.
+
+
+## Multi-seed replication
+
+The first v2 run (seed 43) produced 67.38% held-out accuracy for the learned quantized channel, versus 0.98–1.56% for random, shuffled, zero, and no-message controls. This is a single-seed synthetic result, not yet a replicated finding.
+
+Run the unchanged Phase 1 harness across ten independent seeds:
+
+```bash
+python E43_multiseed_replication.py
+```
+
+The runner launches a fresh process for each seed, saves every raw result under `runs/E43/multiseed/`, and writes an aggregate summary to `runs/E43/e43_multiseed_summary.json`. It reports means, sample standard deviations, medians, ranges, and paired per-seed differences against the controls. It does not change the Phase 1 model, task, split, optimizer, or channel.
+
+Do not treat this replication as a pretrained-LM experiment or a compression comparison. Its purpose is to determine whether the initial functional result is robust across random seeds.
