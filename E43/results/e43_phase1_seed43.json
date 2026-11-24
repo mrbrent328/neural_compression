@@ -1,0 +1,44 @@
+{
+  "experiment": "E43_phase1_synthetic_protocol_smoke_test_v2",
+  "seed": 43,
+  "device": "CPU",
+  "status": "synthetic protocol test only; not pretrained LMs or compression evidence",
+  "dataset": {
+    "facts": 2048,
+    "value_classes": 64,
+    "train_facts": 1536,
+    "heldout_facts": 512,
+    "split": "disjoint fact identities; 24 train and 8 held-out facts per value class"
+  },
+  "results": {
+    "learned_quantized_latent": {
+      "accuracy": 0.673828125,
+      "correct": 345,
+      "examples": 512
+    },
+    "shuffled_quantized_latent": {
+      "accuracy": 0.015625
+    },
+    "random_quantized_latent": {
+      "accuracy": 0.009765625
+    },
+    "zero_quantized_latent": {
+      "accuracy": 0.015625
+    },
+    "no_message": {
+      "accuracy": 0.015625
+    },
+    "test_majority_class": {
+      "accuracy": 0.015625
+    }
+  },
+  "accounting": {
+    "latent_packet_bytes_per_message": 20,
+    "latent_packet_bits_per_message": 160,
+    "trainable_adapter_parameters": 10448,
+    "frozen_base_parameters": 151744,
+    "total_parameters": 162192,
+    "adapter_checkpoint_bytes_fp32": 41792,
+    "frozen_base_checkpoint_bytes_fp32": 606976
+  }
+}
