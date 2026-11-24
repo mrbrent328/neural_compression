@@ -538,3 +538,43 @@ At temperature 1.0, mean unique-byte fraction was 0.271 dense, 0.261 low-rank, a
 
 **What this does not establish:** No pretrained language models have been tested. No compression advantage, general communication protocol, or cross-architecture semantic alignment has been demonstrated.
 
+
+
+## E43 Phase 1 — First Positive Synthetic Communication Run
+
+**Status: preliminary positive result; single seed only.**
+
+The corrected Phase 1 v2 harness was run locally with seed 43 and 60 epochs. The sender and receiver adapters communicated through the declared 16-value int8 packet plus one float32 scale (20 bytes per example before transport framing). Train and held-out fact identities were disjoint; all 64 value classes were balanced across the split.
+
+### Observation
+
+Held-out accuracy on 512 unseen fact identities:
+
+| Condition | Accuracy |
+|---|---:|
+| Learned quantized latent | **67.3828%** |
+| Shuffled quantized latent | 1.5625% |
+| Random quantized latent | 0.9766% |
+| Zero quantized latent | 1.5625% |
+| No message | 1.5625% |
+| Test majority class | 1.5625% |
+
+The learned channel answered 345 of 512 held-out examples correctly. The shuffled, zero, and no-message conditions were at the 64-class chance level; random latent was below it. Both adapters had nonzero first-step gradient norms and nonzero parameter deltas after training.
+
+### Interpretation
+
+This is the first positive functional result for E43 Phase 1: in this synthetic task, the trained receiver's performance depends on receiving the corresponding learned quantized message. The result is consistent with task-specific information being learned and transmitted through the explicit channel.
+
+It is **one seed**, not a replicated finding. The task's 64 value classes occur in both train and test; the held-out split tests new fact identities, not novel semantic classes. The frozen bases are small synthetic networks, not pretrained language models.
+
+The 20-byte latent packet has not been shown to beat text on wire size or total system cost. The text/gzip result is a symbolic oracle serialization diagnostic, not a matched neural sender/receiver baseline. No compression advantage is established.
+
+### Next decision
+
+Run the unchanged Phase 1 v2 experiment across at least ten independent seeds (default seeds 43–52), preserve each raw result, and report means, sample standard deviations, medians, ranges, and paired per-seed differences against shuffled, random, zero, and no-message controls. Treat this as a robustness/replication check, not a new architecture or a pretrained-model test.
+
+Reproduction:
+
+```bash
+python E43_multiseed_replication.py
+```
