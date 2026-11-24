@@ -138,12 +138,16 @@ def main():
     p.add_argument("--diffusion-steps", type=int, default=500)
     p.add_argument("--sample-steps", type=int, default=50)
     p.add_argument("--sample-count", type=int, default=64)
+    p.add_argument("--sample-every", type=int, default=10, help="Generate a fixed-noise sample grid every N epochs")
+    p.add_argument("--checkpoint-every", type=int, default=5, help="Save a model checkpoint every N epochs")
     p.add_argument("--grid-scale", type=int, default=8,
                    help="Nearest-neighbor display enlargement for saved sample grids; does not change model resolution")
     p.add_argument("--seed", type=int, default=20261124)
     p.add_argument("--data-seed", type=int, default=12345)
     p.add_argument("--reencode", action="store_true")
     args = p.parse_args()
+    if args.sample_every < 1 or args.checkpoint_every < 1:
+        p.error("--sample-every and --checkpoint-every must be >= 1")
     seed_all(args.seed); args.out.mkdir(parents=True, exist_ok=True)
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print(f"R5 latent diffusion | device={device} | torch={torch.__version__} | ROCm={getattr(torch.version,'hip',None)}", flush=True)
@@ -237,7 +241,7 @@ def main():
             torch.nn.utils.clip_grad_norm_(model.parameters(),1.0); opt.step()
             total += loss.detach().item()*b; seen += b
         avg=total/max(seen,1); history.append(avg)
-        if epoch==1 or epoch%5==0 or epoch==args.epochs:
+        if epoch==1 or epoch%args.checkpoint_every==0 or epoch==args.epochs:
             elapsed=time.time()-start
             print(f"epoch {epoch}/{args.epochs} | noise MSE={avg:.6f} | {elapsed/60:.1f} min",flush=True)
             checkpoint = {"denoiser_state_dict":model.state_dict(),"latent_mean":mean.cpu(),
@@ -247,7 +251,7 @@ def main():
             torch.save(checkpoint, args.out/"r5_latent_diffusion.pt")
             torch.save(checkpoint, checkpoint_dir/f"r5_epoch_{epoch:03d}.pt")
             print(f" saved checkpoint: {checkpoint_dir/f'r5_epoch_{epoch:03d}.pt'}", flush=True)
-        if epoch%10==0 or epoch==args.epochs:
+        if epoch%args.sample_every==0 or epoch==args.epochs:
             # Fixed seed: every checkpoint receives identical initial Gaussian noise.
             imgs=sample(model,decoder,mean,std,device,args.sample_count,args.sample_steps,
                         args.diffusion_steps,args.seed)
