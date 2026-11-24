@@ -89,3 +89,14 @@ If retrieval remains high but unseen reconstruction falls, the address system is
 ## Interpretation boundary
 
 Unseen domains are new random projections drawn from the same synthetic generator family. This is a controlled distribution-shift test, not arbitrary real-world domain generalization. It does not establish natural-language memory, pretrained-LM integration, continual learning, conflict resolution, deletion, or superiority to vector databases. The codec has only been trained and tested within this specified synthetic family.
+
+
+## Phase 3B result (seed 45)
+
+The default run completed with a separate writer and evaluator process. Pooled top-1 record accuracy and store accuracy were both 100% across 16,384 queries and 16,384 pooled records. Seen-domain mean cosine reconstruction was 0.734798; unseen-domain mean cosine was 0.450154, a gap of -0.284644. All seen and unseen stores retained 100% record/store retrieval. Per-store reconstruction cosine ranged from 0.7008 to 0.7703 for seen stores and 0.3519 to 0.4956 for unseen stores.
+
+The full shared system used 642,850 bytes versus 4,194,304 raw key/value bytes (6.525× raw-to-latent ratio; 39.24 bytes/record). This is a strong storage result but must be interpreted alongside the unseen-domain reconstruction degradation.
+
+**Interpretation:** Address retrieval generalizes across the tested held-out projections, but value reconstruction is domain-sensitive. This is one seed and one payload dimension; it does not isolate whether the gap is caused by training-domain coverage, payload bottleneck, or model capacity.
+
+**Next:** Run a multi-seed train-domain-count × payload-dimension ablation and include a matched 32-dimensional payload baseline before deciding how to change the codec.
