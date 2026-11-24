@@ -2,6 +2,8 @@
   "experiment": "E43_phase1_multiseed_replication",
   "status": "synthetic protocol replication only; not a pretrained-LM test and not evidence of a compression advantage",
   "protocol": {
+    "single_seed_script": "/home/xetal/Desktop/rocm-test/neural_compression/E43_latent_communication.py",
+    "epochs_per_seed": 60,
     "seeds": [
       43,
       44,
@@ -14,12 +16,9 @@
       51,
       52
     ],
-    "epochs_per_seed": 60,
     "independent_process_per_seed": true,
     "task_architecture_optimizer_split_and_channel": "unchanged from E43_latent_communication.py",
-    "heldout_examples_per_seed": 512,
-    "chance_accuracy_for_64_balanced_classes": 0.015625,
-    "dataset_qualification": "The same underlying fact-to-class mapping and 512 held-out fact identities were reused across all ten seeds. This is robustness across model initialization/training randomness, not replication across independently generated datasets."
+    "chance_accuracy_for_64_balanced_classes": 0.015625
   },
   "aggregate_accuracy": {
     "learned_quantized_latent": {
@@ -49,7 +48,7 @@
     "zero_quantized_latent": {
       "n": 10,
       "mean": 0.015625,
-      "sample_stddev": 0,
+      "sample_stddev": 0.0,
       "median": 0.015625,
       "min": 0.015625,
       "max": 0.015625
@@ -57,79 +56,559 @@
     "no_message": {
       "n": 10,
       "mean": 0.015625,
-      "sample_stddev": 0,
+      "sample_stddev": 0.0,
       "median": 0.015625,
       "min": 0.015625,
       "max": 0.015625
     }
   },
   "paired_accuracy_differences": {
-    "learned_minus_shuffled": {
+    "learned_minus_shuffled_quantized_latent": {
+      "n": 10,
       "mean": 0.6740234375,
+      "sample_stddev": 0.04116982834755976,
+      "median": 0.6640625,
+      "min": 0.61328125,
+      "max": 0.7578125,
       "seeds_learned_higher": 10,
       "seeds_tied": 0,
       "seeds_learned_lower": 0
     },
-    "learned_minus_random": {
+    "learned_minus_random_quantized_latent": {
+      "n": 10,
       "mean": 0.675390625,
+      "sample_stddev": 0.04262011340717289,
+      "median": 0.6669921875,
+      "min": 0.619140625,
+      "max": 0.759765625,
       "seeds_learned_higher": 10,
       "seeds_tied": 0,
       "seeds_learned_lower": 0
     },
-    "learned_minus_zero": {
+    "learned_minus_zero_quantized_latent": {
+      "n": 10,
       "mean": 0.673828125,
+      "sample_stddev": 0.042442723992204744,
+      "median": 0.6650390625,
+      "min": 0.61328125,
+      "max": 0.7578125,
       "seeds_learned_higher": 10,
       "seeds_tied": 0,
       "seeds_learned_lower": 0
     },
     "learned_minus_no_message": {
+      "n": 10,
       "mean": 0.673828125,
+      "sample_stddev": 0.042442723992204744,
+      "median": 0.6650390625,
+      "min": 0.61328125,
+      "max": 0.7578125,
       "seeds_learned_higher": 10,
       "seeds_tied": 0,
       "seeds_learned_lower": 0
     }
   },
-  "per_seed_learned_accuracy": [
+  "runs": [
     {
       "seed": 43,
-      "accuracy": 0.673828125
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_43.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.673828125,
+          "seconds": 0.0011687789810821414,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.000956628005951643,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.00098727602744475,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009866139735095203,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00031639798544347286,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.005484491121023893,
+        "receiver_adapter_first_step_grad_l2": 0.042533766478300095,
+        "sender_adapter_parameter_delta_l2": 19.720966339111328,
+        "receiver_adapter_parameter_delta_l2": 14.648917198181152
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5023807210382074,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 44,
-      "accuracy": 0.7734375
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_44.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.7734375,
+          "seconds": 0.0010636299848556519,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009485830087214708,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0008007430005818605,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007253210060298443,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00020579894771799445,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.008272304199635983,
+        "receiver_adapter_first_step_grad_l2": 0.04203023388981819,
+        "sender_adapter_parameter_delta_l2": 20.55631446838379,
+        "receiver_adapter_parameter_delta_l2": 14.78807258605957
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.49240309197921306,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 45,
-      "accuracy": 0.6640625
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_45.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.6640625,
+          "seconds": 0.0014369559939950705,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0011332620051689446,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0010140269878320396,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008927169837988913,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00025377003476023674,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.00604221411049366,
+        "receiver_adapter_first_step_grad_l2": 0.03484844043850899,
+        "sender_adapter_parameter_delta_l2": 19.87494468688965,
+        "receiver_adapter_parameter_delta_l2": 14.123255729675293
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.4952259869896807,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 46,
-      "accuracy": 0.720703125
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_46.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.720703125,
+          "seconds": 0.0011250470415689051,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0009435429819859564,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0008254900458268821,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.000742893957067281,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002106390311382711,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.008871836587786674,
+        "receiver_adapter_first_step_grad_l2": 0.04104211553931236,
+        "sender_adapter_parameter_delta_l2": 20.08646583557129,
+        "receiver_adapter_parameter_delta_l2": 14.563971519470215
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5033922630245797,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 47,
-      "accuracy": 0.6875
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_47.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.6875,
+          "seconds": 0.0011883759871125221,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0009552050032652915,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.00075295299757272,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007153519545681775,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00020868401043117046,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.007373495027422905,
+        "receiver_adapter_first_step_grad_l2": 0.041273683309555054,
+        "sender_adapter_parameter_delta_l2": 19.95501708984375,
+        "receiver_adapter_parameter_delta_l2": 14.305764198303223
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5235423680278473,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 48,
-      "accuracy": 0.701171875
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_48.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.701171875,
+          "seconds": 0.001164190995041281,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0009000410209409893,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.000873490993399173,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007091300212778151,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00021571700926870108,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.0075214821845293045,
+        "receiver_adapter_first_step_grad_l2": 0.041506025940179825,
+        "sender_adapter_parameter_delta_l2": 19.266582489013672,
+        "receiver_adapter_parameter_delta_l2": 14.70195198059082
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5370065470342524,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 49,
-      "accuracy": 0.62890625
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_49.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.62890625,
+          "seconds": 0.0010692710056900978,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009107509977184236,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.0008252200204879045,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007415520376525819,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00019469799008220434,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.00681328633800149,
+        "receiver_adapter_first_step_grad_l2": 0.04128216952085495,
+        "sender_adapter_parameter_delta_l2": 19.823917388916016,
+        "receiver_adapter_parameter_delta_l2": 14.529753684997559
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5035570350009948,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 50,
-      "accuracy": 0.65625
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_50.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.65625,
+          "seconds": 0.0011698910384438932,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0010861129849217832,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.0008829380385577679,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007696649990975857,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002474180073477328,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.0073897880502045155,
+        "receiver_adapter_first_step_grad_l2": 0.04584355279803276,
+        "sender_adapter_parameter_delta_l2": 19.74596405029297,
+        "receiver_adapter_parameter_delta_l2": 14.12071704864502
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5797814740217291,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 51,
-      "accuracy": 0.728515625
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_51.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.728515625,
+          "seconds": 0.0012199560296721756,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.025390625,
+          "seconds": 0.0011276419973000884,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0009227240225300193,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008333550067618489,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002529079793021083,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.008037966676056385,
+        "receiver_adapter_first_step_grad_l2": 0.04464235156774521,
+        "sender_adapter_parameter_delta_l2": 20.83209228515625,
+        "receiver_adapter_parameter_delta_l2": 14.358365058898926
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5847527209552936,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     },
     {
       "seed": 52,
-      "accuracy": 0.66015625
+      "raw_result": "runs/E43/multiseed/e43_phase1_seed_52.json",
+      "device": "cpu",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.66015625,
+          "seconds": 0.0010710149654187262,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.005859375,
+          "seconds": 0.0009880369761958718,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0008346579852513969,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007421729969792068,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00022864202037453651,
+          "examples": 512
+        }
+      },
+      "learning_diagnostics": {
+        "sender_adapter_first_step_grad_l2": 0.008265143260359764,
+        "receiver_adapter_first_step_grad_l2": 0.04540838673710823,
+        "sender_adapter_parameter_delta_l2": 19.47376823425293,
+        "receiver_adapter_parameter_delta_l2": 13.822786331176758
+      },
+      "accounting": {
+        "latent_packet_bytes_per_message": 20,
+        "latent_packet_bits_per_message": 160,
+        "trainable_adapter_parameters": 10448,
+        "frozen_base_parameters": 151744,
+        "total_parameters": 162192,
+        "adapter_checkpoint_bytes_fp32": 41792,
+        "frozen_base_checkpoint_bytes_fp32": 606976,
+        "training_seconds": 0.5270163140376098,
+        "quantization": "int8 forward pass with straight-through identity gradient approximation during training",
+        "text_baseline_warning": "Text serialization is a symbolic oracle diagnostic, not a matched neural sender/receiver baseline. Its accuracy and timing must not be used to claim a latent compression win."
+      }
     }
   ],
-  "interpretation_warning": "Descriptive robustness result only. Do not infer statistical significance, generalization beyond this synthetic task, pretrained-LM communication, or compression advantage. The text oracle was not a matched neural baseline."
+  "interpretation_warning": "Report all seeds and dispersion. This harness is descriptive; do not infer generalization beyond this synthetic task, claim statistical significance from the summary alone, or compare against the symbolic text-oracle diagnostic as a matched baseline."
 }
