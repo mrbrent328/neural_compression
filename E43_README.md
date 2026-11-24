@@ -6,36 +6,55 @@ Can an independently operating sender and receiver transfer useful task informat
 
 This is a hypothesis. Success on a synthetic protocol task is not evidence that pretrained language models have learned a general shared communication protocol.
 
-## Repository audit (2026-11-23)
+## Repository audit
 
-Audited current `main` at `8c380b7c9ee1bb7f3af8d2f793e32046fbe7944b`.
+The project audit and relevant E18–E22, E33, and E41 work were reviewed before E43 was added. Those experiments provide reusable patterns for frozen components, latent interventions, relational evaluation, and explicit information boundaries. They do not establish communication between independent models.
 
-Reusable work:
-- E18's frozen shared-constructor / latent optimization patterns.
-- E19/E20's activation- and relational-behavior evaluation patterns.
-- E33's controlled latent intervention methodology.
-- E41's explicit separation between frozen base predictor and trainable relational memory, with tests that check whether memory contributes information.
+## Phase 1 — Synthetic protocol smoke test
 
-Not reusable as proof:
-- E18–E22 recover or test components/behavior within one model's representation pipeline; they do not establish sender-to-receiver communication.
-- E41 uses a controlled synthetic world and a persistent memory module. It is useful architectural precedent, not a pretrained independent-model communication result.
-- E43 must therefore have an explicit boundary: sender computes a message, message crosses a serialized channel, receiver uses it to answer a held-out query.
+The current script is a controlled harness test, not a pretrained-LM experiment.
 
-## Phased plan
+- Frozen sender and receiver base networks.
+- Trainable sender encoder and receiver decoder adapters.
+- A serialized int8 packet containing 16 signed int8 values and one per-example float32 scale (20 bytes per example, before any transport framing).
+- Straight-through estimator (STE): quantized values are used in the forward pass; an identity-gradient approximation allows the sender adapter to receive gradients during training.
+- Train/test fact identities are disjoint. Each of 64 value classes has 24 training facts and 8 held-out facts.
+- The sender receives the fact identity and its private value evidence. The receiver receives only the latent packet; it has no fact ID or target-value input.
+- Evaluation uses the quantized/dequantized packet, not the unquantized latent.
 
-### Phase 1 — Protocol feasibility (this initial script)
-A deliberately small synthetic information-transfer setup checks that:
-1. Sender and receiver base networks are frozen.
-2. Only a sender-side encoder adapter and receiver-side adapter train.
-3. Receiver performance is evaluated on held-out query IDs.
-4. Random latent is a negative control.
-5. Text and compressed-text baselines are recorded.
-6. All sizes, adapter parameters, frozen parameters and timings are reported.
+### Controls
 
-This phase is a harness/protocol sanity check, not an LLM experiment. The included text baselines are symbolic and have a different interpreter assumption. They are not a fair performance comparison against neural models, and no compression advantage may be claimed from them.
+- Learned quantized latent.
+- Shuffled quantized latent, breaking the correspondence between a message and its example.
+- Random quantized latent with the same packet format.
+- Zero quantized latent.
+- No-message receiver baseline.
+- Test-set majority-class baseline.
 
-### Phase 2 — Matched independent pretrained LMs
+### Text serialization diagnostic
+
+The script also records a symbolic text-oracle baseline. It serializes fact/value pairs and checks exact recovery. The gzip condition compresses the entire newline-delimited stream as one gzip member, avoiding the severe per-message header overhead of compressing each tiny row separately.
+
+This is still an oracle diagnostic, not a matched neural text sender/receiver system. It is useful for byte-accounting sanity checks only. It cannot establish a latent communication advantage.
+
+### Learning diagnostics
+
+The output records first-step gradient norms for both adapters and parameter deltas after training. These checks help verify that the sender and receiver adapters actually receive gradients and update.
+
+### Reproduction
+
+```bash
+python E43_latent_communication.py --seed 43 --epochs 60
+```
+
+Expected dependencies: Python and PyTorch. CPU is supported; CUDA/ROCm is used when available through the installed PyTorch build.
+
+The previous Phase 1 run is superseded. It used a non-differentiable integer quantization path and leaked fact identities across the train/test split. Its accuracy must not be interpreted as evidence for or against the hypothesis.
+
+## Phase 2 — Matched independent pretrained LMs
+
 Select two distinct small pretrained decoder-only models supported by the local environment. Freeze all backbone weights. Add:
+
 - Sender adapter: selected sender hidden states -> fixed-size message tensor.
 - Receiver adapter: message tensor -> receiver residual-stream/hidden-space conditioning.
 
@@ -43,32 +62,37 @@ Use a task dataset where each episode has private sender-side evidence and a rec
 
 Train adapters only. No shared weights, optimizer state, KV cache, hidden activations, or tokenizer state may cross the boundary except what the declared channel explicitly transmits.
 
-### Phase 3 — Communication channel comparisons
+## Phase 3 — Communication channel comparisons
+
 Compare:
-A. Plain text: sender writes a concise textual message; receiver consumes it.
-B. Compressed text: the same text passed through a lossless compressor; receiver receives decompressed text. Report wire bytes including compressor framing. Also report a learned semantic bottleneck text condition if used as a separate variant.
-C. Learned latent: sender adapter emits a quantized latent packet; receiver adapter consumes it.
-D. Random latent: same shape, dtype, quantizer and packet budget as C, with random content.
+
+A. Plain text: sender writes a concise textual message; receiver consumes it.  
+B. Compressed text: the same text passed through a lossless compressor; receiver receives decompressed text. Report wire bytes including compressor framing.  
+C. Learned latent: sender adapter emits a quantized latent packet; receiver adapter consumes it.  
+D. Random latent: same shape, dtype, quantizer, and packet budget as C, with random content.
 
 For fairness, report both a fixed-message-budget comparison and each method's natural operating point. Text baseline should be generated by the sender model, not by a ground-truth oracle. Use identical downstream questions and answer scoring.
 
 ## Primary measurements
+
 - Answer accuracy / task success on held-out facts.
 - Information transfer: mutual-information estimate or probe accuracy for message-to-fact variables, clearly marked as diagnostic rather than task success.
-- Wire size: exact serialized bytes, headers, quantization scales, framing, padding and metadata.
+- Wire size: exact serialized bytes, headers, quantization scales, framing, padding, and metadata.
 - Encoder and receiver adapter parameter count and checkpoint bytes.
 - Frozen backbone parameter count and storage bytes.
 - Total system parameter count and full checkpoint size.
-- MACs/FLOPs where feasible; wall-clock encode, transmit/serialization, receiver-conditioning and decode times.
+- MACs/FLOPs where feasible; wall-clock encode, serialization, receiver-conditioning, and decode times.
 - Peak memory and batch/sequence dimensions.
 - Latency per example and throughput.
 
 A smaller vector is not a compression win unless its full channel and adapter/system costs are amortized over a stated number of messages. Report break-even message count against text.
 
 ## Controls and ablations
+
 - Random latent (same dimensions and quantization).
 - Zero latent.
 - Shuffled latent across examples.
+- No-message receiver.
 - Sender/receiver mismatch (wrong receiver adapter).
 - Frozen random adapters (no learning).
 - Text budget matched to latent packet bytes.
@@ -76,6 +100,7 @@ A smaller vector is not a compression win unless its full channel and adapter/sy
 - Ablation of query/context conditioning so the receiver cannot solve the task from its own query alone.
 
 ## Critical confounds
+
 - Receiver may already know the fact or infer it from the query: include no-message and shuffled-message baselines.
 - Shared tokenizer or model family may create accidental alignment: begin with distinct model checkpoints and independent tokenizers where practical.
 - Train/test leakage through repeated fact IDs: split by fact/entity identity.
@@ -84,12 +109,5 @@ A smaller vector is not a compression win unless its full channel and adapter/sy
 - Pretrained model internal activations are not directly comparable across architectures; use adapters to define an explicit transport boundary.
 
 ## Decision criteria
-Proceed to Phase 2 only if latent channel accuracy is materially above zero/shuffled/random controls on held-out facts and the receiver demonstrably depends on the message. Do not require latent to beat text in Phase 1; Phase 1 only validates harness mechanics. Phase 2 is the first experiment that can address the core pretrained-model hypothesis.
 
-## Reproduction
-
-```bash
-python E43_latent_communication.py --seed 43 --epochs 12
-```
-
-Expected dependencies: Python, PyTorch. CPU is supported; CUDA is used when available. This script has not been executed as part of the repository commit unless a result artifact is present.
+Proceed to Phase 2 only if latent channel accuracy is materially above zero, shuffled, random, and no-message controls on held-out facts and the receiver demonstrably depends on the message. Do not require latent to beat text in Phase 1; Phase 1 only validates harness mechanics. Phase 2 is the first experiment that can address the core pretrained-model hypothesis.
