@@ -117,7 +117,10 @@ def sample(denoiser, decoder, mean, std, device, count, sample_steps, diffusion_
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument("--data-root", type=Path, required=True)
+    p.add_argument("--data-root", type=Path, default=None,
+                   help="CIFAR-10 Parquet root (required unless --latents is supplied)")
+    p.add_argument("--latents", type=Path, default=None,
+                   help="Optional saved R3 local-state .npy/.pt file shaped [N,16,32]; skips image encoding")
     p.add_argument("--checkpoint", type=Path, default=HERE/"real_cifar10_local_interaction"/"r3_local_interaction_40000.pt")
     p.add_argument("--out", type=Path, default=HERE/"real_cifar10_latent_diffusion")
     p.add_argument("--train-images", type=int, default=40000)
@@ -145,14 +148,45 @@ def main():
     decoder.load_state_dict(ckpt["model_state_dict"]); decoder.eval()
     for q in decoder.parameters(): q.requires_grad_(False)
 
-    ds = CIFARParquetDataset(find_parquet(args.data_root))
-    pool, _ = fixed_split_indices(len(ds), 10000, args.data_seed)
-    subset = make_subset(ds, pool, args.train_images, args.data_seed)
-    loader = DataLoader(subset, batch_size=args.batch_size, shuffle=False, num_workers=0,
-                        pin_memory=torch.cuda.is_available())
-    cache = args.out/f"r3_latents_{args.train_images}_{args.data_seed}.pt"
-    if args.reencode and cache.exists(): cache.unlink()
-    z = encode(decoder, loader, device, cache)
+    latent_source = "fresh_r3_encoding"
+    if args.latents is not None:
+        latent_path = args.latents.expanduser()
+        if not latent_path.is_file():
+            raise FileNotFoundError(f"Saved latent file not found: {latent_path}")
+        print(f"Loading saved R3 local states: {latent_path}", flush=True)
+        if latent_path.suffix.lower() == ".npy":
+            z = torch.from_numpy(np.load(latent_path, allow_pickle=False))
+        elif latent_path.suffix.lower() in {".pt", ".pth"}:
+            z = torch.load(latent_path, map_location="cpu", weights_only=False)
+            if isinstance(z, dict):
+                for key in ("local_states", "latents", "z"):
+                    if key in z:
+                        z = z[key]
+                        break
+        else:
+            raise ValueError("--latents must be a .npy, .pt, or .pth file")
+        if not isinstance(z, torch.Tensor):
+            z = torch.as_tensor(z)
+        if z.ndim != 3 or tuple(z.shape[1:]) != (16, 32):
+            raise ValueError(f"Expected saved local states shaped [N,16,32], got {tuple(z.shape)}")
+        if z.shape[0] < args.batch_size:
+            raise ValueError(f"Need at least one full batch ({args.batch_size} states); got {z.shape[0]}")
+        if not torch.isfinite(z).all():
+            raise ValueError("Saved latent file contains NaN or infinite values")
+        z = z.float().contiguous()
+        latent_source = "saved_r3_local_states"
+        print(f"Loaded latent tensor: {tuple(z.shape)}", flush=True)
+    else:
+        if args.data_root is None:
+            p.error("provide --data-root for image encoding, or --latents to use saved local states")
+        ds = CIFARParquetDataset(find_parquet(args.data_root))
+        pool, _ = fixed_split_indices(len(ds), 10000, args.data_seed)
+        subset = make_subset(ds, pool, args.train_images, args.data_seed)
+        loader = DataLoader(subset, batch_size=args.batch_size, shuffle=False, num_workers=0,
+                            pin_memory=torch.cuda.is_available())
+        cache = args.out/f"r3_latents_{args.train_images}_{args.data_seed}.pt"
+        if args.reencode and cache.exists(): cache.unlink()
+        z = encode(decoder, loader, device, cache)
     mean = z.mean((0,1), keepdim=True).to(device)
     std = z.std((0,1), keepdim=True).clamp_min(1e-4).to(device)
     zn = ((z-mean.cpu())/std.cpu()).clamp(-8,8)
