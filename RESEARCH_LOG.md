@@ -715,18 +715,24 @@ The learned channel beat shuffled, random, zero, and no-message controls in **25
 
 ## E45 — Persistent Latent Memory, Phase 3B: Cross-Domain Frozen Codec (2026-11-24)
 
-**Status:** Implemented and committed; execution pending.
+**Status:** Completed the default single-seed run; cross-domain reconstruction gate not met.
 
 **Question:** Can a single frozen codec trained across several synthetic value domains write and retrieve memories from entirely new value domains, without receiving a domain identifier or projection matrix and without per-domain fine-tuning?
 
-**Design:** Train one codec on a mixed stream of eight independently seeded projection domains. Each domain maps random 8-dimensional factors through its own random projection into 32-dimensional values. Freeze the codec, then write new stores from (a) the same eight seen projection domains, using new keys/factors/associations, and (b) eight held-out projection domains never used during training. The codec receives no domain ID or projection matrix. Pool all sixteen stores during evaluation after a separate writer process exits.
+**Protocol:** Seed 45; eight training projection domains × 1,024 training records; eight seen-domain stores and eight held-out-domain stores × 1,024 records each; 120 epochs; 32-dimensional keys/values; 8-dimensional address/payload codes. The codec was trained on a mixed stream of eight independently seeded random projections from 8-dimensional factors into 32-dimensional values, then frozen. Seen-domain stores used new factors, keys, and associations. Unseen stores used eight new projections never used in training. The codec received no domain IDs or projection matrices. Writer and evaluator ran in separate processes, with all 16 stores pooled at evaluation.
 
-**Comparison:** Seen-domain results measure generalization to new records within familiar projection domains. Unseen-domain results measure generalization to new projections from the same generator family. Report pooled and per-group record/store accuracy, reconstruction cosine, unseen-minus-seen reconstruction gap, and full storage accounting.
+**Retrieval results:** Pooled top-1 record accuracy was **100% (16,384/16,384)** and pooled top-1 store accuracy was **100%**. Both seen and unseen groups individually retained 100% record and store accuracy. Thus the key-address pathway generalized across all tested domains and isolated the correct record.
 
-**Default protocol:** 8 training domains × 1,024 training records; 8 seen-domain stores + 8 unseen-domain stores, each with 1,024 records; 120 epochs; 32-dimensional keys/values and 8-dimensional address/payload codes. Smoke test: `python E45/e45_latent_memory_phase3b.py --device cpu --smoke`. Full run: `python E45/e45_latent_memory_phase3b.py`.
+**Reconstruction results:** Mean cosine was **0.734798** on seen domains and **0.450154** on unseen domains, an unseen-minus-seen gap of **−0.284644**. Per-store cosine was 0.7008–0.7703 across seen stores and 0.3519–0.4956 across unseen stores. This is a clear domain-generalization weakness in the value encoder/reader despite perfect address retrieval.
+
+**Storage:** Raw key/value baseline: 4,194,304 bytes. One shared codec plus all memory files and metadata: 642,850 bytes, a raw-to-latent ratio of **6.525×** (about 84.7% fewer bytes), or 39.24 bytes per record. This storage result does not compensate for the unseen-domain reconstruction loss; compression and reconstruction quality must be considered together.
+
+**Interpretation:** The experiment separates two capabilities. The address pathway retrieved the correct association across held-out projection domains, while the compact value pathway did not reconstruct those unseen-domain values as well as values from training-seen domains. The result does not show arbitrary domain generalization. The held-out domains are random projections from the same synthetic generator family, not natural-language or real-world semantic domains. This is one seed and one payload dimension; the result needs replication and controlled ablations before attributing the gap to payload capacity, number of training domains, or architecture.
+
+**Artifact:** User-run output `runs/E45_phase3B/e45_phase3B_result.json` (not committed).
+
+**Next experiment:** Diagnose the value pathway with a controlled train-domain-count × payload-dimension sweep and multiple seeds. Include a matched non-compressed/32-dimensional payload autoencoder baseline. Keep address retrieval fixed and report cosine, reconstruction error, and full storage. Do not proceed to language-model integration until unseen-domain reconstruction is characterized.
 
 **Files:** `E45/e45_latent_memory_phase3b.py` and `E45/README_PHASE3B.md`.
 
-**Decision gates:** High pooled retrieval and store isolation; strong reconstruction in both seen and unseen groups; a small seen-to-unseen reconstruction gap; frozen weights after training; and complete shared-codec storage accounting. If retrieval remains strong but unseen reconstruction drops, address learning generalizes while value encoding remains domain-sensitive.
-
-**Limitations:** The held-out domains are random projections from the same synthetic generator family, not arbitrary real-world semantic domains. No natural language, pretrained model, continual writes, deletion, conflict handling, or forgetting is tested.
+**Limitations:** Synthetic vectors only; unseen domains are new projections from the same generator family. Continual writes, deletion, conflicts, interference under updates, forgetting, natural language, pretrained models, and vector-database comparisons remain untested.
