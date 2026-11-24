@@ -83,9 +83,9 @@ def quantize_int8(z):
     q = torch.round(z / scale).clamp(-qmax, qmax).to(torch.int8)
     return q, scale.squeeze(-1)
 
-def dequantize(packet, scale):
-    q, s = packet
-    return q.to(torch.float32) * s.unsqueeze(-1)
+def dequantize(packet):
+    q, scale = packet
+    return q.to(torch.float32) * scale.unsqueeze(-1)
 
 def main():
     p = argparse.ArgumentParser()
