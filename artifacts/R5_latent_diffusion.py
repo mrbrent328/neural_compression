@@ -222,6 +222,8 @@ def main():
     opt = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-4)
     ab = alpha_bar(args.diffusion_steps, device)
     history=[]; start=time.time()
+    checkpoint_dir = args.out / "checkpoints"
+    checkpoint_dir.mkdir(parents=True, exist_ok=True)
     nparams=sum(q.numel() for q in model.parameters())
     print(f"Latents={tuple(z.shape)} | denoiser params={nparams:,} | epochs={args.epochs}", flush=True)
     for epoch in range(1,args.epochs+1):
@@ -238,14 +240,17 @@ def main():
         if epoch==1 or epoch%5==0 or epoch==args.epochs:
             elapsed=time.time()-start
             print(f"epoch {epoch}/{args.epochs} | noise MSE={avg:.6f} | {elapsed/60:.1f} min",flush=True)
-            torch.save({"denoiser_state_dict":model.state_dict(),"latent_mean":mean.cpu(),
-                        "latent_std":std.cpu(),"tokens":z.shape[1],"local_dim":z.shape[2],
-                        "diffusion_steps":args.diffusion_steps,"sample_steps":args.sample_steps,
-                        "epoch":epoch,"seed":args.seed,"r3_checkpoint":str(args.checkpoint)},
-                       args.out/"r5_latent_diffusion.pt")
+            checkpoint = {"denoiser_state_dict":model.state_dict(),"latent_mean":mean.cpu(),
+                          "latent_std":std.cpu(),"tokens":z.shape[1],"local_dim":z.shape[2],
+                          "diffusion_steps":args.diffusion_steps,"sample_steps":args.sample_steps,
+                          "epoch":epoch,"seed":args.seed,"r3_checkpoint":str(args.checkpoint)}
+            torch.save(checkpoint, args.out/"r5_latent_diffusion.pt")
+            torch.save(checkpoint, checkpoint_dir/f"r5_epoch_{epoch:03d}.pt")
+            print(f" saved checkpoint: {checkpoint_dir/f'r5_epoch_{epoch:03d}.pt'}", flush=True)
         if epoch%10==0 or epoch==args.epochs:
+            # Fixed seed: every checkpoint receives identical initial Gaussian noise.
             imgs=sample(model,decoder,mean,std,device,args.sample_count,args.sample_steps,
-                        args.diffusion_steps,args.seed+epoch)
+                        args.diffusion_steps,args.seed)
             save_grid(imgs,args.out/f"samples_epoch_{epoch:03d}.png", scale=max(1,args.grid_scale))
             print(f" saved samples_epoch_{epoch:03d}.png",flush=True)
     report={"experiment":"R5_R3_local_latent_diffusion","device":str(device),
@@ -256,6 +261,7 @@ def main():
             "latent_shape":list(z.shape),"denoiser_parameters":nparams,"epochs":args.epochs,
             "diffusion_steps":args.diffusion_steps,"sample_steps":args.sample_steps,
             "final_noise_mse":history[-1],"elapsed_seconds":time.time()-start,
+            "fixed_sampling_seed":args.seed,"checkpoint_dir":str(checkpoint_dir),
             "r3_checkpoint":str(args.checkpoint),"history":history}
     (args.out/"r5_results.json").write_text(json.dumps(report,indent=2))
     print("R5 COMPLETE\n"+json.dumps({k:v for k,v in report.items() if k!="history"},indent=2),flush=True)
