@@ -384,6 +384,9 @@ def run_sweep(args):
         cell += 1
         cell_args = argparse.Namespace(**vars(args))
         cell_args.seed, cell_args.train_domains = seed, domain_count
+        # Give each seed an independent family of projection domains while
+        # keeping domain IDs nested and comparable within that seed.
+        cell_args.domain_seed_base = args.domain_seed_base + seed * 100000
         cell_args.payload_dim = payload_dim
         cell_args.output = root / f"seed_{seed}_domains_{domain_count}_payload_{payload_dim}"
         if args.train_record_budget % domain_count:
