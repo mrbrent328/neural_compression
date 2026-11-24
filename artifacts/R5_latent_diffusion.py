@@ -199,6 +199,22 @@ def main():
         z = encode(decoder, loader, device, cache)
     mean = z.mean((0,1), keepdim=True).to(device)
     std = z.std((0,1), keepdim=True).clamp_min(1e-4).to(device)
+
+    # Decoder control: feed it genuine R3 states before testing generated states.
+    # This isolates decoder/checkpoint/latent compatibility from diffusion quality.
+    control_count = min(args.sample_count, z.shape[0])
+    real_latents = z[:control_count].to(device)
+    real_reconstructions = decoder.decode_local(real_latents)
+    save_grid(
+        real_reconstructions,
+        args.out / "real_latent_reconstructions.png",
+        scale=max(1, args.grid_scale),
+    )
+    print(
+        f" saved real_latent_reconstructions.png ({control_count} genuine R3 states)",
+        flush=True,
+    )
+
     zn = ((z-mean.cpu())/std.cpu()).clamp(-8,8)
     latent_loader = DataLoader(TensorDataset(zn), batch_size=args.batch_size,
                                shuffle=True, drop_last=True)
