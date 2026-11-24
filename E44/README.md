@@ -55,3 +55,17 @@ A positive result weakens the explanation that E43 depends on its modulo-based f
 - Collapse toward controls: revisit the E43 task structure; do not proceed to pretrained models yet.
 
 No compression claim until matched text/neural baselines and complete amortized system costs are measured.
+
+
+## Completed factorial run (2026-11-24)
+
+The default 5 × 5 crossed design completed: dataset seeds 101–105 crossed with model seeds 43–47, 60 epochs per run, 25 runs total. The aggregate artifact is archived at [results/e44_factorial_summary.json](results/e44_factorial_summary.json).
+
+- Learned quantized latent: **70.3672% mean accuracy** (sample SD 2.5525 percentage points; median 70.5078%; range 65.8203–77.3438%).
+- Shuffled latent: 1.3203% mean.
+- Random latent: 1.7188% mean.
+- Zero and no-message: 1.5625% each (the balanced 64-class chance level).
+- Learned beat every control in **25/25** crossed runs.
+- Dataset-seed means ranged from 69.4141% to 71.6016% (five model seeds within each dataset assignment).
+
+This supports robustness of the synthetic task-specific channel across the five randomized balanced assignments and five model initializations tested. It is not evidence of pretrained-model communication, general semantic communication, statistical significance, or compression advantage. The 25 cells are crossed controlled runs, not 25 independent natural datasets. See the aggregate JSON for per-run results and paired differences.
