@@ -736,3 +736,27 @@ The learned channel beat shuffled, random, zero, and no-message controls in **25
 **Files:** `E45/e45_latent_memory_phase3b.py` and `E45/README_PHASE3B.md`.
 
 **Limitations:** Synthetic vectors only; unseen domains are new projections from the same generator family. Continual writes, deletion, conflicts, interference under updates, forgetting, natural language, pretrained models, and vector-database comparisons remain untested.
+
+## E45 — Persistent Latent Memory, Phase 3C: Value Representation Generalization (2026-11-24)
+
+**Status:** IMPLEMENTED; smoke test passed; full factorial sweep not yet run.
+
+**Question:** What explains Phase 3B's seen/unseen reconstruction gap: insufficient training-domain diversity, a narrow payload bottleneck, or a limitation in the current value encoder/reader?
+
+**Design:** A 5 × 4 × 3 factorial sweep: training-domain counts 2, 4, 8, 16, and 32; payload dimensions 8, 16, 24, and 32; seeds 45, 46, and 47 (60 runs total). Every cell has a fresh codec. The total training-record budget is fixed at 8,192 and divided evenly across training domains, isolating domain count from total training-example count. Every cell evaluates two seen-domain and two unseen-domain stores, each with 1,024 records. Seen domains are selected evenly across the training-domain range; unseen domains are new projections never used in training. The frozen codec receives no domain ID or projection matrix.
+
+**Payload reference:** The 32-dimensional learned payload removes dimensionality reduction because its width matches the 32-dimensional value. It remains a learned encoder/decoder with float16 storage, not an identity transform or bit-identical raw-value oracle. Address dimension remains fixed at 8.
+
+**Measurements:** Pooled record/store retrieval accuracy; seen/unseen cosine reconstruction and MSE; unseen-minus-seen gaps; per-store metrics; complete checkpoint + memory + metadata storage; and across-seed mean, sample SD, minimum, and maximum for each cell. The writer and evaluator run in separate processes.
+
+**Smoke validation:** The two-cell smoke run (payload dimensions 8 and 32, one seed, reduced data and epochs) completed successfully and produced the aggregate JSON. This validates the run harness and output structure only; its smoke metrics are not scientific results.
+
+**Files:** \`E45/e45_latent_memory_phase3c.py\` and \`E45/README_PHASE3C.md\`. Full results are written locally to \`runs/E45_phase3C/\` and are not committed automatically. Completed cells are preserved in \`partial_results.json\`.
+
+**Run:** \`python E45/e45_latent_memory_phase3c.py --device cpu\` (or another supported PyTorch device). The default is 60 runs × 120 epochs. A smaller diagnostic subset can be selected with \`--seeds\`, \`--domain-counts\`, and \`--payload-dims\`.
+
+**Interpretation gates:** Improvement with more training domains supports a domain-diversity explanation. Improvement with wider payloads supports a payload-capacity explanation. A persistent unseen-domain gap at 32 dimensions points toward the learned value encoder/reader or training objective, but does not by itself identify the cause. Reconstruction and full storage must be judged together.
+
+**Limitations:** Synthetic projection domains only; two seen and two unseen stores per run; three seeds are an initial replication estimate, not definitive statistical evidence. The 32-dimensional reference is not a raw-value oracle. Natural language, pretrained models, continual writes, deletion, conflicts, interference, forgetting, and vector-database comparisons remain untested.
+
+**Next decision:** Run the full sweep, inspect whether retrieval remains stable, then use the factorial trends to choose a targeted follow-up rather than changing the architecture prematurely.
