@@ -31,6 +31,10 @@ from torch.nn import functional as F
 
 import latent_transformer_v0 as base
 
+# Keep the v0 parser before installing the v1 wrapper below. Calling
+# base.parse_args() from the wrapper would otherwise recurse into itself.
+_original_parse_args = base.parse_args
+
 ATOM_DEFAULTS = {
     "atom_count": 32,
     "atom_dim": 16,
@@ -82,7 +86,7 @@ def parse_args_with_atoms():
 
     sys.argv = [original_argv[0], *cleaned]
     try:
-        args = base.parse_args()
+        args = _original_parse_args()
     finally:
         sys.argv = original_argv
 
