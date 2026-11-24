@@ -502,6 +502,19 @@ At temperature 1.0, mean unique-byte fraction was 0.271 dense, 0.261 low-rank, a
 
 **Research decision:** Close GSA-01 as a decoding diagnostic. Do not spend another experiment merely sweeping temperature. The next useful question should isolate whether the bottleneck is corpus/domain coherence and next-byte distribution quality versus the latent/shared-constructor representation. Before architecture claims, establish a reproducible held-out evaluation with fixed contexts and continuation-quality criteria, and compare against the same dense/low-rank/latent checkpoints. A follow-up should be designed as one discriminating experiment, not a broad benchmark expansion.
 
+
+## Scaling Comparison — 5,000-Step Follow-up (2026-11-24)
+
+**Run artifact supplied:** nine-run archive containing per-run `report.json`, `console.log`, generated `sample.txt`, and `model.pt` checkpoints. All nine runs completed at 5,000 steps, with 51 recorded evaluations each. The full 459-point metric history is summarized in `SCALING_RESULTS_5000.md`; the source archive was inspected directly.
+
+**Matched setup:** 204,955-byte corpus; byte tokenizer (vocab 256); context 256; batch 16; seed 1337; LR 3e-4, cosine decay, 100-step warmup; evaluation every 100 steps; CPU float32. The actual run logs report CPU, not GPU.
+
+**Best validation results:** tiny dense 1.505116 (step 4200), small low-rank 1.572341 (step 4200), medium low-rank 1.566881 (step 1600). Latent bests were 2.022574 tiny, 1.667390 small, and 1.610339 medium. At medium, latent is 0.043458 validation-loss units behind low-rank while using 3.80M versus 5.40M parameters; latent uses about 26.5% of dense's 14.36M parameters.
+
+**Important negative/limiting evidence:** latent did not achieve the best validation loss or throughput in any scale in this run. Low-rank was fastest in each scale. Several runs show substantial best-to-final validation deterioration while training loss continues to fall; this is consistent with overfitting or a split/distribution issue, but the run alone does not establish the cause.
+
+**Research decision:** preserve this as a scaling/efficiency result, not evidence of a general quality or speed advantage. Before architecture changes, investigate the corpus split and validation behavior, inspect checkpoint selection, and repeat with multiple seeds. Full configuration and tabulated results are in `SCALING_RESULTS_5000.md`. The uploaded binary checkpoints and console logs remain in the original 119.7 MB archive; the archive exceeds GitHub's 100 MB per-file limit and was not committed as one binary file.
+
 ## E43 — Latent Communication Between Independent Neural Networks
 
 **Status:** OPEN — Phase 1 harness revised; awaiting a clean rerun.
@@ -513,7 +526,7 @@ At temperature 1.0, mean unique-byte fraction was 0.271 dense, 0.261 low-rank, a
 **Phase 1 v2 changes:**
 - Replaced non-differentiable int8 training path with a straight-through estimator: quantized values remain in the forward pass while sender-adapter backpropagation uses an identity-gradient approximation.
 - Changed the synthetic split to disjoint fact identities, with 24 training and 8 held-out facts per value class.
-- Ensured evaluation passes through the quantize/dequantize packet path.
+- Ensured evaluation passes through the actual quantize/dequantize packet path.
 - Added shuffled-message, random-message, zero-message, no-message, and test-majority controls.
 - Added first-step gradient norms and adapter parameter-delta diagnostics.
 - Changed gzip measurement to compress one newline-delimited stream rather than one tiny gzip member per example.
