@@ -621,3 +621,28 @@ python E44/E44_factorial_replication.py --dataset-seeds 101 102 --model-seeds 43
 **Decision gate:** Consistent learned-channel superiority across dataset and model seeds would weaken the explanation that E43 depends on its modulo-based mapping and justify a harder query-conditioned task. Strong dataset sensitivity or collapse toward controls would be informative and should be understood before moving to pretrained models.
 
 **Limitations:** E44 remains a synthetic 64-class protocol with synthetic frozen networks. It does not test unseen classes, pretrained LMs, general semantic communication, or compression advantage. The factorial cells are controlled synthetic conditions, not independent natural datasets. Descriptive summaries are not significance tests.
+
+
+## E44 — Randomized-World Factorial Results (2026-11-24)
+
+**Status:** Completed the planned 5 × 5 crossed synthetic robustness experiment. The aggregate result artifact is archived at `E44/results/e44_factorial_summary.json`.
+
+**Protocol actually run:** Dataset seeds 101–105 crossed with model seeds 43–47; 60 epochs per run; 25 independent fresh-process combinations. Each dataset seed generated a new balanced fact-to-class assignment with 24 training and 8 held-out facts per class. Each run evaluated 512 held-out fact identities.
+
+**Aggregate accuracy:**
+
+| Condition | Mean | Sample SD | Median | Min | Max |
+|---|---:|---:|---:|---:|---:|
+| Learned quantized latent | **70.3672%** | 2.5525 pp | 70.5078% | 65.8203% | 77.3438% |
+| Shuffled quantized latent | 1.3203% | 0.4414 pp | 1.3672% | 0.7813% | 2.1484% |
+| Random quantized latent | 1.7188% | 0.5694 pp | 1.7578% | 0.7813% | 3.3203% |
+| Zero quantized latent | 1.5625% | 0 pp | 1.5625% | 1.5625% | 1.5625% |
+| No message | 1.5625% | 0 pp | 1.5625% | 1.5625% | 1.5625% |
+
+The learned channel beat shuffled, random, zero, and no-message controls in **25/25 runs**. Mean paired advantages were +69.0469 pp over shuffled, +68.6484 pp over random, and +68.8047 pp over both zero and no-message.
+
+**Across randomized dataset assignments:** Mean learned accuracy by dataset seed was 70.6641% (101), 71.6016% (102), 70.5078% (103), 69.6484% (104), and 69.4141% (105). Each mean is over five model seeds. This shows no collapse on the five balanced synthetic mappings tested, while the crossed design still has limited coverage of possible assignments.
+
+**Interpretation:** E44 weakens the specific concern that E43's effect depended on its fixed `fact_id % 64` assignment. The learned task-specific channel remains far above controls across these five randomized balanced worlds and five initializations. This remains a synthetic 64-class communication task using synthetic frozen networks; it does not demonstrate pretrained-LM communication, unseen-class generalization, general semantic communication, or compression advantage. The 25 crossed cells are not 25 independent natural datasets, and the descriptive summaries are not significance tests.
+
+**Next research step:** Increase task difficulty in a way that requires receiver-side query conditioning or composition of multiple facts, while retaining the crossed dataset/model-seed design and all channel controls. Before any compression claim, add a matched neural/text baseline and complete amortized accounting for adapter/base checkpoints, framing, and compute.
