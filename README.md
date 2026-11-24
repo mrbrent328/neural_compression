@@ -104,6 +104,10 @@ The work should be understood as a human-AI research collaboration: the reposito
 
 If you build on this work, please cite the specific experiment, commit, or release that you use whenever practical.
 
+## Latest scaling follow-up
+
+The 5,000-step dense vs low-rank vs latent comparison is documented in [SCALING_RESULTS_5000.md](SCALING_RESULTS_5000.md). It supplements the earlier 500-step study in [SCALING_RESULTS.md](SCALING_RESULTS.md). The longer run found a medium-scale latent model within 0.0435 validation-loss units of direct low-rank while using about 29.6% fewer parameters, but low-rank remained more accurate and faster in that comparison. Several runs showed late-training validation deterioration, so this is an efficiency/parameter-count result with unresolved training-stability questions—not evidence of a general speed or quality win.
+
 ## Research archive
 
 The repository's Git history is an important part of the archive. Please do not treat the latest files as the entire story.
