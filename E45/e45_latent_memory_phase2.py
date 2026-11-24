@@ -198,17 +198,28 @@ def main():
     for seed in args.seeds:
         for n in args.records:
             folder = args.output / f"seed{seed}_n{n}"
-            train_and_save(args, seed, n, device, folder)
+            if args.phase == "all":
+                # Run the writer in its own process and wait for it to exit.
+                train_cmd = [sys.executable, str(Path(__file__).resolve()), "--phase", "train",
+                             "--seed", str(seed), "--seeds", str(seed), "--records", str(n),
+                             "--key-dim", str(args.key_dim), "--value-dim", str(args.value_dim),
+                             "--value-factor-dim", str(args.value_factor_dim),
+                             "--address-dim", str(args.address_dim), "--payload-dim", str(args.payload_dim),
+                             "--epochs", str(args.epochs), "--batch-size", str(args.batch_size),
+                             "--lr", str(args.lr), "--device", str(device), "--output", str(args.output)]
+                subprocess.run(train_cmd, check=True)
+            else:
+                train_and_save(args, seed, n, device, folder)
             if args.phase == "train":
                 continue
-            # A distinct interpreter proves reload after the writer process exits.
-            cmd = [sys.executable, str(Path(__file__).resolve()), "--phase", "eval",
-                   "--seed", str(seed), "--records", str(n),
-                   "--key-dim", str(args.key_dim), "--value-dim", str(args.value_dim),
-                   "--value-factor-dim", str(args.value_factor_dim),
-                   "--address-dim", str(args.address_dim), "--payload-dim", str(args.payload_dim),
-                   "--device", str(device), "--output", str(args.output)]
-            proc = subprocess.run(cmd, check=True, capture_output=True, text=True)
+            # The evaluator is a second fresh process, started after the writer exited.
+            eval_cmd = [sys.executable, str(Path(__file__).resolve()), "--phase", "eval",
+                        "--seed", str(seed), "--records", str(n),
+                        "--key-dim", str(args.key_dim), "--value-dim", str(args.value_dim),
+                        "--value-factor-dim", str(args.value_factor_dim),
+                        "--address-dim", str(args.address_dim), "--payload-dim", str(args.payload_dim),
+                        "--device", str(device), "--output", str(args.output)]
+            proc = subprocess.run(eval_cmd, check=True, capture_output=True, text=True)
             summaries.append(json.loads(proc.stdout))
             print(f"reloaded seed={seed} records={n}", flush=True)
 
