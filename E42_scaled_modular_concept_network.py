@@ -137,8 +137,10 @@ def train_model(model, train_edges, ctx, n, device, args, seed):
     for step in range(args.steps):
         batch = train_edges[rng.integers(0, len(train_edges), size=args.batch_size)]
         src, rel, dst, ci, cr, cm = batch_tensors(batch, ctx, device)
-        neg = torch.as_tensor(rng.integers(0, n, size=(len(batch), args.negatives)),
-                              dtype=torch.long, device=device)
+        neg_np = rng.integers(0, n, size=(len(batch), args.negatives))
+        collisions = neg_np == batch[:, 2:3]
+        neg_np[collisions] = (neg_np[collisions] + 1) % n
+        neg = torch.as_tensor(neg_np, dtype=torch.long, device=device)
         candidates = torch.cat([dst[:, None], neg], dim=1)
         scores = model.score(model.encode(src, rel, ci, cr, cm), candidates)
         labels = torch.zeros_like(scores)
