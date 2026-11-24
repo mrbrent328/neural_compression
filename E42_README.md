@@ -2,7 +2,7 @@
 
 ## Question
 
-At larger concept counts, does a modular architecture with persistent local concept states, shared local processing, and query-conditioned relational routing improve held-out relational prediction over matched shared-embedding controls?
+At larger concept counts, does a modular architecture with persistent local concept states, shared local processing, and query-conditioned relational routing improve held-out relational prediction over shared-embedding controls?
 
 This is the first scaled test of the network-of-networks direction. It builds on the earlier persistent-relational work rather than treating communication compression as an unsolved prerequisite.
 
