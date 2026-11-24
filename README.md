@@ -117,3 +117,8 @@ For questions about a particular result, start with the relevant experiment file
 ## Disclaimer
 
 This project is exploratory research. Results are subject to the limitations described in the corresponding experiment records and audit documents. No claim in this repository should be interpreted more strongly than the evidence supporting it.
+
+
+## E43 / E44 latent communication experiments
+
+The synthetic latent-communication protocol and its ten-seed replication are documented in [E43_README.md](E43_README.md), with uploaded results archived under [E43/results/](E43/results/). The next randomized-world robustness experiment is isolated under [E44/](E44/README.md). These experiments are synthetic protocol studies; they do not yet establish pretrained-model communication or a compression advantage.
