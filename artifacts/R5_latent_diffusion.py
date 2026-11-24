@@ -223,7 +223,10 @@ def main():
             save_grid(imgs,args.out/f"samples_epoch_{epoch:03d}.png")
             print(f" saved samples_epoch_{epoch:03d}.png",flush=True)
     report={"experiment":"R5_R3_local_latent_diffusion","device":str(device),
-            "rocm_version":getattr(torch.version,"hip",None),"training_images":args.train_images,
+            "rocm_version":getattr(torch.version,"hip",None),"latent_source":latent_source,
+            "latent_examples":int(z.shape[0]),
+            "training_images":(args.train_images if args.latents is None else None),
+            "latent_file":(str(args.latents) if args.latents is not None else None),
             "latent_shape":list(z.shape),"denoiser_parameters":nparams,"epochs":args.epochs,
             "diffusion_steps":args.diffusion_steps,"sample_steps":args.sample_steps,
             "final_noise_mse":history[-1],"elapsed_seconds":time.time()-start,
