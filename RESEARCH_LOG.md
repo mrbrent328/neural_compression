@@ -697,22 +697,36 @@ The learned channel beat shuffled, random, zero, and no-message controls in **25
 
 ## E45 — Persistent Latent Memory, Phase 3A: Shared Frozen Codec (2026-11-24)
 
-**Status:** Implemented and committed; execution pending.
+**Status:** Completed successfully; result artifact supplied by the user and analyzed.
 
 **Question:** Can one trained, frozen codec write and read multiple independent persistent memory stores without retraining, while sharing the fixed codec cost across those stores?
 
-**Design:** Train one codec on a dedicated association episode, save its weights once, and freeze it. Then generate multiple stores with new random keys, new random values, and independently randomized key/value pairings. The same codec writes all stores without store-specific updates. Training and test stores share a declared low-dimensional value domain: a fixed projection from random 8-dimensional factors into 32-dimensional values. Factors, keys, and associations are independently generated. Thus the test is unseen-key/unseen-association generalization within one value domain, not arbitrary cross-domain generalization.
+**Design:** One codec was trained on 8,192 associations, saved once, and frozen. It then wrote eight independent stores with new random keys, values, and arbitrary key/value pairings. Training and test stores shared one fixed low-dimensional value domain: a projection from random 8-dimensional factors into 32-dimensional values. Evaluation occurred in a separate process after the writer exited.
 
-**Isolation test:** The evaluator pools records from every store and queries the pooled memory. It reports both top-1 record accuracy and top-1 store accuracy, plus per-store reconstruction. This tests whether a query retrieves its own association rather than a record belonging to another store.
+**Results:** Pooled top-1 record accuracy was **100% (8,192/8,192)**; pooled top-1 store accuracy was **100%**; mean cosine reconstruction was **0.983592**. Every one of the eight stores individually achieved 100% record accuracy, with reconstruction cosine ranging from 0.983038 to 0.984141.
 
-**Persistence:** The default runner launches a dedicated writer process, waits for it to exit, and starts a separate evaluator process that reloads the shared codec and all memory stores.
+**Storage:** Raw key/value baseline: 2,097,152 bytes. One shared codec plus all memory files and metadata: 366,257 bytes, a raw-to-latent ratio of **5.726×** (about 82.5% fewer bytes). Charging the same codec checkpoint once per store yields 998,616 bytes; sharing saved 632,359 bytes relative to that accounting baseline. This duplicated-codec figure is storage arithmetic, not a separately trained model comparison.
 
-**Storage accounting:** Compare raw key/value storage with one shared codec checkpoint plus all memory files and metadata. Also report a duplicated-codec accounting baseline that charges the same checkpoint once per store. The latter isolates the arithmetic benefit of sharing; it is not a separate trained-model quality comparison.
+**Interpretation:** This supports reuse of one frozen codec across independent stores and unseen associations within the same declared synthetic value domain. It does not establish cross-domain semantic generalization, natural-language memory, pretrained-LM integration, continual learning, conflict resolution, deletion, or superiority to vector databases.
 
-**Files:** `E45/e45_latent_memory_phase3.py` and `E45/README_PHASE3.md`.
+**Artifact:** `runs/E45_phase3A/e45_phase3A_result.json` (user-run output; not committed).
 
-**Default protocol:** One codec trained on 8,192 associations; 8 independent stores × 1,024 associations; 32-dimensional keys and values; 8-dimensional address and payload codes; 120 epochs. Run with `python E45/e45_latent_memory_phase3.py`; smoke test with `python E45/e45_latent_memory_phase3.py --device cpu --smoke`.
+**Next decision:** Test one frozen codec across held-out value-generation domains.
 
-**Decision gates:** High pooled record accuracy, high pooled store accuracy, strong reconstruction across stores, no codec updates after training, and complete storage accounting. If pooled retrieval fails while single-store retrieval is strong, investigate address collisions/cross-store interference. If reconstruction fails on new stores, investigate value-domain generalization.
+## E45 — Persistent Latent Memory, Phase 3B: Cross-Domain Frozen Codec (2026-11-24)
 
-**Limitations:** Synthetic vectors only; no natural language or pretrained model. Train and test stores share one declared low-dimensional value domain. Cross-domain generalization, continual updates, deletion, conflict resolution, forgetting, and conventional vector-database comparisons remain untested.
+**Status:** Implemented and committed; execution pending.
+
+**Question:** Can a single frozen codec trained across several synthetic value domains write and retrieve memories from entirely new value domains, without receiving a domain identifier or projection matrix and without per-domain fine-tuning?
+
+**Design:** Train one codec on a mixed stream of eight independently seeded projection domains. Each domain maps random 8-dimensional factors through its own random projection into 32-dimensional values. Freeze the codec, then write new stores from (a) the same eight seen projection domains, using new keys/factors/associations, and (b) eight held-out projection domains never used during training. The codec receives no domain ID or projection matrix. Pool all sixteen stores during evaluation after a separate writer process exits.
+
+**Comparison:** Seen-domain results measure generalization to new records within familiar projection domains. Unseen-domain results measure generalization to new projections from the same generator family. Report pooled and per-group record/store accuracy, reconstruction cosine, unseen-minus-seen reconstruction gap, and full storage accounting.
+
+**Default protocol:** 8 training domains × 1,024 training records; 8 seen-domain stores + 8 unseen-domain stores, each with 1,024 records; 120 epochs; 32-dimensional keys/values and 8-dimensional address/payload codes. Smoke test: `python E45/e45_latent_memory_phase3b.py --device cpu --smoke`. Full run: `python E45/e45_latent_memory_phase3b.py`.
+
+**Files:** `E45/e45_latent_memory_phase3b.py` and `E45/README_PHASE3B.md`.
+
+**Decision gates:** High pooled retrieval and store isolation; strong reconstruction in both seen and unseen groups; a small seen-to-unseen reconstruction gap; frozen weights after training; and complete shared-codec storage accounting. If retrieval remains strong but unseen reconstruction drops, address learning generalizes while value encoding remains domain-sensitive.
+
+**Limitations:** The held-out domains are random projections from the same synthetic generator family, not arbitrary real-world semantic domains. No natural language, pretrained model, continual writes, deletion, conflict handling, or forgetting is tested.
