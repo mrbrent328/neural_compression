@@ -1,0 +1,974 @@
+{
+  "experiment": "E44_factorial_randomized_world_replication",
+  "status": "synthetic randomized-world robustness only; not pretrained-LM or compression evidence",
+  "protocol": {
+    "dataset_seeds": [
+      101,
+      102,
+      103,
+      104,
+      105
+    ],
+    "model_seeds": [
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "epochs_per_run": 60,
+    "runs": 25,
+    "crossed_design": true,
+    "independent_process_per_combination": true,
+    "dataset_assignments": "new balanced mapping per dataset seed; exactly 24 train and 8 held-out examples per class",
+    "model_randomness": "independent model initialization and training-order seed"
+  },
+  "aggregate_accuracy": {
+    "learned_quantized_latent": {
+      "n": 25,
+      "mean": 0.703671875,
+      "sample_stddev": 0.02552498504707977,
+      "median": 0.705078125,
+      "min": 0.658203125,
+      "max": 0.7734375
+    },
+    "shuffled_quantized_latent": {
+      "n": 25,
+      "mean": 0.013203125,
+      "sample_stddev": 0.004413659181426639,
+      "median": 0.013671875,
+      "min": 0.0078125,
+      "max": 0.021484375
+    },
+    "random_quantized_latent": {
+      "n": 25,
+      "mean": 0.0171875,
+      "sample_stddev": 0.005694288959809864,
+      "median": 0.017578125,
+      "min": 0.0078125,
+      "max": 0.033203125
+    },
+    "zero_quantized_latent": {
+      "n": 25,
+      "mean": 0.015625,
+      "sample_stddev": 0,
+      "median": 0.015625,
+      "min": 0.015625,
+      "max": 0.015625
+    },
+    "no_message": {
+      "n": 25,
+      "mean": 0.015625,
+      "sample_stddev": 0,
+      "median": 0.015625,
+      "min": 0.015625,
+      "max": 0.015625
+    }
+  },
+  "paired_accuracy_differences": {
+    "learned_minus_shuffled_quantized_latent": {
+      "n": 25,
+      "mean": 0.69046875,
+      "sample_stddev": 0.025881178654161906,
+      "median": 0.689453125,
+      "min": 0.642578125,
+      "max": 0.755859375,
+      "runs_learned_higher": 25,
+      "runs_tied": 0,
+      "runs_learned_lower": 0
+    },
+    "learned_minus_random_quantized_latent": {
+      "n": 25,
+      "mean": 0.686484375,
+      "sample_stddev": 0.027414111481147464,
+      "median": 0.6875,
+      "min": 0.63671875,
+      "max": 0.751953125,
+      "runs_learned_higher": 25,
+      "runs_tied": 0,
+      "runs_learned_lower": 0
+    },
+    "learned_minus_zero_quantized_latent": {
+      "n": 25,
+      "mean": 0.688046875,
+      "sample_stddev": 0.02552498504707977,
+      "median": 0.689453125,
+      "min": 0.642578125,
+      "max": 0.7578125,
+      "runs_learned_higher": 25,
+      "runs_tied": 0,
+      "runs_learned_lower": 0
+    },
+    "learned_minus_no_message": {
+      "n": 25,
+      "mean": 0.688046875,
+      "sample_stddev": 0.02552498504707977,
+      "median": 0.689453125,
+      "min": 0.642578125,
+      "max": 0.7578125,
+      "runs_learned_higher": 25,
+      "runs_tied": 0,
+      "runs_learned_lower": 0
+    }
+  },
+  "by_dataset_seed": {
+    "101": {
+      "n_model_seeds": 5,
+      "learned_accuracy": {
+        "n": 5,
+        "mean": 0.706640625,
+        "sample_stddev": 0.018754068568996567,
+        "median": 0.70703125,
+        "min": 0.681640625,
+        "max": 0.7265625
+      }
+    },
+    "102": {
+      "n_model_seeds": 5,
+      "learned_accuracy": {
+        "n": 5,
+        "mean": 0.716015625,
+        "sample_stddev": 0.03738079197125761,
+        "median": 0.7109375,
+        "min": 0.681640625,
+        "max": 0.7734375
+      }
+    },
+    "103": {
+      "n_model_seeds": 5,
+      "learned_accuracy": {
+        "n": 5,
+        "mean": 0.705078125,
+        "sample_stddev": 0.023640075072090243,
+        "median": 0.708984375,
+        "min": 0.669921875,
+        "max": 0.73046875
+      }
+    },
+    "104": {
+      "n_model_seeds": 5,
+      "learned_accuracy": {
+        "n": 5,
+        "mean": 0.696484375,
+        "sample_stddev": 0.024766980443980246,
+        "median": 0.6953125,
+        "min": 0.6640625,
+        "max": 0.72265625
+      }
+    },
+    "105": {
+      "n_model_seeds": 5,
+      "learned_accuracy": {
+        "n": 5,
+        "mean": 0.694140625,
+        "sample_stddev": 0.024612475003161507,
+        "median": 0.697265625,
+        "min": 0.658203125,
+        "max": 0.724609375
+      }
+    }
+  },
+  "runs": [
+    {
+      "dataset_seed": 101,
+      "model_seed": 43,
+      "raw_result": "runs/E44/factorial/e44_dataset_101_model_43.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.7265625,
+          "seconds": 0.0011291279806755483,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.0010431279661133885,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0008906759903766215,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008065089932642877,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002790589933283627,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 101,
+      "model_seed": 44,
+      "raw_result": "runs/E44/factorial/e44_dataset_101_model_44.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.72265625,
+          "seconds": 0.0011705750366672873,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.0010255060042254627,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0008999830461107194,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008070800104178488,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002788489800877869,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 101,
+      "model_seed": 45,
+      "raw_result": "runs/E44/factorial/e44_dataset_101_model_45.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.70703125,
+          "seconds": 0.0012326620053499937,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.0010354240075685084,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01953125,
+          "seconds": 0.0008661900064907968,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008022609981708229,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002823040122166276,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 101,
+      "model_seed": 46,
+      "raw_result": "runs/E44/factorial/e44_dataset_101_model_46.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.6953125,
+          "seconds": 0.001162310945801437,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0009901709854602814,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.0234375,
+          "seconds": 0.0008481759577989578,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007586999563500285,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00030458602122962475,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 101,
+      "model_seed": 47,
+      "raw_result": "runs/E44/factorial/e44_dataset_101_model_47.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.681640625,
+          "seconds": 0.0013340800069272518,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.0012143069761805236,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01953125,
+          "seconds": 0.0010392920230515301,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009557470330037177,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0003538670134730637,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 102,
+      "model_seed": 43,
+      "raw_result": "runs/E44/factorial/e44_dataset_102_model_43.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.7109375,
+          "seconds": 0.0011789620039053261,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0010287920013070107,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.000907416979316622,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008193430257961154,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0003008799976669252,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 102,
+      "model_seed": 44,
+      "raw_result": "runs/E44/factorial/e44_dataset_102_model_44.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.728515625,
+          "seconds": 0.0012326620053499937,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0009571390110068023,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008656900026835501,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007614159840159118,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002857910003513098,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 102,
+      "model_seed": 45,
+      "raw_result": "runs/E44/factorial/e44_dataset_102_model_45.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.685546875,
+          "seconds": 0.0011114869848825037,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.01953125,
+          "seconds": 0.0009795110090635717,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0008940729894675314,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007925940444692969,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002838380169123411,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 102,
+      "model_seed": 46,
+      "raw_result": "runs/E44/factorial/e44_dataset_102_model_46.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.7734375,
+          "seconds": 0.0011634629918262362,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0009989180252887309,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.0008888629963621497,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008721509948372841,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0003025220357812941,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 102,
+      "model_seed": 47,
+      "raw_result": "runs/E44/factorial/e44_dataset_102_model_47.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.681640625,
+          "seconds": 0.001079637964721769,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.0009596649906598032,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.033203125,
+          "seconds": 0.0008971979841589928,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008043060079216957,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00028313702205196023,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 103,
+      "model_seed": 43,
+      "raw_result": "runs/E44/factorial/e44_dataset_103_model_43.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.708984375,
+          "seconds": 0.0011409019934944808,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009888189961202443,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.000924350053537637,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008050280157476664,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002845890121534467,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 103,
+      "model_seed": 44,
+      "raw_result": "runs/E44/factorial/e44_dataset_103_model_44.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.720703125,
+          "seconds": 0.0012389440089464188,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.001237200980540365,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.00102739199064672,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009259519865736365,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00034074397990480065,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 103,
+      "model_seed": 45,
+      "raw_result": "runs/E44/factorial/e44_dataset_103_model_45.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.73046875,
+          "seconds": 0.0011689540115185082,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.01953125,
+          "seconds": 0.0010158089571632445,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0008771620341576636,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008411550079472363,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00028518098406493664,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 103,
+      "model_seed": 46,
+      "raw_result": "runs/E44/factorial/e44_dataset_103_model_46.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.6953125,
+          "seconds": 0.0011352220317348838,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.0009745219722390175,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0008875910425558686,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008874409832060337,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00028605200350284576,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 103,
+      "model_seed": 47,
+      "raw_result": "runs/E44/factorial/e44_dataset_103_model_47.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.669921875,
+          "seconds": 0.0011297920136712492,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.0010280230198986828,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01953125,
+          "seconds": 0.0008694080170243979,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008199260337278247,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00027340801898390055,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 104,
+      "model_seed": 43,
+      "raw_result": "runs/E44/factorial/e44_dataset_104_model_43.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.6640625,
+          "seconds": 0.0011236009886488318,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.0009806150337681174,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.0008645390043966472,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008663019980303943,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.000288166047539562,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 104,
+      "model_seed": 44,
+      "raw_result": "runs/E44/factorial/e44_dataset_104_model_44.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.72265625,
+          "seconds": 0.001142475986853242,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0010280529968440533,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008959670085459948,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007976139895617962,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002790400176309049,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 104,
+      "model_seed": 45,
+      "raw_result": "runs/E44/factorial/e44_dataset_104_model_45.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.6953125,
+          "seconds": 0.0011390600120648742,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0009667690028436482,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.0009750850149430335,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008701800252310932,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002905800356529653,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 104,
+      "model_seed": 46,
+      "raw_result": "runs/E44/factorial/e44_dataset_104_model_46.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.71875,
+          "seconds": 0.0011041550314985216,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.0009668990387581289,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.017578125,
+          "seconds": 0.0008872910402715206,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.000828612013719976,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00028326699975878,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 104,
+      "model_seed": 47,
+      "raw_result": "runs/E44/factorial/e44_dataset_104_model_47.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.681640625,
+          "seconds": 0.0011452619801275432,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0010037479805760086,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.009765625,
+          "seconds": 0.0008926009759306908,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.000799468019977212,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00029066100250929594,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 105,
+      "model_seed": 43,
+      "raw_result": "runs/E44/factorial/e44_dataset_105_model_43.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.658203125,
+          "seconds": 0.0011036139912903309,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0009325250284746289,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.021484375,
+          "seconds": 0.0008205680060200393,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007703430019319057,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002785780234262347,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 105,
+      "model_seed": 44,
+      "raw_result": "runs/E44/factorial/e44_dataset_105_model_44.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.724609375,
+          "seconds": 0.001145542017184198,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0010500840144231915,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.0008681560284458101,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007862229831516743,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002775469911284745,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 105,
+      "model_seed": 45,
+      "raw_result": "runs/E44/factorial/e44_dataset_105_model_45.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.697265625,
+          "seconds": 0.0010776059934869409,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.01953125,
+          "seconds": 0.000991194974631071,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.0078125,
+          "seconds": 0.0008559229900129139,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0007668470498174429,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.0002809430006891489,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 105,
+      "model_seed": 46,
+      "raw_result": "runs/E44/factorial/e44_dataset_105_model_46.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.705078125,
+          "seconds": 0.0012350799515843391,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.000989291991572827,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.0234375,
+          "seconds": 0.0008940339903347194,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008098870166577399,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00030933599919080734,
+          "examples": 512
+        }
+      }
+    },
+    {
+      "dataset_seed": 105,
+      "model_seed": 47,
+      "raw_result": "runs/E44/factorial/e44_dataset_105_model_47.json",
+      "results": {
+        "learned_quantized_latent": {
+          "accuracy": 0.685546875,
+          "seconds": 0.001111469988245517,
+          "examples": 512
+        },
+        "shuffled_quantized_latent": {
+          "accuracy": 0.013671875,
+          "seconds": 0.000989362015388906,
+          "examples": 512
+        },
+        "random_quantized_latent": {
+          "accuracy": 0.01171875,
+          "seconds": 0.0008653210243210196,
+          "examples": 512
+        },
+        "zero_quantized_latent": {
+          "accuracy": 0.015625,
+          "seconds": 0.0008223009645007551,
+          "examples": 512
+        },
+        "no_message": {
+          "accuracy": 0.015625,
+          "seconds": 0.00027923000743612647,
+          "examples": 512
+        }
+      }
+    }
+  ],
+  "interpretation_warning": "This is robustness across controlled synthetic assignments and initializations, not 25 independent natural datasets. Descriptive summaries only; do not infer statistical significance."
+}
