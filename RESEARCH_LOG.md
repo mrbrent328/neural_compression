@@ -646,3 +646,22 @@ The learned channel beat shuffled, random, zero, and no-message controls in **25
 **Interpretation:** E44 weakens the specific concern that E43's effect depended on its fixed `fact_id % 64` assignment. The learned task-specific channel remains far above controls across these five randomized balanced worlds and five initializations. This remains a synthetic 64-class communication task using synthetic frozen networks; it does not demonstrate pretrained-LM communication, unseen-class generalization, general semantic communication, or compression advantage. The 25 crossed cells are not 25 independent natural datasets, and the descriptive summaries are not significance tests.
 
 **Next research step:** Increase task difficulty in a way that requires receiver-side query conditioning or composition of multiple facts, while retaining the crossed dataset/model-seed design and all channel controls. Before any compression claim, add a matched neural/text baseline and complete amortized accounting for adapter/base checkpoints, framing, and compute.
+
+
+## E45 — Persistent Latent Memory, Stage 1 (2026-11-24)
+
+**Status:** Initial implementation committed; execution and empirical results pending.
+
+**Question:** Can a learned latent record preserve an association across serialization and process restart, then be addressed and decoded later?
+
+**Architecture:** A trainable writer encodes key/value observations into compact latent records; a separate query encoder maps key-only queries into the same address space; a reader reconstructs values. Latent records and codec weights are stored separately. The script constructs a fresh codec instance, reloads both artifacts, and evaluates recall after reload.
+
+**Controls/accounting:** Shuffled-record control; cosine reconstruction; top-1 address rate; raw key/value float32 bytes; latent-record bytes; codec checkpoint bytes reported separately.
+
+**Files:** `E45/e45_latent_memory.py` and `E45/README.md`.
+
+**Run:** `python E45/e45_latent_memory.py` (PyTorch and NumPy required). Outputs go to `runs/E45/` and are not committed automatically.
+
+**Interpretation boundary:** This is a synthetic associative-memory substrate test, not a pretrained-language-model integration. It does not establish superiority over text or conventional vector databases, continual-learning stability, cross-model portability, or restoration of internal computational state. The current experiment uses a learned compact record and trained address/reader networks; full codec/checkpoint costs must be included in any compression comparison.
+
+**Next decision:** First run multiple seeds and record counts. Then test continual writes, conflicting observations, interference, forgetting, and restart behavior. Only after the substrate is stable should a frozen pretrained model be added through a model-specific adapter that maps contextual hidden states into memory and returns retrieved context through a compatible conditioning path.
