@@ -88,14 +88,22 @@ def encode(encoder, loader, device, cache):
     print(f"Cached latents: {tuple(z.shape)}", flush=True)
     return z
 
-def save_grid(images, path, cols=8):
+def save_grid(images, path, cols=8, scale=8):
+    """Save a legible contact sheet; upscale pixels without blurring them."""
     images = images.detach().cpu().clamp(0, 1)
-    n, _, h, w = images.shape; rows = math.ceil(n / cols); pad = 3
-    canvas = Image.new("RGB", (cols*w+(cols+1)*pad, rows*h+(rows+1)*pad), (28,30,36))
+    n, _, h, w = images.shape
+    rows = math.ceil(n / cols)
+    pad = 12
+    tile_w, tile_h = w * scale, h * scale
+    canvas = Image.new(
+        "RGB",
+        (cols*tile_w+(cols+1)*pad, rows*tile_h+(rows+1)*pad),
+        (28,30,36),
+    )
     for i, im in enumerate(images):
         arr = (im.permute(1,2,0).numpy()*255).round().astype(np.uint8)
-        tile = Image.fromarray(arr)
-        canvas.paste(tile, (pad+(i%cols)*(w+pad), pad+(i//cols)*(h+pad)))
+        tile = Image.fromarray(arr).resize((tile_w, tile_h), Image.Resampling.NEAREST)
+        canvas.paste(tile, (pad+(i%cols)*(tile_w+pad), pad+(i//cols)*(tile_h+pad)))
     canvas.save(path)
 
 @torch.no_grad()
@@ -130,6 +138,8 @@ def main():
     p.add_argument("--diffusion-steps", type=int, default=500)
     p.add_argument("--sample-steps", type=int, default=50)
     p.add_argument("--sample-count", type=int, default=64)
+    p.add_argument("--grid-scale", type=int, default=8,
+                   help="Nearest-neighbor display enlargement for saved sample grids; does not change model resolution")
     p.add_argument("--seed", type=int, default=20261124)
     p.add_argument("--data-seed", type=int, default=12345)
     p.add_argument("--reencode", action="store_true")
@@ -220,7 +230,7 @@ def main():
         if epoch%10==0 or epoch==args.epochs:
             imgs=sample(model,decoder,mean,std,device,args.sample_count,args.sample_steps,
                         args.diffusion_steps,args.seed+epoch)
-            save_grid(imgs,args.out/f"samples_epoch_{epoch:03d}.png")
+            save_grid(imgs,args.out/f"samples_epoch_{epoch:03d}.png", scale=max(1,args.grid_scale))
             print(f" saved samples_epoch_{epoch:03d}.png",flush=True)
     report={"experiment":"R5_R3_local_latent_diffusion","device":str(device),
             "rocm_version":getattr(torch.version,"hip",None),"latent_source":latent_source,
