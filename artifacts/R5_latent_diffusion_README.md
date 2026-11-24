@@ -37,8 +37,8 @@ To leave it training after closing the terminal:
 ```bash
 mkdir -p runs/r5
 nohup python -u artifacts/R5_latent_diffusion.py \
-  --data-root /home/xetal/Desktop/latent_model_test/cifar10 \
-  --checkpoint artifacts/real_cifar10_local_interaction/r3_local_interaction_40000.pt \
+  --latents /home/xetal/Desktop/latent_model_test/cifar10/local_states_40000.npy \
+  --checkpoint /home/xetal/Desktop/latent_model_test/cifar10/r3_local_interaction_40000.pt \
   > runs/r5/train.log 2>&1 & echo $! > runs/r5/pid
 ```
 
