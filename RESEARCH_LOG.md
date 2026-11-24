@@ -514,3 +514,27 @@ At temperature 1.0, mean unique-byte fraction was 0.271 dense, 0.261 low-rank, a
 **Important negative/limiting evidence:** latent did not achieve the best validation loss or throughput in any scale in this run. Low-rank was fastest in each scale. Several runs show substantial best-to-final validation deterioration while training loss continues to fall; this is consistent with overfitting or a split/distribution issue, but the run alone does not establish the cause.
 
 **Research decision:** preserve this as a scaling/efficiency result, not evidence of a general quality or speed advantage. Before architecture changes, investigate the corpus split and validation behavior, inspect checkpoint selection, and repeat with multiple seeds. Full configuration and tabulated results are in `SCALING_RESULTS_5000.md`. The uploaded binary checkpoints and console logs remain in the original 119.7 MB archive; the archive exceeds GitHub's 100 MB per-file limit and was not committed as one binary file.
+
+## E43 — Latent Communication Between Independent Neural Networks
+
+**Status:** OPEN — Phase 1 harness revised; awaiting a clean rerun.
+
+**Question:** Can two independently operating networks transfer useful task information through a compact learned latent packet, without sending ordinary text?
+
+**Implementation:** `E43_latent_communication.py`; protocol and design notes in `E43_README.md`.
+
+**Phase 1 v2 changes:**
+- Replaced non-differentiable int8 training path with a straight-through estimator: quantized values remain in the forward pass while sender-adapter backpropagation uses an identity-gradient approximation.
+- Changed the synthetic split to disjoint fact identities, with 24 training and 8 held-out facts per value class.
+- Ensured evaluation passes through the actual quantize/dequantize packet path.
+- Added shuffled-message, random-message, zero-message, no-message, and test-majority controls.
+- Added first-step gradient norms and adapter parameter-delta diagnostics.
+- Changed gzip measurement to compress one newline-delimited stream rather than one tiny gzip member per example.
+- Kept the text path explicitly labeled as a symbolic oracle diagnostic, not a matched neural baseline.
+
+**Prior run interpretation:** The first run (5.27% learned latent accuracy) is superseded. Its quantizer did not provide a useful gradient path to the sender adapter, and its split reused fact identities across train and test. Do not treat that result as evidence for or against the communication hypothesis.
+
+**Next action:** Run the revised script on CPU or ROCm, inspect gradient norms and parameter deltas, and compare learned latent against shuffled, random, zero, no-message, and majority controls. Replicate with multiple seeds before deciding whether Phase 1 supports proceeding.
+
+**What this does not establish:** No pretrained language models have been tested. No compression advantage, general communication protocol, or cross-architecture semantic alignment has been demonstrated.
+
