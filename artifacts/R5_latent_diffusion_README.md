@@ -15,7 +15,7 @@ evaluation is deliberately unconditional and uses CIFAR-10 at 32x32.
 - A locally saved R3 checkpoint. The checkpoint is not committed to GitHub:
   `artifacts/real_cifar10_local_interaction/r3_local_interaction_40000.pt`
   is the default path, but pass `--checkpoint` if yours is elsewhere.
-- The CIFAR-10 Parquet data used by R3.
+- Either the CIFAR-10 Parquet data used by R3, or a saved R3 local-state array shaped `[N,16,32]`.
 - PyTorch, NumPy, pandas, Pillow, and a PyArrow Parquet engine.
 
 ROCm PyTorch exposes AMD GPUs through `torch.cuda`; the script prints the
@@ -44,6 +44,23 @@ nohup python -u artifacts/R5_latent_diffusion.py \
 
 Watch progress with `tail -f runs/r5/train.log`.
 
+## Reuse saved R3 local states
+
+If you already have an R3 export such as `local_states_40000.npy`, you can
+train R5 without the original Parquet images or re-encoding:
+
+```bash
+python artifacts/R5_latent_diffusion.py \\
+  --latents /path/to/local_states_40000.npy \\
+  --checkpoint /path/to/r3_local_interaction_40000.pt
+```
+
+The file must contain a finite float-compatible array shaped `[N,16,32]`.
+R5 validates this shape and records the latent source and number of examples
+in `r5_results.json`. When using a saved evaluation export, describe the run
+as training on those saved evaluation representations—not as training on
+the number of images in the R3 checkpoint filename.
+
 ## Outputs
 
 By default, outputs go to `artifacts/real_cifar10_latent_diffusion/`:
@@ -53,8 +70,8 @@ By default, outputs go to `artifacts/real_cifar10_latent_diffusion/`:
 - `samples_epoch_010.png`, etc.: generated image grids every ten epochs.
 - `r5_results.json`: final configuration, timing, and noise-loss history.
 
-The first run encodes the images; later runs reuse the cache unless
-`--reencode` is passed. Default training is 100 epochs, 500 diffusion steps,
+When using `--data-root`, the first run encodes images and later runs reuse the cache unless
+`--reencode` is passed. With `--latents`, R5 loads the supplied saved states directly. Default training is 100 epochs, 500 diffusion steps,
 and 50 DDIM sampling steps. Reduce `--epochs` for a quick smoke run.
 
 ## Interpretation boundary
