@@ -121,68 +121,7 @@ def sample(denoiser, decoder, mean, std, device, count, sample_steps, diffusion_
         else:
             ap = ab[ts[i+1]]
             x = ap.sqrt()*x0 + (1-ap).sqrt()*eps  # deterministic DDIM
-    generated_latents = x * std + mean
-    return decoder.decode_local(generated_latents), generated_latents, x
-
-def distribution_summary(values):
-    """Compact distribution summary over [N, tokens, dimensions]."""
-    a = values.detach().float().cpu().numpy()
-    flat = a.reshape(-1)
-    per_dim = a.reshape(-1, a.shape[-1])
-    return {
-        "shape": list(a.shape),
-        "overall": {
-            "mean": float(flat.mean()),
-            "std": float(flat.std()),
-            "min": float(flat.min()),
-            "max": float(flat.max()),
-            "q01": float(np.quantile(flat, 0.01)),
-            "q05": float(np.quantile(flat, 0.05)),
-            "median": float(np.median(flat)),
-            "q95": float(np.quantile(flat, 0.95)),
-            "q99": float(np.quantile(flat, 0.99)),
-        },
-        "per_dimension_mean": per_dim.mean(axis=0).tolist(),
-        "per_dimension_std": per_dim.std(axis=0).tolist(),
-    }
-
-
-def save_latent_diagnostics(real_latents, generated_latents, generated_normalized, mean, std, out):
-    """Compare genuine R3 states with R5 samples in both raw and normalized space."""
-    real_normalized = ((real_latents - mean.cpu()) / std.cpu()).clamp(-8, 8)
-    generated_normalized = generated_normalized.detach().cpu()
-    real_normalized = real_normalized.detach().cpu()
-    generated_latents = generated_latents.detach().cpu()
-    real_latents = real_latents.detach().cpu()
-
-    # Fraction of generated normalized coordinates outside the central range
-    # observed in genuine normalized latents.
-    real_flat = real_normalized.reshape(-1)
-    gen_flat = generated_normalized.reshape(-1)
-    low, high = torch.quantile(real_flat, torch.tensor([0.01, 0.99]))
-    outside = ((gen_flat < low) | (gen_flat > high)).float().mean()
-
-    report = {
-        "real_raw": distribution_summary(real_latents),
-        "generated_raw": distribution_summary(generated_latents),
-        "real_normalized": distribution_summary(real_normalized),
-        "generated_normalized": distribution_summary(generated_normalized),
-        "real_normalized_q01_q99": [float(low), float(high)],
-        "generated_normalized_fraction_outside_real_q01_q99": float(outside),
-        "note": "Generated sample count is the R5 sample-count setting; real statistics use the full saved latent set."
-    }
-    (out / "latent_distribution_diagnostics.json").write_text(json.dumps(report, indent=2))
-
-    # Save arrays too, so deeper per-token/per-dimension analysis is possible.
-    np.savez_compressed(
-        out / "latent_distribution_diagnostics.npz",
-        real_raw=real_latents.numpy(),
-        generated_raw=generated_latents.numpy(),
-        real_normalized=real_normalized.numpy(),
-        generated_normalized=generated_normalized.numpy(),
-    )
-    print(" saved latent_distribution_diagnostics.json and .npz", flush=True)
-
+    return decoder.decode_local(x*std + mean)
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
@@ -305,16 +244,10 @@ def main():
                         "epoch":epoch,"seed":args.seed,"r3_checkpoint":str(args.checkpoint)},
                        args.out/"r5_latent_diffusion.pt")
         if epoch%10==0 or epoch==args.epochs:
-            imgs, generated_latents, generated_normalized = sample(
-                model,decoder,mean,std,device,args.sample_count,args.sample_steps,
-                args.diffusion_steps,args.seed+epoch
-            )
+            imgs=sample(model,decoder,mean,std,device,args.sample_count,args.sample_steps,
+                        args.diffusion_steps,args.seed+epoch)
             save_grid(imgs,args.out/f"samples_epoch_{epoch:03d}.png", scale=max(1,args.grid_scale))
             print(f" saved samples_epoch_{epoch:03d}.png",flush=True)
-            if epoch == args.epochs:
-                save_latent_diagnostics(
-                    z, generated_latents, generated_normalized, mean, std, args.out
-                )
     report={"experiment":"R5_R3_local_latent_diffusion","device":str(device),
             "rocm_version":getattr(torch.version,"hip",None),"latent_source":latent_source,
             "latent_examples":int(z.shape[0]),
