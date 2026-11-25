@@ -121,7 +121,7 @@ class ActivationHook:
         except (AttributeError, KeyError) as exc:
             raise ValueError(f"Decoder layer path not found: {layer_path}") from exc
         params = list(self.layer.parameters())
-        self.adapter.to(params[0].device if params else "cpu")
+        self.adapter.to(device=params[0].device, dtype=params[0].dtype) if params else self.adapter.to("cpu")
     def _hook(self, _module, _inputs, output):
         if isinstance(output, tuple):
             if not output or not isinstance(output[0], Tensor):
