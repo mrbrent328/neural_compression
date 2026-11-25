@@ -62,7 +62,7 @@ def evaluate(a):
    for x in rows)
   questions="\n".join(q["id"]+": "+q["question"] for q in qs)
   prompt=("Use only MEMORY. Missing facts must be answered UNKNOWN; never guess. "
-   "Return a JSON object with an answers object mapping each question ID to a short answer.\\nMEMORY:\\n"+memory+"\\nQUESTIONS:\\n"+questions)
+   "Return a JSON object with an answers object mapping each question ID to a short answer.\nMEMORY:\n"+memory+"\nQUESTIONS:\n"+questions)
   body={"model":model,"temperature":0,"max_tokens":1800,"stream":False,
    "messages":[{"role":"user","content":prompt}]}
   t=time.time(); response=call(a.base_url.rstrip("/")+"/chat/completions",body,a.api_key,a.timeout)
