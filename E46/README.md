@@ -20,10 +20,11 @@ Recommended first run: a 12-cell diagnostic subset of the existing Phase 3C desi
 python E45/e45_latent_memory_phase3c.py --device cpu \
   --seeds 45 46 47 \
   --domain-counts 2 32 \
-  --payload-dims 8 32
+  --payload-dims 8 32 \
+  --output runs/E45_phase3C_diag12
 ```
 
-This crosses low/high training-domain diversity with narrow/full-width learned payloads over three seeds. It is a diagnostic subset, not a replacement for the registered 60-cell factorial. If the pattern is ambiguous, run the complete sweep:
+This crosses low/high training-domain diversity with narrow/full-width learned payloads over three seeds. It is a diagnostic subset, not a replacement for the registered 60-cell factorial. It writes to a separate output directory so it cannot overwrite a prior Phase 3C run. If the pattern is ambiguous, run the complete sweep:
 
 ```bash
 python E45/e45_latent_memory_phase3c.py --device cpu
@@ -38,13 +39,23 @@ Decision criteria:
 
 ### Gate 1 — LM Studio connection smoke test
 
-Use LM Studio's local server as an inference backend. The first harness should:
-1. Check the configured server URL and enumerate available models.
-2. Send one deterministic chat-completion request.
-3. Record the returned model identifier, endpoint, latency, and response.
-4. Fail with actionable diagnostics if the server is stopped, the model is not loaded, or the endpoint is incompatible.
+LM Studio documents an OpenAI-compatible `/v1/models` endpoint and `/v1/chat/completions` endpoint. The default local base URL is `http://localhost:1234/v1`.
 
-This is an integration check only. It does not test latent memory, hidden-state access, or learning.
+Start the local server in LM Studio's Developer tab. Load the intended chat model, then from the repository root run:
+
+```bash
+python E46/lmstudio_smoke.py
+```
+
+The script lists models, prefers an available `gpt-oss-20b` model ID, otherwise selects the first listed model, sends one deterministic request, reports latency and usage, and saves a JSON record under `runs/E46/lmstudio_smoke.json`. To select a model explicitly:
+
+```bash
+python E46/lmstudio_smoke.py --model "MODEL_ID_FROM_LM_STUDIO"
+```
+
+If server authentication is enabled, pass `--api-key "$LM_API_TOKEN"`. To use a different host or port, pass `--base-url`.
+
+This is an integration check only. It does not test latent memory, hidden-state access, or learning. The script uses only Python's standard library.
 
 ### Gate 2 — Establish a language-memory baseline
 
@@ -94,4 +105,9 @@ No base-model retraining is planned for the initial stages. Small interface trai
 
 ## Current next action
 
-Run the 12-cell E45 Phase 3C diagnostic subset, inspect the aggregate, then proceed to the LM Studio connection harness. Keep the full 60-cell run available if the diagnostic does not resolve the value-path question.
+Run the 12-cell E45 Phase 3C diagnostic subset, inspect the aggregate, then run the LM Studio connection harness. Keep the full 60-cell run available if the diagnostic does not resolve the value-path question.
+
+## References
+
+- LM Studio OpenAI-compatible endpoints: https://lmstudio.ai/docs/developer/openai-compat
+- LM Studio API overview: https://lmstudio.ai/docs/developer/rest
