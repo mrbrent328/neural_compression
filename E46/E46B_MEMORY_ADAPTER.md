@@ -62,10 +62,10 @@ python E46/e46b_qwen_host_check.py capture --model-path /absolute/path/to/Qwen3-
 Then run injection in a separate process:
 
 ```bash
-python E46/e46b_qwen_host_check.py inject --model-path /absolute/path/to/Qwen3-1.7B-Base --gate 0.25
+python E46/e46b_qwen_host_check.py inject --model-path /absolute/path/to/Qwen3-1.7B-Base --prompt "A different question in a later session." --gate 0.25
 ```
 
-The capture command auto-selects a likely middle decoder block; pass --layer-path with an exact path if needed. The inject command reloads the adapter and memory bank from disk, runs a baseline and hooked forward pass, and reports the logit delta. A nonzero delta verifies that the conditioning hook is active, not that memory improves task performance. Use --gate 0 to check the behavior-neutral path.
+The capture command auto-selects a likely middle decoder block; pass --layer-path with an exact path if needed. Use a meaningfully different prompt during injection: repeating the capture prompt only checks the wiring, not cross-context reuse. The runner rejects a layer mismatch because activations from different layer locations are not interchangeable. The inject command reloads the adapter and memory bank from disk, runs a baseline and hooked forward pass, and reports the logit delta. A nonzero delta verifies that the conditioning hook is active, not that memory improves task performance. Use --gate 0 to check the behavior-neutral path.
 
 The script requires transformers and PyTorch and uses local_files_only=True. It does not download model files or transmit prompts.
 
