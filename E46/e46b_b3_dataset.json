@@ -1,0 +1,102 @@
+{
+  "experiment": "E46-B3",
+  "description": "Eight synthetic facts with independent capture prompts, training query phrasings, and held-out query phrasings.",
+  "facts": [
+    {
+      "id": "orbit17_fact",
+      "capture_prompt": "Remember this fact: Vessel ORBIT-17 has a calibration temperature of 42 degrees Celsius.",
+      "train_queries": [
+        "What calibration temperature was recorded for vessel ORBIT-17?",
+        "For ORBIT-17, what temperature should the calibration record show?"
+      ],
+      "heldout_queries": [
+        "Tell me the recorded calibration temperature belonging to ORBIT-17.",
+        "Which temperature is associated with the ORBIT-17 vessel calibration?"
+      ]
+    },
+    {
+      "id": "nova22_fact",
+      "capture_prompt": "Remember this fact: Vessel NOVA-22 has a calibration temperature of 18 degrees Celsius.",
+      "train_queries": [
+        "What calibration temperature was recorded for vessel NOVA-22?",
+        "For NOVA-22, what temperature should the calibration record show?"
+      ],
+      "heldout_queries": [
+        "Tell me the recorded calibration temperature belonging to NOVA-22.",
+        "Which temperature is associated with the NOVA-22 vessel calibration?"
+      ]
+    },
+    {
+      "id": "blue_instrument_fact",
+      "capture_prompt": "Remember this fact: The blue instrument was manufactured in 2031.",
+      "train_queries": [
+        "In what year was the blue instrument manufactured?",
+        "What is the manufacturing year of the blue instrument?"
+      ],
+      "heldout_queries": [
+        "When did production of the blue instrument take place?",
+        "Give me the year associated with the blue instrument's manufacture."
+      ]
+    },
+    {
+      "id": "red_rover_fact",
+      "capture_prompt": "Remember this fact: The red rover is named Kestrel.",
+      "train_queries": [
+        "What is the name of the red rover?",
+        "Which name belongs to the red rover?"
+      ],
+      "heldout_queries": [
+        "Identify the rover that is red.",
+        "What do we call the red rover?"
+      ]
+    },
+    {
+      "id": "green_sensor_fact",
+      "capture_prompt": "Remember this fact: Sensor G-14 is installed in the eastern greenhouse.",
+      "train_queries": [
+        "Where is sensor G-14 installed?",
+        "Which location contains sensor G-14?"
+      ],
+      "heldout_queries": [
+        "Find the installation location for G-14.",
+        "In which greenhouse area can I find sensor G-14?"
+      ]
+    },
+    {
+      "id": "amber_drone_fact",
+      "capture_prompt": "Remember this fact: The amber drone has a battery capacity of 640 watt-hours.",
+      "train_queries": [
+        "What is the battery capacity of the amber drone?",
+        "How many watt-hours can the amber drone's battery store?"
+      ],
+      "heldout_queries": [
+        "State the energy capacity of the amber drone battery.",
+        "How large is the amber drone's battery, measured in watt-hours?"
+      ]
+    },
+    {
+      "id": "archive_delta_fact",
+      "capture_prompt": "Remember this fact: Archive Delta contains 275 catalogued entries.",
+      "train_queries": [
+        "How many catalogued entries are in Archive Delta?",
+        "What is the entry count for Archive Delta?"
+      ],
+      "heldout_queries": [
+        "Give the number of records catalogued in Archive Delta.",
+        "How many items does Archive Delta contain in its catalogue?"
+      ]
+    },
+    {
+      "id": "station_lyra_fact",
+      "capture_prompt": "Remember this fact: Station Lyra opened in 2044.",
+      "train_queries": [
+        "When did Station Lyra open?",
+        "What year was Station Lyra opened?"
+      ],
+      "heldout_queries": [
+        "In which year did Station Lyra begin operating?",
+        "Tell me the opening year of Station Lyra."
+      ]
+    }
+  ]
+}
