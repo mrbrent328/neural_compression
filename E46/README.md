@@ -1,8 +1,21 @@
 # E46 — Pretrained-model memory integration (research plan)
 
-**Status:** E46-A benchmark implemented; E46-B activation-level adapter scaffold committed. No pretrained-model activation/injection result exists yet.  
+**Status:** E46-A benchmark implemented; E46-B1 pretrained Qwen activation capture and frozen-weight injection smoke tests completed; E46-B2 untrained retrieval diagnostics completed; E46-B3 supervised address-space training implemented and ready for local execution.  
 **Host candidate:** Qwen3-1.7B-Base via a direct Transformers/PyTorch runtime. LM Studio remains a text-only baseline transport, not the activation integration backend.  
 **Dependency:** E45 Phase 3C has now been analyzed. It supports a staged E46, but does not establish natural-language or pretrained-model memory.
+
+
+### E46-B3 — supervised activation-space addressing
+
+The first live Qwen tests confirmed persistence and residual injection, but the randomly initialized address writer and query encoder did not reliably retrieve the matching fact. E46-B3 now adds a controlled supervised experiment:
+
+- Eight fact records, each with a capture prompt, two training query phrasings, and two held-out phrasings.
+- Frozen Qwen activations collected at the same decoder layer.
+- Contrastive classification trains only the address writer and query encoder.
+- Held-out retrieval accuracy selects the checkpoint.
+- A separate build step writes fact activations into a fresh persistent bank using the trained address writer.
+
+See [E46B3_ADDRESS_TRAINING.md](E46B3_ADDRESS_TRAINING.md) for the run sequence and interpretation limits. The experiment evaluates address selection only; payload reconstruction and answer improvement remain untested.
 
 ## Why E46 exists
 
