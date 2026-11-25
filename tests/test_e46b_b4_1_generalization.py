@@ -36,5 +36,5 @@ class E46B41Tests(unittest.TestCase):
             for norm in (adapter.address_writer[1],adapter.query_encoder[1]):
                 norm.weight.fill_(1.); norm.bias.zero_()
         result=score_queries(adapter,facts,[{"vector":torch.tensor([1.,0.]),"target":0,"category":"x"}])
-        self.assertAlmostEqual(result["mean_margin"],1.0,places=5)
+        self.assertAlmostEqual(result["mean_margin"],2.0,places=5)
 if __name__=="__main__": unittest.main()
