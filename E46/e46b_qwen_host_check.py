@@ -153,17 +153,26 @@ def run_inject(args):
     if "hidden" not in query_activation:
         raise RuntimeError("The selected decoder layer did not execute for the query.")
     with torch.no_grad():
-        _recalled, retrieval_scores, retrieval_indices = adapter.recall(
+        _recalled, selected_scores, selected_indices = adapter.recall(
             query_activation["hidden"], return_indices=True
         )
+        query_vector = torch.nn.functional.normalize(
+            adapter.query_encoder(adapter.pool(query_activation["hidden"])).float(),
+            dim=-1,
+        )
+        _all_payloads, all_scores, all_indices = adapter.bank.retrieve(
+            query_vector, top_k=len(adapter.bank), return_indices=True
+        )
+    selected_set = set(selected_indices[0].tolist())
     retrieval_report = []
-    for score, index in zip(retrieval_scores[0].tolist(), retrieval_indices[0].tolist()):
+    for score, index in zip(all_scores[0].tolist(), all_indices[0].tolist()):
         metadata = adapter.bank.metadata[index] if index < len(adapter.bank.metadata) else {}
         retrieval_report.append({
             "memory_index": int(index),
             "capture_id": metadata.get("capture_id", f"record-{index}"),
             "metadata": metadata,
             "cosine_score": float(score),
+            "selected_for_injection": int(index) in selected_set,
         })
     adapter.residual_gate.data.fill_(args.gate)
     with ActivationHook(model, adapter, layer_path, freeze_base=True):
@@ -181,7 +190,7 @@ def run_inject(args):
     print(json.dumps({
         "phase": "inject", "model_path": args.model_path, "device": str(device),
         "layer_path": layer_path, "memory_records": len(adapter.bank),
-        "retrieval_candidates": retrieval_report,
+        "retrieval_ranking_all_memories": retrieval_report,
         "gate": args.gate, "logits_shape": list(adapted.shape),
         "max_abs_logit_delta": float(delta.max().item()),
         "mean_abs_logit_delta": float(delta.mean().item()),
