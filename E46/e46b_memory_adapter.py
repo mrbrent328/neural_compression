@@ -26,7 +26,7 @@ class PersistentMemoryBank:
         self.addresses = torch.cat((self.addresses, F.normalize(address, dim=-1)))
         self.payloads = torch.cat((self.payloads, payload))
         self.metadata.extend([dict(metadata or {}) for _ in range(address.shape[0])])
-    def retrieve(self, query: Tensor, top_k: int = 4):
+    def retrieve(self, query: Tensor, top_k: int = 4, return_indices: bool = False):
         if not len(self):
             raise RuntimeError("Cannot retrieve from an empty memory bank.")
         if top_k < 1:
@@ -36,7 +36,10 @@ class PersistentMemoryBank:
         values, indices = scores.topk(min(top_k, len(self)), dim=-1)
         weights = F.softmax(values, dim=-1)
         selected = self.payloads.to(query.device)[indices]
-        return (selected * weights.unsqueeze(-1)).sum(dim=-2), values
+        recalled = (selected * weights.unsqueeze(-1)).sum(dim=-2)
+        if return_indices:
+            return recalled, values, indices
+        return recalled, values
     def save(self, path):
         path = Path(path); path.parent.mkdir(parents=True, exist_ok=True)
         torch.save({"format_version": FORMAT_VERSION, "address_dim": self.address_dim,
@@ -80,12 +83,19 @@ class NeuralMemoryAdapter(nn.Module):
         pooled = self.pool(activation)
         address = F.normalize(self.address_writer(pooled), dim=-1)
         self.bank.add(address, self.payload_writer(pooled), metadata)
-    def recall(self, activation: Tensor):
+    def recall(self, activation: Tensor, return_indices: bool = False):
         query = F.normalize(self.query_encoder(self.pool(activation)), dim=-1)
-        payload, scores = self.bank.retrieve(query, self.top_k)
+        result = self.bank.retrieve(query, self.top_k, return_indices=return_indices)
+        if return_indices:
+            payload, scores, indices = result
+        else:
+            payload, scores = result
         reader_parameter = next(self.payload_reader.parameters())
         payload = payload.to(device=reader_parameter.device, dtype=reader_parameter.dtype)
-        return self.payload_reader(payload), scores
+        recalled = self.payload_reader(payload)
+        if return_indices:
+            return recalled, scores, indices
+        return recalled, scores
     def inject(self, activation: Tensor):
         if not len(self.bank): return activation, None
         recalled, scores = self.recall(activation)
