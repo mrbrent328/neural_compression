@@ -108,12 +108,19 @@ def run_inject(args):
         raise ValueError(f"Saved layer path {layer_path!r} is not present in this model.")
     inputs = tokenizer(args.prompt, return_tensors="pt").to(device)
 
+    parameter_versions = [parameter._version for parameter in model.parameters()]
     with torch.no_grad():
         baseline = model(**inputs, use_cache=False).logits
     adapter.residual_gate.data.fill_(args.gate)
     with ActivationHook(model, adapter, layer_path, freeze_base=True):
         with torch.no_grad():
             adapted = model(**inputs, use_cache=False).logits
+    base_weights_unchanged = all(
+        parameter._version == version
+        for parameter, version in zip(model.parameters(), parameter_versions)
+    )
+    if not base_weights_unchanged:
+        raise RuntimeError("A base-model parameter changed during the adapter smoke test.")
     delta = (adapted.float() - baseline.float()).abs()
     if not torch.isfinite(adapted).all():
         raise RuntimeError("Adapted model produced non-finite logits.")
@@ -125,6 +132,7 @@ def run_inject(args):
         "mean_abs_logit_delta": float(delta.mean().item()),
         "base_trainable_parameters": sum(p.numel() for p in model.parameters()
                                          if p.requires_grad),
+        "base_parameter_versions_unchanged": base_weights_unchanged,
         "finite_logits": True,
         "interpretation": (
             "A finite nonzero delta verifies that the hook changes this forward pass; "
