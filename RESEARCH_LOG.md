@@ -760,3 +760,23 @@ The learned channel beat shuffled, random, zero, and no-message controls in **25
 **Limitations:** Synthetic projection domains only; two seen and two unseen stores per run; three seeds are an initial replication estimate, not definitive statistical evidence. The 32-dimensional reference is not a raw-value oracle. Natural language, pretrained models, continual writes, deletion, conflicts, interference, forgetting, and vector-database comparisons remain untested.
 
 **Next decision:** Run the full sweep, inspect whether retrieval remains stable, then use the factorial trends to choose a targeted follow-up rather than changing the architecture prematurely.
+
+
+## Scaling Revalidation V1 — paragraph-held-out validation
+
+**Status: IMPLEMENTED; awaiting local execution.**
+
+A review of the 5,000-step scaling comparison identified a validation-design risk. The previous runner passed a single corpus to the model, whose default behavior was a sequential 90/10 byte split. The current committed corpus contains 10 normalized paragraphs in the validation tail that also occur in the training prefix. The current corpus is 204,559 bytes, while the earlier 5,000-step report records 204,955 bytes; the exact earlier input artifact has not yet been recovered.
+
+This is a warning about validation independence, not proof that the reported results are invalid. The new SCALING_REVALIDATION_V1 experiment adds a separately supplied validation file and a deterministic shuffled paragraph-level holdout after exact normalized paragraph deduplication.
+
+**Important boundary:** the corpus does not retain source-document IDs. Paragraph-level splitting prevents exact normalized paragraph overlap but does not guarantee source-document-level separation or eliminate near-duplicate/topic leakage.
+
+The implementation adds:
+- optional --val-data support to latent_transformer_v0.py, preserving the historical sequential split when omitted;
+- revalidate_scaling.py to prepare the split, record a manifest, run matched medium-scale dense/low-rank/latent conditions, and save incremental progress;
+- SCALING_REVALIDATION_V1.md with the protocol and run instructions.
+
+The first planned run uses the previous medium configuration for 5,000 steps and one seed (1337). It is a revalidation pilot, not a statistically conclusive result. Replication across additional seeds remains required.
+
+**Decision rule:** inspect the selected device before allowing the full run to continue; compare best and final validation loss, train/validation divergence, parameters, checkpoint bytes, throughput, and available memory metrics. Do not declare a latent advantage unless the controls and replications support it.
