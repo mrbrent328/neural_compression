@@ -1,0 +1,155 @@
+#!/usr/bin/env python3
+"""E46-B1: inspect a local Hugging Face checkpoint and test activation persistence.
+
+Run capture and inject as separate commands/processes:
+  python E46/e46b_qwen_host_check.py capture --model-path /path/to/Qwen3-1.7B-Base
+  python E46/e46b_qwen_host_check.py inject --model-path /path/to/Qwen3-1.7B-Base
+
+Requires torch and transformers. The checkpoint must already exist locally.
+"""
+from __future__ import annotations
+import argparse
+import json
+import re
+from pathlib import Path
+
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+from E46.e46b_memory_adapter import ActivationHook, NeuralMemoryAdapter
+
+
+def choose_device():
+    return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def load_host(model_path: str, device: torch.device):
+    dtype = torch.float16 if device.type == "cuda" else torch.float32
+    tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_path, torch_dtype=dtype, local_files_only=True,
+        trust_remote_code=False,
+    )
+    model.to(device).eval()
+    model.config.use_cache = False
+    return tokenizer, model
+
+
+def candidate_layers(model):
+    pattern = re.compile(r"(?:^|\.)(?:layers|blocks|h)\.\d+$")
+    return [name for name, _ in model.named_modules() if pattern.search(name)]
+
+
+def hidden_from_output(output):
+    if isinstance(output, tuple) and output and isinstance(output[0], torch.Tensor):
+        return output[0]
+    if isinstance(output, torch.Tensor):
+        return output
+    raise TypeError("Selected decoder module did not return a hidden-state tensor.")
+
+
+def run_capture(args):
+    device = choose_device()
+    tokenizer, model = load_host(args.model_path, device)
+    layers = candidate_layers(model)
+    if not layers:
+        raise RuntimeError("No likely decoder block paths found. Inspect model.named_modules().")
+    layer_path = args.layer_path or layers[len(layers) // 2]
+    layer = model.get_submodule(layer_path)
+    hidden_dim = int(getattr(model.config, "hidden_size"))
+    adapter_dir = Path(args.adapter_dir)
+    adapter_path = adapter_dir / "adapter.pt"
+    if adapter_path.exists():
+        adapter = NeuralMemoryAdapter.load(adapter_dir, map_location=device)
+        if adapter.hidden_dim != hidden_dim:
+            raise ValueError("Saved adapter hidden width does not match this host model.")
+    else:
+        adapter = NeuralMemoryAdapter(hidden_dim, args.address_dim, args.payload_dim,
+                                      args.top_k).to(device)
+
+    captured = {}
+    def capture_hook(_module, _inputs, output):
+        captured["hidden"] = hidden_from_output(output).detach()
+    handle = layer.register_forward_hook(capture_hook)
+    inputs = tokenizer(args.prompt, return_tensors="pt").to(device)
+    with torch.no_grad():
+        _ = model(**inputs, use_cache=False)
+    handle.remove()
+    if "hidden" not in captured:
+        raise RuntimeError("The selected decoder layer did not execute.")
+    hidden = captured["hidden"]
+    if hidden.shape[-1] != hidden_dim:
+        raise ValueError(f"Captured width {hidden.shape[-1]} != config hidden_size {hidden_dim}.")
+    adapter.write(hidden, {"capture_id": args.capture_id, "layer_path": layer_path})
+    adapter.save(adapter_dir)
+    print(json.dumps({
+        "phase": "capture", "model_path": args.model_path, "device": str(device),
+        "dtype": str(next(model.parameters()).dtype), "layer_path": layer_path,
+        "candidate_layers": layers, "hidden_shape": list(hidden.shape),
+        "hidden_dim": hidden_dim, "memory_records": len(adapter.bank),
+        "adapter_dir": str(adapter_dir),
+        "note": "Run inject in a separate process to verify persisted reload.",
+    }, indent=2))
+
+
+def run_inject(args):
+    device = choose_device()
+    tokenizer, model = load_host(args.model_path, device)
+    adapter = NeuralMemoryAdapter.load(args.adapter_dir, map_location=device)
+    layers = candidate_layers(model)
+    layer_path = args.layer_path or (adapter.bank.metadata[-1].get("layer_path")
+                                     if adapter.bank.metadata else None)
+    if not layer_path:
+        raise RuntimeError("No saved layer path; pass --layer-path explicitly.")
+    if layer_path not in layers:
+        raise ValueError(f"Saved layer path {layer_path!r} is not present in this model.")
+    inputs = tokenizer(args.prompt, return_tensors="pt").to(device)
+
+    with torch.no_grad():
+        baseline = model(**inputs, use_cache=False).logits
+    adapter.residual_gate.data.fill_(args.gate)
+    with ActivationHook(model, adapter, layer_path, freeze_base=True):
+        with torch.no_grad():
+            adapted = model(**inputs, use_cache=False).logits
+    delta = (adapted.float() - baseline.float()).abs()
+    if not torch.isfinite(adapted).all():
+        raise RuntimeError("Adapted model produced non-finite logits.")
+    print(json.dumps({
+        "phase": "inject", "model_path": args.model_path, "device": str(device),
+        "layer_path": layer_path, "memory_records": len(adapter.bank),
+        "gate": args.gate, "logits_shape": list(adapted.shape),
+        "max_abs_logit_delta": float(delta.max().item()),
+        "mean_abs_logit_delta": float(delta.mean().item()),
+        "base_trainable_parameters": sum(p.numel() for p in model.parameters()
+                                         if p.requires_grad),
+        "finite_logits": True,
+        "interpretation": (
+            "A finite nonzero delta verifies that the hook changes this forward pass; "
+            "it does not establish that the recalled memory is useful."
+            if args.gate != 0 else
+            "A zero gate should preserve the baseline logits up to numerical tolerance."
+        ),
+    }, indent=2))
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("phase", choices=["capture", "inject"])
+    parser.add_argument("--model-path", required=True,
+                        help="Local directory containing the downloaded checkpoint.")
+    parser.add_argument("--adapter-dir", default="runs/E46B/qwen_memory")
+    parser.add_argument("--layer-path", default=None,
+                        help="Exact decoder block path; capture auto-selects the middle layer.")
+    parser.add_argument("--prompt", default="A short neutral sentence for activation inspection.")
+    parser.add_argument("--capture-id", default="capture-001")
+    parser.add_argument("--address-dim", type=int, default=128)
+    parser.add_argument("--payload-dim", type=int, default=128)
+    parser.add_argument("--top-k", type=int, default=4)
+    parser.add_argument("--gate", type=float, default=0.0)
+    args = parser.parse_args()
+    if args.phase == "capture": run_capture(args)
+    else: run_inject(args)
+
+
+if __name__ == "__main__":
+    main()
