@@ -29,6 +29,13 @@ class E46BTests(unittest.TestCase):
         adapter = NeuralMemoryAdapter(16, 8, 6); adapter.write(torch.randn(2, 5, 16))
         x = torch.randn(2, 5, 16); y, scores = adapter.inject(x)
         self.assertTrue(torch.equal(x, y)); self.assertIsNotNone(scores)
+    def test_mixed_precision_payload_read(self):
+        adapter = NeuralMemoryAdapter(16, 8, 6).double()
+        adapter.write(torch.randn(1, 4, 16, dtype=torch.float64))
+        result, scores = adapter.recall(torch.randn(1, 4, 16, dtype=torch.float64))
+        self.assertEqual(result.dtype, torch.float64)
+        self.assertTrue(torch.isfinite(result).all())
+
     def test_adapter_round_trip(self):
         adapter = NeuralMemoryAdapter(16, 8, 6)
         adapter.write(torch.randn(1, 4, 16), {"id": "memory-1"})
