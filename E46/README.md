@@ -159,3 +159,10 @@ Conditions:
 It records per-category exact-match accuracy, response latency, raw outputs, and basic text-store byte counts in `runs/E46A/evaluation.json`.
 
 **Interpretation boundary:** this is a deterministic synthetic task to validate the persistence/evaluation harness and model behavior. It does not test latent compression, hidden-state access, semantic generalization, or cross-model portability. One batched call per condition is a smoke-level measurement; repeat across models/seeds before making broad claims.
+
+
+### E46-B4.1 — factorized generalization diagnosis
+
+B4.1 corrects the fixed numeric-ID split confound and separates entity transfer from wording transfer. It randomizes a category-balanced 24/8 entity split, evaluates seen-entity novel wording and unseen-entity familiar/novel wording separately, uses nested candidate-bank prefixes, corrects the positive-vs-best-negative margin, and reports per-category metrics over three training seeds. The frozen-Qwen activation collection is shared across seeds.
+
+See [E46B4.1_GENERALIZATION.md](E46B4.1_GENERALIZATION.md). Outputs are isolated under runs/E46B/B41/; B4 remains reproducible and unchanged.
