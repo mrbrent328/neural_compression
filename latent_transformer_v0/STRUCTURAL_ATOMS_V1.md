@@ -68,29 +68,40 @@ The report preserves v0 metrics and adds:
 
 Parameter counts include the shared dictionary and selector in constructor cost, and matrix-specific latent/gain state in latent cost. Checkpoint size includes all model state.
 
-## First comparison
+## First matched comparison — 2026-11-24
 
-Use identical corpus, model dimensions, rank, latent dimension, seed, optimizer, schedule, batch size, and training steps for v0 latent and v1 structural. Then compare:
+The first matched pair completed for seed 1337. Both runs used the same 204,955-byte corpus, model dimensions, seed, CPU float32 execution, 5,000-step schedule, and contiguous 90/10 train/validation split.
 
-- best and final validation loss;
-- training and evaluation throughput;
-- constructor parameters and bytes;
-- per-matrix latent bytes;
-- complete checkpoint bytes;
-- optimizer state and peak device memory;
-- atom usage and reuse.
+| Measurement | v0 latent | v1 structural atoms |
+|---|---:|---:|
+| Total parameters | 3,807,618 | 3,805,090 |
+| Constructor parameters | 66,480 | 63,952 |
+| Checkpoint bytes | 15,255,899 | 15,246,732 |
+| Best validation loss (step 2,250) | 1.655740 | 1.653539 |
+| Final validation loss | 2.201734 | 2.201038 |
+| Overall throughput | 3,719.93 tok/s | 3,222.39 tok/s |
+| Elapsed time | 5,505.48 s | 6,355.53 s |
 
-Do not compare only the latent payload. The dictionary, selector, coordinate generator, and their optimizer state are part of the representation cost.
+The atom variant used 2,528 fewer total parameters (0.066%) and its checkpoint was 9,167 bytes smaller (0.060%). Its best validation loss was lower by 0.002202 (about 0.13%), but the final validation difference was only 0.000696. These differences do not establish a meaningful quality improvement from one seed.
+
+The atom variant was 13.37% slower in overall CPU throughput and took 850 seconds longer. The sparse composition did not produce a training-speed advantage in this implementation.
+
+Atom usage was concentrated: 7 of 32 atoms were selected across 18 matrix latents, with three atoms accounting for 54 of 72 selections. Selection entropy was 1.666 nats against a 3.466-nat maximum. This is a selection-frequency observation, not evidence of semantic specialization.
+
+**Interpretation:** The first matched run shows effectively tied language-model quality, marginally fewer constructor parameters/checkpoint bytes, and slower training for the atom variant. It does not demonstrate an overall quality, storage, or compute advantage. Both models reached their best validation result at step 2,250 and deteriorated afterward while training loss continued to fall. Because the inherited split is a contiguous 90/10 byte split, this is validation deterioration; it should not be attributed solely to overfitting without a split/generalization control.
+
+See [the full matched comparison and raw reports](RESULTS_STRUCTURAL_ATOMS_V1.md).
 
 ## Limitations
 
-- This first version is a controlled architectural probe, not a matched multi-seed scaling study.
+- One matched seed only; this is not a multi-seed scaling study.
 - Top-k selection is sparse but discrete in its selected indices.
 - Coordinate features remain part of the constructor; this does not test a fully coordinate-free constructor.
 - Atom usage counts show selection frequency, not whether atoms have learned interpretable or functionally distinct roles.
-- The inherited v0 corpus split is a contiguous 90/10 split. Known validation deterioration must be investigated separately; this experiment does not fix or explain it.
+- The inherited v0 corpus split is a contiguous 90/10 split; validation deterioration may include corpus-order distribution effects.
 - The model is trained from random initialization on byte-level text, not a pretrained model.
+- CPU float32 only; no GPU or inference-latency benchmark. Peak device memory was not reported.
 
 ## Classification
 
-OPEN — implementation branch. No quality, efficiency, or generalization advantage is claimed until smoke tests and matched runs are completed.
+OPEN — implementation and exploratory result. The first matched run does not establish an advantage. Multi-seed replication, a controlled validation split, and further profiling are required before making a quality or efficiency claim.
