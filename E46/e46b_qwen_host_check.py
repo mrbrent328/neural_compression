@@ -142,8 +142,29 @@ def run_inject(args):
     inputs = tokenizer(args.prompt, return_tensors="pt").to(device)
 
     parameter_versions = [parameter._version for parameter in model.parameters()]
+    query_activation = {}
+    query_layer = model.get_submodule(layer_path)
+    def capture_query(_module, _inputs, output):
+        query_activation["hidden"] = hidden_from_output(output).detach()
+    query_handle = query_layer.register_forward_hook(capture_query)
     with torch.no_grad():
         baseline = model(**inputs, use_cache=False).logits
+    query_handle.remove()
+    if "hidden" not in query_activation:
+        raise RuntimeError("The selected decoder layer did not execute for the query.")
+    with torch.no_grad():
+        _recalled, retrieval_scores, retrieval_indices = adapter.recall(
+            query_activation["hidden"], return_indices=True
+        )
+    retrieval_report = []
+    for score, index in zip(retrieval_scores[0].tolist(), retrieval_indices[0].tolist()):
+        metadata = adapter.bank.metadata[index] if index < len(adapter.bank.metadata) else {}
+        retrieval_report.append({
+            "memory_index": int(index),
+            "capture_id": metadata.get("capture_id", f"record-{index}"),
+            "metadata": metadata,
+            "cosine_score": float(score),
+        })
     adapter.residual_gate.data.fill_(args.gate)
     with ActivationHook(model, adapter, layer_path, freeze_base=True):
         with torch.no_grad():
@@ -160,6 +181,7 @@ def run_inject(args):
     print(json.dumps({
         "phase": "inject", "model_path": args.model_path, "device": str(device),
         "layer_path": layer_path, "memory_records": len(adapter.bank),
+        "retrieval_candidates": retrieval_report,
         "gate": args.gate, "logits_shape": list(adapted.shape),
         "max_abs_logit_delta": float(delta.max().item()),
         "mean_abs_logit_delta": float(delta.mean().item()),
