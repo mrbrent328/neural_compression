@@ -1,6 +1,6 @@
 # E46 — Pretrained-model memory integration (research plan)
 
-**Status:** E46-A benchmark implemented; E46-B1 pretrained Qwen activation capture and frozen-weight injection smoke tests completed; E46-B2 untrained retrieval diagnostics completed; E46-B3 supervised address-space training implemented and ready for local execution.  
+**Status:** E46-A benchmark implemented; E46-B1 pretrained Qwen activation capture and frozen-weight injection smoke tests completed; E46-B2 untrained retrieval diagnostics completed; E46-B3 supervised address-space training completed locally (100% held-out paraphrase retrieval on 8 controlled facts); E46-B4 entity-disjoint generalization and scaling experiment implemented, awaiting local execution.  
 **Host candidate:** Qwen3-1.7B-Base via a direct Transformers/PyTorch runtime. LM Studio remains a text-only baseline transport, not the activation integration backend.  
 **Dependency:** E45 Phase 3C has now been analyzed. It supports a staged E46, but does not establish natural-language or pretrained-model memory.
 
@@ -16,6 +16,15 @@ The first live Qwen tests confirmed persistence and residual injection, but the 
 - A separate build step writes fact activations into a fresh persistent bank using the trained address writer.
 
 See [E46B3_ADDRESS_TRAINING.md](E46B3_ADDRESS_TRAINING.md) for the run sequence and interpretation limits. The experiment evaluates address selection only; payload reconstruction and answer improvement remain untested.
+
+
+### E46-B4 — entity-disjoint generalization and memory scaling
+
+E46-B3 improved held-out paraphrase retrieval from 12.5% to 100% on eight controlled facts. Because its held-out queries shared the same entities as training, this did not establish transfer to unseen records.
+
+E46-B4 creates 256 facts across eight categories, with 192 training entities and 64 entity-disjoint test entities. It trains only the address writer and query encoder; the unseen entity IDs and their queries are excluded from gradient updates and checkpoint selection. The final report evaluates unseen entities against the complete 256-record bank and sampled candidate sets of 8, 32, 128, and 256 records.
+
+See [E46B4_GENERALIZATION.md](E46B4_GENERALIZATION.md) for the complete protocol. The corpus is synthetic and templated, so success would establish controlled entity-disjoint transfer, not open-domain semantic generalization.
 
 ## Why E46 exists
 
