@@ -61,6 +61,8 @@ MATRIX_TYPES = {"gate": 0, "up": 1, "down": 2}
 def parse_args() -> argparse.Namespace:
     p = argparse.ArgumentParser(description="Train dense/low-rank/latent tiny LMs")
     p.add_argument("--data", type=Path, default=None, help="UTF-8 training text")
+    p.add_argument("--val-data", type=Path, default=None,
+                   help="Optional separate UTF-8 validation text; prevents sequential split leakage")
     p.add_argument("--smoke-test", action="store_true",
                    help="Use a tiny built-in corpus to verify the code path")
     p.add_argument("--mode", choices=("dense", "lowrank", "latent"), default="latent")
@@ -504,7 +506,13 @@ def train(a: argparse.Namespace) -> None:
         raise SystemExit("--rank must be <= min(d_model, d_ff)")
 
     data = load_bytes(a.data, a.smoke_test)
-    train_data, val_data = split_data(data)
+    if a.val_data is not None:
+        if a.smoke_test:
+            raise SystemExit("--val-data cannot be combined with --smoke-test")
+        train_data = data
+        val_data = load_bytes(a.val_data, smoke=False)
+    else:
+        train_data, val_data = split_data(data)
     if min(train_data.numel(), val_data.numel()) <= cfg.context + 1:
         raise SystemExit("Corpus/split is too small for requested --context")
 
@@ -590,6 +598,7 @@ def train(a: argparse.Namespace) -> None:
         "model_config": asdict(cfg),
         "model_state": model.state_dict(),
         "training_args": vars(a) | {"data": str(a.data) if a.data else None,
+                                    "val_data": str(a.val_data) if a.val_data else None,
                                     "output_dir": str(a.output_dir)},
         "history": history,
     }
