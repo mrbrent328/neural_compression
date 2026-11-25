@@ -65,7 +65,8 @@ def run_capture(args):
             raise ValueError("Saved adapter hidden width does not match this host model.")
     else:
         adapter = NeuralMemoryAdapter(hidden_dim, args.address_dim, args.payload_dim,
-                                      args.top_k).to(device)
+                                      args.top_k)
+    adapter.to(device=device, dtype=next(model.parameters()).dtype)
 
     captured = {}
     def capture_hook(_module, _inputs, output):
