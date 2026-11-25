@@ -77,3 +77,9 @@ The first question is deliberately narrow: **can the latent-generated model lear
 If it can, the next experiments should sweep latent dimension and factor rank under identical data/training budgets, then compare validation loss, checkpoint bytes, optimizer memory, peak device memory, and tokens/sec against `dense` and `lowrank`.
 
 The `lowrank` control matters: if `latent` only matches the gains of direct low-rank factors, the improvement is factorization rather than the shared latent representation. If `latent` can retain quality while using much less matrix-specific persistent state, the shared constructor is contributing something additional.
+
+## Structural atom comparison
+
+The first matched v0-latent versus v1-structural-atoms pair (seed 1337, 5,000 steps each) is complete. The atom model achieved effectively tied validation quality, used 2,528 fewer total parameters, and trained 13.37% more slowly on CPU. This single-seed result does not establish an advantage.
+
+See [the matched results, interpretation, and raw JSON artifacts](RESULTS_STRUCTURAL_ATOMS_V1.md).
