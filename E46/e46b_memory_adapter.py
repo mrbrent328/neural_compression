@@ -83,6 +83,8 @@ class NeuralMemoryAdapter(nn.Module):
     def recall(self, activation: Tensor):
         query = F.normalize(self.query_encoder(self.pool(activation)), dim=-1)
         payload, scores = self.bank.retrieve(query, self.top_k)
+        reader_parameter = next(self.payload_reader.parameters())
+        payload = payload.to(device=reader_parameter.device, dtype=reader_parameter.dtype)
         return self.payload_reader(payload), scores
     def inject(self, activation: Tensor):
         if not len(self.bank): return activation, None
