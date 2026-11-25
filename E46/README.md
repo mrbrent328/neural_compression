@@ -105,7 +105,7 @@ No base-model retraining is planned for the initial stages. Small interface trai
 
 ## Current next action
 
-E46-A is implemented as a black-box text-memory control. E46-B now has an initial activation-level adapter scaffold in [E46B_MEMORY_ADAPTER.md](E46B_MEMORY_ADAPTER.md) and [e46b_memory_adapter.py](e46b_memory_adapter.py), with CPU unit tests under `tests/`.
+E46-A is implemented as a black-box text-memory control. E46-B now has an initial activation-level adapter scaffold in [E46B_MEMORY_ADAPTER.md](E46B_MEMORY_ADAPTER.md) and [e46b_memory_adapter.py](e46b_memory_adapter.py), with CPU unit tests under `tests/` and a local checkpoint smoke runner in [e46b_qwen_host_check.py](e46b_qwen_host_check.py).
 
 Next: validate the adapter against the locally downloaded Qwen3-1.7B-Base checkpoint using a direct Transformers/PyTorch runtime. Confirm the exact decoder-block path, capture shape, hook output contract, persistence across a fresh process, and unchanged base-model weights. Only after this integration boundary works should E46-C train the writer/query/reader interface. The current adapter is an untrained scaffold: a zero-initialized gate intentionally makes it behavior-neutral, and no memory-utility or compression result is claimed.
 
