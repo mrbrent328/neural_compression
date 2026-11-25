@@ -98,10 +98,12 @@ def run_inject(args):
     tokenizer, model = load_host(args.model_path, device)
     adapter = NeuralMemoryAdapter.load(args.adapter_dir, map_location=device)
     layers = candidate_layers(model)
-    layer_path = args.layer_path or (adapter.bank.metadata[-1].get("layer_path")
-                                     if adapter.bank.metadata else None)
+    saved_layer = adapter.bank.metadata[-1].get("layer_path") if adapter.bank.metadata else None
+    layer_path = args.layer_path or saved_layer
     if not layer_path:
         raise RuntimeError("No saved layer path; pass --layer-path explicitly.")
+    if saved_layer and layer_path != saved_layer:
+        raise ValueError(f"Memory was captured at {saved_layer!r}, not {layer_path!r}.")
     if layer_path not in layers:
         raise ValueError(f"Saved layer path {layer_path!r} is not present in this model.")
     inputs = tokenizer(args.prompt, return_tensors="pt").to(device)
