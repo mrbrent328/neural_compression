@@ -274,7 +274,7 @@ def main():
     p.add_argument("--spec", default="E46/e46b_b3_dataset.json")
     p.add_argument("--output", default="runs/E46B/B3/activations.pt")
     p.add_argument("--layer-path", default=None)
-    p.add_argument("--device", choices=["auto", "cpu"], default="auto")
+    p.add_argument("--device", choices=["auto", "cpu"], default="cpu")
     p.set_defaults(func=collect)
 
     p = sub.add_parser("train", help="Train address writer and query encoder.")
