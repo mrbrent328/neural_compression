@@ -2,19 +2,19 @@
 
 **Status:** PLANNED; no pretrained-model integration result exists yet.  
 **Backend selected:** LM Studio (local OpenAI-compatible server).  
-**Dependency:** E45 Phase 3C must be analyzed before treating the current latent value codec as ready for language-model integration.
+**Dependency:** E45 Phase 3C has now been analyzed. It supports a staged E46, but does not establish natural-language or pretrained-model memory.
 
 ## Why E46 exists
 
 E45 has tested persistent address/payload memory on synthetic vectors. It has not tested natural-language memories or a pretrained language model. E46 asks whether a frozen pretrained model can use a persistent memory substrate through a small interface, without training a new base language model.
 
-The repository's current E45 Phase 3B result is mixed: pooled record and store retrieval were 100%, while mean cosine reconstruction was 0.7348 on seen projection domains and 0.4502 on unseen domains. Phase 3C was added to isolate training-domain diversity and payload-width effects. Its smoke test passed, but the full factorial sweep remains unrun. E46 should not quietly treat that unresolved value-path weakness as solved.
+E45 Phase 3C completed its full 60-run factorial sweep (five training-domain counts × four payload widths × three seeds). Record and store retrieval were 100% in every cell. Value reconstruction on unseen synthetic projection domains depended strongly on payload width: mean cosine ranged from 0.3247–0.4854 at 8D, 0.6787–0.7137 at 16D, 0.8526–0.8682 at 24D, and 0.9699–0.9992 at 32D. The 32D condition is a full-width learned autoencoder, not an identity/raw-value oracle; it gives the best fidelity but the weakest storage ratio (2.332×). See [E45_PHASE3C_ANALYSIS.md](E45_PHASE3C_ANALYSIS.md) for the full matrix, interpretation, and guardrails.
 
 ## Staged plan
 
-### Gate 0 — Finish the E45 value-path diagnosis
+### Gate 0 — E45 value-path diagnosis (complete)
 
-Recommended first run: a 12-cell diagnostic subset of the existing Phase 3C design:
+The full 60-run sweep is now complete. The result resolves the immediate payload-width question sufficiently to proceed with a cautious integration study. The 12-cell diagnostic subset below is retained only as a reproducibility option, not as the next required action:
 
 ```bash
 python E45/e45_latent_memory_phase3c.py --device cpu \
@@ -111,3 +111,4 @@ Run the 12-cell E45 Phase 3C diagnostic subset, inspect the aggregate, then run 
 
 - LM Studio OpenAI-compatible endpoints: https://lmstudio.ai/docs/developer/openai-compat
 - LM Studio API overview: https://lmstudio.ai/docs/developer/rest
+\n\n## E45 Phase 3C decision\n\nThe full sweep supports carrying 8D/16D/24D/32D payload widths as explicit quality/storage conditions into later work. Use 32D as the high-fidelity reference and 8D as the high-compression stress condition; do not assume a narrow payload generalizes. E46-A remains a text-interface task and must not be conflated with the latent path. E46-C requires a runtime with actual activation access and a documented conditioning interface.\n
