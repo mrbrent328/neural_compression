@@ -177,12 +177,12 @@ def train_one(d,args,seed):
     params=list(adapter.address_writer.parameters())+list(adapter.query_encoder.parameters())
     opt=torch.optim.AdamW(params,lr=args.lr,weight_decay=args.weight_decay)
     valq=query_rows(facts,train_idx,"validation_queries")
-    before=score_queries(adapter,train_facts,valq); best=-1.; state=None; best_epoch=0
+    before=score_queries(adapter,facts,valq,candidate_indices=train_idx); best=-1.; state=None; best_epoch=0
     for epoch in range(1,args.epochs+1):
         adapter.train(); opt.zero_grad(set_to_none=True)
         a=F.normalize(adapter.address_writer(captures),dim=-1); q=F.normalize(adapter.query_encoder(queries),dim=-1)
         loss=F.cross_entropy((q@a.T)/args.temperature,targets); loss.backward(); opt.step(); adapter.eval()
-        val=score_queries(adapter,train_facts,valq); metric=val["top1_accuracy"] or 0.
+        val=score_queries(adapter,facts,valq,candidate_indices=train_idx); metric=val["top1_accuracy"] or 0.
         if metric>best:
             best=metric; best_epoch=epoch; state={k:v.detach().cpu().clone() for k,v in adapter.state_dict().items()}
         if epoch==1 or epoch%args.log_every==0 or epoch==args.epochs:
@@ -196,7 +196,7 @@ def train_one(d,args,seed):
     unseen_familiar=query_rows(facts,unseen_idx,"unseen_familiar_queries")
     unseen_novel=query_rows(facts,unseen_idx,"unseen_novel_queries")
     return {"seed":seed,"best_epoch":best_epoch,"validation_before_training":before,
-      "validation_after_training":score_queries(adapter,train_facts,valq),
+      "validation_after_training":score_queries(adapter,facts,valq,candidate_indices=train_idx),
       "seen_entity_novel_wording_full_bank":score_queries(adapter,facts,seen_novel),
       "unseen_entity_familiar_wording_full_bank":score_queries(adapter,facts,unseen_familiar),
       "unseen_entity_novel_wording_full_bank":score_queries(adapter,facts,unseen_novel),
