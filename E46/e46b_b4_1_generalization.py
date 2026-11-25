@@ -197,6 +197,7 @@ def train_one(d,args,seed):
     unseen_novel=query_rows(facts,unseen_idx,"unseen_novel_queries")
     return {"seed":seed,"best_epoch":best_epoch,"validation_before_training":before,
       "validation_after_training":score_queries(adapter,facts,valq,candidate_indices=train_idx),
+      "seen_entity_familiar_wording_full_bank":score_queries(adapter,facts,valq),
       "seen_entity_novel_wording_full_bank":score_queries(adapter,facts,seen_novel),
       "unseen_entity_familiar_wording_full_bank":score_queries(adapter,facts,unseen_familiar),
       "unseen_entity_novel_wording_full_bank":score_queries(adapter,facts,unseen_novel),
