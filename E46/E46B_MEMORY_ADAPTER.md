@@ -67,7 +67,7 @@ python E46/e46b_qwen_host_check.py inject --model-path /absolute/path/to/Qwen3-1
 
 The capture command auto-selects a likely middle decoder block; pass --layer-path with an exact path if needed. Use a meaningfully different prompt during injection: repeating the capture prompt only checks the wiring, not cross-context reuse. The runner rejects a layer mismatch because activations from different layer locations are not interchangeable. The inject command reloads the adapter and memory bank from disk, runs a baseline and hooked forward pass, checks that the frozen base parameters' PyTorch version counters remain unchanged, and reports the logit delta. A nonzero delta verifies that the conditioning hook is active, not that memory improves task performance. Use --gate 0 to check the behavior-neutral path.
 
-The script requires transformers and PyTorch and uses local_files_only=True. It does not download model files or transmit prompts.
+The script requires transformers and PyTorch and uses local_files_only=True. It does not download model files or transmit prompts. It now supports both direct script invocation and module invocation, and checks for a local Hugging Face config before loading. A standalone .gguf file is not accepted by this runner; use the Transformers-format Qwen3-1.7B-Base checkpoint directory. Qwen3-TTS is a different speech-generation model and is not the selected text-model host.
 
 ## Training and evaluation are not yet implemented
 
