@@ -37,11 +37,12 @@ The hook expects a decoder block output that is either a hidden-state tensor or 
 
 - e46b_memory_adapter.py — persistent bank, writer/query/reader, residual injection hook, save/load.
 - ../tests/test_e46b_memory_adapter.py — CPU-only tests using a toy decoder.
+- e46b_qwen_host_check.py — local checkpoint activation capture, persistent reload, and injection smoke test.
 
 From the repository root, with PyTorch installed:
 
 ```bash
-python -m unittest tests.test_e46b_memory_adapter -v
+python -m unittest discover -s tests -p 'test_e46b_memory_adapter.py' -v
 ```
 
 ## Next Qwen host validation
@@ -49,6 +50,24 @@ python -m unittest tests.test_e46b_memory_adapter -v
 A host-specific runner should load the exact local checkpoint with AutoModelForCausalLM, print likely decoder-block paths, verify hidden-state width and output structure, capture an activation, write a record, terminate, reload the adapter/bank in a fresh process, and verify a later prompt reaches the hook with finite tensors.
 
 Compare gate-zero output with a calibrated nonzero gate. Snapshot or hash all base parameters before/after to prove that no base weights changed.
+
+## Qwen host smoke test
+
+After the checkpoint is downloaded locally, run the capture phase:
+
+```bash
+python E46/e46b_qwen_host_check.py capture --model-path /absolute/path/to/Qwen3-1.7B-Base
+```
+
+Then run injection in a separate process:
+
+```bash
+python E46/e46b_qwen_host_check.py inject --model-path /absolute/path/to/Qwen3-1.7B-Base --gate 0.25
+```
+
+The capture command auto-selects a likely middle decoder block; pass --layer-path with an exact path if needed. The inject command reloads the adapter and memory bank from disk, runs a baseline and hooked forward pass, and reports the logit delta. A nonzero delta verifies that the conditioning hook is active, not that memory improves task performance. Use --gate 0 to check the behavior-neutral path.
+
+The script requires transformers and PyTorch and uses local_files_only=True. It does not download model files or transmit prompts.
 
 ## Training and evaluation are not yet implemented
 
