@@ -108,6 +108,14 @@ If you build on this work, please cite the specific experiment, commit, or relea
 
 The 5,000-step dense vs low-rank vs latent comparison is documented in [SCALING_RESULTS_5000.md](SCALING_RESULTS_5000.md). It supplements the earlier 500-step study in [SCALING_RESULTS.md](SCALING_RESULTS.md). The longer run found a medium-scale latent model within 0.0435 validation-loss units of direct low-rank while using about 29.6% fewer parameters, but low-rank remained more accurate and faster in that comparison. Several runs showed late-training validation deterioration, so this is an efficiency/parameter-count result with unresolved training-stability questions—not evidence of a general speed or quality win.
 
+## Active integration workstream: E46 pretrained-model memory adapter
+
+Alongside the latent/shared-constructor scaling line, E46 investigates a memory adapter for already-trained neural networks. The host model remains frozen; a separate interface captures contextual activations, writes address/payload records to persistent external storage, retrieves them in a later interaction, and conditions the host model through a selected decoder-layer boundary.
+
+E46-A provides a black-box text-memory control. E46-B now contains an initial activation-level writer/query/reader scaffold, persistent memory bank, residual injection hook, CPU unit tests, and a local Qwen host-check runner. These are implementation scaffolds, not evidence that pretrained-model memory is useful or compressed effectively. The next gate is to validate activation capture, persistence across process restart, and injection on Qwen3-1.7B-Base before training the interface.
+
+See [E46/README.md](E46/README.md) and [E46/E46B_MEMORY_ADAPTER.md](E46/E46B_MEMORY_ADAPTER.md). Keep this workstream's results and controls distinct from the latent/shared-constructor language-model scaling experiments.
+
 ## Research archive
 
 The repository's Git history is an important part of the archive. Please do not treat the latest files as the entire story.
