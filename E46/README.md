@@ -112,3 +112,26 @@ E45 Phase 3C is complete. Next implement E46-A: a deterministic black-box persis
 - LM Studio OpenAI-compatible endpoints: https://lmstudio.ai/docs/developer/openai-compat
 - LM Studio API overview: https://lmstudio.ai/docs/developer/rest
 \n\n## E45 Phase 3C decision\n\nThe full sweep supports carrying 8D/16D/24D/32D payload widths as explicit quality/storage conditions into later work. Use 32D as the high-fidelity reference and 8D as the high-compression stress condition; do not assume a narrow payload generalizes. E46-A remains a text-interface task and must not be conflated with the latent path. E46-C requires a runtime with actual activation access and a documented conditioning interface.\n
+
+## E46-A — black-box persistent text-memory benchmark
+
+The first language-facing gate is implemented in `E46/e46a_text_memory.py`. It creates eight fictional fact records and 32 questions split evenly across exact recall, paraphrase, relational lookup, and unsupported questions.
+
+Run the preparation command, terminate that process, then run evaluation from a fresh process:
+
+```bash
+python E46/e46a_text_memory.py prepare
+# End the process. Start a fresh shell/process:
+python E46/e46a_text_memory.py evaluate
+```
+
+The evaluator uses the OpenAI-compatible `/v1/models` and `/v1/chat/completions` endpoints. Defaults to `http://localhost:1234/v1`; pass `--model MODEL_ID` if automatic model selection is not appropriate. Optional authentication uses `LM_API_TOKEN`.
+
+Conditions:
+- no memory;
+- raw-text memory;
+- shuffled/mismatched key-to-payload memory.
+
+It records per-category exact-match accuracy, response latency, raw outputs, and basic text-store byte counts in `runs/E46A/evaluation.json`.
+
+**Interpretation boundary:** this is a deterministic synthetic task to validate the persistence/evaluation harness and model behavior. It does not test latent compression, hidden-state access, semantic generalization, or cross-model portability. One batched call per condition is a smoke-level measurement; repeat across models/seeds before making broad claims.
