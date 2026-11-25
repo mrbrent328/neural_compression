@@ -66,6 +66,13 @@ def run_capture(args):
     else:
         adapter = NeuralMemoryAdapter(hidden_dim, args.address_dim, args.payload_dim,
                                       args.top_k)
+    if adapter.bank.metadata:
+        prior_layer = adapter.bank.metadata[-1].get("layer_path")
+        prior_model = adapter.bank.metadata[-1].get("model_path")
+        if prior_layer and prior_layer != layer_path:
+            raise ValueError(f"Existing memories were captured at {prior_layer!r}, not {layer_path!r}.")
+        if prior_model and prior_model != args.model_path:
+            raise ValueError("Existing memory bank belongs to a different model path.")
     adapter.to(device=device, dtype=next(model.parameters()).dtype)
 
     captured = {}
@@ -81,7 +88,9 @@ def run_capture(args):
     hidden = captured["hidden"]
     if hidden.shape[-1] != hidden_dim:
         raise ValueError(f"Captured width {hidden.shape[-1]} != config hidden_size {hidden_dim}.")
-    adapter.write(hidden, {"capture_id": args.capture_id, "layer_path": layer_path})
+    adapter.write(hidden, {"capture_id": args.capture_id, "layer_path": layer_path,
+                           "model_path": args.model_path,
+                           "model_type": getattr(model.config, "model_type", "unknown")})
     adapter.save(adapter_dir)
     print(json.dumps({
         "phase": "capture", "model_path": args.model_path, "device": str(device),
@@ -104,6 +113,9 @@ def run_inject(args):
         raise RuntimeError("No saved layer path; pass --layer-path explicitly.")
     if saved_layer and layer_path != saved_layer:
         raise ValueError(f"Memory was captured at {saved_layer!r}, not {layer_path!r}.")
+    saved_model = adapter.bank.metadata[-1].get("model_path") if adapter.bank.metadata else None
+    if saved_model and saved_model != args.model_path:
+        raise ValueError("Memory bank was captured from a different model path.")
     if layer_path not in layers:
         raise ValueError(f"Saved layer path {layer_path!r} is not present in this model.")
     inputs = tokenizer(args.prompt, return_tensors="pt").to(device)
