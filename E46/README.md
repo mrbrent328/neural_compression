@@ -1,7 +1,7 @@
 # E46 — Pretrained-model memory integration (research plan)
 
-**Status:** PLANNED; no pretrained-model integration result exists yet.  
-**Backend selected:** LM Studio (local OpenAI-compatible server).  
+**Status:** E46-A benchmark implemented; E46-B activation-level adapter scaffold committed. No pretrained-model activation/injection result exists yet.  
+**Host candidate:** Qwen3-1.7B-Base via a direct Transformers/PyTorch runtime. LM Studio remains a text-only baseline transport, not the activation integration backend.  
 **Dependency:** E45 Phase 3C has now been analyzed. It supports a staged E46, but does not establish natural-language or pretrained-model memory.
 
 ## Why E46 exists
@@ -105,7 +105,9 @@ No base-model retraining is planned for the initial stages. Small interface trai
 
 ## Current next action
 
-E45 Phase 3C is complete. Next implement E46-A: a deterministic black-box persistent fact-recall task with no-memory, raw-text retrieval, shuffled/mismatched controls, and explicit abstention scoring. In parallel, verify whether the selected local model/runtime exposes contextual activations and a documented conditioning/injection boundary. The LM Studio chat smoke test checks only text connectivity; it is not evidence of latent-memory integration. Do not proceed to E46-C until the activation path is real and independently verified.
+E46-A is implemented as a black-box text-memory control. E46-B now has an initial activation-level adapter scaffold in [E46B_MEMORY_ADAPTER.md](E46B_MEMORY_ADAPTER.md) and [e46b_memory_adapter.py](e46b_memory_adapter.py), with CPU unit tests under `tests/`.
+
+Next: validate the adapter against the locally downloaded Qwen3-1.7B-Base checkpoint using a direct Transformers/PyTorch runtime. Confirm the exact decoder-block path, capture shape, hook output contract, persistence across a fresh process, and unchanged base-model weights. Only after this integration boundary works should E46-C train the writer/query/reader interface. The current adapter is an untrained scaffold: a zero-initialized gate intentionally makes it behavior-neutral, and no memory-utility or compression result is claimed.
 
 ## References
 
