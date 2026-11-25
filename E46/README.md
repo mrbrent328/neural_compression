@@ -37,7 +37,7 @@ Decision criteria:
 - Judge quality together with complete storage cost.
 - Preserve partial results and do not claim arbitrary-domain generalization.
 
-### Gate 1 — LM Studio connection smoke test
+### Gate 1 — LM Studio connection smoke test (optional transport check)
 
 LM Studio documents an OpenAI-compatible `/v1/models` endpoint and `/v1/chat/completions` endpoint. The default local base URL is `http://localhost:1234/v1`.
 
@@ -57,7 +57,7 @@ If server authentication is enabled, pass `--api-key "$LM_API_TOKEN"`. To use a 
 
 This is an integration check only. It does not test latent memory, hidden-state access, or learning. The script uses only Python's standard library.
 
-### Gate 2 — Establish a language-memory baseline
+### Gate 2 — E46-A: establish a black-box language-memory baseline
 
 Before claiming that E45's latent codec works for language, create a small, reproducible task with:
 - facts presented in one session;
@@ -72,7 +72,7 @@ The task must distinguish verbatim recall, paraphrase, relational questions, and
 
 The text-memory baseline is a control, not evidence that latent compression works.
 
-### Gate 3 — Connect the learned latent substrate
+### Gate 3 — E46-B/C: verify activation access, then connect the learned latent substrate
 
 Only after Gates 0–2:
 - Freeze the base language model.
@@ -105,7 +105,7 @@ No base-model retraining is planned for the initial stages. Small interface trai
 
 ## Current next action
 
-Run the 12-cell E45 Phase 3C diagnostic subset, inspect the aggregate, then run the LM Studio connection harness. Keep the full 60-cell run available if the diagnostic does not resolve the value-path question.
+E45 Phase 3C is complete. Next implement E46-A: a deterministic black-box persistent fact-recall task with no-memory, raw-text retrieval, shuffled/mismatched controls, and explicit abstention scoring. In parallel, verify whether the selected local model/runtime exposes contextual activations and a documented conditioning/injection boundary. The LM Studio chat smoke test checks only text connectivity; it is not evidence of latent-memory integration. Do not proceed to E46-C until the activation path is real and independently verified.
 
 ## References
 
