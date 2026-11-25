@@ -11,7 +11,13 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
+
+# Allow both `python E46/script.py` and `python -m E46.script` from the repo root.
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
 
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -24,10 +30,25 @@ def choose_device():
 
 
 def load_host(model_path: str, device: torch.device):
+    model_path = Path(model_path).expanduser()
+    if model_path.is_file() and model_path.suffix.lower() == ".gguf":
+        raise ValueError(
+            "This runner expects a Hugging Face Transformers model directory, not a GGUF file. "
+            "The supplied file appears to be a GGUF checkpoint. Also verify that the model "
+            "is a text causal language model; Qwen3-TTS is a speech-generation model, not "
+            "the Qwen3-1.7B-Base text host used by this experiment."
+        )
+    if not model_path.is_dir():
+        raise FileNotFoundError(f"Model path is not a local directory: {model_path}")
+    if not (model_path / "config.json").is_file():
+        raise ValueError(
+            f"No config.json found in {model_path}. This runner requires a local "
+            "Hugging Face Transformers checkpoint directory, not an LM Studio GGUF file."
+        )
     dtype = torch.float16 if device.type == "cuda" else torch.float32
-    tokenizer = AutoTokenizer.from_pretrained(model_path, local_files_only=True)
+    tokenizer = AutoTokenizer.from_pretrained(str(model_path), local_files_only=True)
     model = AutoModelForCausalLM.from_pretrained(
-        model_path, torch_dtype=dtype, local_files_only=True,
+        str(model_path), torch_dtype=dtype, local_files_only=True,
         trust_remote_code=False,
     )
     model.to(device).eval()
