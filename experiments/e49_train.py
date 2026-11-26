@@ -139,7 +139,11 @@ def main():
    loss.backward(); loss_sum+=loss.detach().float().item()
   model.clip_grad_norm_(1.0); opt.step(); tokens+=tokstep
   if (step+1)%a.log_every==0 and rank==0:
-   print(f"step={step+1:,}/{steps:,} tokens={tokens:,} loss={loss_sum:.4f} lr={lr:.3g} tok/s={tokens/max(1,time.time()-t0):,.0f}",flush=True)
+   elapsed=max(1e-9,time.time()-t0); rate=(tokens-initial_tokens)/elapsed
+   mem={"allocated":torch.cuda.max_memory_allocated(device),"reserved":torch.cuda.max_memory_reserved(device)}
+   row={"type":"train","step":step+1,"tokens_seen":tokens,"loss":loss_sum,"lr":lr,"tokens_per_second":rate,"elapsed_seconds":elapsed,"peak_memory_bytes":mem}
+   with metrics_path.open("a") as f: f.write(json.dumps(row)+"\\n")
+   print(f"step={step+1:,}/{steps:,} tokens={tokens:,} loss={loss_sum:.4f} lr={lr:.3g} tok/s={rate:,.0f}",flush=True)
   if (step+1)%a.eval_every_steps==0:
    n=max(1,a.eval_tokens//(a.micro_batch*a.context*world))
    val=evaluate(model,va,a,torch.device("cuda",local),erng,n)
