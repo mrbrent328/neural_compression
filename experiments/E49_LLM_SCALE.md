@@ -172,3 +172,37 @@ loss, throughput, peak allocated/reserved GPU memory, and checkpoints. It does
 not yet perform the final held-out test evaluation or measure latent factor
 generation time separately. The 100K-token example is an integration/smoke
 pilot, not enough data to make a language-quality claim.
+
+## Held-out local evaluation
+
+After selecting the final checkpoint for each mode, evaluate the untouched
+`test.bin` split once. Do not use test results to tune hyperparameters or
+choose checkpoints; use validation results for model selection.
+
+For the three single-GPU pilot checkpoints:
+
+    python experiments/e49_evaluate.py \\
+      --data-dir data/e49_tokens \\
+      --checkpoint dense=runs/e49_local_dense/latest.pt \\
+      --checkpoint lowrank=runs/e49_local_lowrank/latest.pt \\
+      --checkpoint latent=runs/e49_local_latent/latest.pt \\
+      --output-json runs/e49_test_comparison.json
+
+The evaluator loads one model at a time, verifies that checkpoint run
+configurations match their checkpoints, checks the training manifest against
+the current data manifest, and refuses architecture/seed mismatches when
+run_config.json is available. It also verifies the test split hash against
+manifest.json. The JSON result records test loss/perplexity, scored token
+count, evaluation throughput, checkpoint size/hash, parameter counts, GPU
+memory, software versions, and data hashes.
+
+Evaluation uses a sliding context window and scores each next-token target
+exactly once. The default stride is 32; with a 256-token context, steady-state
+scored tokens have 225–256 preceding tokens available. A smaller stride uses
+more context but requires more forward passes. Use the same stride and batch
+size for all model families. This is an evaluation protocol, not a training
+change.
+
+The evaluator requires the local runner's `latest.pt` checkpoint format and
+a CUDA/ROCm PyTorch build with BF16 support. It does not modify checkpoints
+or training artifacts.
