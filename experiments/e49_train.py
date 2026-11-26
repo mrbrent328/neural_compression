@@ -76,8 +76,9 @@ def main():
   print(json.dumps({"config":cfg.to_dict(),"parameters":m.parameter_breakdown(),"tokens_per_optimizer_step":tokstep,"planned_steps":steps,"dry_run":True},indent=2)); return
  if not torch.cuda.is_available(): raise SystemExit("Training requires CUDA/ROCm-visible GPUs. Use --dry-run for CPU preflight.")
  local=int(os.environ.get("LOCAL_RANK","0")); torch.cuda.set_device(local)
- if world>1: dist.init_process_group("nccl")
- rank=dist.get_rank() if dist.is_initialized() else 0
+ dist.init_process_group("nccl")
+ device=torch.device("cuda",local)
+ rank=dist.get_rank()
  seed=a.seed; random.seed(seed+rank); np.random.seed(seed+rank); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
  manifest_path=a.data_dir/"manifest.json"
  if manifest_path.exists():
@@ -102,9 +103,6 @@ def main():
    nn.init.kaiming_uniform_(module.right,a=math.sqrt(5)); nn.init.normal_(module.left,std=.02/math.sqrt(module.right.shape[0]))
   elif isinstance(module,LatentLinear):
    nn.init.normal_(module.z,std=.02); nn.init.zeros_(module.log_gain)
-  elif isinstance(module,nn.Linear) and module.out_features==cfg.rank and module.in_features==cfg.constructor_hidden:
-   nn.init.normal_(module.weight,std=.002)
-   if module.bias is not None: nn.init.zeros_(module.bias)
  if a.activation_checkpointing:
   from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import checkpoint_wrapper,CheckpointImpl,apply_activation_checkpointing
   wrap=partial(checkpoint_wrapper,checkpoint_impl=CheckpointImpl.NO_REENTRANT)
