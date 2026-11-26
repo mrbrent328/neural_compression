@@ -34,9 +34,9 @@ preflight:
 
 | Family | Trainable parameters | FP32 checkpoint weights (approx.) |
 |---|---:|---:|
-| Dense | 6.738B | 12.55 GiB |
-| Direct low-rank, rank 512 | 3.152B | 5.87 GiB |
-| Latent/shared constructor, rank 512 and z=16 | 2.410B | 4.49 GiB |
+| Dense | 6.738B | 25.10 GiB |
+| Direct low-rank, rank 512 | 3.152B | 11.74 GiB |
+| Latent/shared constructor, rank 512 and z=16 | 2.410B | 8.98 GiB |
 
 The latent configuration is approximately 64.2% fewer persistent parameters
 than dense and 23.5% fewer than direct low-rank. These are parameter-count
