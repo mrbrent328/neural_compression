@@ -28,6 +28,8 @@ def parse_args():
     p.add_argument("--log-every", type=int, default=10)
     p.add_argument("--seed", type=int, default=4901)
     p.add_argument("--resume", action="store_true")
+    p.add_argument("--sampling-mode", choices=["random", "unique_blocks"], default="random",
+                    help="unique_blocks visits non-overlapping context blocks once per epoch")
     return p.parse_args()
 
 def load_tokens(path, context, vocab_size):
@@ -40,8 +42,62 @@ def load_tokens(path, context, vocab_size):
         raise SystemExit(f"Token ID in {path} exceeds --vocab-size {vocab_size}")
     return data
 
-def make_batch(data, batch_size, context, device, rng):
-    starts = torch.randint(0, len(data)-context-1, (batch_size,), generator=rng).numpy()
+class UniqueBlockSampler:
+    """Shuffle non-overlapping next-token blocks without replacement per epoch."""
+
+    def __init__(self, token_count, context, seed):
+        self.context = int(context)
+        self.num_blocks = (int(token_count) - 1) // self.context
+        if self.num_blocks < 1:
+            raise ValueError("Training data is too short for unique block sampling")
+        self.rng = np.random.default_rng(seed)
+        self.epoch = 0
+        self.cursor = 0
+        self.order = self.rng.permutation(self.num_blocks)
+
+    def next_starts(self, batch_size):
+        batch_size = int(batch_size)
+        if batch_size < 1 or batch_size > self.num_blocks:
+            raise ValueError("Batch size must fit within one unique-block epoch")
+        # Drop an incomplete tail rather than mixing epochs in one batch.
+        if self.cursor + batch_size > self.num_blocks:
+            self.epoch += 1
+            self.order = self.rng.permutation(self.num_blocks)
+            self.cursor = 0
+        selected = self.order[self.cursor:self.cursor + batch_size]
+        self.cursor += batch_size
+        if self.cursor == self.num_blocks:
+            self.epoch += 1
+            self.order = self.rng.permutation(self.num_blocks)
+            self.cursor = 0
+        return (selected * self.context).tolist()
+
+    def state_dict(self):
+        return {
+            "context": self.context,
+            "num_blocks": self.num_blocks,
+            "epoch": self.epoch,
+            "cursor": self.cursor,
+            "order": self.order.copy(),
+            "rng_state": self.rng.bit_generator.state,
+        }
+
+    def load_state_dict(self, state):
+        if state["context"] != self.context or state["num_blocks"] != self.num_blocks:
+            raise ValueError("Saved unique-block sampler does not match current training data")
+        self.epoch = int(state["epoch"])
+        self.cursor = int(state["cursor"])
+        self.order = np.asarray(state["order"], dtype=np.int64)
+        if self.order.size != self.num_blocks or not 0 <= self.cursor < self.num_blocks:
+            raise ValueError("Invalid saved unique-block sampler state")
+        self.rng.bit_generator.state = state["rng_state"]
+
+
+def make_batch(data, batch_size, context, device, rng, block_sampler=None):
+    if block_sampler is None:
+        starts = torch.randint(0, len(data)-context-1, (batch_size,), generator=rng).numpy()
+    else:
+        starts = block_sampler.next_starts(batch_size)
     arr = np.stack([data[int(i):int(i)+context+1].astype(np.int64) for i in starts])
     tokens = torch.from_numpy(arr).to(device=device, dtype=torch.long)
     return tokens[:, :-1], tokens[:, 1:]
@@ -159,6 +215,13 @@ def main():
         state = torch.load(ckpt,map_location="cpu",weights_only=False)
         if state["config"] != cfg.to_dict() or state["mode"] != a.mode:
             raise SystemExit("Checkpoint config/mode mismatch")
+        saved_sampling_mode = state.get("sampling_mode", "random")
+        if saved_sampling_mode != a.sampling_mode:
+            raise SystemExit("Checkpoint sampling mode mismatch")
+        if block_sampler is not None:
+            if "block_sampler" not in state or state["block_sampler"] is None:
+                raise SystemExit("Checkpoint has no unique-block sampler state; cannot resume safely")
+            block_sampler.load_state_dict(state["block_sampler"])
         model.load_state_dict(state["model"]); optimizer.load_state_dict(state["optimizer"])
         step0 = int(state["step"]); tokens_seen = int(state["tokens_seen"])
         best_val_loss = float(state.get("best_val_loss", float("inf")))
@@ -168,13 +231,16 @@ def main():
             best_val_loss = min(best_val_loss, float(best_state.get("validation_loss", float("inf"))))
     data_rng = torch.Generator(device="cpu").manual_seed(a.seed+101)
     eval_rng = torch.Generator(device="cpu").manual_seed(a.seed+202)
+    block_sampler = (UniqueBlockSampler(len(train), a.context, a.seed+303)
+                     if a.sampling_mode == "unique_blocks" else None)
     if a.resume and "data_rng" in state:
         data_rng.set_state(state["data_rng"]); eval_rng.set_state(state["eval_rng"])
         torch.set_rng_state(state["cpu_rng"]); torch.cuda.set_rng_state(state["gpu_rng"])
     info = {
         "experiment":"E49-local","mode":a.mode,"config":cfg.to_dict(),
         "parameters":model.parameter_breakdown(),"tokens_per_step":tokens_per_step,
-        "planned_steps":planned_steps,"seed":a.seed,"device":torch.cuda.get_device_name(0),
+        "planned_steps":planned_steps,"seed":a.seed,"sampling_mode":a.sampling_mode,
+        "device":torch.cuda.get_device_name(0),
         "torch":torch.__version__,"hip":torch.version.hip,
         "manifest_sha256":hashlib.sha256(manifest.read_bytes()).hexdigest() if manifest.exists() else None,
         "validation_protocol":{"method":"full deterministic sliding-window validation",
@@ -193,7 +259,7 @@ def main():
         for group in optimizer.param_groups: group["lr"] = lr
         optimizer.zero_grad(set_to_none=True); train_loss = 0.0
         for _ in range(a.grad_accum):
-            x,y = make_batch(train,a.micro_batch,a.context,device,data_rng)
+            x,y = make_batch(train,a.micro_batch,a.context,device,data_rng,block_sampler)
             with torch.autocast("cuda",dtype=torch.bfloat16):
                 _,loss = model(x,y); loss = loss/a.grad_accum
             loss.backward(); train_loss += float(loss.detach().float())
@@ -235,6 +301,8 @@ def main():
                      "model":model.state_dict(),"optimizer":optimizer.state_dict(),
                      "cpu_rng":torch.get_rng_state(),"gpu_rng":torch.cuda.get_rng_state(),
                      "data_rng":data_rng.get_state(),"eval_rng":eval_rng.get_state(),
+                     "sampling_mode":a.sampling_mode,
+                     "block_sampler":block_sampler.state_dict() if block_sampler is not None else None,
                      "best_val_loss":best_val_loss}
             temp = ckpt.with_suffix(".tmp"); torch.save(state,temp); temp.replace(ckpt)
     print(f"Finished {a.mode}: {tokens_seen:,} tokens; latest={ckpt}; best_val_loss={best_val_loss:.6f}",flush=True)
