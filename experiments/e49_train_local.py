@@ -215,7 +215,7 @@ def main():
                    "val_loss":val_loss,"perplexity":val_metrics["validation_perplexity"],
                    "scored_tokens":val_metrics["scored_tokens"],
                    "validation_stride":a.validation_stride}
-            with metrics.open("a") as f: f.write(json.dumps(row)+"\\n")
+            with metrics.open("a") as f: f.write(json.dumps(row)+"\n")
             print(f"EVAL step={step+1} val_loss={val_loss:.6f} "
                   f"ppl={row['perplexity']:.4f} tokens={row['scored_tokens']:,}",flush=True)
             if val_loss < best_val_loss:
