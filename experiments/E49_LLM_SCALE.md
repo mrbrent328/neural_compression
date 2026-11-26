@@ -71,8 +71,11 @@ At least three distinct source files are required. A one-million-token warning
 is emitted for small splits. Repeatedly cycling a small project archive measures
 memorization, not general language learning.
 
-Install dependencies:
+Install dependencies (PyTorch 2.4+ recommended for the distributed checkpoint APIs):
     pip install torch numpy transformers tokenizers
+
+Run the CPU forward/backward check before any accelerator allocation:
+    python experiments/e49_smoke_test.py
 
 Prepare:
     python experiments/e49_prepare_data.py --data /path/to/corpus \
