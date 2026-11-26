@@ -23,7 +23,8 @@ def parse_args():
     p.add_argument("--min-lr-ratio", type=float, default=0.1)
     p.add_argument("--eval-every-steps", type=int, default=100)
     p.add_argument("--checkpoint-every-steps", type=int, default=100)
-    p.add_argument("--eval-batches", type=int, default=16)
+    p.add_argument("--validation-stride", type=int, default=32)
+    p.add_argument("--validation-batch-size", type=int, default=4)
     p.add_argument("--log-every", type=int, default=10)
     p.add_argument("--seed", type=int, default=4901)
     p.add_argument("--resume", action="store_true")
@@ -45,25 +46,85 @@ def make_batch(data, batch_size, context, device, rng):
     tokens = torch.from_numpy(arr).to(device=device, dtype=torch.long)
     return tokens[:, :-1], tokens[:, 1:]
 
-def evaluate(model, data, args, device, rng):
+def evaluate(model, data, context, stride, batch_size, device):
+    """Score every validation target once using deterministic sliding context."""
+    import torch.nn.functional as F
+
     model.eval()
     loss_sum = 0.0
     token_count = 0
-    with torch.no_grad():
-        for _ in range(args.eval_batches):
-            x, y = make_batch(data, args.micro_batch, args.context, device, rng)
-            with torch.autocast("cuda", dtype=torch.bfloat16):
-                _, loss = model(x, y)
-            loss_sum += float(loss.float()) * y.numel()
-            token_count += y.numel()
+    pending_x, pending_y = [], []
+
+    def score_batch(xs, ys):
+        nonlocal loss_sum, token_count
+        inputs = torch.from_numpy(np.stack(xs)).to(device=device, dtype=torch.long)
+        labels = torch.from_numpy(np.stack(ys)).to(device=device, dtype=torch.long)
+        with torch.autocast("cuda", dtype=torch.bfloat16):
+            logits, _ = model(inputs)
+        selected_logits = logits[:, context-stride:, :].contiguous()
+        selected_labels = labels[:, context-stride:].contiguous()
+        loss = F.cross_entropy(selected_logits.view(-1, selected_logits.size(-1)),
+                               selected_labels.view(-1), reduction="sum")
+        loss_sum += float(loss.float())
+        token_count += selected_labels.numel()
+
+    def score_single(x, y, score_from):
+        nonlocal loss_sum, token_count
+        inputs = torch.from_numpy(x[None, :]).to(device=device, dtype=torch.long)
+        labels = torch.from_numpy(y[None, :]).to(device=device, dtype=torch.long)
+        with torch.autocast("cuda", dtype=torch.bfloat16):
+            logits, _ = model(inputs)
+        selected_logits = logits[:, score_from:, :].contiguous()
+        selected_labels = labels[:, score_from:].contiguous()
+        loss = F.cross_entropy(selected_logits.view(-1, selected_logits.size(-1)),
+                               selected_labels.view(-1), reduction="sum")
+        loss_sum += float(loss.float())
+        token_count += selected_labels.numel()
+
+    with torch.inference_mode():
+        target_start = 0
+        total_targets = len(data) - 1
+        while target_start < total_targets:
+            target_end = min(target_start + stride, total_targets)
+            begin = max(0, target_end - context)
+            tokens = np.asarray(data[begin:target_end+1], dtype=np.int64)
+            x, y = tokens[:-1], tokens[1:]
+            score_count = target_end - target_start
+            score_from = len(y) - score_count
+            if len(x) == context and score_count == stride:
+                pending_x.append(x)
+                pending_y.append(y)
+                if len(pending_x) == batch_size:
+                    score_batch(pending_x, pending_y)
+                    pending_x.clear()
+                    pending_y.clear()
+            else:
+                if pending_x:
+                    score_batch(pending_x, pending_y)
+                    pending_x.clear()
+                    pending_y.clear()
+                score_single(x, y, score_from)
+            target_start = target_end
+        if pending_x:
+            score_batch(pending_x, pending_y)
+
+    torch.cuda.synchronize(device)
     model.train()
-    return loss_sum / max(1, token_count)
+    mean_loss = loss_sum / max(1, token_count)
+    return {
+        "validation_loss": mean_loss,
+        "validation_perplexity": math.exp(min(20.0, mean_loss)),
+        "scored_tokens": token_count,
+    }
 
 def main():
     a = parse_args()
-    positive = [a.tokens,a.micro_batch,a.grad_accum,a.eval_every_steps,a.checkpoint_every_steps,a.eval_batches,a.log_every]
+    positive = [a.tokens,a.micro_batch,a.grad_accum,a.eval_every_steps,a.checkpoint_every_steps,
+                a.validation_stride,a.validation_batch_size,a.log_every]
     if min(positive) <= 0:
         raise SystemExit("Token, batch, and interval values must be positive")
+    if a.validation_stride > a.context:
+        raise SystemExit("--validation-stride cannot exceed --context")
     if not torch.cuda.is_available():
         raise SystemExit("No CUDA/ROCm GPU visible to PyTorch")
     if not torch.cuda.is_bf16_supported():
@@ -92,6 +153,7 @@ def main():
     ckpt = a.output_dir/"latest.pt"
     metrics = a.output_dir/"metrics.jsonl"
     step0 = tokens_seen = 0
+    best_val_loss = float("inf")
     if a.resume:
         if not ckpt.exists(): raise SystemExit(f"Checkpoint not found: {ckpt}")
         state = torch.load(ckpt,map_location="cpu",weights_only=False)
@@ -99,6 +161,11 @@ def main():
             raise SystemExit("Checkpoint config/mode mismatch")
         model.load_state_dict(state["model"]); optimizer.load_state_dict(state["optimizer"])
         step0 = int(state["step"]); tokens_seen = int(state["tokens_seen"])
+        best_val_loss = float(state.get("best_val_loss", float("inf")))
+        best_path = a.output_dir/"best.pt"
+        if best_path.is_file():
+            best_state = torch.load(best_path, map_location="cpu", weights_only=False)
+            best_val_loss = min(best_val_loss, float(best_state.get("validation_loss", float("inf"))))
     data_rng = torch.Generator(device="cpu").manual_seed(a.seed+101)
     eval_rng = torch.Generator(device="cpu").manual_seed(a.seed+202)
     if a.resume and "data_rng" in state:
@@ -109,7 +176,10 @@ def main():
         "parameters":model.parameter_breakdown(),"tokens_per_step":tokens_per_step,
         "planned_steps":planned_steps,"seed":a.seed,"device":torch.cuda.get_device_name(0),
         "torch":torch.__version__,"hip":torch.version.hip,
-        "manifest_sha256":hashlib.sha256(manifest.read_bytes()).hexdigest() if manifest.exists() else None}
+        "manifest_sha256":hashlib.sha256(manifest.read_bytes()).hexdigest() if manifest.exists() else None,
+        "validation_protocol":{"method":"full deterministic sliding-window validation",
+            "stride":a.validation_stride,"batch_size":a.validation_batch_size,
+            "each_next_token_target_scored_once":True}}
     if step0 == 0: (a.output_dir/"run_config.json").write_text(json.dumps(info,indent=2)+"\n")
     print(json.dumps(info,indent=2),flush=True)
     model.train(); torch.cuda.reset_peak_memory_stats(device)
@@ -138,18 +208,36 @@ def main():
             with metrics.open("a") as f: f.write(json.dumps(row)+"\n")
             print(f"step={step+1}/{planned_steps} tokens={tokens_seen:,} loss={train_loss:.5f} tok/s={row['tokens_per_second']:.1f}",flush=True)
         if (step+1)%a.eval_every_steps == 0 or step+1 == planned_steps:
-            val_loss = evaluate(model,valid,a,device,eval_rng)
+            val_metrics = evaluate(model,valid,a.context,a.validation_stride,
+                                   a.validation_batch_size,device)
+            val_loss = val_metrics["validation_loss"]
             row = {"type":"validation","step":step+1,"tokens_seen":tokens_seen,
-                   "val_loss":val_loss,"perplexity":math.exp(min(20.0,val_loss))}
-            with metrics.open("a") as f: f.write(json.dumps(row)+"\n")
-            print(f"EVAL step={step+1} val_loss={val_loss:.6f} ppl={row['perplexity']:.4f}",flush=True)
+                   "val_loss":val_loss,"perplexity":val_metrics["validation_perplexity"],
+                   "scored_tokens":val_metrics["scored_tokens"],
+                   "validation_stride":a.validation_stride}
+            with metrics.open("a") as f: f.write(json.dumps(row)+"\\n")
+            print(f"EVAL step={step+1} val_loss={val_loss:.6f} "
+                  f"ppl={row['perplexity']:.4f} tokens={row['scored_tokens']:,}",flush=True)
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                best_state = {"mode":a.mode,"config":cfg.to_dict(),"step":step+1,
+                    "tokens_seen":tokens_seen,
+                    "model":{k:v.detach().cpu().clone() for k,v in model.state_dict().items()},
+                    "validation_loss":val_loss,"validation_perplexity":row["perplexity"],
+                    "validation_scored_tokens":row["scored_tokens"],
+                    "validation_stride":a.validation_stride}
+                best_path = a.output_dir/"best.pt"
+                temp_best = best_path.with_suffix(".tmp")
+                torch.save(best_state,temp_best); temp_best.replace(best_path)
+                print(f"NEW BEST step={step+1} val_loss={val_loss:.6f} checkpoint={best_path}",flush=True)
         if (step+1)%a.checkpoint_every_steps == 0 or step+1 == planned_steps:
             state = {"mode":a.mode,"config":cfg.to_dict(),"step":step+1,"tokens_seen":tokens_seen,
                      "model":model.state_dict(),"optimizer":optimizer.state_dict(),
                      "cpu_rng":torch.get_rng_state(),"gpu_rng":torch.cuda.get_rng_state(),
-                     "data_rng":data_rng.get_state(),"eval_rng":eval_rng.get_state()}
+                     "data_rng":data_rng.get_state(),"eval_rng":eval_rng.get_state(),
+                     "best_val_loss":best_val_loss}
             temp = ckpt.with_suffix(".tmp"); torch.save(state,temp); temp.replace(ckpt)
-    print(f"Finished {a.mode}: {tokens_seen:,} tokens; checkpoint={ckpt}",flush=True)
+    print(f"Finished {a.mode}: {tokens_seen:,} tokens; latest={ckpt}; best_val_loss={best_val_loss:.6f}",flush=True)
 
 if __name__ == "__main__":
     main()
