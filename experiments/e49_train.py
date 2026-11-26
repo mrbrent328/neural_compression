@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """E49 BF16/FSDP training runner. Launch one process per GPU with torchrun."""
-import argparse,json,math,os,random,time
+import argparse,hashlib,json,math,os,random,time
 from functools import partial
 from pathlib import Path
 import numpy as np
@@ -69,12 +69,15 @@ def load_ckpt(model,opt,path):
 def main():
  a=args_parse()
  cfg=E49Config(vocab_size=a.vocab_size,n_layers=a.layers,d_model=a.d_model,n_heads=a.heads,n_kv_heads=a.kv_heads,d_ff=a.d_ff,context=a.context,mode=a.mode,rank=a.rank,latent_dim=a.latent_dim,constructor_hidden=a.constructor_hidden,constructor_type_dim=a.constructor_type_dim,constructor_fourier_bands=a.constructor_fourier_bands)
- cfg.validate(); world=int(os.environ.get("WORLD_SIZE","1"))
+ cfg.validate()
+ if min(a.tokens,a.micro_batch,a.grad_accum,a.eval_every_steps,a.checkpoint_tokens)<=0: raise SystemExit("tokens, batch sizes, and intervals must be positive")
+ world=int(os.environ.get("WORLD_SIZE","1"))
  tokstep=a.micro_batch*a.context*a.grad_accum*world; steps=math.ceil(a.tokens/tokstep)
  if a.dry_run:
   with torch.device("meta"): m=E49LM(cfg)
   print(json.dumps({"config":cfg.to_dict(),"parameters":m.parameter_breakdown(),"tokens_per_optimizer_step":tokstep,"planned_steps":steps,"dry_run":True},indent=2)); return
  if not torch.cuda.is_available(): raise SystemExit("Training requires CUDA/ROCm-visible GPUs. Use --dry-run for CPU preflight.")
+ if not torch.cuda.is_bf16_supported(): raise SystemExit("Selected accelerator does not report BF16 support; E49 currently requires BF16.")
  local=int(os.environ.get("LOCAL_RANK","0")); torch.cuda.set_device(local)
  dist.init_process_group("nccl")
  device=torch.device("cuda",local)
@@ -111,13 +114,18 @@ def main():
  auto=partial(transformer_auto_wrap_policy,transformer_layer_cls={DecoderBlock,CheckpointWrapper})
  mp=MixedPrecision(param_dtype=torch.bfloat16,reduce_dtype=torch.bfloat16,buffer_dtype=torch.bfloat16)
  model=FSDP(model,auto_wrap_policy=auto,sharding_strategy=ShardingStrategy.FULL_SHARD,mixed_precision=mp,device_id=torch.device("cuda",local),use_orig_params=True,limit_all_gathers=True,param_init_fn=materialize_init)
- opt=torch.optim.AdamW(model.parameters(),lr=a.lr,weight_decay=a.weight_decay,betas=(.9,.95),fused=True)
+ decay=[p for p in model.parameters() if p.requires_grad and p.ndim>=2]
+ no_decay=[p for p in model.parameters() if p.requires_grad and p.ndim<2]
+ opt=torch.optim.AdamW([{"params":decay,"weight_decay":a.weight_decay},{"params":no_decay,"weight_decay":0.0}],
+  lr=a.lr,betas=(.9,.95),fused=True)
  start,tokens=0,0
  a.output_dir.mkdir(parents=True,exist_ok=True)
  if a.resume:
   meta=load_ckpt(model,opt,a.output_dir/"latest"); start=int(meta["step"]); tokens=int(meta["tokens_seen"])
  rng=torch.Generator(device="cpu").manual_seed(a.seed+17+rank); erng=torch.Generator(device="cpu").manual_seed(a.seed+23)
- last_ckpt=tokens; t0=time.time(); model.train()
+ manifest_hash=hashlib.sha256((a.data_dir/"manifest.json").read_bytes()).hexdigest() if (a.data_dir/"manifest.json").exists() else None
+ last_ckpt=tokens; initial_tokens=tokens; t0=time.time(); model.train()
+ metrics_path=a.output_dir/"metrics.jsonl"
  for step in range(start,steps):
   if tokens<a.warmup_tokens: lr=a.lr*(tokens+1)/max(1,a.warmup_tokens)
   else:
@@ -135,9 +143,12 @@ def main():
   if (step+1)%a.eval_every_steps==0:
    n=max(1,a.eval_tokens//(a.micro_batch*a.context*world))
    val=evaluate(model,va,a,torch.device("cuda",local),erng,n)
-   if rank==0: print(f"EVAL step={step+1:,} tokens={tokens:,} val_loss={val:.6f} ppl={math.exp(min(20,val)):.4f}",flush=True)
+   if rank==0:
+    row={"type":"validation","step":step+1,"tokens_seen":tokens,"val_loss":val,"perplexity":math.exp(min(20,val))}
+    with metrics_path.open("a") as f: f.write(json.dumps(row)+"\\n")
+    print(f"EVAL step={step+1:,} tokens={tokens:,} val_loss={val:.6f} ppl={math.exp(min(20,val)):.4f}",flush=True)
   if tokens-last_ckpt>=a.checkpoint_tokens or step+1==steps:
-   meta={"experiment":"E49","mode":a.mode,"step":step+1,"tokens_seen":tokens,"world_size":world,"config":cfg.to_dict(),"elapsed_seconds":time.time()-t0}
+   meta={"experiment":"E49","mode":a.mode,"step":step+1,"tokens_seen":tokens,"world_size":world,"config":cfg.to_dict(),"elapsed_seconds":time.time()-t0,"data_manifest_sha256":manifest_hash,"peak_memory_allocated":torch.cuda.max_memory_allocated(device),"peak_memory_reserved":torch.cuda.max_memory_reserved(device)}
    save_ckpt(model,opt,a.output_dir/"latest",meta); last_ckpt=tokens
    if rank==0: print(f"checkpoint saved at {tokens:,} tokens",flush=True)
  if dist.is_initialized(): dist.barrier(); dist.destroy_process_group()
