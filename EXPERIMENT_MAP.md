@@ -32,3 +32,13 @@ For each stop, we will give a short plain-English explanation, pause for the use
 - **Critical limitation:** The decoder is newly initialized in this script. It is not a trained matching decoder paired with the encoder from E14B. The test uses random input and checks only that execution completes; it does not compare reconstructed weights with the originals or compare model outputs.
 - **Conclusion:** **Reconstruction plumbing / executable-shape demonstration only.** It does not establish weight fidelity, preserved model behavior, or useful compression.
 - **Next file:** `artifacts/test14_inference_hashcheck.py`, which attempts to add the missing fidelity check.
+
+
+## E14B fidelity-check follow-up — `artifacts/test14_inference_hashcheck.py`
+
+- **Question:** Can reconstruction be checked against the original tensor, rather than merely checking that a layer runs?
+- **Added checks:** Defines `tensor_sha256()` and `compare_tensors()`. The latter would compare hashes, exact tensor equality, count exact elements, and report maximum and mean absolute error.
+- **What the script actually runs:** It reconstructs the selected weight and bias, computes and prints their hashes, and looks for optional reference hashes (`sha256`, `hash`, or `sha256_hash`) in the JSON index. It then runs the same forward-pass sanity test.
+- **Critical limitation:** `compare_tensors()` is defined but never called. The encoder/index path does not provide reference hashes in the reviewed implementation, so the script normally has no original hash to compare against. Printing a hash of the reconstruction alone does not establish fidelity. It also does not compare original and reconstructed layer outputs.
+- **Conclusion:** **A proposed fidelity-testing mechanism, not a completed fidelity test.** The E14 branch still does not show that the original weights or model behavior were preserved.
+- **Branch-level takeaway:** E14 progressed from encoding tensors, to packaging a whole model, to attempting reconstruction and adding integrity-check code. But the essential experiment—train a paired encoder/decoder and measure reconstruction error against the originals—was not completed in these files.
