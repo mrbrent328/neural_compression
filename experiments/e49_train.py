@@ -72,12 +72,13 @@ def main():
  cfg.validate(); world=int(os.environ.get("WORLD_SIZE","1"))
  tokstep=a.micro_batch*a.context*a.grad_accum*world; steps=math.ceil(a.tokens/tokstep)
  if a.dry_run:
-  m=E49LM(cfg); print(json.dumps({"config":cfg.to_dict(),"parameters":m.parameter_breakdown(),"tokens_per_optimizer_step":tokstep,"planned_steps":steps,"dry_run":True},indent=2)); return
+  with torch.device("meta"): m=E49LM(cfg)
+  print(json.dumps({"config":cfg.to_dict(),"parameters":m.parameter_breakdown(),"tokens_per_optimizer_step":tokstep,"planned_steps":steps,"dry_run":True},indent=2)); return
  if not torch.cuda.is_available(): raise SystemExit("Training requires CUDA/ROCm-visible GPUs. Use --dry-run for CPU preflight.")
  local=int(os.environ.get("LOCAL_RANK","0")); torch.cuda.set_device(local)
  if world>1: dist.init_process_group("nccl")
  rank=dist.get_rank() if dist.is_initialized() else 0
- seed=a.seed+rank; random.seed(seed); np.random.seed(seed); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
+ seed=a.seed; random.seed(seed+rank); np.random.seed(seed+rank); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
  manifest_path=a.data_dir/"manifest.json"
  if manifest_path.exists():
   manifest=json.loads(manifest_path.read_text())
@@ -92,7 +93,8 @@ def main():
   if not any(x.is_meta for x in own_params+own_buffers): return
   module.to_empty(device=device,recurse=False)
   if isinstance(module,nn.Linear):
-   nn.init.normal_(module.weight,mean=0,std=.02)
+   std=.002 if module.out_features==cfg.rank and module.in_features==cfg.constructor_hidden else .02
+   nn.init.normal_(module.weight,mean=0,std=std)
    if module.bias is not None: nn.init.zeros_(module.bias)
   elif isinstance(module,nn.Embedding): nn.init.normal_(module.weight,mean=0,std=.02)
   elif isinstance(module,RMSNorm): nn.init.ones_(module.weight)
@@ -107,7 +109,8 @@ def main():
   from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import checkpoint_wrapper,CheckpointImpl,apply_activation_checkpointing
   wrap=partial(checkpoint_wrapper,checkpoint_impl=CheckpointImpl.NO_REENTRANT)
   apply_activation_checkpointing(model,checkpoint_wrapper_fn=wrap,check_fn=lambda m:isinstance(m,DecoderBlock))
- auto=partial(transformer_auto_wrap_policy,transformer_layer_cls={DecoderBlock})
+ from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import CheckpointWrapper
+ auto=partial(transformer_auto_wrap_policy,transformer_layer_cls={DecoderBlock,CheckpointWrapper})
  mp=MixedPrecision(param_dtype=torch.bfloat16,reduce_dtype=torch.bfloat16,buffer_dtype=torch.bfloat16)
  model=FSDP(model,auto_wrap_policy=auto,sharding_strategy=ShardingStrategy.FULL_SHARD,mixed_precision=mp,device_id=torch.device("cuda",local),use_orig_params=True,limit_all_gathers=True,param_init_fn=materialize_init)
  opt=torch.optim.AdamW(model.parameters(),lr=a.lr,weight_decay=a.weight_decay,betas=(.9,.95),fused=True)
@@ -115,7 +118,7 @@ def main():
  a.output_dir.mkdir(parents=True,exist_ok=True)
  if a.resume:
   meta=load_ckpt(model,opt,a.output_dir/"latest"); start=int(meta["step"]); tokens=int(meta["tokens_seen"])
- rng=torch.Generator(device="cpu").manual_seed(seed+17); erng=torch.Generator(device="cpu").manual_seed(a.seed+23)
+ rng=torch.Generator(device="cpu").manual_seed(a.seed+17+rank); erng=torch.Generator(device="cpu").manual_seed(a.seed+23)
  last_ckpt=tokens; t0=time.time(); model.train()
  for step in range(start,steps):
   if tokens<a.warmup_tokens: lr=a.lr*(tokens+1)/max(1,a.warmup_tokens)
