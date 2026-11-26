@@ -209,6 +209,8 @@ def main():
         cfg = E49Config(**state["config"])
         if cfg.mode != state["mode"]:
             raise SystemExit(f"Checkpoint mode/config mismatch in {checkpoint_path}")
+        if args.stride > cfg.context:
+            raise SystemExit(f"--stride {args.stride} cannot exceed context {cfg.context}")
         comparable_config = cfg.to_dict().copy()
         comparable_config.pop("mode")
         if shared_config is None:
