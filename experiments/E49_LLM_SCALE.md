@@ -22,7 +22,7 @@ Only MLP parameterization changes:
   coordinate constructor that generates low-rank factors.
 
 Default geometry: 32 layers, width 4096, FFN width 11008, 32 query heads,
-32 KV heads, context 4096, vocabulary 32768, rank 512, latent dimension 16.
+32 KV heads, context 4096, vocabulary 32000, rank 512, latent dimension 16.
 This is Llama-7B-class geometry, not an exact reproduction of a commercial model.
 
 ## Why a new implementation
@@ -49,7 +49,7 @@ Install dependencies:
 
 Prepare:
     python experiments/e49_prepare_data.py --data /path/to/corpus \
-      --tokenizer Qwen/Qwen2.5-0.5B --output-dir data/e49_tokens
+      --tokenizer mistralai/Mistral-7B-v0.1 --output-dir data/e49_tokens
 
 The tokenizer is only a tokenizer; no pretrained model weights are loaded.
 Pass the exact tokenizer length as --vocab-size. train.bin and validation.bin
@@ -61,7 +61,7 @@ are used during training; test.bin is reserved for final held-out evaluation.
 
     torchrun --standalone --nproc_per_node=8 experiments/e49_train.py \
       --mode latent --data-dir data/e49_tokens --output-dir runs/e49_latent \
-      --vocab-size 32768 --tokens 50000000 --micro-batch 1 \
+      --vocab-size 32000 --tokens 50000000 --micro-batch 1 \
       --grad-accum 8 --activation-checkpointing
 
 Repeat with dense and lowrank, changing only mode and output path. This
