@@ -217,13 +217,15 @@ Matched comparison command template:
     python experiments/e49_train_local.py \
       --mode dense --data-dir data/e49_fineweb_v1 \
       --output-dir runs/e49_fineweb_dense --vocab-size 32000 \
-      --tokens 19999744 --seed 4901 --sampling-mode unique_blocks
+      --rank 128 --tokens 19999744 --seed 4901 --sampling-mode unique_blocks
 
 Repeat for lowrank and latent, changing only `--mode` and `--output-dir`.
-Use identical seed, geometry, optimizer settings, token budget, and data
-manifest for all three modes. The sampler seed is derived from the training
-seed, so all modes receive the same block order. Do not compare runs if their
-manifest hashes differ.
+Keep `--rank 128` for all three runs (the dense model ignores the rank
+parameter); this compares direct low-rank and latent parameterizations at the
+same rank. Use identical seed, geometry, optimizer settings, token budget, and
+data manifest for all three modes. The sampler seed is derived from the
+training seed, so all modes receive the same block order. Do not compare runs
+if their manifest hashes differ.
 
 Existing runs made before this validation update used random validation
 batches and retained only `latest.pt`. Their old validation metrics are not
