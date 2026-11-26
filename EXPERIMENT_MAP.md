@@ -42,3 +42,14 @@ For each stop, we will give a short plain-English explanation, pause for the use
 - **Critical limitation:** `compare_tensors()` is defined but never called. The encoder/index path does not provide reference hashes in the reviewed implementation, so the script normally has no original hash to compare against. Printing a hash of the reconstruction alone does not establish fidelity. It also does not compare original and reconstructed layer outputs.
 - **Conclusion:** **A proposed fidelity-testing mechanism, not a completed fidelity test.** The E14 branch still does not show that the original weights or model behavior were preserved.
 - **Branch-level takeaway:** E14 progressed from encoding tensors, to packaging a whole model, to attempting reconstruction and adding integrity-check code. But the essential experiment—train a paired encoder/decoder and measure reconstruction error against the originals—was not completed in these files.
+
+
+## E14A — Single-tensor latent prototype (`artifacts/test14a.py`)
+
+- **Question:** Could one large GGUF weight matrix be divided into local tiles and represented by a smaller learned-looking latent tensor?
+- **Method:** Selects the first GGUF tensor that is 2D and has at least 256 rows, converts its data to float32, divides it into complete 256×256 tiles, and passes batches through a convolutional autoencoder. The encoder maps each tile to 16 channels at 1/8 the height and width. The script concatenates and times the latent outputs.
+- **What it demonstrates:** A single real-model tensor can be loaded, tiled, passed through an encoder, and measured for latent tensor size and runtime.
+- **Critical limitation:** The autoencoder is randomly initialized and only set to evaluation mode; there is no training. The decoder is defined but its reconstruction is discarded. No reconstruction error, original-versus-reconstructed comparison, or model behavior test is performed. Only complete tiles are included, so edge remainders are omitted.
+- **Compression caveat:** The printed ratio compares the float32 tile tensor with the float32 latent tensor. It is a raw element/byte-count ratio for this representation, not a verified end-to-end compressed GGUF size or a fidelity-preserving compression result.
+- **Conclusion:** **Single-tensor tiling and latent-size/timing prototype.** It establishes the first stage of the pipeline, not successful weight compression.
+- **Relationship to E14B:** E14B scales this basic idea from one selected tensor to a whole-model container with an index. The central missing requirement in both is a trained encoder/decoder pair and measured reconstruction fidelity.
