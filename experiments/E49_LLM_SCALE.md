@@ -131,8 +131,9 @@ frontiers; both are needed to distinguish data exposure from compute efficiency.
   on the chosen cluster before long runs.
 - The preflight memory estimate assumes FP32 parameter shards, gradients and Adam moments; it excludes activations, all-gathers, temporary generated factors, CUDA context and fragmentation.
 - The constructor work is real compute and must be counted.
-- This initial runner logs validation but does not yet automate held-out test
-  evaluation or detailed hardware telemetry.
+- The local training runner logs validation; held-out test evaluation is
+  performed separately with `experiments/e49_evaluate.py`. Detailed hardware
+  telemetry and isolated latent factor-generation timing remain future work.
 - Data preparation reads each source file as one document; split extremely
   large files into manageable source documents before preparation.
 
