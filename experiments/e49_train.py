@@ -11,7 +11,7 @@ from torch.distributed.fsdp import MixedPrecision,ShardingStrategy
 from torch.distributed.fsdp.wrap import transformer_auto_wrap_policy
 import torch.distributed.checkpoint as dcp
 from torch.distributed.checkpoint.state_dict import get_state_dict,set_state_dict,StateDictOptions
-from e49_model import E49Config,E49LM,DecoderBlock
+from e49_model import E49Config,E49LM,DecoderBlock,SharedCoordinateConstructor,LowRankLinear,LatentLinear,RMSNorm
 
 def args_parse():
  p=argparse.ArgumentParser()
@@ -77,15 +77,40 @@ def main():
  if world>1: dist.init_process_group("nccl")
  rank=dist.get_rank() if dist.is_initialized() else 0
  seed=a.seed+rank; random.seed(seed); np.random.seed(seed); torch.manual_seed(seed); torch.cuda.manual_seed_all(seed)
+ manifest_path=a.data_dir/"manifest.json"
+ if manifest_path.exists():
+  manifest=json.loads(manifest_path.read_text())
+  if int(manifest.get("vocab_size",-1)) != a.vocab_size:
+   raise SystemExit(f"--vocab-size {a.vocab_size} does not match tokenizer manifest {manifest.get('vocab_size')}")
  tr=load_tokens(a.data_dir/"train.bin"); va=load_tokens(a.data_dir/"validation.bin")
- model=E49LM(cfg)
+ with torch.device("meta"):
+  model=E49LM(cfg)
+ def materialize_init(module):
+  own_params=list(module.parameters(recurse=False))
+  own_buffers=list(module.buffers(recurse=False))
+  if not any(x.is_meta for x in own_params+own_buffers): return
+  module.to_empty(device=device,recurse=False)
+  if isinstance(module,nn.Linear):
+   nn.init.normal_(module.weight,mean=0,std=.02)
+   if module.bias is not None: nn.init.zeros_(module.bias)
+  elif isinstance(module,nn.Embedding): nn.init.normal_(module.weight,mean=0,std=.02)
+  elif isinstance(module,RMSNorm): nn.init.ones_(module.weight)
+  elif isinstance(module,LowRankLinear):
+   nn.init.kaiming_uniform_(module.right,a=math.sqrt(5)); nn.init.normal_(module.left,std=.02/math.sqrt(module.right.shape[0]))
+  elif isinstance(module,LatentLinear):
+   nn.init.normal_(module.z,std=.02); nn.init.zeros_(module.log_gain)
+  elif isinstance(module,SharedCoordinateConstructor):
+   nn.init.normal_(module.row_net[-1].weight,std=.002); nn.init.zeros_(module.row_net[-1].bias)
+   nn.init.normal_(module.col_net[-1].weight,std=.002); nn.init.zeros_(module.col_net[-1].bias)
+   module.coords_d.copy_(module._coords(module.coords_d.shape[0]).to(device))
+   module.coords_ff.copy_(module._coords(module.coords_ff.shape[0]).to(device))
  if a.activation_checkpointing:
   from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import checkpoint_wrapper,CheckpointImpl,apply_activation_checkpointing
   wrap=partial(checkpoint_wrapper,checkpoint_impl=CheckpointImpl.NO_REENTRANT)
   apply_activation_checkpointing(model,checkpoint_wrapper_fn=wrap,check_fn=lambda m:isinstance(m,DecoderBlock))
  auto=partial(transformer_auto_wrap_policy,transformer_layer_cls={DecoderBlock})
  mp=MixedPrecision(param_dtype=torch.bfloat16,reduce_dtype=torch.bfloat16,buffer_dtype=torch.bfloat16)
- model=FSDP(model,auto_wrap_policy=auto,sharding_strategy=ShardingStrategy.FULL_SHARD,mixed_precision=mp,device_id=torch.device("cuda",local),use_orig_params=True,limit_all_gathers=True)
+ model=FSDP(model,auto_wrap_policy=auto,sharding_strategy=ShardingStrategy.FULL_SHARD,mixed_precision=mp,device_id=torch.device("cuda",local),use_orig_params=True,limit_all_gathers=True,param_init_fn=materialize_init)
  opt=torch.optim.AdamW(model.parameters(),lr=a.lr,weight_decay=a.weight_decay,betas=(.9,.95),fused=True)
  start,tokens=0,0
  a.output_dir.mkdir(parents=True,exist_ok=True)
