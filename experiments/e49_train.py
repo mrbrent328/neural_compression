@@ -122,7 +122,7 @@ def main():
  a.output_dir.mkdir(parents=True,exist_ok=True)
  if a.resume:
   meta=load_ckpt(model,opt,a.output_dir/"latest"); start=int(meta["step"]); tokens=int(meta["tokens_seen"])
- rng=torch.Generator(device="cpu").manual_seed(a.seed+17+rank); erng=torch.Generator(device="cpu").manual_seed(a.seed+23)
+ rng=torch.Generator(device="cpu").manual_seed(a.seed+17+rank); erng=torch.Generator(device="cpu").manual_seed(a.seed+23+rank)
  manifest_hash=hashlib.sha256((a.data_dir/"manifest.json").read_bytes()).hexdigest() if (a.data_dir/"manifest.json").exists() else None
  last_ckpt=tokens; initial_tokens=tokens; t0=time.time(); model.train()
  metrics_path=a.output_dir/"metrics.jsonl"
