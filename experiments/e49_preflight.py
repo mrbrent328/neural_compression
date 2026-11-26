@@ -11,7 +11,7 @@ def main():
   c=E49Config(vocab_size=a.vocab_size,n_layers=a.layers,d_model=a.d_model,n_heads=a.heads,n_kv_heads=a.kv_heads,d_ff=a.d_ff,context=a.context,mode=mode,rank=a.rank,latent_dim=a.latent_dim)
   with __import__("torch").device("meta"): m=E49LM(c)
   n=m.parameter_breakdown()["total"]
-  rows.append({"mode":mode,"parameters":m.parameter_breakdown(),"bf16_weights_gib":n*2/1024**3,
-   "rough_sharded_weights_gradients_adam_moments_gib_per_gpu":n*12/a.gpus/1024**3})
- print(json.dumps({"config":vars(a),"estimates":rows,"warning":"Excludes activations, FSDP all-gathers, temporary generated factors, CUDA context and fragmentation."},indent=2))
+  rows.append({"mode":mode,"parameters":m.parameter_breakdown(),"fp32_checkpoint_weights_gib":n*4/1024**3,
+   "rough_sharded_fp32_parameters_gradients_adam_moments_gib_per_gpu":n*16/a.gpus/1024**3})
+ print(json.dumps({"config":vars(a),"estimates":rows,"warning":"Assumes FP32 sharded parameters + FP32 gradients + two FP32 Adam moments (16 bytes/parameter). Excludes activations, FSDP all-gathers, temporary generated factors, CUDA context and fragmentation."},indent=2))
 if __name__=="__main__": main()
