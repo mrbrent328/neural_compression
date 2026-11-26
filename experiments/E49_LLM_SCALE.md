@@ -142,3 +142,33 @@ Continue only if latent/shared-constructor demonstrates a meaningful,
 repeatable advantage on at least one resource-quality frontier without
 unacceptable degradation elsewhere. If not, archive the negative result and
 stop. A clean negative answer is a successful completion of this question.
+
+## Single-GPU local pilot (CUDA or ROCm)
+
+For a single accelerator such as an 8 GiB RX 6600, use the local runner rather
+than the distributed FSDP runner above. It uses the same E49 model classes but
+does not initialize torch.distributed or wrap the model in FSDP. It requires a
+PyTorch build with GPU BF16 support.
+
+The local runner defaults to a small matched geometry: 4 layers, width 256,
+FFN width 704, 4 query/KV heads, context 256, and rank 64. Override these
+explicitly when changing the experiment. The tokenized train.bin and
+validation.bin files must use the exact --vocab-size supplied.
+
+Example short integration run:
+
+    python experiments/e49_train_local.py \
+      --mode dense --data-dir data/e49_tokens \
+      --output-dir runs/e49_local_dense --vocab-size 32000 \
+      --tokens 100000
+
+Repeat with --mode lowrank and --mode latent, changing only the output
+directory and mode. The runner records run_config.json, metrics.jsonl, and
+latest.pt in each output directory. It supports --resume when the same
+configuration and output directory are reused.
+
+The local runner is an initial single-GPU pilot path. It logs train/validation
+loss, throughput, peak allocated/reserved GPU memory, and checkpoints. It does
+not yet perform the final held-out test evaluation or measure latent factor
+generation time separately. The 100K-token example is an integration/smoke
+pilot, not enough data to make a language-quality claim.
