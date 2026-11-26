@@ -131,9 +131,14 @@ frontiers; both are needed to distinguish data exposure from compute efficiency.
   on the chosen cluster before long runs.
 - The preflight memory estimate assumes FP32 parameter shards, gradients and Adam moments; it excludes activations, all-gathers, temporary generated factors, CUDA context and fragmentation.
 - The constructor work is real compute and must be counted.
-- The local training runner logs validation; held-out test evaluation is
-  performed separately with `experiments/e49_evaluate.py`. Detailed hardware
-  telemetry and isolated latent factor-generation timing remain future work.
+- The local runner performs deterministic full-split validation at each
+  evaluation interval and writes `best.pt` whenever validation loss improves.
+  `latest.pt` remains the resumable training checkpoint. The standalone
+  `experiments/e49_validate.py` evaluates existing checkpoints on all of
+  `validation.bin` targets using a sliding context.
+- Held-out test evaluation is performed separately with
+  `experiments/e49_evaluate.py`. Detailed hardware telemetry and isolated
+  latent factor-generation timing remain future work.
 - Data preparation reads each source file as one document; split extremely
   large files into manageable source documents before preparation.
 
@@ -168,17 +173,33 @@ directory and mode. The runner records run_config.json, metrics.jsonl, and
 latest.pt in each output directory. It supports --resume when the same
 configuration and output directory are reused.
 
-The local runner is an initial single-GPU pilot path. It logs train/validation
-loss, throughput, peak allocated/reserved GPU memory, and checkpoints. It does
-not yet perform the final held-out test evaluation or measure latent factor
-generation time separately. The 100K-token example is an integration/smoke
-pilot, not enough data to make a language-quality claim.
+The local runner is an initial single-GPU pilot path. It logs training loss,
+throughput, peak allocated/reserved GPU memory, and deterministic full-split
+validation loss. Validation uses a sliding context and scores each next-token
+target once; defaults are stride 32 and batch size 4. It saves the latest
+resumable checkpoint as `latest.pt` and the best-validation model weights as
+`best.pt`. The 100K-token example is an integration/smoke pilot, not enough
+data to make a language-quality claim.
+
+Existing runs made before this validation update used random validation
+batches and retained only `latest.pt`. Their old validation metrics are not
+directly comparable to the new full-split metric. Evaluate those final
+checkpoints with:
+
+    python experiments/e49_validate.py \\
+      --data-dir data/e49_tokens \\
+      --checkpoint dense=runs/e49_1m_dense/latest.pt \\
+      --checkpoint lowrank=runs/e49_1m_lowrank/latest.pt \\
+      --checkpoint latent=runs/e49_local_latent_b/latest.pt \\
+      --output-json runs/e49_full_validation.json
 
 ## Held-out local evaluation
 
-After selecting the final checkpoint for each mode, evaluate the untouched
-`test.bin` split once. Do not use test results to tune hyperparameters or
-choose checkpoints; use validation results for model selection.
+After selecting the best-validation checkpoint for each mode, evaluate the
+untouched `test.bin` split once. For runs made with the updated runner, use
+`best.pt`; for older runs without a best checkpoint, use the explicitly
+evaluated final checkpoint. Do not use test results to tune hyperparameters or
+choose checkpoints.
 
 For the three single-GPU pilot checkpoints:
 
