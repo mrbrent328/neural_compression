@@ -22,3 +22,13 @@ Each entry records the question, what the code actually did, preserved evidence,
 Continue from E14B through the actual experimental branches and their revisions. Keep tightly related script revisions together where they are implementation iterations of the same question; split them when the hypothesis, control, or measured target changes. The 30-hour burst should be reconstructed as a connected sequence, not treated as dozens of unrelated files.
 
 For each stop, we will give a short plain-English explanation, pause for the user's observations, then record the summary before advancing. We will preserve missing results as missing rather than infer them from filenames or code.
+
+
+## E14B follow-up — `artifacts/test14_inference.py`
+
+- **Question:** Can the stored latent entries be read back, expanded into tensor-shaped arrays, and used in a neural-network layer?
+- **Method:** Read the JSON index, seek to a tensor's byte offset in the latent binary file, load the latent grid, pass it through a transpose-convolution decoder, stitch reconstructed tiles together, crop padding, and reshape to the original tensor dimensions. The script then copies the reconstructed weight and bias into a PyTorch `Linear` layer and runs a forward pass on random input.
+- **What it demonstrates:** The storage/index path can be read, and the decoded arrays can be made shape-compatible with a PyTorch layer well enough to execute a forward pass.
+- **Critical limitation:** The decoder is newly initialized in this script. It is not a trained matching decoder paired with the encoder from E14B. The test uses random input and checks only that execution completes; it does not compare reconstructed weights with the originals or compare model outputs.
+- **Conclusion:** **Reconstruction plumbing / executable-shape demonstration only.** It does not establish weight fidelity, preserved model behavior, or useful compression.
+- **Next file:** `artifacts/test14_inference_hashcheck.py`, which attempts to add the missing fidelity check.
