@@ -210,6 +210,10 @@ def main():
     metrics = a.output_dir/"metrics.jsonl"
     step0 = tokens_seen = 0
     best_val_loss = float("inf")
+    data_rng = torch.Generator(device="cpu").manual_seed(a.seed+101)
+    eval_rng = torch.Generator(device="cpu").manual_seed(a.seed+202)
+    block_sampler = (UniqueBlockSampler(len(train), a.context, a.seed+303)
+                     if a.sampling_mode == "unique_blocks" else None)
     if a.resume:
         if not ckpt.exists(): raise SystemExit(f"Checkpoint not found: {ckpt}")
         state = torch.load(ckpt,map_location="cpu",weights_only=False)
@@ -229,10 +233,6 @@ def main():
         if best_path.is_file():
             best_state = torch.load(best_path, map_location="cpu", weights_only=False)
             best_val_loss = min(best_val_loss, float(best_state.get("validation_loss", float("inf"))))
-    data_rng = torch.Generator(device="cpu").manual_seed(a.seed+101)
-    eval_rng = torch.Generator(device="cpu").manual_seed(a.seed+202)
-    block_sampler = (UniqueBlockSampler(len(train), a.context, a.seed+303)
-                     if a.sampling_mode == "unique_blocks" else None)
     if a.resume and "data_rng" in state:
         data_rng.set_state(state["data_rng"]); eval_rng.set_state(state["eval_rng"])
         torch.set_rng_state(state["cpu_rng"]); torch.cuda.set_rng_state(state["gpu_rng"])
