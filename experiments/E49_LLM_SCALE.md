@@ -67,25 +67,49 @@ state does not imply faster execution.
 
 ## Data preparation
 
-Use a varied corpus whose use is permitted. Complete source files are assigned
-to train/validation/test; exact duplicate files are removed and hashes recorded.
-At least three distinct source files are required. A one-million-token warning
-is emitted for small splits. Repeatedly cycling a small project archive measures
-memorization, not general language learning.
+The E49 local scale experiment uses a streamed sample from
+[HuggingFaceFW/FineWeb](https://huggingface.co/datasets/HuggingFaceFW/fineweb),
+a large, quality-filtered English web-text corpus derived from Common Crawl.
+FineWeb is released under ODC-By 1.0; retain the dataset attribution and source
+manifest with experiment results. The builder below streams the sample-10BT
+configuration and does not download the entire 27.6 GB sample to disk.
 
-Install dependencies (PyTorch 2.4+ recommended for the distributed checkpoint APIs):
-    pip install torch numpy transformers tokenizers
+Target split sizes:
+- train: 20,000,000 unique tokens;
+- validation: 2,000,000 independent tokens;
+- test: 2,000,000 independent tokens.
+
+Install the data-preparation dependency in the same Python environment used
+for E49. Existing E49 dependencies include NumPy and Transformers:
+    python -m pip install "datasets>=3.0"
 
 Run the CPU forward/backward check before any accelerator allocation:
     python experiments/e49_smoke_test.py
 
-Prepare:
-    python experiments/e49_prepare_data.py --data /path/to/corpus \
-      --tokenizer mistralai/Mistral-7B-v0.1 --output-dir data/e49_tokens
+Build the corpus:
+    python experiments/e49_download_fineweb.py \
+      --output-dir data/e49_fineweb_v1
+
+The builder resolves and records an immutable Hugging Face dataset revision,
+streams documents with a seeded shuffle buffer, filters for English and
+minimum language score, tokenizes with the exact Mistral tokenizer used by
+E49, and writes uint32 train.bin, validation.bin, and test.bin files. It
+assigns whole documents to splits using a stable content hash, removes exact
+duplicates, and applies a conservative cross-split SimHash near-duplicate
+filter. It records source IDs/URLs, document hashes, split hashes, tokenizer
+revision, dataset revision, filtering settings, and counts in manifest.json.
+Raw document text is not saved. The final binary files total about 96 MB
+(24M tokens × 4 bytes); allow approximately 5 GB of free disk space for
+Hugging Face cache, temporary processing, and headroom.
 
 The tokenizer is only a tokenizer; no pretrained model weights are loaded.
-Pass the exact tokenizer length as --vocab-size. train.bin and validation.bin
-are used during training; test.bin is reserved for final held-out evaluation.
+The script stops rather than silently using a vocabulary size other than
+32,000. Keep test.bin untouched until model selection is complete.
+
+FineWeb has already been deduplicated within individual crawls. The additional
+SimHash pass is a conservative local screen, not a proof that every semantic
+or cross-crawl near-duplicate has been removed. Inspect manifest.json and
+retain it with all checkpoints and evaluation outputs.
 
 ## Preflight and short systems pilot
 
@@ -180,6 +204,26 @@ target once; defaults are stride 32 and batch size 4. It saves the latest
 resumable checkpoint as `latest.pt` and the best-validation model weights as
 `best.pt`. The 100K-token example is an integration/smoke pilot, not enough
 data to make a language-quality claim.
+
+For the larger FineWeb comparison, use `--sampling-mode unique_blocks`.
+This mode shuffles non-overlapping context blocks without replacement within
+each training-data epoch. It preserves and restores sampler state in
+checkpoints. The default `random` mode remains unchanged for historical runs.
+With 20M train tokens and context 256, one complete block pass supplies
+19,999,744 next-token targets (78,124 blocks); use that exact token budget with
+micro-batch 1 and gradient accumulation 4 to avoid entering a second epoch.
+
+Matched comparison command template:
+    python experiments/e49_train_local.py \
+      --mode dense --data-dir data/e49_fineweb_v1 \
+      --output-dir runs/e49_fineweb_dense --vocab-size 32000 \
+      --tokens 19999744 --seed 4901 --sampling-mode unique_blocks
+
+Repeat for lowrank and latent, changing only `--mode` and `--output-dir`.
+Use identical seed, geometry, optimizer settings, token budget, and data
+manifest for all three modes. The sampler seed is derived from the training
+seed, so all modes receive the same block order. Do not compare runs if their
+manifest hashes differ.
 
 Existing runs made before this validation update used random validation
 batches and retained only `latest.pt`. Their old validation metrics are not
