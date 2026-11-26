@@ -32,7 +32,7 @@ For the default 32-layer, 4096-wide, 11008-FFN, 32K-vocabulary geometry,
 the architecture formulas give these expected counts before a runtime
 preflight:
 
-| Family | Trainable parameters | BF16 weight file (approx.) |
+| Family | Trainable parameters | FP32 checkpoint weights (approx.) |
 |---|---:|---:|
 | Dense | 6.738B | 12.55 GiB |
 | Direct low-rank, rank 512 | 3.152B | 5.87 GiB |
@@ -46,9 +46,11 @@ factor values across all 32 layers (roughly 1.38 GiB at BF16 if retained for
 backpropagation), in addition to constructor activations. This is a key
 temporary-memory and compute cost to measure in the pilot.
 
-A rough 8-GPU FULL_SHARD estimate for BF16 parameters, BF16 gradients and two
-FP32 Adam moments is approximately 9.41 / 4.40 / 3.37 GiB per GPU for dense /
-low-rank / latent respectively. It excludes activations, block all-gathers,
+A rough 8-GPU FULL_SHARD estimate for FP32 sharded parameters, FP32 gradients (the FSDP1 default after backward),
+and two FP32 Adam moments is approximately 12.55 / 5.87 / 4.49 GiB per GPU
+for dense / low-rank / latent respectively. FSDP mixed precision uses BF16
+for forward/backward computation, but retains full-precision parameter shards
+outside those passes and normally upcasts gradients before the optimizer step. It excludes activations, block all-gathers,
 temporary factor tensors, CUDA runtime and fragmentation, so it is not a
 hardware sizing guarantee.
 
@@ -127,8 +129,7 @@ frontiers; both are needed to distinguish data exposure from compute efficiency.
 
 - Validate FSDP and torch.distributed.checkpoint against the exact PyTorch build
   on the chosen cluster before long runs.
-- The preflight memory estimate excludes activations, all-gathers, temporary
-  generated factors, CUDA context and fragmentation.
+- The preflight memory estimate assumes FP32 parameter shards, gradients and Adam moments; it excludes activations, all-gathers, temporary generated factors, CUDA context and fragmentation.
 - The constructor work is real compute and must be counted.
 - This initial runner logs validation but does not yet automate held-out test
   evaluation or detailed hardware telemetry.
