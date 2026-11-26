@@ -11,7 +11,7 @@ from torch.distributed.fsdp import MixedPrecision,ShardingStrategy
 from torch.distributed.fsdp.wrap import transformer_auto_wrap_policy
 import torch.distributed.checkpoint as dcp
 from torch.distributed.checkpoint.state_dict import get_state_dict,set_state_dict,StateDictOptions
-from e49_model import E49Config,E49LM,DecoderBlock,SharedCoordinateConstructor,LowRankLinear,LatentLinear,RMSNorm
+from e49_model import E49Config,E49LM,DecoderBlock,LowRankLinear,LatentLinear,RMSNorm
 
 def args_parse():
  p=argparse.ArgumentParser()
@@ -58,7 +58,8 @@ def save_ckpt(model,opt,path,meta):
  if dist.is_initialized(): dist.barrier()
 
 def load_ckpt(model,opt,path):
- state={"model":{},"optimizer":{}}
+ ms,osd=get_state_dict(model,opt,options=StateDictOptions(full_state_dict=False,cpu_offload=True))
+ state={"model":ms,"optimizer":osd}
  dcp.load(state,checkpoint_id=path/"shards")
  set_state_dict(model,opt,model_state_dict=state["model"],optim_state_dict=state["optimizer"],
   options=StateDictOptions(full_state_dict=False,cpu_offload=True))
@@ -99,11 +100,9 @@ def main():
    nn.init.kaiming_uniform_(module.right,a=math.sqrt(5)); nn.init.normal_(module.left,std=.02/math.sqrt(module.right.shape[0]))
   elif isinstance(module,LatentLinear):
    nn.init.normal_(module.z,std=.02); nn.init.zeros_(module.log_gain)
-  elif isinstance(module,SharedCoordinateConstructor):
-   nn.init.normal_(module.row_net[-1].weight,std=.002); nn.init.zeros_(module.row_net[-1].bias)
-   nn.init.normal_(module.col_net[-1].weight,std=.002); nn.init.zeros_(module.col_net[-1].bias)
-   module.coords_d.copy_(module._coords(module.coords_d.shape[0]).to(device))
-   module.coords_ff.copy_(module._coords(module.coords_ff.shape[0]).to(device))
+  elif isinstance(module,nn.Linear) and module.out_features==cfg.rank and module.in_features==cfg.constructor_hidden:
+   nn.init.normal_(module.weight,std=.002)
+   if module.bias is not None: nn.init.zeros_(module.bias)
  if a.activation_checkpointing:
   from torch.distributed.algorithms._checkpoint.checkpoint_wrapper import checkpoint_wrapper,CheckpointImpl,apply_activation_checkpointing
   wrap=partial(checkpoint_wrapper,checkpoint_impl=CheckpointImpl.NO_REENTRANT)
