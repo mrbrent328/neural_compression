@@ -130,3 +130,14 @@ This project is exploratory research. Results are subject to the limitations des
 ## E43 / E44 latent communication experiments
 
 The synthetic latent-communication protocol and its ten-seed replication are documented in [E43_README.md](E43_README.md), with uploaded results archived under [E43/results/](E43/results/). The next randomized-world robustness experiment is isolated under [E44/](E44/README.md). These experiments are synthetic protocol studies; they do not yet establish pretrained-model communication or a compression advantage.
+
+## E49 — LLM-scale matched architecture test
+
+E49 now contains a Llama-7B-class decoder configuration and matched dense,
+direct-low-rank, and latent/shared-constructor SwiGLU implementations, with
+source-isolated tokenizer data preparation, parameter/memory preflight, and a
+BF16 FSDP training runner. The default comparison budget is 20B tokens; run a
+short matched systems pilot on the target cluster before committing to the
+full budget. The runner and architecture are new research infrastructure and
+have not yet been validated on a multi-GPU cluster. See
+[experiments/E49_LLM_SCALE.md](experiments/E49_LLM_SCALE.md).
