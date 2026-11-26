@@ -10,7 +10,7 @@ from torch.nn import functional as F
 
 @dataclass
 class E49Config:
-    vocab_size: int = 32768
+    vocab_size: int = 32000
     n_layers: int = 32
     d_model: int = 4096
     n_heads: int = 32
@@ -102,9 +102,13 @@ class SharedCoordinateConstructor(nn.Module):
         c=coords.to(device=z.device,dtype=z.dtype); e=self.type_embedding.weight[kind].to(z.dtype)
         return torch.cat((z.reshape(1,-1).expand(c.shape[0],-1),
             e.reshape(1,-1).expand(c.shape[0],-1),c),-1)
+    def _coords_for(self,n):
+        if n == self.coords_d.shape[0]: return self.coords_d
+        if n == self.coords_ff.shape[0]: return self.coords_ff
+        return self._coords(n)
     def factors(self,z,kind,ni,no):
-        rc=self.coords_ff if no==self.coords_ff.shape[0] else self._coords(no)
-        cc=self.coords_d if ni==self.coords_d.shape[0] else self._coords(ni)
+        rc=self._coords_for(no)
+        cc=self._coords_for(ni)
         left=self.row_net(self._inputs(z,kind,rc))/math.sqrt(self.rank)
         right=self.col_net(self._inputs(z,kind,cc)).transpose(0,1).contiguous()
         return left,right
@@ -158,7 +162,7 @@ class E49LM(nn.Module):
         for layer in self.layers: x=layer(x,self.constructor)
         logits=self.lm_head(self.norm(x)); loss=None
         if labels is not None:
-            loss=F.cross_entropy(logits[:,:-1].reshape(-1,logits.size(-1)),labels[:,1:].reshape(-1))
+            loss=F.cross_entropy(logits.reshape(-1,logits.size(-1)),labels.reshape(-1))
         return logits,loss
     def parameter_breakdown(self):
         out={"total":0,"attention":0,"mlp":0,"latents":0,"constructor":0,"embeddings_and_norms":0}
