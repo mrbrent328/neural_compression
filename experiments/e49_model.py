@@ -91,8 +91,7 @@ class SharedCoordinateConstructor(nn.Module):
                 nn.Linear(cfg.constructor_hidden,cfg.rank))
             nn.init.normal_(m[-1].weight,std=.002); nn.init.zeros_(m[-1].bias); return m
         self.row_net,self.col_net=net(),net()
-        self.register_buffer("coords_d",self._coords(cfg.d_model),persistent=False)
-        self.register_buffer("coords_ff",self._coords(cfg.d_ff),persistent=False)
+        self._coord_cache = {}
     def _coords(self,n):
         x=torch.linspace(-1,1,n).unsqueeze(-1); out=[x]
         for i in range(self.bands):
@@ -102,13 +101,14 @@ class SharedCoordinateConstructor(nn.Module):
         c=coords.to(device=z.device,dtype=z.dtype); e=self.type_embedding.weight[kind].to(z.dtype)
         return torch.cat((z.reshape(1,-1).expand(c.shape[0],-1),
             e.reshape(1,-1).expand(c.shape[0],-1),c),-1)
-    def _coords_for(self,n):
-        if n == self.coords_d.shape[0]: return self.coords_d
-        if n == self.coords_ff.shape[0]: return self.coords_ff
-        return self._coords(n)
+    def _coords_for(self,n,z):
+        key=(n,z.device.type,z.device.index,z.dtype)
+        if key not in self._coord_cache:
+            self._coord_cache[key]=self._coords(n).to(device=z.device,dtype=z.dtype)
+        return self._coord_cache[key]
     def factors(self,z,kind,ni,no):
-        rc=self._coords_for(no)
-        cc=self._coords_for(ni)
+        rc=self._coords_for(no,z)
+        cc=self._coords_for(ni,z)
         left=self.row_net(self._inputs(z,kind,rc))/math.sqrt(self.rank)
         right=self.col_net(self._inputs(z,kind,cc)).transpose(0,1).contiguous()
         return left,right
