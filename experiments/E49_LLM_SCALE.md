@@ -25,6 +25,33 @@ Default geometry: 32 layers, width 4096, FFN width 11008, 32 query heads,
 32 KV heads, context 4096, vocabulary 32000, rank 512, latent dimension 16.
 This is Llama-7B-class geometry, not an exact reproduction of a commercial model.
 
+
+## Configuration-derived parameter estimate
+
+For the default 32-layer, 4096-wide, 11008-FFN, 32K-vocabulary geometry,
+the architecture formulas give these expected counts before a runtime
+preflight:
+
+| Family | Trainable parameters | BF16 weight file (approx.) |
+|---|---:|---:|
+| Dense | 6.738B | 12.55 GiB |
+| Direct low-rank, rank 512 | 3.152B | 5.87 GiB |
+| Latent/shared constructor, rank 512 and z=16 | 2.410B | 4.49 GiB |
+
+The latent configuration is approximately 64.2% fewer persistent parameters
+than dense and 23.5% fewer than direct low-rank. These are parameter-count
+estimates, not measured quality or speed results. They are not a claim that
+the generated matrices are free: the latent forward pass creates about 742M
+factor values across all 32 layers (roughly 1.38 GiB at BF16 if retained for
+backpropagation), in addition to constructor activations. This is a key
+temporary-memory and compute cost to measure in the pilot.
+
+A rough 8-GPU FULL_SHARD estimate for BF16 parameters, BF16 gradients and two
+FP32 Adam moments is approximately 9.41 / 4.40 / 3.37 GiB per GPU for dense /
+low-rank / latent respectively. It excludes activations, block all-gathers,
+temporary factor tensors, CUDA runtime and fragmentation, so it is not a
+hardware sizing guarantee.
+
 ## Why a new implementation
 
 The v0 script is a CPU-scale prototype. E49 adds RoPE, SwiGLU, grouped-query
